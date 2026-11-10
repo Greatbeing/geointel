@@ -1,19 +1,21 @@
 {
- "question": "未来 90 天美联储加息的概率与应对",
- "generated_at": "2026-11-10T23:30:38Z",
+ "question": "未来 90 天美联储加息的概率与应对 Federal Reserve rate hike CPI inflation FOMC",
+ "generated_at": "2026-11-10T23:32:14Z",
  "horizon_days": 90,
  "items_used": 40,
  "sources": [
-  "ars",
+  "aljazeera",
   "bbc-world",
   "cnbc",
-  "gn-climate",
-  "gn-trade",
+  "fed",
+  "ft",
+  "gn-ai-reg",
+  "gn-china-econ",
+  "gn-geopolitics",
+  "gn-mideast",
   "guardian-world",
-  "lowy",
   "marketwatch",
   "nikkei-asia",
-  "scmp",
   "straits-times"
  ]
 }
