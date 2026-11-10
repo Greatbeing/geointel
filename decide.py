@@ -30,6 +30,10 @@ SYSTEM = (
     "明确写出什么证据会推翻结论。你不迎合提问者，也不假装确定。"
 )
 
+# Decision model: NVIDIA Nemotron 3 Ultra 550B via Magpie (user 2026-11-11:
+# NVIDIA-provided models, quota ample). Digest keeps llm.MODELS (group/fast).
+DECIDE_MODEL = "nvidia/nvidia/nemotron-3-ultra-550b-a55b"
+
 TEMPLATE = """决策问题：{question}
 
 时间范围：未来 {horizon} 天。
@@ -110,7 +114,7 @@ def main():
 
     prompt = TEMPLATE.format(question=args.question, horizon=args.horizon, days=args.days,
                              n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=16000)
+    body = llm.chat(prompt, system=SYSTEM, model=DECIDE_MODEL, timeout=480, max_tokens=32000)
 
     now = datetime.now(timezone.utc)
     slug = args.slug or hashlib.sha1(args.question.encode()).hexdigest()[:6]

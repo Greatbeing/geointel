@@ -11,11 +11,14 @@ import urllib.request
 
 GATEWAY = "http://127.0.0.1:3425"
 MODELS = [
-    "auto/glm-5.3-flash",       # benchmark 2026-11-11: 79.3s, complete long output (group/fast truncates decide memos)
-    "group/fast",               # benchmark: 14.5s, fastest; use for digest, but truncates long decide output
+    "group/fast",               # benchmark 2026-11-11: 14.5s, fastest; digest OK
+    "auto/glm-5.3-flash",       # benchmark: 79.3s, good Chinese + citations
     "longcat/LongCat-2.5",      # benchmark: 56.6s, slow for full digest but reliable
     "group/daily",
 ]
+# NOTE 2026-11-11: decide memos truncate (~3.5KB) with both group/fast and GLM;
+# root cause is reasoning models consuming max_tokens on reasoning_content.
+# decide needs a fix (larger budget / non-reasoning model), not a MODELS reorder.
 DEFAULT_TIMEOUT = 420
 MAX_TOKENS_CAP = 32000
 

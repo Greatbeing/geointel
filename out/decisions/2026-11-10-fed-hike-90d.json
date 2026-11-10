@@ -1,6 +1,68 @@
 {
+ "scenarios": [
+  {
+   "name": "加息 25bp",
+   "prob": 10
+  },
+  {
+   "name": "维持不变",
+   "prob": 80
+  },
+  {
+   "name": "降息 25bp",
+   "prob": 10
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "核心 CPI 月率环比 ≥ 0.4%",
+   "keywords": [
+    "核心CPI",
+    "月率",
+    "0.4%"
+   ],
+   "threshold": 0.4,
+   "action": "执行 O1：组合久期缩短 1.5 年"
+  },
+  {
+   "id": "t2",
+   "description": "SOFR 期货隐含加息概率 ≥ 35%",
+   "keywords": [
+    "SOFR",
+    "隐含概率",
+    "35%"
+   ],
+   "threshold": 35,
+   "action": "执行 O2：买入 5.50% 看涨期权，名义额 5%"
+  },
+  {
+   "id": "t3",
+   "description": "WTI 原油 ≥ $95 持续 5 日",
+   "keywords": [
+    "WTI",
+    "95",
+    "5日"
+   ],
+   "threshold": 95,
+   "action": "执行 O1 + 增配能源股 2%"
+  },
+  {
+   "id": "t4",
+   "description": "初请失业金 4 周均值 ≤ 21 万",
+   "keywords": [
+    "初请失业金",
+    "21万",
+    "4周"
+   ],
+   "threshold": 210000,
+   "action": "执行 O1：久期 -1 年"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-02-08",
  "question": "未来 90 天美联储加息的概率与应对",
- "generated_at": "2026-11-10T23:43:57Z",
+ "generated_at": "2026-11-10T23:49:25Z",
  "horizon_days": 90,
  "items_used": 40,
  "sources": [
