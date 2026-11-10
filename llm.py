@@ -11,9 +11,9 @@ import urllib.request
 
 GATEWAY = "http://127.0.0.1:3425"
 MODELS = [
-    "longcat/LongCat-2.5",
-    "kilo/dots-studio/dots-3-note-preview:free",
-    "nvidia/nvidia/nemotron-3-ultra-550b-a55b",
+    "group/fast",               # benchmark 2026-11-11: 14.5s for 15-item prompt, fastest
+    "auto/glm-5.3-flash",       # benchmark: 79.3s, good Chinese + citations
+    "longcat/LongCat-2.5",      # benchmark: 56.6s, slow for full digest but reliable
     "group/daily",
 ]
 DEFAULT_TIMEOUT = 420
