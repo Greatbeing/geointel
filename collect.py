@@ -78,8 +78,30 @@ def canonical(url):
                                     parts.path.rstrip("/"), urllib.parse.urlencode(query), ""))
 
 
+ENTITY_RE = re.compile(rb"&([A-Za-z][A-Za-z0-9]{1,31});")
+XML_BUILTIN = {b"amp", b"lt", b"gt", b"quot", b"apos"}
+
+
+def sanitize(data):
+    """把 XML 未定义但 HTML 常见的实体（&nbsp; &mdash; 等）换成字符。
+
+    标准库 ElementTree 遇到未定义实体会直接 ParseError，而现实里的
+    RSS 里到处是 HTML 实体。先整体替换成数字实体，再交给 ET。
+    """
+    def repl(m):
+        name = m.group(1)
+        if name in XML_BUILTIN:
+            return m.group(0)
+        ch = html.entities.html5.get(name.decode("ascii") + ";")
+        if not ch:
+            return b""
+        return ("&#%d;" % ord(ch)).encode("ascii")
+
+    return ENTITY_RE.sub(repl, data)
+
+
 def parse_feed(data, source):
-    root = ET.fromstring(data)
+    root = ET.fromstring(sanitize(data))
     items = []
     for el in root.iter():
         if local(el.tag) not in ("item", "entry"):
@@ -122,6 +144,9 @@ def fetch(source, timeout):
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             data = r.read(4_000_000)
+        if data[:2] == b"\x1f\x8b":
+            import gzip
+            data = gzip.decompress(data)
         items = parse_feed(data, source)
         return source["id"], True, len(items), round(time.time() - started, 1), items, ""
     except Exception as e:

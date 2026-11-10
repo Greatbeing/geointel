@@ -1,0 +1,496 @@
+{
+ "date": "2026-11-10",
+ "generated_at": "2026-11-10T09:30:10Z",
+ "items": [
+  {
+   "title": "SoftBank posts unexpected $7bn loss on data centre writedown",
+   "source": "ft",
+   "link": "https://www.ft.com/content/5ceed157-0016-4822-a272-8b607911da5e?syn-25a6b1a6=1",
+   "published": "2026-11-10T08:33:19Z",
+   "category": "finance"
+  },
+  {
+   "title": "US removes planes from second UK military base after Iran threat",
+   "source": "ft",
+   "link": "https://www.ft.com/content/c2992864-c0ab-4e38-b47a-5c2c1e3cb056?syn-25a6b1a6=1",
+   "published": "2026-11-10T08:24:56Z",
+   "category": "finance"
+  },
+  {
+   "title": "Too big to fire",
+   "source": "ft",
+   "link": "https://www.ft.com/content/e1c37583-0b76-48ab-96b7-8e7da453fa88?syn-25a6b1a6=1",
+   "published": "2026-11-10T07:10:16Z",
+   "category": "finance"
+  },
+  {
+   "title": "COP31 climate summit in Turkey, ASEAN Summit, Sri Lanka budget",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/your-week-in-asia/cop31-climate-summit-in-turkey-asean-summit-sri-lanka-budget",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Vietnam leader To Lam visits Japan as decades-old relationship evolves",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/vietnam-leader-to-lam-visits-japan-as-decades-old-relationship-evolves",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Ukraine's Zaporizhzhia nuclear plant again relies on backup power",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/ukraine-war/ukraine-s-zaporizhzhia-nuclear-plant-again-relies-on-backup-power",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Singapore Airlines unveils $1.6bn cabin revamp with giant double bed",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/transportation/singapore-airlines-unveils-1.6bn-cabin-revamp-with-giant-double-bed",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Netanyahu rival Eisenkot seeks 'wide' government, path to power uncertain",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/netanyahu-rival-eisenkot-seeks-wide-government-path-to-power-uncertain",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan headlight king Koito tears down Chinese rivals' lamps for bright ideas",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/automobiles/japan-headlight-king-koito-tears-down-chinese-rivals-lamps-for-bright-ideas",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "European far right distances itself from Trump after midterm rout",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/european-far-right-distances-itself-from-trump-after-midterm-rout",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Binance hack clouds Singapore crypto push for tokenized stocks",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/markets/trading-asia/binance-hack-clouds-singapore-crypto-push-for-tokenized-stocks",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan FX intervention data underscores challenge of reversing weak yen",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/markets/currencies/japan-fx-intervention-data-underscores-challenge-of-reversing-weak-yen",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Taiwan chipmaker CEO warns memory price rises are unsustainable",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/editor-s-picks/interview/taiwan-chipmaker-ceo-warns-memory-price-rises-are-unsustainable",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Iran war and ambiguous fuel pricing squeeze Indian fishermen",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/fisheries/iran-war-and-ambiguous-fuel-pricing-squeeze-indian-fishermen",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Malaysia-Taiwan fraying ties threaten future chip investments",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/malaysia-taiwan-fraying-ties-threaten-future-chip-investments",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Nvidia probes CEO Jensen Huang's affair amid China security concerns",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/tech/semiconductors/nvidia-probes-ceo-jensen-huang-s-affair-amid-china-security-concerns",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Philippine GDP growth further slows to 2.1% in Q3, dragged by inflation",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/economy/philippine-gdp-growth-further-slows-to-2.1-in-q3-dragged-by-inflation",
+   "published": "2026-11-10T09:18:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Talks aimed at ending Russia’s war in Ukraine resume",
+   "source": "ft",
+   "link": "https://www.ft.com/content/352539b3-41fd-4418-a171-43975897ec0e?syn-25a6b1a6=1",
+   "published": "2026-11-10T05:00:29Z",
+   "category": "finance"
+  },
+  {
+   "title": "No, Brits have not fallen out of love with work",
+   "source": "ft",
+   "link": "https://www.ft.com/content/9be099de-58b1-471c-aa05-92622585ffac?syn-25a6b1a6=1",
+   "published": "2026-11-10T05:00:29Z",
+   "category": "finance"
+  },
+  {
+   "title": "Investors pile into defensive stocks amid fears AI bull market may be over",
+   "source": "ft",
+   "link": "https://www.ft.com/content/efe9653b-6802-485e-8eae-97fa2e6df770?syn-25a6b1a6=1",
+   "published": "2026-11-10T05:00:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "The last of the Botíns",
+   "source": "ft",
+   "link": "https://www.ft.com/content/0eab6768-1bdb-4a6c-bf6a-2fb8d35eef03?syn-25a6b1a6=1",
+   "published": "2026-11-10T05:00:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "Japan can tell the world what really matters when prepping",
+   "source": "ft",
+   "link": "https://www.ft.com/content/559a8eeb-0e91-4920-8321-5066f81ea015?syn-25a6b1a6=1",
+   "published": "2026-11-10T00:47:30Z",
+   "category": "finance"
+  },
+  {
+   "title": "Is Burnham’s No 10 North working out?",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/politics-at-sam-and-annes/is-burnhams-no-10-north-working-out",
+   "published": "2026-11-10T08:35:33Z",
+   "category": "policy"
+  },
+  {
+   "title": "Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang",
+   "source": "ft",
+   "link": "https://www.ft.com/content/cbabf2da-2079-4b69-88e3-0ba84cf8d6fd?syn-25a6b1a6=1",
+   "published": "2026-11-10T00:35:56Z",
+   "category": "finance"
+  },
+  {
+   "title": "In Manila, the Quad must work for ASEAN, not around it",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/in-manila-the-quad-must-work-for-asean-not-around-it",
+   "published": "2026-11-10T03:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Republican lawmaker moves to impeach US defence secretary Pete Hegseth",
+   "source": "ft",
+   "link": "https://www.ft.com/content/ed09fc96-5ad5-4ff8-a8a9-900740c6fcbb?syn-25a6b1a6=1",
+   "published": "2026-11-09T22:15:51Z",
+   "category": "finance"
+  },
+  {
+   "title": "Can the EU’s climate strategy survive election season?",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/brussels-playbook-podcast/can-the-eus-climate-strategy-survive-election-season",
+   "published": "2026-11-10T05:05:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Billions came fast for the fuel crisis – the Pacific still waits for climate finance",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/billions-came-fast-for-the-fuel-crisis-the-pacific-still-waits-for-climate-finance",
+   "published": "2026-11-10T01:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Aigner und die ganz große Koalition",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/berlin-playbook-podcast/aigner-und-die-ganz-grose-koalition",
+   "published": "2026-11-10T04:30:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "China’s October Crude Oil Imports Rise to Highest Level Since March Amid Middle East War - ASHARQ AL-AWSAT English",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQWGVfOVR3REZZRzR2RVpPTVlFb1UzdE9peFdyNENFZldfY0dneFpwWUlHUEJzaHRuTWdMb2JGTlJveldUY1BQTjQ1S0Y1bU56aUZqd2VkRDdMTE5WZEs0OU1lQV9iLTdLb3Q4Tmhfa05HWEtQZ0lidm50bUZwVlFUcGlyVEphZVJYNm8zWWZ3VzJ1ejlkYmFieUVKREtWeWozSXdCVGsxc2o4d1ZPQWJ6Mnl2MWVUdDFZM1lnR19aVmRNRzItbW1GTUNSQQ?oc=5",
+   "published": "2026-11-10T09:00:08Z",
+   "category": "security"
+  },
+  {
+   "title": "Middle East latest: Qatari Prime Minister making unscheduled stop at G7 to brief Europeans - thenationalnews.com",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVy1acE1PeEpZb3pIWlZYUWYyYmFFdy1QVmpzdDRkaUl3UzJKVDhUYmc0ZmNtMFRzSkJrYjl5enpoOVh0LUd6Z1dJUXE4Z2RHWFd3NjNnNnQyMndWT0NLVDdVMW1HWFJhQlJ6YURNOUktNllWNE9td3A2OGVCTXNpdUR3?oc=5",
+   "published": "2026-11-10T08:58:38Z",
+   "category": "security"
+  },
+  {
+   "title": "Federal Reserve Board announces approval of two applications by Mutual Federal Bancorp, MHC, and MFB Bancorp, Inc.",
+   "source": "fed",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/orders20261109a.htm",
+   "published": "2026-11-09T21:00:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Warum strategische Investitionen jetzt wichtiger sind denn je",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/sponsored-content/warum-strategische-investitionen-jetzt-wichtiger-sind-denn-je",
+   "published": "2026-11-10T04:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Building a European Neurological Health Framework",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/sponsored-content/building-a-european-neurological-health-framework",
+   "published": "2026-11-10T04:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "How Health Systems Can Spot Risk Before a Crisis",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/sponsored-content/how-health-systems-can-spot-risk-before-a-crisis",
+   "published": "2026-11-10T04:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Middle East flights: Air France and ITA Airways extend suspensions - The National",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeVNLS3o2MWo4NFVBRHlNaHJaVlVGNGxBVXlZTjdUNkVjWWRfYmVvU2lXUzJqNW1YbkJEbVRlZ2E4S0w0cWJvTllmU3Jxa3g1MWFPZEs5Z3E3VzhheUxTQUx0Y2lMMUlGNUZSNzNhVTlJaXFHNVNzQ21aTFBJek1qYUJpcmg0eGRIRFd0V1Jn?oc=5",
+   "published": "2026-11-10T08:38:16Z",
+   "category": "security"
+  },
+  {
+   "title": "US-Israel-Iran War Latest Live Updates: ‘Calls Him Every Day’, Netanyahu Reportedly Urges Trump To Restart Iran War As Gulf Nations Warn Against Wider Middle East Escalation - The Sunday Guardian",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiugJBVV95cUxPbGJCVWo3cWlabW5nV2RjOWZlbVFZLUVVVUVWd3h0UGRvUVFJcERBaGszMU1JdDFjeHpyNGJfOXprOFJJcFFGWHlocEcxd29SLUpZZGM5SVBJWS1wZnhldDdZQzdJZWJYVlFXNVVxZWRXYmtjNjZCeEtfSHRuY2N5eUxTTkg4YWRKZHlzc01qRUo3MEUxLVlXaEtKckcxeGFOU1ZQS2xkMmowc1NzMHF4OE9TRjljOFBhRVZ0bm93VXdnUmhabkpQbkdJR01qSDFXckxicGZKVU54OXVUQzNxUjgxQVhBc2toM2EwYlZfZFhQSTNkSVh6aDRFX0Z3VlgzUm1RSkI3WksyM21teVN4MUhIWVhlTVlhUXFwVVdWdXZXU3ZyYXVNaGhLWlNQbWZkVXlmN2pOeWRvQdIBvwJBVV95cUxNVTFnOXphMGhDQkk4QnRwWENueFpUMUUwTE9qOGVyOUxfT2QxbTdHTnB4SFljQ3MzU01kd1NTMERkc1Vtdk5DbVNzSWxRQ2pHOHZGVGNOQVVyQ2NWcC1CRl96Y0dYOFNMVXpmbEIwM242bVMyc0ppcTNpU19nUmUtVjZGVVl5U1ZkUEVLWTVwaHV3TW1sQ3U1YTVRNnRaOGViOVZicjdBVWRFMzJlel9JU2hURjJyTG93OVdxT2swSjlOTzhHWXNWcWNzOEVPUU5fZzlmRGxuS2NDTXZyMGI1SERxR1pyWDZnNkFvQ3hydTBFTEF4TTJDRk12NkVGTWRRYTk3NzlDRDNhTUJZaUlkUDJuZWhsa2NfbWVFbnBzTUJtNVEyV3g3eWFsaURDVzNEQlo0bHpNVFVuU0RnVW5F?oc=5",
+   "published": "2026-11-10T08:33:41Z",
+   "category": "security"
+  },
+  {
+   "title": "Pricing, financing hinder EU rare earths push as China extends controls pause - South China Morning Post",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNVnd0cnNocFhYcjJ0RFlTT2puVTdDUFNCYllBUmNtTVVhbHJwQXJOUlNmVEVMdXJKS2lKVWw3aUw3YkxMSmpMMWdNYUJuNjhjOFBLMUxfblN2YU50VzlIb2FHaUNDVHFjODNEMC16U0dSQWZlenY1cWI3RlJoOVc4MnBQM3N2TlpxalM5R2pUUkQ0YmVsVTB3ckNnYzlWM2JZMS1kbzFMWlNVeFRwTlRBYW5ZTHQ4X19YYWkzU09UcElLd0psTG9mX3dVUkRwZXFTY3d1dDNNdHJtcXZWSXfSAd4BQVVfeXFMTXc0MFVXMHdTbkpIVm5yWUFnc3h2X21KRHBwYVdTQUNJWmF1VllHZ0ZUc2lxSldnd1pYaFltZTV3ZUVmS3FrQVh2bkw0QzV5VVBzTEpCNEJrbGNKN1VTcTlkWTU3aldkZklhYTlyNi1nT0ZvcFhvcG5tNUFWUjNWb0FaQWVwM01iN0pRaS00d2xhUHFDYjJPbXZrWEZ2VGRlbnBwd2N0WDVrbVdsV0VqVTVLS1lsaHczOEpyT081Y08yMGpNdF80TUVOeVA0cXVqX0lIQXFfLW50SlNZV0ZR?oc=5",
+   "published": "2026-11-10T08:30:12Z",
+   "category": "finance"
+  },
+  {
+   "title": "US demands a seat for Europe at Ukraine peace talks",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/ukraine-russia-peace-talks-us-demands-europe-joins-next-negotiations",
+   "published": "2026-11-10T03:37:44Z",
+   "category": "policy"
+  },
+  {
+   "title": "China Trade Surplus Races Past $1 T in 10 Months - Jakarta Globe",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPSGxOaUNjLWI4Q1dISF9PY0dSUEUyczZObFo5Q0t0UXBpVU80SkVCTGhTOGFZVFd4MjZXOE5UbGlJQURuNmwyZXJ4R1hLdUtNWV92dVNDc2lLTVJPRi1ZMDY1d090Z1NqSHE3T0hsTWltYWZNTlE1c3VzTzAwMGliMk5mMUFBUUE?oc=5",
+   "published": "2026-11-10T07:57:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Middle East - MUFG Research",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE45MlVjWmlGdGNGN21yNzAtN0pJUXFuakU3aTFDOWE2VE9NOEVfUnhVRXU2aVllME1QYUZvcmtodzdEdVJpSHBDUkJQY05ENTRNSExiOUlJbG1jMjdZTHJrQU1HOTJpS2tEV2d6Q09CWnRXUi03dWlzRUZ3?oc=5",
+   "published": "2026-11-10T07:56:44Z",
+   "category": "security"
+  },
+  {
+   "title": "China’s export paradox: A record surplus and troubles at home - Latest news from Azerbaijan",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOMGZqMVpwZldWQTBuT2pIcDJ3WUlhR3pkWDhqeGhDUk81VXhlZ0tvVFJWbkZ6M1Itd2RmUjYxakl3dklqTjhQNmtRNHVwQXZ0LUFMcTZrNS0wYmJaRWM4VmhEYmtWd2J0RHNXYjZ0NmZ6TmJpY1VnaGJadURmenFmU1d6UXQ5V2s?oc=5",
+   "published": "2026-11-10T07:56:32Z",
+   "category": "finance"
+  },
+  {
+   "title": "US Renews ‘Do Not Travel’ Alert for Six Middle East Nations - www.thetraveler.org",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNa1pod1czckotTVhyMlFsVndCakF4WjI3Nkx6WFB3X2hLVHNfVDVFN1dPVEZra2JTWHJEX3oySmYwUkwzZENmQmU0UUh5aUJRWmt5ck1ka2RPNHJEd1lJV0lMcDJScFpjQmx0dEk3blZYZ0VxdllnR01oc1ZiTlhwNmhGSHA1T211TmNjNnBZcw?oc=5",
+   "published": "2026-11-10T07:53:41Z",
+   "category": "security"
+  },
+  {
+   "title": "Why the Democrats’ midterm blowout is making Burnham’s Labour nervous",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/uk-labour-andy-burnham-us-midterms-democrats-win",
+   "published": "2026-11-10T03:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Return of Spanish right risks reigniting Catalan separatist flame",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/elections-return-of-spanish-right-risks-reigniting-catalan-separatist-flame",
+   "published": "2026-11-10T03:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Japan needs to separate protection from migration for Myanmar",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/japan-needs-to-separate-protection-from-migration-for-myanmar",
+   "published": "2026-11-09T23:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "AI companies must report security incidents after OpenAI Medicare breach - AFR",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPajktaHNTZ1lwdV9BVmFmeFlCVjZkdW04LVFRdjJIWlB5TXJDLWt2QkhrYlFpanlsdWJjcG03cDQ4c1NTVEZHelBwZXFjWnAzZFVDQVVrcFdEdDVQdmZsR25FTzlWSkV1di1ORHZndTRPdlh1Q3lvb1lDM1RzRU9kOTJVQWl5ekFwV1M1RVJkSXEwcExSVEhRNnZMdm41QmltbkI2T0Q1ZzE4QWRXNXBWRndqaGhyVTc5Y0VLMlp0aw?oc=5",
+   "published": "2026-11-10T07:01:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "A new war in the Middle East: From Sanaa airport to the Riyadh attack — how did the conflict ignite? - Zamin.uz",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZHBGbkZOM3NRQ2QzMV9uNGlDUzdpb3E3SmxNLWVIdmcxaUgzS0c3UlpBVllsQWtOcV9uNW9ELUtxRlJDOXdTZ0lPTkUzNnpmWlVDeWNsTXVMdm8yVV8zaVEyN0xXWElOTDRkcEtiNnE3dGF0cWdRRm1SM1VCenNIMDlYbi1hN0pad3h1OWRxRjZ5aTFmZ1pWb3R4czhOUUdQb0Zjb1NzNy1ZZlJqQ1JTSGtHelBubFFPdnZfUHdYYzhlLVpnUTh3N2llaV9vRzg?oc=5",
+   "published": "2026-11-10T06:56:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Hotel Chains’ Middle East Recovery Stalls as Peak Season Arrives - Skift",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUzZiTXBwRWlaUURNM1JWZThmVjlWZXRPcEFOOWJQQjRkeVFZMjJaRzlxSHFYSFpiQmxCN1cydk84dVRqUjJWYnJkVUdvb1doRnJGaXJ3RWstYmdfbExob2JPQ3d6ZmNjeGswSk84czRXeWVaeU1CMXZLVDlkN1BQMTdKWG5xX1llbEczODROS1V2TXoxdmhYWQ?oc=5",
+   "published": "2026-11-10T06:15:00Z",
+   "category": "security"
+  },
+  {
+   "title": "US-Iran war: Trump says more US attacks on Iran 'highly unlikely' - BBC",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBZVGlrZGdkVXQyRXBjbUdDMVliNVZPR2l1eFFud2tLMnRGSlRmbmYtbnBpVGFfX1FqRkh0WGpMbHlfT1U3WjVkR21hNnJmRFdTcndqS2F1OE5EYXM?oc=5",
+   "published": "2026-11-10T05:33:25Z",
+   "category": "security"
+  },
+  {
+   "title": "European tourism market for high season vulnerable to Middle East instability as Chinese arrivals slump - Thai Examiner",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQRlFubTY1aEZ1LWFqYjJDQl9tQzIwdVlMSkdlNUtVOXIwczVCQkhseklxMDhrUWt5VWpMb2NPX2d1ZHg3RG5QMGNTQ0NyRnF6Q2hHYlRkMXV6SVdJWjNrZWRNY001SVdVN2Nycng4TVlYQmV2Mk40cjE0Z0RXYjVlNzlHTElFTlNvZmJjMXRlSk1NVlR5YnlfM0JjdS1jU0twVWhvMjNyZ282MjVwVDJ1dmJmeU5LUlZMYnRDSGN5SkJxb0N6NWItZ0tqOGh4cU5VWU9wY1FMZGJVU1MteDh6bFdNZmpzemtfOHhISVZ0OE42SXRaNW5rSQ?oc=5",
+   "published": "2026-11-10T04:51:22Z",
+   "category": "security"
+  },
+  {
+   "title": "Trump says war on Iran could be 'ending fairly soon', but warned that US is 'locked and loaded' - Middle East Eye",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOLUlUSFhfZnYwQVAzd0tzOFo4a3M5eXlndzNEYUNPTDd1c1JWZkpHczA1bFhQV2VXS2RmZGltUE5va2lmbEVWajAxSlRLNEFVSW1LTG5MUTBTUzkzLUVZT0tMd3VEdGZWTnNSSmJ5X1IxTk5fSlY1TUVmRUtZZUFmekFlZ2haMllZR3c0aVJtdFF5aHJEb181cE1tX3VMTUxOOUtkOW1uU2dXZlRiVUJINjJSMlF1TEZ4UkExcG9aaVdkdlU?oc=5",
+   "published": "2026-11-10T04:26:00Z",
+   "category": "security"
+  },
+  {
+   "title": "In Photos | Yemen Emerges As Another Front In The Middle East War - Outlook India",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOHV0VENyX3RDcjV3SzVpSlAyd0hfaHN0eE92b09ZWGc4S1JxVDZUd0JmR3dkbFFqS1pacWVlbUFvM0Vhd2ZyNUxlVGJ4OVN0MUpyUkt1STg4bjVfelhvQkcxamZkcE1WVFF1NE5BZnBnbFc0YlIxdkFZU29jTEhKV2JEU2x0UDJFa1FzZ1lDQm51bkExMkxYTEExTWh5akpYWEhrbVRwZHZtQdIBtwFBVV95cUxOTTRfVnBGZlBmSFVoVHIwbnhGZTROMTJ6cHhyVFVLZndGcHRZeHdVRFVhRktmYmhrTkxQWmt6VVRWN3RDMHpBQWRVaXR1VnFWM1ctVlpZMXlmcm1KOC1tdXZIRnM4ZDh2TU5FRUFTeFNMQ0pGOTRyQjNyUnBmaHkwSVhyazN1aDQ2c0hHSWcySlBwMl9hc1pjMnQ0U1YyUlBnQmg2dE4wUVhiM2NlZjZIY3M1VG1zWjg?oc=5",
+   "published": "2026-11-10T04:17:46Z",
+   "category": "security"
+  },
+  {
+   "title": "Middle East conflict and supply chain strains squeeze global automakers' margins - digitimes",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaVQ3dzlxSEtXWHNJVDlpOXN3ODZ4SVZQQUgxOHpBRGFFYnowUC1GREowdUtfTXI4X3RTcEd3SnBKczl0RTgwQUFLdGFKMklIMWp2VllSUVR3clJqQ2xFVzJyalR4NEZIM1BRby1oTGE5SHhJNm5uUXpXZ3VYVHV5Wl9aVmM2T3JMRW9UdmhiRUowdk9leFg0cWdscUdkNUpYVVN4UGJFaDI?oc=5",
+   "published": "2026-11-10T03:55:00Z",
+   "category": "security"
+  },
+  {
+   "title": "China's October crude oil imports rise to highest level since March - Reuters",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOQzh4VnBTdUVqdmI5cnpOUTJlY1hZSHFTV29RYVpZZXVfRnRFclBrSG9xSjJReDRkS1hEUDhvNGtOMk81YmZ3blZYT0wwZGthaHhMdi1Hc3JDZFVEQXhuSGxmRDhFb0syQnhkNm9Vc1N5Wmw2dTk4RXE3LVNjaDRvRjVvNkZzZWVWNjBDN0pCWEg1SVdqQ1JqQUJYd1Fjc2FSUFJ4SEFWMFA0SkZYOXNKQU5BbUZ0VGlhVS1Pc1ZjMmY2MDh6dHN5RGRreXc?oc=5",
+   "published": "2026-11-10T03:37:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Europe needs Nvidia. It’ll take more than a spy scandal to change that.",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/europe-needs-nvidia-spy-scandal-ai-microchips-germany-jensen-huang",
+   "published": "2026-11-09T22:20:06Z",
+   "category": "policy"
+  },
+  {
+   "title": "Otter AI can now follow conversations across 30+ languages",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/09/otter-ai-can-now-follow-conversations-across-30-languages",
+   "published": "2026-11-10T07:00:00Z",
+   "category": "tech"
+  },
+  {
+   "title": "California’s proposed ‘billionaire tax’ fails to pass",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/09/californias-proposed-billionaire-tax-fails-to-pass",
+   "published": "2026-11-10T05:18:43Z",
+   "category": "tech"
+  },
+  {
+   "title": "Jensen Huang’s alleged honeypot scandal has inspired some top-notch memes",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/09/jensen-huangs-alleged-honeypot-scandal-has-inspired-some-top-notch-memes",
+   "published": "2026-11-10T04:34:15Z",
+   "category": "tech"
+  },
+  {
+   "title": "The backlash about data centers might really just be about electricity",
+   "source": "mit-tr",
+   "link": "https://www.technologyreview.com/2026/11/09/1148194/the-backlash-about-data-centers-might-really-just-be-about-electricity",
+   "published": "2026-11-09T19:35:33Z",
+   "category": "tech"
+  },
+  {
+   "title": "AI chip export controls to China likely to tighten; Trump also in hot water over allegations he turned a blind eye to the Jensen Huang affair - 파이낸셜뉴스",
+   "source": "gn-chips",
+   "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0xdzdlblhheHpRQnV4NDlzUVBrUEFZNnI4SV9XaWw3dmZPRVVhWWFvcDlPRE80VTlSOHpmdzRqVHgySVRHT3dYQUY4VVdCS3BWQWFtZG1fYkM?oc=5",
+   "published": "2026-11-09T22:04:46Z",
+   "category": "tech"
+  },
+  {
+   "title": "DCU shake-up: James Gunn and Peter Safran out post-merger",
+   "source": "ars",
+   "link": "https://arstechnica.com/culture/2026/11/dcu-shake-up-james-gunn-and-peter-safran-out-post-merger",
+   "published": "2026-11-09T21:55:35Z",
+   "category": "tech"
+  },
+  {
+   "title": "M John Harrison becomes first science fiction author to win the Booker prize",
+   "source": "hn",
+   "link": "https://www.theguardian.com/books/2026/nov/09/m-john-harrison-the-end-of-everything-wins-2026-booker-prize",
+   "published": "2026-11-10T07:40:52Z",
+   "category": "tech"
+  },
+  {
+   "title": "Man who lost $308,000 on sports bets sues Kalshi for offering illegal gambling",
+   "source": "ars",
+   "link": "https://arstechnica.com/tech-policy/2026/11/man-who-lost-308000-on-sports-bets-sues-kalshi-for-offering-illegal-gambling",
+   "published": "2026-11-09T21:13:39Z",
+   "category": "tech"
+  },
+  {
+   "title": "Fireworks AI security breach impacts Notion and their customers",
+   "source": "hn",
+   "link": "https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor",
+   "published": "2026-11-10T07:19:38Z",
+   "category": "tech"
+  },
+  {
+   "title": "Anthropic reportedly plans to move forward with IPO plans",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans",
+   "published": "2026-11-10T01:27:12Z",
+   "category": "tech"
+  },
+  {
+   "title": "A Sam Altman parody offers an amusing lesson in memory management",
+   "source": "ars",
+   "link": "https://arstechnica.com/gadgets/2026/11/a-sam-altman-parody-offers-an-amusing-lesson-in-memory-management",
+   "published": "2026-11-09T20:49:09Z",
+   "category": "tech"
+  },
+  {
+   "title": "Nancy Pelosi’s replacement is ready to regulate AI",
+   "source": "mit-tr",
+   "link": "https://www.technologyreview.com/2026/11/09/1148182/nancy-pelosis-replacement-is-ready-to-regulate-ai",
+   "published": "2026-11-09T17:05:43Z",
+   "category": "tech"
+  },
+  {
+   "title": "ClickHouse Acquires Xata",
+   "source": "hn",
+   "link": "https://xata.io/blog/xata-is-joining-clickhouse",
+   "published": "2026-11-10T06:14:51Z",
+   "category": "tech"
+  },
+  {
+   "title": "Amazon saves millions by replacing Sonnet 4.6 with Strands Decider",
+   "source": "hn",
+   "link": "https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider",
+   "published": "2026-11-10T06:01:08Z",
+   "category": "tech"
+  }
+ ]
+}

@@ -15,7 +15,7 @@ import sys
 from datetime import datetime, timezone
 
 import llm
-import site
+import render
 import store
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -118,7 +118,7 @@ def main():
           f"(db total {stats['total']}, last24h {stats['last_24h']})", flush=True)
 
     prompt = TEMPLATE.format(hours=args.hours, n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, timeout=420, max_tokens=4500)
+    body = llm.chat(prompt, system=SYSTEM, timeout=420, max_tokens=16000)
 
     now = datetime.now(timezone.utc)
     day = now.strftime("%Y-%m-%d")
@@ -145,7 +145,7 @@ def main():
     json.dump(meta, open(os.path.join(args.out_dir, f"{day}.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     print(f"written: {path}", flush=True)
-    site.build()
+    render.build()
     return 0
 
 

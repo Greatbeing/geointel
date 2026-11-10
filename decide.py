@@ -20,7 +20,7 @@ import sys
 from datetime import datetime, timezone
 
 import llm
-import site
+import render
 import store
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -110,7 +110,7 @@ def main():
 
     prompt = TEMPLATE.format(question=args.question, horizon=args.horizon, days=args.days,
                              n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=6000)
+    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=16000)
 
     now = datetime.now(timezone.utc)
     slug = args.slug or hashlib.sha1(args.question.encode()).hexdigest()[:6]
@@ -138,7 +138,7 @@ def main():
         header + body.strip() + "\n")
     print(f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} "
           f"triggers={len(meta.get('triggers') or [])}", flush=True)
-    site.build()
+    render.build()
     return 0
 
 

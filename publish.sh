@@ -3,7 +3,7 @@
 set +e
 cd /data/workspace/geointel || exit 1
 
-git add -A out site 2>/dev/null
+git add -A 2>/dev/null
 if git diff --cached --quiet; then
   echo "publish: nothing to commit"
   exit 0

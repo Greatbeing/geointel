@@ -13,7 +13,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-import site
+import render
 import store
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -83,7 +83,7 @@ def main():
     path = os.path.join(args.out_dir, day + ".md")
     open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
     print(f"fired {fired}/{len(triggers)} -> {path}")
-    site.build()
+    render.build()
     return 0
 
 
