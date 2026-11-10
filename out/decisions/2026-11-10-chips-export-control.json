@@ -1,0 +1,75 @@
+{
+ "scenarios": [
+  {
+   "name": "定向升级",
+   "prob": 45
+  },
+  {
+   "name": "系统性升级",
+   "prob": 20
+  },
+  {
+   "name": "维持现状",
+   "prob": 35
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "BIS或联邦公报发布涉及先进芯片、设备或材料的新规则",
+   "keywords": [
+    "BIS",
+    "联邦公报",
+    "出口管制",
+    "实体清单"
+   ],
+   "threshold": 1,
+   "action": "启动30-45天安全库存并调整交付预期"
+  },
+  {
+   "id": "t2",
+   "description": "中国商务部宣布对等出口管制或不可靠实体清单扩容",
+   "keywords": [
+    "中国商务部",
+    "不可靠实体清单",
+    "镓",
+    "锗",
+    "稀土"
+   ],
+   "threshold": 1,
+   "action": "启动供应链压力测试并评估激进重构"
+  },
+  {
+   "id": "t3",
+   "description": "日本经产省或行业联盟释放协调管制信号",
+   "keywords": [
+    "经产省",
+    "出口管理",
+    "Mitsui",
+    "JSR"
+   ],
+   "threshold": 1,
+   "action": "重新评估日本供应商敞口并加速替代认证"
+  },
+  {
+   "id": "t4",
+   "description": "内存现货价格连续环比下降",
+   "keywords": [
+    "DRAM",
+    "内存价格",
+    "现货"
+   ],
+   "threshold": 4,
+   "action": "将库存目标下调至15-20天并释放资金"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-02-08",
+ "question": "未来 90 天半导体出口管制升级的概率与应对",
+ "generated_at": "2026-11-10T09:34:19Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "nikkei-asia"
+ ]
+}

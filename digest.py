@@ -100,6 +100,23 @@ def material(items):
     return "\n".join(lines)
 
 
+def latest_run_health():
+    """读最近一次 collect 运行报告，返回 (ok, total, failed_list)；无报告返回 None。"""
+    runs = os.path.join(HERE, "data", "runs")
+    try:
+        files = sorted(f for f in os.listdir(runs) if f.endswith(".json"))
+    except OSError:
+        return None
+    if not files:
+        return None
+    try:
+        with open(os.path.join(runs, files[-1]), encoding="utf-8") as f:
+            rep = json.load(f)
+        return rep.get("ok"), rep.get("sources"), rep.get("failed") or []
+    except Exception:
+        return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=24)
@@ -124,6 +141,7 @@ def main():
     day = now.strftime("%Y-%m-%d")
     os.makedirs(args.out_dir, exist_ok=True)
     path = os.path.join(args.out_dir, f"{day}.md")
+    health = latest_run_health()
     header = (
         "---\n"
         f"date: {day}\n"
@@ -131,9 +149,21 @@ def main():
         f"items_selected: {len(items)}\n"
         f"items_in_window: {len(raw)}\n"
         f"db_total: {stats['total']}\n"
-        "---\n\n"
     )
-    open(path, "w", encoding="utf-8").write(header + body.strip() + "\n")
+    if health:
+        ok, total, failed = health
+        header += f"sources_ok: {ok}/{total}\n"
+        if failed:
+            header += f"sources_failed: {', '.join(failed)}\n"
+    header += "---\n\n"
+    body_text = body.strip()
+    if health:
+        ok, total, failed = health
+        line = f"\n\n---\n源状态：{ok}/{total} 正常"
+        if failed:
+            line += f"，失败：{', '.join(failed)}"
+        body_text += line
+    open(path, "w", encoding="utf-8").write(header + body_text + "\n")
 
     meta = {
         "date": day,
