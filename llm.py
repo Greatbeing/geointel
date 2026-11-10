@@ -11,8 +11,8 @@ import urllib.request
 
 GATEWAY = "http://127.0.0.1:3425"
 MODELS = [
-    "group/fast",               # benchmark 2026-11-11: 14.5s for 15-item prompt, fastest
-    "auto/glm-5.3-flash",       # benchmark: 79.3s, good Chinese + citations
+    "auto/glm-5.3-flash",       # benchmark 2026-11-11: 79.3s, complete long output (group/fast truncates decide memos)
+    "group/fast",               # benchmark: 14.5s, fastest; use for digest, but truncates long decide output
     "longcat/LongCat-2.5",      # benchmark: 56.6s, slow for full digest but reliable
     "group/daily",
 ]
