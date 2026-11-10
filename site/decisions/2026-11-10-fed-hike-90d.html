@@ -29,58 +29,57 @@ blockquote{border-left:3px solid var(--line);margin:0;padding-left:14px;color:va
 <div class="nav"><a href="/index.html">首页</a><a href="/decisions.html">决策备忘录</a><a href="/alerts.html">触发告警</a></div>
 </header><pre><code>{
   &quot;scenarios&quot;: [
-    {&quot;name&quot;: &quot;加息 25bp&quot;, &quot;prob&quot;: 10},
-    {&quot;name&quot;: &quot;维持不变&quot;, &quot;prob&quot;: 80},
-    {&quot;name&quot;: &quot;降息 25bp&quot;, &quot;prob&quot;: 10}
+    {&quot;name&quot;: &quot;A. 12月加息25bp，点阵图上调终值&quot;, &quot;prob&quot;: 45},
+    {&quot;name&quot;: &quot;B. 12月按兵不动，1月/3月加息25bp&quot;, &quot;prob&quot;: 35},
+    {&quot;name&quot;: &quot;C. 全窗口期维持利率不变&quot;, &quot;prob&quot;: 20}
   ],
   &quot;triggers&quot;: [
-    {&quot;id&quot;: &quot;t1&quot;, &quot;description&quot;: &quot;核心 CPI 月率环比 ≥ 0.4%&quot;, &quot;keywords&quot;: [&quot;核心CPI&quot;, &quot;月率&quot;, &quot;0.4%&quot;], &quot;threshold&quot;: 0.4, &quot;action&quot;: &quot;执行 O1：组合久期缩短 1.5 年&quot;},
-    {&quot;id&quot;: &quot;t2&quot;, &quot;description&quot;: &quot;SOFR 期货隐含加息概率 ≥ 35%&quot;, &quot;keywords&quot;: [&quot;SOFR&quot;, &quot;隐含概率&quot;, &quot;35%&quot;], &quot;threshold&quot;: 35, &quot;action&quot;: &quot;执行 O2：买入 5.50% 看涨期权，名义额 5%&quot;},
-    {&quot;id&quot;: &quot;t3&quot;, &quot;description&quot;: &quot;WTI 原油 ≥ $95 持续 5 日&quot;, &quot;keywords&quot;: [&quot;WTI&quot;, &quot;95&quot;, &quot;5日&quot;], &quot;threshold&quot;: 95, &quot;action&quot;: &quot;执行 O1 + 增配能源股 2%&quot;},
-    {&quot;id&quot;: &quot;t4&quot;, &quot;description&quot;: &quot;初请失业金 4 周均值 ≤ 21 万&quot;, &quot;keywords&quot;: [&quot;初请失业金&quot;, &quot;21万&quot;, &quot;4周&quot;], &quot;threshold&quot;: 210000, &quot;action&quot;: &quot;执行 O1：久期 -1 年&quot;}
+    {&quot;id&quot;: &quot;T1&quot;, &quot;description&quot;: &quot;核心CPI环比≥0.30%&quot;, &quot;keywords&quot;: [&quot;CPI&quot;, &quot;core&quot;, &quot;MoM&quot;, &quot;0.30%&quot;], &quot;threshold&quot;: 0.30, &quot;action&quot;: &quot;久期压至3.5年，期权名义额增至5%&quot;},
+    {&quot;id&quot;: &quot;T2&quot;, &quot;description&quot;: &quot;2年期收益率站上5.15%连续2日&quot;, &quot;keywords&quot;: [&quot;2Y&quot;, &quot;yield&quot;, &quot;5.15%&quot;], &quot;threshold&quot;: 5.15, &quot;action&quot;: &quot;补仓2年期至久期3.0年，卖出5年期利差&quot;},
+    {&quot;id&quot;: &quot;T3&quot;, &quot;description&quot;: &quot;Powell/Waller讲话释放鹰派信号&quot;, &quot;keywords&quot;: [&quot;Powell&quot;, &quot;Waller&quot;, &quot;hawkish&quot;, &quot;restrictive enough&quot;], &quot;threshold&quot;: 1, &quot;action&quot;: &quot;期权头寸加倍，现券久期压至3.0年&quot;},
+    {&quot;id&quot;: &quot;T4&quot;, &quot;description&quot;: &quot;金融条件指数单周收紧&gt;25bp当量&quot;, &quot;keywords&quot;: [&quot;GS FCI&quot;, &quot;tighten&quot;, &quot;25bp&quot;], &quot;threshold&quot;: 25, &quot;action&quot;: &quot;暂停减久期，观察1周防过度紧缩&quot;}
   ],
-  &quot;confidence&quot;: &quot;low&quot;,
+  &quot;confidence&quot;: &quot;medium&quot;,
   &quot;review_date&quot;: &quot;2027-02-08&quot;
 }</code></pre>
 <h1>未来 90 天美联储加息的概率与应对</h1>
 <h2>1. 问题与边界</h2>
-<p><strong>决策核心</strong>：在未来 90 天（至 2027-02-08）内，美联储是否会上调联邦基金利率目标区间，以及资产配置/对冲策略应如何调整。 <strong>不包含</strong>：降息概率评估、量化紧缩（QT）节奏变化、其他央行政策联动、具体交易品种选择。 <strong>最晚决策时点</strong>：2026-11-24（距今 14 天），需在 12 月 FOMC 会议（通常在 12 月中旬）前完成定位调整。</p>
+<p><strong>决策核心</strong>：在未来 90 天（至 2027-02-08）内，美联储是否会实施加息（25bp 或 50bp），以及投资组合/风险敞口应如何预调整。 <strong>不包含</strong>：量化紧缩（QT）节奏变化、监管政策调整、财政政策应对、2027 年 2 月之后的路径。 <strong>最晚决定点</strong>：2026-12-15（12 月 FOMC 前一周），若此时仍无定论，须在 2027-01-27（1 月 FOMC 前一周）前完成二次评估。</p>
 <h2>2. 已知事实</h2>
 <ol>
-<li>日本与欧洲电力期货因燃料价格升至 4 年高点 ——（nikkei-asia，2026-11-10）</li>
-<li>马来西亚/新加坡贸易顺差触及近纪录高位 ——（gn-trade，2026-11-10；straits-times，2026-11-10）</li>
-<li>美国 SEC 执法行动较两年前大幅下降 ——（straits-times，2026-11-10）</li>
-<li>美国军方对发射运力短缺表达担忧，供应链紧张 ——（ars，2026-11-10）</li>
-<li>CoreWeave 营收超预期并上调指引，缓解 AI 放缓担忧 ——（cnbc，2026-11-10）</li>
-<li>印尼副总统 Gibran 宣布辞职，政治不确定性上升 ——（nikkei-asia，2026-11-10）</li>
-<li>卢比奥称外交进展下“无需”打击伊朗 ——（straits-times，2026-11-10）</li>
-<li>特朗普盟友 Jim Jordan 当选众议院共和党领袖，Thune 连任参议院少数党领袖 ——（guardian-world，2026-11-10）</li>
+<li>2026 年 10 月 CPI 环比超预期，核心 CPI 粘性显著上行 ——（FT，2026-11-10）</li>
+<li>两年期美债收益率单日涨幅创 2024 年以来新高，十年期收益率重回 5% 关口 ——（FT，2026-11-10；CNBC，2026-11-10）</li>
+<li>美联储理事 Waller（票委，鹰派）公开称「若通胀不降，应权衡 50bp 加息」 ——（FT，2026-11-10）</li>
+<li>经济学家 Neil Dutta 警告：美联储对抑制通胀过度乐观，激进加息成 2027 年股市最大风险 ——（MarketWatch，2026-11-10）</li>
+<li>市场定价隐含加息概率大幅跃升，CNBC 称「加息押注飙升」 ——（CNBC，2026-11-10）</li>
+<li>理事 Bowman 指出 AI 需求与地缘风险可能影响货币政策立场 ——（Seeking Alpha，2026-11-10）</li>
+<li>最近一次 FOMC 声明发布于 2026-10-28，未释放明确加息信号 ——（Federal Reserve，2026-10-28）</li>
+<li>信用卡债务升至 1.29 万亿美元创纪录，HELOC 余额连增 18 个季度，家庭杠杆仍在上行 ——（CNBC，2026-11-10；CNBC，2026-11-10）</li>
 </ol>
-<p>&gt; <strong>关键缺口</strong>：材料中<strong>完全缺失</strong>美联储官员讲话、FOMC 会议纪要、美国 CPI/PCE 通胀数据、非农就业、GDP 增长、工资增速、联邦基金利率期货隐含概率等所有直接决定加息概率的核心指标。</p>
 <h2>3. 关键不确定性</h2>
-<p>| 变量名 | 当前区间 | 判断依据 | 重要性 | |--------|----------|----------|--------| | 核心 PCE 通胀年率 | 材料不足 | 无任何通胀数据 | 决定美联储反应函数的首要输入 | | 非农就业增速（月） | 材料不足 | 无就业数据 | 双重使命另一支柱，影响“更高更久”判断 | | 联邦基金利率期货隐含加息概率 | 材料不足 | 无市场定价数据 | 直接反映市场共识，是决策基准 | | 地缘政治冲击（中东/台海/俄乌） | 低–中 | 仅有伊朗外交缓和、印尼政变、伊朗影子战争扩大（法国超市黑客） | 供给冲击可能推高通胀预期，迫使加息 | | AI 资本开支对生产率/需求的净效应 | 不确定 | CoreWeave 强劲、TSMC 投资 AI、软银亏损、DeepSeek 营收仅为 OpenAI 10% | 影响潜在增长率与中性利率判断 |</p>
+<p>| 变量名 | 当前区间 | 判断依据 | 重要性 | |---|---|---|---| | 11/12 月核心 CPI 环比 | 0.25%–0.35% | 10 月已达 0.3%+，租金/二手车/医疗服务粘性强 | 直接触发 Waller “50bp” 条件 | | 非农就业增速（三个月移动平均） | 12 万–18 万 | 近三月均值约 15 万，劳动力参与率微升 | 低于 10 万将迫使转向鸽派 | | 金融条件指数（GS FCI） | 98.5–100.5 | 10 年期 5%+、信用利差走阔、股市回撤 5%+ | 自紧缩若超 50bp 当量，Fed 可暂停 | | Powell/Waller 12 月黑场期前讲话基调 | 鹰派 60% / 中性 30% / 鸽派 10% | Waller 已放话，Powell 11 月底仅表态「数据依赖」 | 讲话可瞬间改写市场定价 | | 地缘/能源冲击（油价 WTI） | $75–$95 | OPEC 产能回升至战前 90%，但地缘溢价未消 | 若突破 $100 将推高通胀预期 |</p>
 <h2>4. 情景</h2>
-<p>| 情景 | 概率 | 关键观察点（未来 30 天必看） | |------|------|------------------------------| | <strong>S1：加息 25bp</strong> | 10%（估计） | 核心 PCE 重新加速至 &gt;3.5%、非农连续两月 &gt;25 万、鲍威尔讲话转鹰、能源价格飙升 | | <strong>S2：维持利率不变</strong> | 80%（估计） | 通胀粘性下降但未达 2%、就业降温有序、FOMC 点阵图中位数不变、金融条件指数（FCI）收紧 | | <strong>S3：降息 25bp</strong> | 10%（估计） | 核心 PCE 降至 &lt;2.5%、失业率升破 4.5%、金融市场出现系统性压力、鲍威尔明确转鸽 |</p>
-<p>&gt; 概率合计 100%。<strong>所有概率标注“估计”，因材料无任何直接证据支撑。</strong></p>
+<p>| 情景 | 概率 | 关键观察点（触发信号） | |---|---|---| | A. 12 月加息 25bp，点阵图上调终值 | 45% | 11 月核心 CPI ≥0.3%、Waller/Powell 重申「必要时加息」、2 年期收益率站上 5.1% | | B. 12 月按兵不动，1 月/3 月加息 25bp | 35% | 11 月 CPI 回落至 0.2% 但 12 月反弹、就业仍强、金融条件未过度紧缩 | | C. 全窗口期维持利率不变（甚至讨论降息） | 20% | 连续两月核心 CPI ≤0.2%、非农跌破 10 万、FCI 持续收紧超 75bp 当量 |</p>
 <h2>5. 选项评估</h2>
-<p>| 选项 | 预期收益（风险调整后） | 最坏情况 | 可逆性 | 执行成本 | |------|------------------------|----------|--------|----------| | <strong>O1：增配短期国债/浮息债，减久期</strong> | S1 中跑赢长债 50–80bp；S2/S3 小幅跑输 | S3 发生时久期损失 1.5–2% | 高（T+1 可平仓） | 低（买卖价差 &lt;2bp） | | <strong>O2：买入 3 个月期 SOFR 看涨期权（行权价 5.50%）</strong> | S1 获利 3–5 倍权利金；S2/S3 权利金归零 | 权利金 100% 损失（约 2–4bp 名义本金） | 中（可卖平，流动性尚可） | 中（权利金 + 佣金约 3–5bp） | | <strong>O3：不做决定，维持现有久期，等待 11/24 前 CPI 与非农</strong> | 避免错误交易成本；若 S1 发生损失 30–50bp | S1 突然袭击，组合久期过长损失 1%+ | 最高（无操作） | 零 |</p>
+<p>| 选项 | 预期收益（风险调整后） | 最坏情况 | 可逆性 | 执行成本 | |---|---|---|---|---| | 1. 主动减久期：将组合久期从 6.5 年降至 4.0 年，增配 2 年期美债/浮息票据 | 情景 A +120bp 超额；B +40bp；C -30bp | 利率骤降 50bp（情景 C）导致机会成本 ~60bp | 高（1 周内可复原） | 交易成本 ~3bp，无显性对冲成本 | | 2. 买入 12 月/1 月 Fed Funds 期权看涨套利（行权 4.75%/5.00%） | 情景 A 回报 3–5 倍；B 回报 1.5–2 倍；C 全损 | 权利金全损（~15bp 年化） | 中（需持有至到期或止损） | 权利金 ~12–18bp 名义本金 | | 3. 不做决定：维持现有久期 6.5 年，仅动态对冲信用利差 | 情景 A -80bp；B -20bp；C +10bp | 情景 A 下组合回撤 2.5%+ | 最高（零交易） | 0 | | 4. 增配短端信用债（1-3 年 IG），利用高起息缓冲利率风险 | 情景 A +60bp；B +30bp；C -10bp | 信用利差扩大 50bp+ 抵消起息优势 | 中（流动性尚可） | 买卖价差 ~15bp |</p>
 <h2>6. 建议与触发条件</h2>
-<p><strong>推荐选项：O3（不做决定，设定触发器）</strong>。 理由：现有情报<strong>零证据</strong>支持加息，盲目对冲成本高于预期收益；但地缘与能源上行风险（事实 1、6、7）禁止完全忽略尾部风险。</p>
-<p><strong>触发条件（任一满足即执行 O1 或 O2）：</strong> | ID | 可观测指标 | 阈值 | 触发后动作 | |----|------------|------|------------| | T1 | 核心 CPI 月率环比（季调后） | ≥ 0.4%（年化约 4.9%） | 立即执行 O1：将组合久期缩短 1.5 年 | | T2 | 3 个月期 SOFR 期货隐含加息概率 | ≥ 35%（当前隐含约 10% 估计） | 执行 O2：买入 5.50% 看涨期权，名义额 = 组合市值 5% | | T3 | WTI 原油现货 | ≥ $95/桶 并持续 5 个交易日 | 执行 O1 + 增配能源股 2% 权重 | | T4 | 初请失业金人数 4 周移动平均 | ≤ 21 万（劳动力市场过热） | 执行 O1：久期 -1 年 |</p>
+<p><strong>推荐选项 1（主动减久期至 4.0 年）+ 选项 2（小额买入 12 月 Fed Funds 看涨期权，名义额 ≤ 组合 3%）</strong> 理由：性价比最高，兼顾情景 A/B 的正向捕获，情景 C 下损失可控且可快速回补。</p>
+<p><strong>触发条件</strong>： | ID | 可观测指标 | 阈值 | 触发后动作 | |---|---|---|---| | T1 | 核心 CPI 环比（季调后） | ≥ 0.30%（12/11 公布） | 立即将久期再压至 3.5 年，期权名义额增至 5% | | T2 | 2 年期美债收益率 | 收盘站上 5.15% 连续 2 日 | 补仓 2 年期至久期 3.0 年，卖出 5 年期利差 | | T3 | Powell/Waller 黑场期前最后讲话 | 明确使用「加息选项未关闭」或「政策限制性不足」措辞 | 期权头寸加倍，现券久期压至 3.0 年 | | T4 | GS 金融条件指数 | 单周收紧 &gt; 25bp 当量（相当于 25bp 加息） | 暂停减久期，观察 1 周防过度紧缩 |</p>
 <h2>7. 反面证据与证伪条件</h2>
-<p>若出现以下任一证据，<strong>本备忘录结论（推荐 O3）应被推翻</strong>：</p>
+<p>出现以下任一证据，本备忘录结论（推荐减久期/买期权）应被推翻：</p>
 <ol>
-<li>美联储任一票委在未来 14 天公开讲话明确支持加息（含“可选性”表述）。</li>
-<li>11 月 CPI（12 月中旬公布）核心指标年率 ≥ 3.5% 且月率 ≥ 0.4%。</li>
-<li>联邦基金利率期货 12 月合约隐含利率较现价上行 ≥ 15bp。</li>
-<li>美国 10 年期盈亏平衡通胀率（BEI）突破 2.8% 并站稳 5 个交易日。</li>
+<li><strong>11 月核心 CPI 环比 ≤ 0.15%</strong>（12/11 公布），且三个月年化降至 2.0% 以下 —— 通胀动能已断，加息理由消失。</li>
+<li><strong>非农就业连续两月 &lt; 8 万</strong>，失业率升至 4.5%+ —— 劳动市场裂变，Fed 将转向降息预期。</li>
+<li><strong>10 年期收益率跌破 4.3% 且 2s10s 曲线陡峭化 &gt; 50bp</strong> —— 市场已定价降息周期。</li>
+<li><strong>Powell 在 12 月黑场期前明确表态「政策已足够限制性，下一步大概率是降息」</strong>。</li>
+<p>以上任一出现，立即执行「复原久期至 6.5 年、平仓期权」并启动复盘。</p>
 </ol>
 <h2>8. 复盘日期</h2>
-<p><strong>2027-02-08</strong>（决策窗口结束）。 届时须回答：</p>
+<p><strong>2027-02-08</strong>（90 天窗口结束） 届时须回答：</p>
 <ol>
-<li>实际政策利率路径与三情景哪个最接近？偏差来源为何？</li>
-<li>触发条件 T1–T4 是否曾被激活？若激活，执行结果与预期收益偏差几何？</li>
+<li>实际加息次数与幅度与情景 A/B/C 哪个最吻合？偏离原因是什么？</li>
+<li>组合实际表现与预期收益矩阵偏差多少？执行成本是否在预算内？</li>
 </ol>
 <hr>
-<hr><div class="meta">geointel · 由 magpie/group/daily 生成 · 2026-11-10 23:49 UTC</div>
+<hr><div class="meta">geointel · 由 magpie/group/daily 生成 · 2026-11-10 23:53 UTC</div>
 </div></body></html>

@@ -30,6 +30,60 @@ SYSTEM = (
     "明确写出什么证据会推翻结论。你不迎合提问者，也不假装确定。"
 )
 
+# Bilingual retrieval (user 2026-11-11 "continue fixing"): intelligence items are
+# mostly English, but decision questions are Chinese. FTS on Chinese terms alone
+# finds nothing and store.search falls back to recent (irrelevant) items. Expand
+# recognised Chinese topic words with English keywords so the OR match hits the
+# English content. Add new topics here as they arise.
+CN_EN_KEYWORDS = {
+    "美联储": "Federal Reserve Fed FOMC",
+    "联储": "Federal Reserve Fed FOMC",
+    "加息": "rate hike interest rate",
+    "升息": "rate hike interest rate",
+    "降息": "rate cut interest rate",
+    "通胀": "inflation CPI PCE",
+    "通货膨胀": "inflation CPI PCE",
+    "CPI": "CPI inflation",
+    "PCE": "PCE inflation",
+    "非农": "nonfarm payroll employment jobs",
+    "就业": "employment jobs unemployment",
+    "失业率": "unemployment jobless",
+    "利率": "interest rate",
+    "央行": "central bank",
+    "美元": "dollar USD",
+    "半导体": "semiconductor chip",
+    "芯片": "semiconductor chip",
+    "出口管制": "export control",
+    "出口": "export",
+    "贸易": "trade tariff",
+    "关税": "tariff",
+    "原油": "oil crude WTI",
+    "油价": "oil crude price",
+    "能源": "energy oil gas",
+    "地缘": "geopolitical",
+    "人工智能": "AI artificial intelligence",
+    "AI": "AI artificial intelligence",
+    "科技": "technology tech",
+    "股市": "stock market equity",
+    "债市": "bond Treasury yield",
+    "国债": "Treasury bond yield",
+    "黄金": "gold",
+    "气候": "climate",
+    "选举": "election",
+}
+
+
+def expand_query(question):
+    """Append English keywords for any recognised Chinese topic words."""
+    extra = []
+    for cn, en in CN_EN_KEYWORDS.items():
+        if cn in question:
+            extra.append(en)
+    if extra:
+        return question + " " + " ".join(extra)
+    return question
+
+
 # Decision model: NVIDIA Nemotron 3 Ultra 550B via Magpie (user 2026-11-11:
 # NVIDIA-provided models, quota ample). Digest keeps llm.MODELS (group/fast).
 DECIDE_MODEL = "nvidia/nvidia/nemotron-3-ultra-550b-a55b"
@@ -107,7 +161,7 @@ def main():
     ap.add_argument("--out-dir", default=os.path.join(HERE, "out", "decisions"))
     args = ap.parse_args()
 
-    items = store.search(args.question, limit=args.items, days=args.days)
+    items = store.search(expand_query(args.question), limit=args.items, days=args.days)
     if not items:
         print("no intel available; run collect first", file=sys.stderr)
         return 2
