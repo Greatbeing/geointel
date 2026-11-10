@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "generated_at": "2026-11-10T23:10:07Z",
+ "generated_at": "2026-11-10T23:34:06Z",
  "items": [
   {
    "title": "Senior US soldier arrested in UK on suspicion of spying for Russia",
@@ -50,6 +50,13 @@
    "link": "https://www.ft.com/content/8d59bf02-960e-4eb1-b5dc-55397e31cea5?syn-25a6b1a6=1",
    "published": "2026-11-10T19:24:52Z",
    "category": "finance"
+  },
+  {
+   "title": "TSMC, Microsoft executives debate AI's impact on Day 2 of Nikkei Dialogue",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/global-management-dialogue/global-management-dialogue-2026/tsmc-microsoft-executives-debate-ai-s-impact-on-day-2-of-nikkei-dialogue",
+   "published": "2026-11-10T23:23:27Z",
+   "category": "world"
   },
   {
    "title": "Japan trading house backs Vietnam tungsten supplier that has drawn US investment",
@@ -143,11 +150,11 @@
    "category": "world"
   },
   {
-   "title": "Japan metals maker plans $1.2bn Malaysia copper foil plant on AI demand",
-   "source": "nikkei-asia",
-   "link": "https://asia.nikkei.com/business/materials/japan-metals-maker-plans-1.2bn-malaysia-copper-foil-plant-on-ai-demand",
-   "published": "2026-11-10T23:04:55Z",
-   "category": "world"
+   "title": "Eleven phones and the spectre of treason: Jakarta’s wiretap scandal",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/eleven-phones-and-the-spectre-of-treason-jakarta-s-wiretap-scandal",
+   "published": "2026-11-10T23:00:00Z",
+   "category": "policy"
   },
   {
    "title": "Treasuries slide as ‘hot’ inflation sparks bets on Fed rate rise",
@@ -269,6 +276,27 @@
    "category": "security"
   },
   {
+   "title": "US warns of growing ISIS threat to African maritime trade - Punch Newspapers",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUzhYWXIzZ2ZsMWw4N3VnVGRKQXVwVTRaT2dQOHNyX0ROSjlVMS01aExERjhSWXRvLXZXZy1lVFVYTHZBOHR6R2ZwbXdoa3ctSW5sNVIxRi12QVY2TVpFV2Z0cGI0My1wZHBlV25BeUZiZjRTWFQ5SGZoSjQ4eXdIY0c2YmVoa2FQN3c?oc=5",
+   "published": "2026-11-10T23:09:39Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trade surplus reaches a near-record high - KLSE Screener",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPdmpndG1iMUNtc2xuQzRSSngyOU00M1l1WHBpQngzSzRjM0hkcHp0YkJXUWdIaWxzOTU1bkVzQkkwTjlFbjdzRHN5c3hOd3F2bVpJajE0ekZHdGRudm9ORFBGRGtyQ2FzczNmbTZmcnMzTzhVaGwxR3RaZ1lwNlhoNjRCdW5JdUdSd1FmRnY4OHRhSjBG?oc=5",
+   "published": "2026-11-10T23:06:41Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trade surplus reaches a near-record high - The Star",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQeUQwTkdBUFFzamhNRnV4RVVPb2Q3ck5qU2NLMXJXTG5WR3hoVWpRSFdmQ2NGYWFIdXFONWpqdkR0NVkxV2FIOE9uS1ROMEtiU1RieEFfenplTUNWQ0tYX2RCamstRGVCMU1kdjlNc3ItYzZDRER0dkRDMlNIMXp0dFFVaWRPTGF4QkNMVnVua2pfcmh1a2pwdTlJSllYcXpneTdN?oc=5",
+   "published": "2026-11-10T23:03:45Z",
+   "category": "trade"
+  },
+  {
    "title": "The US military seems to be getting nervous about the launch supply crunch",
    "source": "ars",
    "link": "https://arstechnica.com/space/2026/11/the-us-military-seems-to-be-getting-nervous-about-the-launch-supply-crunch",
@@ -304,11 +332,25 @@
    "category": "tech"
   },
   {
-   "title": "L’Europe a besoin de Nvidia et il faudra plus qu’un scandale d’espionnage pour que ça change",
-   "source": "politico-eu",
-   "link": "https://www.politico.eu/article/leurope-a-besoin-de-nvidia-et-il-faudra-plus-quun-scandale-despionnage-pour-que-ca-change",
-   "published": "2026-11-10T17:41:35Z",
-   "category": "policy"
+   "title": "China’s ‘Living Badly, But Not Dying’ Carmakers Spread Global Pain - Bloomberg.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOS1JadVVlemhmekgxY0lsem9uTnY3Mkd6WjE3eE1SNE9UcmpOV1lnakdSYXYzWHNUbFBrMklwQ3N2TF8ybTRfQ2dDQnNHNkpxTkVwaU5YdDV2NTVQYTBIWWR6UE51RmlJa21OUS1xZm96VWNmdGgyUGpXTWI4Q2VBT2ZzaGhnRWZrVVg3Wm9qWHZwVFRyTFREaWVFbGxLU3hBNUlRZHdKSE83RzR4ckppQkVFVFp5aDVl?oc=5",
+   "published": "2026-11-10T22:34:36Z",
+   "category": "trade"
+  },
+  {
+   "title": "Global Business Leaders Tackle the Priorities That Will Accelerate Economic Growth at B20 Summit - U.S. Chamber of Commerce",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcl9ob0pHOERwam10OXltNkpoQnJDSG5vZ1lRZ19Ec1ZqZzdLeWpLelgzRGg3TlE0ZmtCUHp0enkwcUJmandreVhGZ0xPZVlQZXo3MXdOX3RUbFA5Z0FjbkYwMlBkM0xmdUJhRS1NZ0YtZ1duRUV4NXdFbEs1LXVkWjNRbTdvX1BYRTRKYVBFNV9RcWlLVVZLOFJhRXNjeFh2ekpHNHRrWTlYekhuNDR5YlFRUFhTYVhPeWFrcDFXdVYwWFc2UGlPMFJ3UlAzYzZDSmc?oc=5",
+   "published": "2026-11-10T22:18:45Z",
+   "category": "trade"
+  },
+  {
+   "title": "Global bullies have turned uncertainty into a weapon - The Economist",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQNkE0cFI1SXhzZXhfdkwycVFpd3VOYkxLWVowY0dCRi1IQ0wyTEVjQVJIRGVYWmhXeUFkc3NfeHNxZUpJeWhsYkxheE1yV3E5RklpbnNyQklWYk9LQVp4elhpc25Jd1Q4V3FnamNvUklLb0V2eE45RnVKRXN1UGx4dWxtR2xBSmtfR3NVRV8yRnpUbWlmVmNiemhfTUFpUEVocldWZGp3?oc=5",
+   "published": "2026-11-10T22:15:15Z",
+   "category": "trade"
   },
   {
    "title": "Democrats oppose plan to stack FCC with Republicans, plan probes of Chairman Carr",
@@ -346,6 +388,34 @@
    "category": "tech"
   },
   {
+   "title": "U.S. Extends Trade Truce with China for Two Months - Sandler, Travis & Rosenberg, P.A.",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNVm03ZTN1YlM0SVRjaU9wbnZycVYteG9JNjhKX08yeDZ4azdXaHNtQ3FYYjdtdTY2S29zSWV6dDBaT21IWEVaVXM1UGFZRXFHNF9pdkZ3SmZaWlJvZEdHUWFnYXJqVzdWUVhpeW1zU2h0REN0SGJxS3R4UVpPcEFZVVNGWk1tZVN3UVBSc3FQRGJ5TjE5RlRFNnNkcVNsSHBlWGNmLUhQbVBBUkxKanc3MnIxQWNTY0Jzc29KeTRR?oc=5",
+   "published": "2026-11-10T20:13:48Z",
+   "category": "trade"
+  },
+  {
+   "title": "U.S. Enlists Mexico in Trade Enforcement Crackdown - Sandler, Travis & Rosenberg, P.A.",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOTnNxa2Q1UWUxVlYyU0lLQkoxU3BjZWp4WDJ2N1VTd1pfbXhXTldUQTFiRHQxb00yeUgzckpEYW85eUtZZ0dFSHUxMm5GbndUTFFXVjZLZmNaLVlPZ09KbzM0ZGk0SnFfc0pFZUVTdkJUd3FFVUNkLUtjcDBBYlNpZlFUZ1paeEFwVFlpSnBJZVdRbU1EX2Z1RGhqOXgyNHhEa2h6bFpORlcyeDJPYWRBU0dTX25SdVpGQnpIMUx3?oc=5",
+   "published": "2026-11-10T20:12:44Z",
+   "category": "trade"
+  },
+  {
+   "title": "Foreign-Trade Zone News - Sandler, Travis & Rosenberg, P.A.",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPZ25BV2NybGVtQ182dGVPYjhyWFYwRGtXTHJLU05SNzN4Yzc3S0NBWm9zTHJvOEIwUFkzY2t2UjZzaVZIVnY0RVNUTzB1UVRVSV84b2xhTDgzMVJUWWo1X3hiZ3dsbDgzclVjaXNja0hJekhvRHBmSVdWVUI1ZFlVZmJyank1dDVmZlk1MkF6YkRNbFpaNl9JdldlbUo2WVE?oc=5",
+   "published": "2026-11-10T20:12:16Z",
+   "category": "trade"
+  },
+  {
+   "title": "Import Alerts: Laser Products, Medical Instruments, Noodles, Snack Foods, Produce - Sandler, Travis & Rosenberg, P.A.",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOU0c4WE1Ib3FQdjBtZ25VdU5FZmE1cUQ4OWdMZzFGdTFuOEt2NGZTSmdVWnVXSVVZcVdCSDA4bVAxWWE1ZVRFVGU1cXNyLWl5N0tqVGNjVmU3cVUwWUlJUmhpajJSdzVXSWxzQncyQzBxbzJzekRvaWxtTWwtZTlhODJrWFdIb00zZk1TTi11Sm1maWhyMEFHdUN1RFFCTTlSUFJoOFVCWUo5dmpVU2J4N0w2aFlfdVhNbmE4bW5TNjlHTHlwN0VRV00yY3htYWt3SWdTUVQ4RVVoTVNOTHN2bUln?oc=5",
+   "published": "2026-11-10T20:11:41Z",
+   "category": "trade"
+  },
+  {
    "title": "A Steadier Economy Ahead: 3 Calls For China - Seeking Alpha",
    "source": "gn-china-econ",
    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQM2Y1WVBaZ2NhWTJfS29IbDNZQ012dmRFc1VqVmF6SDVUM0lUM0ZOdGw5ZmdJY05tRjA4ZXU1N2J2Y0FVLU82S09kS1RGS0RneFFBVzRieVNSRGticnYzSUw4Q2puWE9VbFRCb0lYZGFmZ0hoc0tMUjFwZlByQ0p4cDhoQQ?oc=5",
@@ -353,11 +423,11 @@
    "category": "finance"
   },
   {
-   "title": "SoftBank posts unexpected $7bn loss on data centre writedown",
-   "source": "ft",
-   "link": "https://www.ft.com/content/5ceed157-0016-4822-a272-8b607911da5e?syn-25a6b1a6=1",
-   "published": "2026-11-10T08:33:19Z",
-   "category": "finance"
+   "title": "China’s trade surplus surpasses $1 trillion for a 2nd straight year, as exports surge 35% - Sentinel Colorado",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQLUxqdTdXbWxPdnYzUWpuT1o1TXdoaTJwVzJuQlMzM2pZS25ocGtlNnA4Uk14OEN1Q0hXOXEzcTRVNHV5OVB2ekJKVkZkZkw3TVI1S0UzYVlndG9xampSVHFMa0Q1anNZRlRsMlFXRzh6Wk1kS3dKWUU5Y29YYU5qVGNaSnlMLVNNd1ZjNkhoYlBQWnpoZW1Zbzk3cGt6QjZ1MXNidnVaU0k3LTRwd2dJbERYeFR1alR6SnNiWEtubk5TN3F4Zlg0Qw?oc=5",
+   "published": "2026-11-10T20:05:05Z",
+   "category": "trade"
   },
   {
    "title": "Google Fi adds support for a second 5G network, won't say which one",
@@ -367,11 +437,25 @@
    "category": "tech"
   },
   {
+   "title": "The Privatisation of Spying: The Global Trade in Personal Data - OffshoreAlert",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxORDM2LWF1Q3luS1V1bjZlQXpEVDEyMDNqWDZsZnY2U2ZhTFAwUEcwNTliUFJTV2RuRUh3aWZaTTVsemNia1FUdjZjUnpwUXRXUWpZc2IwOVlURGRHVjJ4VnpKYVpKTmQ0VGg5X01aYnEwUlhzWEFHVkxGUl8zaGdUbzdnb2dmY2Ni?oc=5",
+   "published": "2026-11-10T19:06:32Z",
+   "category": "trade"
+  },
+  {
    "title": "Pixel phones getting new icon styles, Create My Widget, and more in November Pixel Drop",
    "source": "ars",
    "link": "https://arstechnica.com/gadgets/2026/11/november-pixel-drop-brings-gemini-intelligence-to-pixel-10-family",
    "published": "2026-11-10T19:00:26Z",
    "category": "tech"
+  },
+  {
+   "title": "How El Niño Could Impact US, Global Economy - Newsweek",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPNUt1aFVMSzI1cmR4MURDa1F1SC1aQVhwNklhbnl3WW92MEt4ZEVxdEY5TVp0eVRIOWRZeUVzQXdaVDBYT0NHYmRPRDd3ZVFHNXBQeDR3RHVKcVJSXzkwTFBQWWhfbFZTQ2pWLWcwX0RSekJ2YjZHdUlCSXItektKMXpn?oc=5",
+   "published": "2026-11-10T18:56:00Z",
+   "category": "trade"
   },
   {
    "title": "Free video-streaming service Tubi lets users share curated watchlists now",
@@ -388,109 +472,25 @@
    "category": "security"
   },
   {
+   "title": "Uniform Asean e-commerce rules vs illicit trade pushed - Inquirer.net",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPR2pWY2YwSF9LYktOSE15T2ZWUEE3ZmhlcDdJbnNGYWxjV0FxaTdaWkdISVVpRkl1ak04cU5YcTBMOWlwSDA1T3Y4MzU2MEtkQVhQRTNrZmZhY243S2k4c01OZXZhTWRMOC1rUnBnZGtCZlY4cnlCQlRzSC16blpoTnloV0JLZ1NSRFVWc1N4WHZNSzNDRXgtQjdNONIBmwFBVV95cUxPR2pWY2YwSF9LYktOSE15T2ZWUEE3ZmhlcDdJbnNGYWxjV0FxaTdaWkdISVVpRkl1ak04cU5YcTBMOWlwSDA1T3Y4MzU2MEtkQVhQRTNrZmZhY243S2k4c01OZXZhTWRMOC1rUnBnZGtCZlY4cnlCQlRzSC16blpoTnloV0JLZ1NSRFVWc1N4WHZNSzNDRXgtQjdNOA?oc=5",
+   "published": "2026-11-10T18:16:37Z",
+   "category": "trade"
+  },
+  {
+   "title": "China Just Hit A Trillion-Dollar Trade Surplus In Record Time - Finimize",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQWVVDUDFKajVUSFcxQVBtTkthUTRzOEx3aVJURUlZdGNTcklRSm01X0ptNEtvRXF4dTVVeXA2amdRVU1QOTE1Y2tCek9mWTlBSjlyZFhIaDc0UTQtdzZBMVNpN3MxM29hZ21SWm16LWhhb3g1dWRGRjNIVHFhSmpLcTdTSjl2RE9JSDVrWmpmR3BMUklH?oc=5",
+   "published": "2026-11-10T17:59:36Z",
+   "category": "finance"
+  },
+  {
    "title": "Steam Deck performance gets a reality check with Valve's new FPS data",
    "source": "ars",
    "link": "https://arstechnica.com/gaming/2026/11/steam-deck-performance-gets-a-reality-check-with-valves-new-fps-data",
    "published": "2026-11-10T17:26:44Z",
    "category": "tech"
-  },
-  {
-   "title": "The Download: Pelosi’s successor targets AI and data centers face power woes",
-   "source": "mit-tr",
-   "link": "https://www.technologyreview.com/2026/11/10/1148150/the-download-pelosi-successor-ai-regulation-data-center-backlash",
-   "published": "2026-11-10T13:10:00Z",
-   "category": "tech"
-  },
-  {
-   "title": "F1 Plans to Finish Season in Middle East Despite Ongoing War - Front Office Sports",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdXRpV1BVcTJMU3FSZVdkUndZcGlDQm5oSzhRb2RwRHE2ZVRBSkRQaFlia1UyQURaX01zcV84Y1ZQeTNuWGg4V25rdHRERHVrSDJoNVIzSWl6anpOTXNIaEl5UDNhU1VmSEFndHNPd2lFRlFQaG11TWFCdEtJUEU4aFQ3TGdRNmxscjVvWWM3bG14V3RQQUR0RzkyTndFNk9U?oc=5",
-   "published": "2026-11-10T17:12:42Z",
-   "category": "security"
-  },
-  {
-   "title": "Evolving metal extraction processes",
-   "source": "mit-tr",
-   "link": "https://www.technologyreview.com/2026/11/10/1147726/evolving-metal-extraction-processes",
-   "published": "2026-11-10T13:00:00Z",
-   "category": "tech"
-  },
-  {
-   "title": "Final F1 races to take place in Qatar and Abu Dhabi despite Middle East conflict - The Telegraph",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSGdLOFp3VHNkaV8tZlBWeklTcDFNT2Ftb0FJcUdhMXZ4VVpiYnQ2N21lOUpGUVZUSlpwVnhTcXZ1eWRLUkt1Z2RuMUhySUE0LVlmWF90TjNabGhxZzE3WjBaWDQtWlJpNXZVOUYyNUFRTWduUGZKRWd0OVpTWlk3dW83RTJOZnhraGdSVlFCN1lnSHNxTUZ5OWhPSl9pQmotczlJbVRqZW8?oc=5",
-   "published": "2026-11-10T16:44:00Z",
-   "category": "security"
-  },
-  {
-   "title": "High oil prices have led to a dip in global carbon emissions",
-   "source": "ars",
-   "link": "https://arstechnica.com/science/2026/11/carbon-emissions-are-down-this-year-but-that-probably-wont-last",
-   "published": "2026-11-10T16:29:27Z",
-   "category": "tech"
-  },
-  {
-   "title": "One space station company sues another for copying its work",
-   "source": "ars",
-   "link": "https://arstechnica.com/space/2026/11/one-space-station-company-sues-another-for-copying-its-work",
-   "published": "2026-11-10T16:17:51Z",
-   "category": "tech"
-  },
-  {
-   "title": "OpenAI acquires Odessia, travel startup created by Sonder founder",
-   "source": "techcrunch",
-   "link": "https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder",
-   "published": "2026-11-10T21:08:52Z",
-   "category": "tech"
-  },
-  {
-   "title": "Middle East latest: Ship attacked in UAE waters, says operator Adnoc - The National",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPdTMwLTRPRTZsZHJPR0lQTVNtNHdyWWxZNHMydXJzUjEySVZIZzJfUFlvbXZfQWJPc25aSm5kM3lzNmxFMFVMdFl3NTZLZWVjZnZPaTFyWjZtcl9peGd6ZlpDU2hnQmxDVFBLRlF1cVR3U2QwR2R4dWRRNEFDaDBzSTY2YUFWZEsyZ3dIOGQwX2tudV81a1pRRXQtVzl0TWYw?oc=5",
-   "published": "2026-11-10T15:37:46Z",
-   "category": "security"
-  },
-  {
-   "title": "Formula One WILL race in the Middle East despite war threat - Daily Mail",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNM25XdUNmemdwalJDTko3R1NaZnBmU0RKSV8yZXZaQ0tHUVVYSTVhR3B3QU5ENlpVRG1VclhwT3BrT1pDdGkwR3RpbzhPRTZBdGRBOVNqLVFwM0pvR2t5WDZJWlRmeU1tMkVUMEVvTnEyVGh2N0p1VTE3MTA1V2JyWWJ6ZnRZTDNwYzFVUEVTeDRLd2ZYdHY4UGtCMkgtM2tCRG4yUHg0Z0xyY0tXc2I4?oc=5",
-   "published": "2026-11-10T15:22:07Z",
-   "category": "security"
-  },
-  {
-   "title": "Board of Peace says Israel's aid response after Gaza floods 'insufficent' - BBC",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5uR1pHZkpsVG1RLUNfbDE2dzZwNnZfdEhUVlZ1a0VRaHhNemNIZk1IUWtYOHZZSHpuWXRscGJFVnpwSFBCWEgxcU1Wajh4clRWNUpXb2w0Y0dzYXc?oc=5",
-   "published": "2026-11-10T15:21:18Z",
-   "category": "security"
-  },
-  {
-   "title": "Oil drops further as Trump eases Middle East conflict fears - Offshore Technology",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQ0tVYTVOSTRERVhjN01VZXhNelp0VTNJSHhLUEN6NUxiYlpHalNrRjJjTGJibFplOHRsZVplcm1wU0ZkMW03ZWpLSkIxUXRyMF93d1A2aERJcEpjM05HcWlCUVlHdXlCcDhDc0FWdTNvVVd4RkFBWHF2Qmlkc1hyQjlYRmxTNE5KSi1LNA?oc=5",
-   "published": "2026-11-10T15:05:00Z",
-   "category": "security"
-  },
-  {
-   "title": "Formula 1: Season to finish in Qatar and Abu Dhabi as planned - BBC",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5uVENhZ0VYRmgzcS1wbnRSSHNJOTdnMmozSmY5aUV5YVJRZHhhdm1PS0pMWF9XYkRVZE5hb0txa2p0UDVRWFcxaHlEazVMTWRTYWJubDQtczBWOEpfTmhNc2VVYVVRZHgw?oc=5",
-   "published": "2026-11-10T15:04:46Z",
-   "category": "security"
-  },
-  {
-   "title": "Can researchers bring order to the confusing world of AI ‘benchmarks’?",
-   "source": "science-news",
-   "link": "https://www.science.org/content/article/can-researchers-bring-order-confusing-world-ai-benchmarks",
-   "published": "2026-11-10T10:55:00Z",
-   "category": "science"
-  },
-  {
-   "title": "Oil prices fall below $90 as Middle East peace hopes grow - Nairametrics",
-   "source": "gn-mideast",
-   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOSC1mZk5id2gwTl9yS2IwaHRKTzJxdWhjUFl3SUZVeU5VMWlhX1FmSU1OQlhQblI4Ml9GODhwQ0c0LWpvWWdIVmZ1OVNqZW5ydUdYcEx4VFdweF9TOS1GVUd5b1VjdkwyYVdlSlBFUW1nNm93NGhIREdpT3lrZld3b3IxR3pEMnJoc0huRXkwV2Jfc0M2WGZaeg?oc=5",
-   "published": "2026-11-10T14:39:51Z",
-   "category": "security"
   }
  ]
 }
