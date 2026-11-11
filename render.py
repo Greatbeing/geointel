@@ -230,7 +230,7 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 
 @media print{
   :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
-  .top nav,.colophon{display:none}
+  .top nav{display:none}
   .top{border-bottom:none; padding:0}
   .wrap{max-width:none; padding:0}
   .body h2{break-after:avoid}
