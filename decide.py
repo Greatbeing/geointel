@@ -30,64 +30,6 @@ SYSTEM = (
     "明确写出什么证据会推翻结论。你不迎合提问者，也不假装确定。"
 )
 
-# Bilingual retrieval (user 2026-11-11 "continue fixing"): intelligence items are
-# mostly English, but decision questions are Chinese. FTS on Chinese terms alone
-# finds nothing and store.search falls back to recent (irrelevant) items. Expand
-# recognised Chinese topic words with English keywords so the OR match hits the
-# English content. Add new topics here as they arise.
-CN_EN_KEYWORDS = {
-    "美联储": "Federal Reserve Fed FOMC",
-    "联储": "Federal Reserve Fed FOMC",
-    "加息": "rate hike interest rate",
-    "升息": "rate hike interest rate",
-    "降息": "rate cut interest rate",
-    "通胀": "inflation CPI PCE",
-    "通货膨胀": "inflation CPI PCE",
-    "CPI": "CPI inflation",
-    "PCE": "PCE inflation",
-    "非农": "nonfarm payroll employment jobs",
-    "就业": "employment jobs unemployment",
-    "失业率": "unemployment jobless",
-    "利率": "interest rate",
-    "央行": "central bank",
-    "美元": "dollar USD",
-    "半导体": "semiconductor chip",
-    "芯片": "semiconductor chip",
-    "出口管制": "export control",
-    "出口": "export",
-    "贸易": "trade tariff",
-    "关税": "tariff",
-    "原油": "oil crude WTI",
-    "油价": "oil crude price",
-    "能源": "energy oil gas",
-    "地缘": "geopolitical",
-    "人工智能": "AI artificial intelligence",
-    "AI": "AI artificial intelligence",
-    "科技": "technology tech",
-    "股市": "stock market equity",
-    "债市": "bond Treasury yield",
-    "国债": "Treasury bond yield",
-    "黄金": "gold",
-    "气候": "climate",
-    "选举": "election",
-}
-
-
-def expand_query(question):
-    """Append English keywords for any recognised Chinese topic words."""
-    extra = []
-    for cn, en in CN_EN_KEYWORDS.items():
-        if cn in question:
-            extra.append(en)
-    if extra:
-        return question + " " + " ".join(extra)
-    return question
-
-
-# Decision model: NVIDIA Nemotron 3 Ultra 550B via Magpie (user 2026-11-11:
-# NVIDIA-provided models, quota ample). Digest keeps llm.MODELS (group/fast).
-DECIDE_MODEL = "nvidia/nvidia/nemotron-3-ultra-550b-a55b"
-
 TEMPLATE = """决策问题：{question}
 
 时间范围：未来 {horizon} 天。
@@ -116,6 +58,11 @@ TEMPLATE = """决策问题：{question}
 
 ## 6. 建议与触发条件
 明确推荐一个选项，并给 2–4 个触发条件：可观测指标 + 阈值 + 触发后的动作。
+触发条件必须分两类：
+- **count**：靠关键词命中条数判定，`threshold` 是条数（整数）。适合「某事件是否发生」。
+- **value**：靠指标数值判定，`threshold` 是数值。适合「通胀≥X%」「收益率≥Y%」这类，
+  系统只能提示人工读数，无法自动判定。
+不要用 count 类型表达数值指标，否则会出现「命中 12 条」这种无意义告警。
 
 ## 7. 反面证据与证伪条件
 什么证据出现时，这份备忘录的结论应当被推翻。
@@ -129,7 +76,7 @@ TEMPLATE = """决策问题：{question}
 - 建议必须可执行，不能是「密切关注」这类空话。
 
 最后输出一个 JSON 代码块（```json ... ```），字段：
-{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"action":"..."}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"..."}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
 """
 
 
@@ -161,14 +108,14 @@ def main():
     ap.add_argument("--out-dir", default=os.path.join(HERE, "out", "decisions"))
     args = ap.parse_args()
 
-    items = store.search(expand_query(args.question), limit=args.items, days=args.days)
+    items = store.search(args.question, limit=args.items, days=args.days)
     if not items:
         print("no intel available; run collect first", file=sys.stderr)
         return 2
 
     prompt = TEMPLATE.format(question=args.question, horizon=args.horizon, days=args.days,
                              n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, model=DECIDE_MODEL, timeout=480, max_tokens=32000)
+    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=16000)
 
     now = datetime.now(timezone.utc)
     slug = args.slug or hashlib.sha1(args.question.encode()).hexdigest()[:6]
