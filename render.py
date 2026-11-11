@@ -21,6 +21,28 @@ BASE = os.environ.get("GEOINTEL_BASE", "/geointel")
 
 CONFIDENCE_CN = {"low": "低", "medium": "中", "high": "高"}
 
+# 纯字母 wordmark（几何单线条骨架，小写、正圆、直竖），由 geointel-brand/gen.py 生成：
+# 统一线宽 16/100 x-height + geo/intel 之间留一格呼吸 + i 的点改成小方块（数据点）。
+# currentColor 继承页面文字色，深色模式自动跟随。
+WORDMARK = (
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" '
+    'role="img" aria-label="geointel">'
+    '<g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" '
+    'stroke-linejoin="round">'
+    '<path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/>'
+    '<path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/>'
+    '<path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/>'
+    '<path d="M 388.00 0.00 V -100"/>'
+    '<path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/>'
+    '<path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/>'
+    '<path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/>'
+    '<path d="M 740.00 0.00 V -152.00"/></g>'
+    '<g fill="currentColor" stroke="none">'
+    '<rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg>'
+)
+
+SLOGAN = "先看材料，再下判断。"
+
 CSS = """
 :root{
   --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
@@ -47,13 +69,13 @@ body{
 .top{
   position:sticky; top:0; z-index:5;
   max-width:720px; margin:0 auto; padding:20px 24px 14px;
-  display:flex; align-items:baseline; justify-content:space-between; gap:18px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
   background:var(--paper); border-bottom:1px solid var(--rule);
 }
 .top .brand{
-  font-family:var(--mono); font-size:12px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--ink); text-decoration:none;
+  display:flex; line-height:0; color:var(--ink); text-decoration:none;
 }
+.top .brand svg{display:block; height:26px; width:auto}
 .top nav{display:flex; gap:22px; flex-wrap:wrap}
 .top nav a{
   font-size:13.5px; color:var(--ink-3); text-decoration:none;
@@ -73,6 +95,10 @@ h1.dateline{
 h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 .under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
 .under span+span::before{content:" · "; color:var(--rule-2)}
+.tagline{
+  font-family:var(--serif); font-size:14.5px; letter-spacing:.22em;
+  color:var(--ink-2); margin:16px 0 0; text-indent:0;
+}
 .masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
 
 .body{padding-top:30px}
@@ -178,6 +204,9 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
   font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
 }
 .colophon span+span::before{content:"· "; color:var(--rule-2)}
+.colophon .slogan{
+  font-family:var(--serif); font-size:13.5px; letter-spacing:.16em; color:var(--ink-2);
+}
 
 @media (max-width:600px){
   body{font-size:16.5px; line-height:1.88}
@@ -419,7 +448,7 @@ def href(path):
     return BASE + path
 
 
-def page(title, kicker, body, current="", under=None, big=True):
+def page(title, kicker, body, current="", under=None, big=True, tagline=False):
     now = datetime.now(timezone.utc)
     navs = []
     for label, path, key in (("简报", "/index.html", "digest"),
@@ -431,23 +460,26 @@ def page(title, kicker, body, current="", under=None, big=True):
     if under:
         under_html = '<p class="under">%s</p>' % "".join(
             "<span>%s</span>" % html.escape(str(u)) for u in under)
+    tagline_html = '<p class="tagline">%s</p>' % html.escape(SLOGAN) if tagline else ""
 
     return (
         '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         "<title>{title}</title><style>{css}</style></head><body>"
-        '<div class="top"><a class="brand" href="{home}">geointel</a>'
+        '<div class="top"><a class="brand" href="{home}">{mark}</a>'
         "<nav>{nav}</nav></div>"
         '<div class="wrap"><header class="masthead">'
         '<p class="kicker">{kicker}</p>'
-        '<h1 class="dateline{q}">{title}</h1>{under}</header>'
+        '<h1 class="dateline{q}">{title}</h1>{under}{tagline}</header>'
         '<div class="body">{body}</div>'
-        '<footer class="colophon"><span>只基于抓取材料</span>'
+        '<footer class="colophon"><span class="slogan">{slogan}</span>'
+        "<span>只基于抓取材料</span>"
         "<span>{updated} 更新</span></footer></div></body></html>"
     ).format(
-        title=html.escape(title), css=CSS, home=href("/index.html"),
+        title=html.escape(title), css=CSS, home=href("/index.html"), mark=WORDMARK,
         nav="".join(navs), kicker=html.escape(kicker),
-        q="" if big else " q", under=under_html, body=body,
+        q="" if big else " q", under=under_html, tagline=tagline_html, body=body,
+        slogan=html.escape(SLOGAN),
         updated="%d 月 %d 日 %02d:%02d UTC" % (now.month, now.day, now.hour, now.minute),
     )
 
@@ -625,7 +657,8 @@ def build():
         if recent:
             body_html += ('<div class="section-head">决策备忘录</div>'
                           '<ul class="index-list">' + "".join(recent) + "</ul>")
-        write("index.html", page(cn_date(day), "每日情报简报", body_html, "digest"))
+        write("index.html", page(cn_date(day), "每日情报简报", body_html, "digest",
+                                 tagline=True))
     else:
         write("index.html", page("全球情报简报", "每日情报简报",
                                  '<p class="lede">暂无简报。</p>', "digest"))
