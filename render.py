@@ -498,7 +498,7 @@ def clean_alert(text, seen):
             continue
         m = re.match(r"^-\s*关联决策：.*?（(\d{4}-\d\d-\d\d-[a-z0-9-]+)）", s)
         if m:
-            out.append("- {{LINK:%s}}" % m.group(1))
+            out.append("- 相关备忘录：{{LINK:%s}}" % m.group(1))
             continue
         if re.match(r"^-\s*关联决策：", s):
             continue
@@ -582,6 +582,7 @@ def build():
                "decisions"))
 
     # 告警：同一触发条件只保留最近一次，条目改为可点标题，并跨链到对应备忘录
+    qmap = {e["name"]: e["question"] for e in decision_entries}
     seen = set()
     alert_chunks = []
     for path in alerts[:12]:
@@ -590,9 +591,12 @@ def build():
         if "## " not in text:
             continue
         body = md2html(text, demote=True)
-        body = re.sub(r"\{\{LINK:([a-z0-9-]+)\}\}",
-                      lambda m: '<a href="%s">相关备忘录</a>'
-                      % href("/decisions/" + m.group(1) + ".html"), body)
+        body = re.sub(
+            r"\{\{LINK:([a-z0-9-]+)\}\}",
+            lambda m: '<a href="%s">%s</a>' % (
+                href("/decisions/" + m.group(1) + ".html"),
+                html.escape(qmap.get(m.group(1), "相关备忘录"))),
+            body)
         alert_chunks.append("<h2>%s</h2>%s" % (cn_date(day), body))
     write("alerts.html",
           page("触发告警", "决策备忘录里的触发条件命中记录",
