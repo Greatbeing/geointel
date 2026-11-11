@@ -186,6 +186,17 @@ def build():
     open(os.path.join(SITE, "alerts.html"), "w", encoding="utf-8").write(
         page("触发告警", "".join(alert_html) or "<p>暂无触发</p>", "决策备忘录里的触发条件命中记录"))
 
+    # 清掉源文件已删除但页面还留着的陈旧 html（否则站点会积累幽灵页面）
+    keep_digest = {os.path.splitext(os.path.basename(p))[0] + ".html" for p in digests}
+    keep_dec = {os.path.splitext(os.path.basename(p))[0] + ".html" for p in decisions}
+    for sub, keep in (("digest", keep_digest), ("decisions", keep_dec)):
+        d = os.path.join(SITE, sub)
+        if not os.path.isdir(d):
+            continue
+        for f in os.listdir(d):
+            if f.endswith(".html") and f not in keep:
+                os.remove(os.path.join(d, f))
+
     return {"digests": len(digests), "decisions": len(decisions), "alerts": len(alerts)}
 
 
