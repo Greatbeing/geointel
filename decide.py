@@ -37,7 +37,13 @@ TEMPLATE = """决策问题：{question}
 可用情报（过去 {days} 天抓取，共 {n} 条，含来源与日期）：
 {material}
 
-请用中文输出一份决策备忘录，严格按以下结构：
+**输出顺序硬要求**：先输出 JSON 代码块，再输出完整备忘录。
+（JSON 在最前，即使后文被截断，结构数据也一定已给出。）
+
+第一步，输出一个 JSON 代码块（```json ... ```），字段：
+{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"..."}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+
+第二步，紧接着输出完整备忘录，严格按以下结构（中文）：
 
 # {question}
 
@@ -74,9 +80,7 @@ TEMPLATE = """决策问题：{question}
 - 概率必须合计 100；没有依据的数字标注「估计」。
 - 不编造来源、日期、机构；材料不足就写「材料不足」。
 - 建议必须可执行，不能是「密切关注」这类空话。
-
-最后输出一个 JSON 代码块（```json ... ```），字段：
-{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"..."}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+- JSON 块与备忘录正文中的情景、触发条件必须一致。
 """
 
 
@@ -116,15 +120,16 @@ def run_question(q, out_dir, now):
 
     prompt = TEMPLATE.format(question=question, horizon=horizon, days=days,
                              n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=32000)
-
-    meta = extract_json(body)
-    if not meta.get("scenarios"):
-        body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=64000)
+    # JSON 块已被挪到模板最前：即使正文被截断，结构数据也一定先落盘。
+    # 仍留两档重试兜底：先 32k，拿不到 JSON 再 64k（给 reasoning 更多预算）。
+    meta = {}
+    for budget in (32000, 64000):
+        body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=budget)
         meta = extract_json(body)
+        if meta.get("scenarios"):
+            break
     if not meta.get("scenarios"):
-        return slug, False, "LLM produced no scenarios/triggers (budget exhausted)"
-
+        return slug, False, "LLM produced no scenarios/triggers (truncated or non-compliant)"
     meta.update({
         "question": question,
         "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
