@@ -1,9 +1,231 @@
-<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>情报简报 2026-11-10</title><style></style></head>
-<body><div class="wrap"><header>
-<h1>情报简报 2026-11-10</h1>
-<div class="meta">每日全球情报摘要</div>
-<div class="nav"><a href="/geointel/index.html">首页</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></div>
-</header><h2>今日要点</h2>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2026 年 11 月 10 日</title><style>
+:root{
+  --paper:#f7f5f0; --paper-2:#f1eee7; --ink:#17171a; --ink-2:#4b4b53;
+  --ink-3:#8a8a93; --rule:#dcd7cc; --rule-2:#c6c0b2; --accent:#8c2f1e;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","Source Han Serif CN",STSong,SimSun,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#131311; --paper-2:#1a1a17; --ink:#e9e5dd; --ink-2:#b4aea3;
+    --ink-3:#7d776c; --rule:#302d27; --rule-2:#443f37; --accent:#cf6a4f;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.95 var(--sans); letter-spacing:.015em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{background:var(--accent); color:var(--paper)}
+
+.sheet{
+  display:grid; grid-template-columns:132px minmax(0,1fr);
+  gap:0 62px; max-width:1000px; margin:0 auto;
+  padding:64px 40px 120px;
+}
+
+/* ---------- 边栏：出处与索引 ---------- */
+.rail{position:sticky; top:56px; align-self:start; font-family:var(--mono)}
+.rail .brand{
+  display:block; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ink); text-decoration:none; padding:0 0 14px;
+  border-bottom:1px solid var(--rule-2); margin-bottom:20px;
+}
+.rail dl{margin:0 0 26px; padding:0}
+.rail dt{
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 1px;
+}
+.rail dd{
+  margin:0 0 13px; font-size:12px; line-height:1.5;
+  color:var(--ink-2); font-variant-numeric:tabular-nums;
+}
+.rail nav{margin:0; padding:16px 0 0; border-top:1px solid var(--rule)}
+.rail nav a{
+  display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); text-decoration:none; padding:5px 0;
+  transition:color .16s ease;
+}
+.rail nav a:hover,.rail nav a[aria-current]{color:var(--ink)}
+
+/* ---------- 刊头 ---------- */
+main{min-width:0}
+.masthead{padding-bottom:30px; border-bottom:2px solid var(--ink); margin-bottom:6px}
+.kicker{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:16px;
+}
+.dateline{
+  font-family:var(--serif); font-size:clamp(29px,5vw,42px); line-height:1.16;
+  font-weight:600; letter-spacing:.02em; margin:0; color:var(--ink);
+  font-feature-settings:"palt" 1;
+}
+.deck{
+  margin-top:15px; font-size:12.5px; line-height:1.7; color:var(--ink-2);
+  font-family:var(--mono); letter-spacing:.02em;
+}
+.deck span+span::before{content:" · "; color:var(--ink-3)}
+
+/* ---------- 正文 ---------- */
+.body{padding-top:34px}
+.body h2{
+  font-family:var(--sans); font-size:19px; line-height:1.5; font-weight:600;
+  letter-spacing:.03em; margin:52px 0 6px; color:var(--ink);
+  padding-top:18px; border-top:1px solid var(--rule);
+}
+.body h2:first-child{margin-top:0; padding-top:0; border-top:0}
+.body h2 .idx{
+  font-family:var(--mono); font-size:11px; font-weight:400; letter-spacing:.1em;
+  color:var(--accent); margin-right:14px; vertical-align:2px;
+  font-variant-numeric:tabular-nums;
+}
+.body h2 .eyebrow{
+  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:400; margin:0 0 7px;
+}
+.body h3{
+  font-size:15.5px; font-weight:600; letter-spacing:.05em; color:var(--ink-2);
+  margin:30px 0 8px;
+}
+.body h3::before{
+  content:""; display:inline-block; width:14px; height:1px;
+  background:var(--rule-2); vertical-align:3px; margin-right:9px;
+}
+.body p{margin:0 0 1.05em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2)}
+.body ul,.body ol{margin:0 0 1.15em; padding-left:1.45em}
+.body li{margin:0 0 .5em; text-align:justify}
+.body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
+.body ul li::marker{content:"— "}
+.body strong{font-weight:600; color:var(--ink)}
+.body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
+.body hr{border:0; height:1px; background:var(--rule); margin:44px 0}
+.body a{
+  color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
+  transition:color .16s ease,border-color .16s ease; word-break:break-word;
+}
+.body a:hover{color:var(--accent); border-color:var(--accent)}
+.body blockquote{
+  margin:26px 0; padding:2px 0 2px 20px; border-left:2px solid var(--accent);
+  color:var(--ink-2); font-size:16px;
+}
+.body blockquote p{text-indent:0}
+.body blockquote p:last-child{margin-bottom:0}
+.body pre{
+  margin:22px 0; padding:16px 18px; overflow:auto;
+  background:var(--paper-2); border:1px solid var(--rule);
+  font-family:var(--mono); font-size:13px; line-height:1.7;
+}
+.body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
+.body pre code{background:none; padding:0}
+
+/* 概率细线：情景条目末尾的（45%）下方给一条量度线 */
+.body li.pct .pct-bar{
+  display:block; height:2px; margin-top:8px; background:var(--rule);
+  position:relative; max-width:220px;
+}
+.body li.pct .pct-bar::after{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:calc(var(--p) * 1%); background:var(--accent); opacity:.62;
+}
+
+/* 表格 */
+.body table{
+  width:100%; border-collapse:collapse; margin:26px 0;
+  font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
+}
+.body th{
+  text-align:left; font-weight:600; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); padding:0 14px 8px 0;
+  border-bottom:1px solid var(--ink); white-space:nowrap;
+}
+.body td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td:last-child,.body th:last-child{padding-right:0}
+
+/* 概率列：数字 + 一条发丝量度线，一眼看出量级 */
+.body td.pct-cell{
+  font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px;
+}
+.body td.pct-cell .pct-bar{
+  display:block; height:2px; margin-top:8px;
+  background:var(--rule); position:relative;
+}
+.body td.pct-cell .pct-bar::after{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
+}
+
+/* ---------- 列表页 ---------- */
+.index-list{list-style:none; margin:0; padding:0}
+.index-list li{
+  display:grid; grid-template-columns:104px minmax(0,1fr); gap:0 26px;
+  padding:20px 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.index-list .when{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
+  color:var(--ink-3); padding-top:4px; font-variant-numeric:tabular-nums;
+}
+.index-list .what{font-size:17px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what a{border-bottom-color:transparent}
+.index-list .what a:hover{border-bottom-color:var(--accent)}
+.index-list .note{
+  margin:7px 0 0; font-size:12.5px; line-height:1.65; color:var(--ink-3);
+  font-family:var(--mono); letter-spacing:.02em; text-indent:0;
+}
+.index-list .note b{font-weight:400; color:var(--ink-2)}
+
+.section-head{
+  font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--ink-3); margin:58px 0 0; padding-bottom:10px;
+  border-bottom:1px solid var(--rule-2);
+}
+
+/* ---------- 页脚 ---------- */
+.colophon{
+  margin-top:76px; padding-top:18px; border-top:1px solid var(--rule);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:6px 22px;
+  text-transform:uppercase;
+}
+
+/* ---------- 窄屏 ---------- */
+@media (max-width:880px){
+  .sheet{grid-template-columns:minmax(0,1fr); gap:0; padding:40px 22px 80px}
+  .rail{position:static; margin-bottom:34px}
+  .rail .brand{border-bottom:0; padding-bottom:0; margin-bottom:16px}
+  .rail dl{display:flex; flex-wrap:wrap; gap:0 26px; margin-bottom:4px}
+  .rail dt{font-size:9px}
+  .rail dd{margin-bottom:10px}
+  .rail nav{border-top:0; padding-top:0; display:flex; gap:20px; flex-wrap:wrap}
+  .rail nav a{padding:0}
+  body{font-size:16.5px; line-height:1.9}
+  .body p{text-align:left}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:5px}
+  .index-list .when{padding-top:0}
+  .masthead{padding-bottom:24px}
+  .body table{font-size:13px}
+  .body th{white-space:normal}
+  .body td,.body th{padding-right:10px}
+}
+
+@media (max-width:560px){
+  .body table{font-size:12.5px}
+  .body td,.body th{padding-right:8px}
+  .body td.pct-cell{min-width:52px; font-size:13px}
+}
+
+@media print{
+  :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
+  .rail nav,.colophon{display:none}
+  .sheet{display:block; max-width:none; padding:0}
+  .body h2{break-after:avoid}
+  .body li,.body p{orphans:2; widows:2}
+  a{text-decoration:none}
+}
+</style></head><body><div class="sheet"><aside class="rail"><a class="brand" href="/geointel/index.html">geointel</a><dl><dt>日期</dt><dd>2026-11-10</dd><dt>生成</dt><dd>23:34 UTC</dd><dt>选取</dt><dd>70 条</dd><dt>窗口</dt><dd>600 条</dd><dt>库存</dt><dd>1965 条</dd><dt>源</dt><dd>35/36</dd></dl><nav><a href="/geointel/index.html" aria-current="page">简报</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></aside><main><header class="masthead"><div class="kicker">GEOINTEL · 每日情报简报</div><h1 class="dateline">2026 年 11 月 10 日</h1><div class="deck"><span>600 条入库</span><span>70 条入选</span><span>35/36 源可用</span></div></header><div class="body"><h2><span class="idx">01</span><span class="eyebrow">LEDE</span>今日要点</h2>
 <ol>
 <li>美国10月CPI超预期，美联储理事Waller称若通胀不放缓应考虑50bp加息，2年期国债收益率创2024年来最大涨幅（FT）。</li>
 <li>Nvidia CEO黄仁勋因与涉嫌中国间谍的Alice Huang的绯闻，聘请Wachtell Lipton前联邦检察官领导独立调查（FT / Politico EU）。</li>
@@ -12,7 +234,7 @@
 <li>软银上半年录得亏损，AI投资前景面临新挫折（Nikkei）。</li>
 </ol>
 <hr>
-<h2>区域动态</h2>
+<h2><span class="idx">02</span><span class="eyebrow">REGIONS</span>区域动态</h2>
 <h3>亚太</h3>
 <ul>
 <li>印尼副总统Gibran宣布辞职，雅加达窃听丑闻持续发酵，前警察总长涉案监视11部手机，牵动Prabowo与Widodo家族政治联盟（Nikkei / Lowy）。</li>
@@ -44,7 +266,7 @@
 <li>民主党反对共和党填充FCC的计划，并拟调查主席Carr（Ars Technica）。</li>
 </ul>
 <hr>
-<h2>技术与产业</h2>
+<h2><span class="idx">03</span><span class="eyebrow">TECHNOLOGY</span>技术与产业</h2>
 <ol>
 <li><strong>Nvidia CEO调查升级</strong>：Nvidia聘请Wachtell Lipton前代理联邦检察官领导针对黄仁勋的独立调查；美国商务部推迟将Megaspeed列入实体清单（FT / Politico EU）。</li>
 <li><strong>TSMC战略投资AI</strong>：TSMC拨备最高10亿美元认购Anthropic和OpenAI股份（Nikkei）。</li>
@@ -54,7 +276,7 @@
 <li><strong>软银业绩受挫</strong>：软银上半年转亏，AI投资面临新挫折（Nikkei）。</li>
 </ol>
 <hr>
-<h2>金融与政策</h2>
+<h2><span class="idx">04</span><span class="eyebrow">CAPITAL & POLICY</span>金融与政策</h2>
 <ol>
 <li><strong>美联储政策转向风险</strong>：10月CPI超预期，2年期国债收益率创2024年来最大涨幅；理事Waller称应考虑50bp加息，为2022年以来最大幅度（FT）。</li>
 <li><strong>ECB政策沟通与数字欧元</strong>：ECB执委Lane就货币政策沟通经验发表讲话；执委Cipollone就现金与数字欧元关系发表讲话（ECB）。</li>
@@ -63,7 +285,7 @@
 <li><strong>贸易顺差近纪录</strong>：马来西亚贸易顺差达到接近创纪录高位（KLSE Screener / The Star）。</li>
 </ol>
 <hr>
-<h2>值得跟踪的信号</h2>
+<h2><span class="idx">05</span><span class="eyebrow">SIGNALS</span>值得跟踪的信号</h2>
 <h3>1. 黄仁勋-中国间谍调查与Megaspeed实体清单推迟</h3>
 <ul>
 <li><strong>现象</strong>：Nvidia CEO因与涉嫌中国间谍的Alice Huang的绯闻接受独立调查；美国商务部推迟将Megaspeed列入实体清单。</li>
@@ -83,6 +305,4 @@
 <li><strong>下一步看什么</strong>：中国月度进出口数据；美国贸易代表办公室是否启动新的301调查或关税行动；墨西哥海关执法数据；越南、墨西哥对美出口是否继续转移。</li>
 </ul>
 <hr>
-<p>源状态：35/36 正常，失败：mit-tr</p>
-<hr><div class="meta">geointel · 只基于抓取材料 · 2026-11-11 00:45 UTC</div>
-</div></body></html>
+<p>源状态：35/36 正常，失败：mit-tr</p></div><footer class="colophon"><span>只基于抓取材料</span><span>magpie / group</span><span>2026-11-11 01:23 UTC</span></footer></main></div></body></html>
