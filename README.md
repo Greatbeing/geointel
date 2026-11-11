@@ -15,10 +15,10 @@ collect.py ──► data/intel.db (SQLite + FTS5)
       ├─► decide.py ──► out/decisions/<date>-<slug>.md|json ──┤
       └─► watch.py  ──► out/alerts/<date>.md       ──┤
                                                      ▼
-                                              render.py ──► site/
+                                              render.py ──► docs/
                                                      │
                                                      ▼
-                                              publish.sh ──► GitHub (main)
+                                              publish.sh ──► GitHub Pages (main /docs)
 ```
 
 ## 组件
@@ -68,3 +68,17 @@ collect.py ──► data/intel.db (SQLite + FTS5)
 - **云机会挂起**：空闲 30 分钟挂起，timer 不会唤醒机器；`Persistent=true` 保证唤醒后补跑。
 - **站点已公开**：仓库 2026-11-11 转为 public，Pages 从 `main` 的 `/docs` 构建。
   页面根路径链接由 `render.py` 的 `BASE` 控制（默认 `/geointel`）。
+
+## 版式
+
+站点是给人读的报告，不是给机器看的仪表盘。三条规矩：
+
+1. **只放读者需要的信息**。运维数字（`源状态 37/37`、窗口/库存条数、生成耗时、触发 ID、命中计数、
+   英文线索词）一律不上页面；`strip_ops()` 删运维行，`strip_data_blocks()` 删备忘录末尾的机读 JSON
+   （同样内容已在正文里用自然语言写过）。
+2. **出处压淡**：句末 `（来源，日期）` 由 `SRC_RE` 包成 `.src`，字号 0.84em、灰色，不抢正文。
+3. **概率可读**：表格里表头含「概率」的列自动渲染成数字 + 发丝量度线（`--p` 变量），
+   50% 就是半条线，不需要换算。
+
+排版：单栏 720px、衬线标题（思源宋体/Songti/SimSun）、正文首行缩进 2em、
+发丝线分节、告警条目改为「可点标题 + 小字来源」并跨链回备忘录。深色模式与打印样式都覆盖。
