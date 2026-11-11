@@ -1,116 +1,84 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>触发告警</title><style>
 :root{
-  --paper:#f7f5f0; --paper-2:#f1eee7; --ink:#17171a; --ink-2:#4b4b53;
-  --ink-3:#8a8a93; --rule:#dcd7cc; --rule-2:#c6c0b2; --accent:#8c2f1e;
-  --serif:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","Source Han Serif CN",STSong,SimSun,Georgia,serif;
+  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
+  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
-  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --paper:#131311; --paper-2:#1a1a17; --ink:#e9e5dd; --ink-2:#b4aea3;
-    --ink-3:#7d776c; --rule:#302d27; --rule-2:#443f37; --accent:#cf6a4f;
+    --paper:#151513; --paper-2:#1d1d1a; --ink:#e8e4dc; --ink-2:#b3ada2;
+    --ink-3:#7e786e; --rule:#2e2b26; --rule-2:#433f38; --accent:#d0705a;
   }
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font:400 17px/1.95 var(--sans); letter-spacing:.015em;
+  font:400 17px/1.9 var(--sans); letter-spacing:.012em;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 ::selection{background:var(--accent); color:var(--paper)}
 
-.sheet{
-  display:grid; grid-template-columns:132px minmax(0,1fr);
-  gap:0 62px; max-width:1000px; margin:0 auto;
-  padding:64px 40px 120px;
+.top{
+  max-width:720px; margin:0 auto; padding:24px 24px 18px;
+  display:flex; align-items:baseline; justify-content:space-between; gap:18px;
+  border-bottom:1px solid var(--rule);
 }
-
-/* ---------- 边栏：出处与索引 ---------- */
-.rail{position:sticky; top:56px; align-self:start; font-family:var(--mono)}
-.rail .brand{
-  display:block; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--ink); text-decoration:none; padding:0 0 14px;
-  border-bottom:1px solid var(--rule-2); margin-bottom:20px;
+.top .brand{
+  font-family:var(--mono); font-size:12px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink); text-decoration:none;
 }
-.rail dl{margin:0 0 26px; padding:0}
-.rail dt{
-  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--ink-3); margin:0 0 1px;
-}
-.rail dd{
-  margin:0 0 13px; font-size:12px; line-height:1.5;
-  color:var(--ink-2); font-variant-numeric:tabular-nums;
-}
-.rail nav{margin:0; padding:16px 0 0; border-top:1px solid var(--rule)}
-.rail nav a{
-  display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--ink-3); text-decoration:none; padding:5px 0;
+.top nav{display:flex; gap:22px; flex-wrap:wrap}
+.top nav a{
+  font-size:13.5px; color:var(--ink-3); text-decoration:none;
   transition:color .16s ease;
 }
-.rail nav a:hover,.rail nav a[aria-current]{color:var(--ink)}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current]{color:var(--ink)}
 
-/* ---------- 刊头 ---------- */
-main{min-width:0}
-.masthead{padding-bottom:30px; border-bottom:2px solid var(--ink); margin-bottom:6px}
-.kicker{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.24em;
-  text-transform:uppercase; color:var(--ink-3); margin-bottom:16px;
-}
-.dateline{
-  font-family:var(--serif); font-size:clamp(29px,5vw,42px); line-height:1.16;
-  font-weight:600; letter-spacing:.02em; margin:0; color:var(--ink);
-  font-feature-settings:"palt" 1;
-}
-.deck{
-  margin-top:15px; font-size:12.5px; line-height:1.7; color:var(--ink-2);
-  font-family:var(--mono); letter-spacing:.02em;
-}
-.deck span+span::before{content:" · "; color:var(--ink-3)}
+.wrap{max-width:720px; margin:0 auto; padding:0 24px 100px}
 
-/* ---------- 正文 ---------- */
-.body{padding-top:34px}
+.kicker{font-size:12.5px; color:var(--ink-3); letter-spacing:.1em; margin:46px 0 12px}
+h1.dateline{
+  font-family:var(--serif); font-weight:400; font-feature-settings:"palt" 1;
+  font-size:clamp(27px,4.4vw,36px); line-height:1.34; letter-spacing:.02em;
+  margin:0 0 10px; color:var(--ink);
+}
+h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
+.under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
+.under span+span::before{content:" · "; color:var(--rule-2)}
+.masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
+
+.body{padding-top:30px}
 .body h2{
-  font-family:var(--sans); font-size:19px; line-height:1.5; font-weight:600;
-  letter-spacing:.03em; margin:52px 0 6px; color:var(--ink);
-  padding-top:18px; border-top:1px solid var(--rule);
+  font-size:18.5px; line-height:1.55; font-weight:600; letter-spacing:.02em;
+  margin:46px 0 12px; padding-top:20px; color:var(--ink);
+  border-top:1px solid var(--rule);
 }
 .body h2:first-child{margin-top:0; padding-top:0; border-top:0}
-.body h2 .idx{
-  font-family:var(--mono); font-size:11px; font-weight:400; letter-spacing:.1em;
-  color:var(--accent); margin-right:14px; vertical-align:2px;
-  font-variant-numeric:tabular-nums;
-}
-.body h2 .eyebrow{
-  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.26em;
-  text-transform:uppercase; color:var(--ink-3); font-weight:400; margin:0 0 7px;
-}
 .body h3{
-  font-size:15.5px; font-weight:600; letter-spacing:.05em; color:var(--ink-2);
+  font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
   margin:30px 0 8px;
 }
-.body h3::before{
-  content:""; display:inline-block; width:14px; height:1px;
-  background:var(--rule-2); vertical-align:3px; margin-right:9px;
-}
-.body p{margin:0 0 1.05em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
-.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2)}
-.body ul,.body ol{margin:0 0 1.15em; padding-left:1.45em}
-.body li{margin:0 0 .5em; text-align:justify}
+.body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
+.body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
+.body li{margin:0 0 .45em; text-align:justify}
 .body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
 .body ul li::marker{content:"— "}
 .body strong{font-weight:600; color:var(--ink)}
 .body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
-.body hr{border:0; height:1px; background:var(--rule); margin:44px 0}
+.body hr{border:0; height:1px; background:var(--rule); margin:40px 0}
 .body a{
   color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
   transition:color .16s ease,border-color .16s ease; word-break:break-word;
 }
 .body a:hover{color:var(--accent); border-color:var(--accent)}
 .body blockquote{
-  margin:26px 0; padding:2px 0 2px 20px; border-left:2px solid var(--accent);
-  color:var(--ink-2); font-size:16px;
+  margin:24px 0; padding:2px 0 2px 18px; border-left:2px solid var(--accent);
+  color:var(--ink-2);
 }
 .body blockquote p{text-indent:0}
 .body blockquote p:last-child{margin-bottom:0}
@@ -122,96 +90,74 @@ main{min-width:0}
 .body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
 .body pre code{background:none; padding:0}
 
-/* 概率细线：情景条目末尾的（45%）下方给一条量度线 */
-.body li.pct .pct-bar{
-  display:block; height:2px; margin-top:8px; background:var(--rule);
-  position:relative; max-width:220px;
-}
-.body li.pct .pct-bar::after{
-  content:""; position:absolute; left:0; top:0; bottom:0;
-  width:calc(var(--p) * 1%); background:var(--accent); opacity:.62;
-}
-
 /* 表格 */
 .body table{
-  width:100%; border-collapse:collapse; margin:26px 0;
+  width:100%; border-collapse:collapse; margin:24px 0;
   font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
 }
 .body th{
-  text-align:left; font-weight:600; font-size:10.5px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--ink-3); padding:0 14px 8px 0;
-  border-bottom:1px solid var(--ink); white-space:nowrap;
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1px solid var(--ink); white-space:nowrap;
 }
-.body td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
 .body td:last-child,.body th:last-child{padding-right:0}
 
-/* 概率列：数字 + 一条发丝量度线，一眼看出量级 */
-.body td.pct-cell{
-  font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px;
-}
-.body td.pct-cell .pct-bar{
-  display:block; height:2px; margin-top:8px;
-  background:var(--rule); position:relative;
-}
+/* 概率列：数字 + 一条发丝量度线 */
+.body td.pct-cell{font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px}
+.body td.pct-cell .pct-bar{display:block; height:2px; margin-top:8px; background:var(--rule); position:relative}
 .body td.pct-cell .pct-bar::after{
   content:""; position:absolute; left:0; top:0; bottom:0;
   width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
 }
 
-/* ---------- 列表页 ---------- */
+/* 索引列表 */
 .index-list{list-style:none; margin:0; padding:0}
 .index-list li{
-  display:grid; grid-template-columns:104px minmax(0,1fr); gap:0 26px;
-  padding:20px 0; border-bottom:1px solid var(--rule); margin:0;
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:0 22px;
+  padding:16px 0; border-bottom:1px solid var(--rule); margin:0;
 }
 .index-list .when{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
-  color:var(--ink-3); padding-top:4px; font-variant-numeric:tabular-nums;
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums; letter-spacing:.04em;
 }
-.index-list .what{font-size:17px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what{font-size:16.5px; line-height:1.6; margin:0; text-indent:0}
 .index-list .what a{border-bottom-color:transparent}
 .index-list .what a:hover{border-bottom-color:var(--accent)}
 .index-list .note{
-  margin:7px 0 0; font-size:12.5px; line-height:1.65; color:var(--ink-3);
-  font-family:var(--mono); letter-spacing:.02em; text-indent:0;
+  margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
 }
 .index-list .note b{font-weight:400; color:var(--ink-2)}
 
 .section-head{
-  font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase;
-  color:var(--ink-3); margin:58px 0 0; padding-bottom:10px;
-  border-bottom:1px solid var(--rule-2);
+  font-size:13px; color:var(--ink-3); letter-spacing:.08em;
+  margin:56px 0 4px; padding-bottom:10px; border-bottom:1px solid var(--rule-2);
 }
 
-/* ---------- 页脚 ---------- */
+/* 告警 */
+.alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
+.alert-item a{color:var(--ink-2)}
+
 .colophon{
-  margin-top:76px; padding-top:18px; border-top:1px solid var(--rule);
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
-  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:6px 22px;
-  text-transform:uppercase;
+  margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
 }
+.colophon span+span::before{content:"· "; color:var(--rule-2)}
 
-/* ---------- 窄屏 ---------- */
-@media (max-width:880px){
-  .sheet{grid-template-columns:minmax(0,1fr); gap:0; padding:40px 22px 80px}
-  .rail{position:static; margin-bottom:34px}
-  .rail .brand{border-bottom:0; padding-bottom:0; margin-bottom:16px}
-  .rail dl{display:flex; flex-wrap:wrap; gap:0 26px; margin-bottom:4px}
-  .rail dt{font-size:9px}
-  .rail dd{margin-bottom:10px}
-  .rail nav{border-top:0; padding-top:0; display:flex; gap:20px; flex-wrap:wrap}
-  .rail nav a{padding:0}
-  body{font-size:16.5px; line-height:1.9}
+@media (max-width:600px){
+  body{font-size:16.5px; line-height:1.88}
+  .top{padding:20px 20px 14px; flex-direction:column; gap:10px}
+  .top nav{gap:18px}
+  .wrap{padding:0 20px 72px}
+  .kicker{margin-top:34px}
   .body p{text-align:left}
-  .index-list li{grid-template-columns:minmax(0,1fr); gap:5px}
-  .index-list .when{padding-top:0}
-  .masthead{padding-bottom:24px}
   .body table{font-size:13px}
   .body th{white-space:normal}
   .body td,.body th{padding-right:10px}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:3px}
+  .index-list .when{padding-top:0}
 }
 
-@media (max-width:560px){
+@media (max-width:420px){
   .body table{font-size:12.5px}
   .body td,.body th{padding-right:8px}
   .body td.pct-cell{min-width:52px; font-size:13px}
@@ -219,45 +165,11 @@ main{min-width:0}
 
 @media print{
   :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
-  .rail nav,.colophon{display:none}
-  .sheet{display:block; max-width:none; padding:0}
+  .top nav,.colophon{display:none}
+  .top{border-bottom:none; padding:0}
+  .wrap{max-width:none; padding:0}
   .body h2{break-after:avoid}
   .body li,.body p{orphans:2; widows:2}
   a{text-decoration:none}
 }
-</style></head><body><div class="sheet"><aside class="rail"><a class="brand" href="/geointel/index.html">geointel</a><dl><dt>条目</dt><dd>2</dd></dl><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html" aria-current="page">触发告警</a></nav></aside><main><header class="masthead"><div class="kicker">GEOINTEL · 触发告警</div><h1 class="dateline">触发告警</h1><div class="deck"><span>决策备忘录里的触发条件命中记录</span></div></header><div class="body"><div class="section-head">2026-11-11 · 2026 年 11 月 11 日</div><p>统计窗口：过去 24 小时，800 条材料。</p>
-<h3>[t1] BIS或联邦公报发布涉及先进芯片、设备或材料的新规则</h3>
-<ul>
-<li>关联决策：未来 90 天半导体出口管制升级的概率与应对（2026-11-10-chips-export-control）</li>
-<li>命中 1 条（阈值 1）</li>
-<li>触发后动作：启动30-45天安全库存并调整交付预期</li>
-<li>2026-11-10 BIS Extends Its Suspension of the “Affiliates Rule” Until January 2027 - Global Trade &amp; Sanctions Law（gn-trade）<a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOT2RjU2pmdm9ienJtbGlNc0NGdnZUUFZRWG9lS3NZaF80RXRmNTgxZ2FRLWlEWTFFa3pvUHNyTDFjRDk5TG9BRHhTUFdNZlAzQ0NsaG5pVTZlYnVZUXJqc0g1N051a3RKZWI1NHB0emNrdi1IampsQzJFclVjM2tlVDdLM1FnUEhqcEhXb0JRZjlYTnUzUTJtSVhUUQ?oc=5" rel="nofollow">https://news.google.com/rss/articles/CBMimwFBVV95cUxOT2RjU2pmdm9ienJtbGlNc0NGdnZUUFZRWG9lS3NZaF80RXRmNTgxZ2FRLWlEWTFFa3pvUHNyTDFjRDk5TG9BRHhTUFdNZlAzQ0NsaG5pVTZlYnVZUXJqc0g1N051a3RKZWI1NHB0emNrdi1IampsQzJFclVjM2tlVDdLM1FnUEhqcEhXb0JRZjlYTnUzUTJtSVhUUQ?oc=5</a></li>
-</ul>
-<h3>[t3] 日本经产省或行业联盟释放协调管制信号</h3>
-<ul>
-<li>关联决策：未来 90 天半导体出口管制升级的概率与应对（2026-11-10-chips-export-control）</li>
-<li>命中 1 条（阈值 1）</li>
-<li>触发后动作：重新评估日本供应商敞口并加速替代认证</li>
-<li>2026-11-10 Japan&#x27;s Mitsui Chemicals to buy chip materials maker JSR for $11.6bn（nikkei-asia）<a href="https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn" rel="nofollow">https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn</a></li>
-</ul>
-<h3>[T1] 核心CPI环比≥0.30%（需人工读数）</h3>
-<ul>
-<li>关联决策：未来 90 天美联储加息的概率与应对（2026-11-10-fed-hike-90d）</li>
-<li>阈值：0.3；线索词：cpi, core, mom, 0.30%</li>
-<li>触发后动作：久期压至3.5年，期权名义额增至5%</li>
-</ul>
-<h3>[T3] Powell/Waller讲话释放鹰派信号</h3>
-<ul>
-<li>关联决策：未来 90 天美联储加息的概率与应对（2026-11-10-fed-hike-90d）</li>
-<li>命中 2 条（阈值 1）</li>
-<li>触发后动作：期权头寸加倍，现券久期压至3.0年</li>
-<li>2026-11-10 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations（cnbc）<a href="https://www.cnbc.com/2026/11/10/us-bonds-treasurys-yields.html" rel="nofollow">https://www.cnbc.com/2026/11/10/us-bonds-treasurys-yields.html</a></li>
-<li>2026-11-10 Top Fed official considers largest rate rise since 2022（ft）<a href="https://www.ft.com/content/72abed21-6043-4b2b-81b1-f3a2547da5b7?syn-25a6b1a6=1" rel="nofollow">https://www.ft.com/content/72abed21-6043-4b2b-81b1-f3a2547da5b7?syn-25a6b1a6=1</a></li>
-</ul><div class="section-head">2026-11-10 · 2026 年 11 月 10 日</div><p>统计窗口：过去 24 小时，540 条材料。</p>
-<h3>[t3] 日本经产省或行业联盟释放协调管制信号</h3>
-<ul>
-<li>关联决策：未来 90 天半导体出口管制升级的概率与应对（2026-11-10-chips-export-control）</li>
-<li>命中 1 条（阈值 1）</li>
-<li>触发后动作：重新评估日本供应商敞口并加速替代认证</li>
-<li>2026-11-10 Japan&#x27;s Mitsui Chemicals to buy chip materials maker JSR for $11.6bn（nikkei-asia）<a href="https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn" rel="nofollow">https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn</a></li>
-</ul></div><footer class="colophon"><span>只基于抓取材料</span><span>magpie / group</span><span>2026-11-11 01:23 UTC</span></footer></main></div></body></html>
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html">geointel</a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html" aria-current="page">触发告警</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">触发告警</p><h1 class="dateline">触发告警</h1></header><div class="body"><h2>2026 年 11 月 11 日</h2><h3>BIS或联邦公报发布涉及先进芯片、设备或材料的新规则</h3><ul><li>关联备忘录：<a href="/geointel/decisions/2026-11-10-chips-export-control.html">相关备忘录</a></li><li>触发后动作：启动30-45天安全库存并调整交付预期</li><li>2026-11-10 BIS Extends Its Suspension of the “Affiliates Rule” Until January 2027 - Global Trade &amp; Sanctions Law（gn-trade）<a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOT2RjU2pmdm9ienJtbGlNc0NGdnZUUFZRWG9lS3NZaF80RXRmNTgxZ2FRLWlEWTFFa3pvUHNyTDFjRDk5TG9BRHhTUFdNZlAzQ0NsaG5pVTZlYnVZUXJqc0g1N051a3RKZWI1NHB0emNrdi1IampsQzJFclVjM2tlVDdLM1FnUEhqcEhXb0JRZjlYTnUzUTJtSVhUUQ?oc=5" rel="nofollow">https://news.google.com/rss/articles/CBMimwFBVV95cUxOT2RjU2pmdm9ienJtbGlNc0NGdnZUUFZRWG9lS3NZaF80RXRmNTgxZ2FRLWlEWTFFa3pvUHNyTDFjRDk5TG9BRHhTUFdNZlAzQ0NsaG5pVTZlYnVZUXJqc0g1N051a3RKZWI1NHB0emNrdi1IampsQzJFclVjM2tlVDdLM1FnUEhqcEhXb0JRZjlYTnUzUTJtSVhUUQ?oc=5</a></li></ul><h3>日本经产省或行业联盟释放协调管制信号</h3><ul><li>关联备忘录：<a href="/geointel/decisions/2026-11-10-chips-export-control.html">相关备忘录</a></li><li>触发后动作：重新评估日本供应商敞口并加速替代认证</li><li>2026-11-10 Japan&#x27;s Mitsui Chemicals to buy chip materials maker JSR for $11.6bn（nikkei-asia）<a href="https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn" rel="nofollow">https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn</a></li></ul><h3>核心CPI环比≥0.30%（需人工读数）</h3><ul><li>关联备忘录：<a href="/geointel/decisions/2026-11-10-fed-hike-90d.html">相关备忘录</a></li><li>阈值：0.3</li><li>触发后动作：久期压至3.5年，期权名义额增至5%</li></ul><h3>Powell/Waller讲话释放鹰派信号</h3><ul><li>关联备忘录：<a href="/geointel/decisions/2026-11-10-fed-hike-90d.html">相关备忘录</a></li><li>触发后动作：期权头寸加倍，现券久期压至3.0年</li><li>2026-11-10 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations（cnbc）<a href="https://www.cnbc.com/2026/11/10/us-bonds-treasurys-yields.html" rel="nofollow">https://www.cnbc.com/2026/11/10/us-bonds-treasurys-yields.html</a></li><li>2026-11-10 Top Fed official considers largest rate rise since 2022（ft）<a href="https://www.ft.com/content/72abed21-6043-4b2b-81b1-f3a2547da5b7?syn-25a6b1a6=1" rel="nofollow">https://www.ft.com/content/72abed21-6043-4b2b-81b1-f3a2547da5b7?syn-25a6b1a6=1</a></li></ul><h2>2026 年 11 月 10 日</h2><h3>日本经产省或行业联盟释放协调管制信号</h3><ul><li>关联备忘录：<a href="/geointel/decisions/2026-11-10-chips-export-control.html">相关备忘录</a></li><li>触发后动作：重新评估日本供应商敞口并加速替代认证</li><li>2026-11-10 Japan&#x27;s Mitsui Chemicals to buy chip materials maker JSR for $11.6bn（nikkei-asia）<a href="https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn" rel="nofollow">https://asia.nikkei.com/business/business-deals/japan-s-mitsui-chemicals-to-buy-chip-materials-maker-jsr-for-11.6bn</a></li></ul></div><footer class="colophon"><span>只基于抓取材料</span><span>11 月 11 日 01:49 UTC 更新</span></footer></div></body></html>

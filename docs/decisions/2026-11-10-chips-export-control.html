@@ -1,116 +1,84 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>未来 90 天半导体出口管制升级的概率与应对</title><style>
 :root{
-  --paper:#f7f5f0; --paper-2:#f1eee7; --ink:#17171a; --ink-2:#4b4b53;
-  --ink-3:#8a8a93; --rule:#dcd7cc; --rule-2:#c6c0b2; --accent:#8c2f1e;
-  --serif:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","Source Han Serif CN",STSong,SimSun,Georgia,serif;
+  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
+  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
-  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --paper:#131311; --paper-2:#1a1a17; --ink:#e9e5dd; --ink-2:#b4aea3;
-    --ink-3:#7d776c; --rule:#302d27; --rule-2:#443f37; --accent:#cf6a4f;
+    --paper:#151513; --paper-2:#1d1d1a; --ink:#e8e4dc; --ink-2:#b3ada2;
+    --ink-3:#7e786e; --rule:#2e2b26; --rule-2:#433f38; --accent:#d0705a;
   }
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font:400 17px/1.95 var(--sans); letter-spacing:.015em;
+  font:400 17px/1.9 var(--sans); letter-spacing:.012em;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 ::selection{background:var(--accent); color:var(--paper)}
 
-.sheet{
-  display:grid; grid-template-columns:132px minmax(0,1fr);
-  gap:0 62px; max-width:1000px; margin:0 auto;
-  padding:64px 40px 120px;
+.top{
+  max-width:720px; margin:0 auto; padding:24px 24px 18px;
+  display:flex; align-items:baseline; justify-content:space-between; gap:18px;
+  border-bottom:1px solid var(--rule);
 }
-
-/* ---------- 边栏：出处与索引 ---------- */
-.rail{position:sticky; top:56px; align-self:start; font-family:var(--mono)}
-.rail .brand{
-  display:block; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--ink); text-decoration:none; padding:0 0 14px;
-  border-bottom:1px solid var(--rule-2); margin-bottom:20px;
+.top .brand{
+  font-family:var(--mono); font-size:12px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink); text-decoration:none;
 }
-.rail dl{margin:0 0 26px; padding:0}
-.rail dt{
-  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--ink-3); margin:0 0 1px;
-}
-.rail dd{
-  margin:0 0 13px; font-size:12px; line-height:1.5;
-  color:var(--ink-2); font-variant-numeric:tabular-nums;
-}
-.rail nav{margin:0; padding:16px 0 0; border-top:1px solid var(--rule)}
-.rail nav a{
-  display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--ink-3); text-decoration:none; padding:5px 0;
+.top nav{display:flex; gap:22px; flex-wrap:wrap}
+.top nav a{
+  font-size:13.5px; color:var(--ink-3); text-decoration:none;
   transition:color .16s ease;
 }
-.rail nav a:hover,.rail nav a[aria-current]{color:var(--ink)}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current]{color:var(--ink)}
 
-/* ---------- 刊头 ---------- */
-main{min-width:0}
-.masthead{padding-bottom:30px; border-bottom:2px solid var(--ink); margin-bottom:6px}
-.kicker{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.24em;
-  text-transform:uppercase; color:var(--ink-3); margin-bottom:16px;
-}
-.dateline{
-  font-family:var(--serif); font-size:clamp(29px,5vw,42px); line-height:1.16;
-  font-weight:600; letter-spacing:.02em; margin:0; color:var(--ink);
-  font-feature-settings:"palt" 1;
-}
-.deck{
-  margin-top:15px; font-size:12.5px; line-height:1.7; color:var(--ink-2);
-  font-family:var(--mono); letter-spacing:.02em;
-}
-.deck span+span::before{content:" · "; color:var(--ink-3)}
+.wrap{max-width:720px; margin:0 auto; padding:0 24px 100px}
 
-/* ---------- 正文 ---------- */
-.body{padding-top:34px}
+.kicker{font-size:12.5px; color:var(--ink-3); letter-spacing:.1em; margin:46px 0 12px}
+h1.dateline{
+  font-family:var(--serif); font-weight:400; font-feature-settings:"palt" 1;
+  font-size:clamp(27px,4.4vw,36px); line-height:1.34; letter-spacing:.02em;
+  margin:0 0 10px; color:var(--ink);
+}
+h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
+.under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
+.under span+span::before{content:" · "; color:var(--rule-2)}
+.masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
+
+.body{padding-top:30px}
 .body h2{
-  font-family:var(--sans); font-size:19px; line-height:1.5; font-weight:600;
-  letter-spacing:.03em; margin:52px 0 6px; color:var(--ink);
-  padding-top:18px; border-top:1px solid var(--rule);
+  font-size:18.5px; line-height:1.55; font-weight:600; letter-spacing:.02em;
+  margin:46px 0 12px; padding-top:20px; color:var(--ink);
+  border-top:1px solid var(--rule);
 }
 .body h2:first-child{margin-top:0; padding-top:0; border-top:0}
-.body h2 .idx{
-  font-family:var(--mono); font-size:11px; font-weight:400; letter-spacing:.1em;
-  color:var(--accent); margin-right:14px; vertical-align:2px;
-  font-variant-numeric:tabular-nums;
-}
-.body h2 .eyebrow{
-  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.26em;
-  text-transform:uppercase; color:var(--ink-3); font-weight:400; margin:0 0 7px;
-}
 .body h3{
-  font-size:15.5px; font-weight:600; letter-spacing:.05em; color:var(--ink-2);
+  font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
   margin:30px 0 8px;
 }
-.body h3::before{
-  content:""; display:inline-block; width:14px; height:1px;
-  background:var(--rule-2); vertical-align:3px; margin-right:9px;
-}
-.body p{margin:0 0 1.05em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
-.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2)}
-.body ul,.body ol{margin:0 0 1.15em; padding-left:1.45em}
-.body li{margin:0 0 .5em; text-align:justify}
+.body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
+.body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
+.body li{margin:0 0 .45em; text-align:justify}
 .body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
 .body ul li::marker{content:"— "}
 .body strong{font-weight:600; color:var(--ink)}
 .body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
-.body hr{border:0; height:1px; background:var(--rule); margin:44px 0}
+.body hr{border:0; height:1px; background:var(--rule); margin:40px 0}
 .body a{
   color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
   transition:color .16s ease,border-color .16s ease; word-break:break-word;
 }
 .body a:hover{color:var(--accent); border-color:var(--accent)}
 .body blockquote{
-  margin:26px 0; padding:2px 0 2px 20px; border-left:2px solid var(--accent);
-  color:var(--ink-2); font-size:16px;
+  margin:24px 0; padding:2px 0 2px 18px; border-left:2px solid var(--accent);
+  color:var(--ink-2);
 }
 .body blockquote p{text-indent:0}
 .body blockquote p:last-child{margin-bottom:0}
@@ -122,96 +90,74 @@ main{min-width:0}
 .body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
 .body pre code{background:none; padding:0}
 
-/* 概率细线：情景条目末尾的（45%）下方给一条量度线 */
-.body li.pct .pct-bar{
-  display:block; height:2px; margin-top:8px; background:var(--rule);
-  position:relative; max-width:220px;
-}
-.body li.pct .pct-bar::after{
-  content:""; position:absolute; left:0; top:0; bottom:0;
-  width:calc(var(--p) * 1%); background:var(--accent); opacity:.62;
-}
-
 /* 表格 */
 .body table{
-  width:100%; border-collapse:collapse; margin:26px 0;
+  width:100%; border-collapse:collapse; margin:24px 0;
   font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
 }
 .body th{
-  text-align:left; font-weight:600; font-size:10.5px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--ink-3); padding:0 14px 8px 0;
-  border-bottom:1px solid var(--ink); white-space:nowrap;
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1px solid var(--ink); white-space:nowrap;
 }
-.body td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
 .body td:last-child,.body th:last-child{padding-right:0}
 
-/* 概率列：数字 + 一条发丝量度线，一眼看出量级 */
-.body td.pct-cell{
-  font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px;
-}
-.body td.pct-cell .pct-bar{
-  display:block; height:2px; margin-top:8px;
-  background:var(--rule); position:relative;
-}
+/* 概率列：数字 + 一条发丝量度线 */
+.body td.pct-cell{font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px}
+.body td.pct-cell .pct-bar{display:block; height:2px; margin-top:8px; background:var(--rule); position:relative}
 .body td.pct-cell .pct-bar::after{
   content:""; position:absolute; left:0; top:0; bottom:0;
   width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
 }
 
-/* ---------- 列表页 ---------- */
+/* 索引列表 */
 .index-list{list-style:none; margin:0; padding:0}
 .index-list li{
-  display:grid; grid-template-columns:104px minmax(0,1fr); gap:0 26px;
-  padding:20px 0; border-bottom:1px solid var(--rule); margin:0;
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:0 22px;
+  padding:16px 0; border-bottom:1px solid var(--rule); margin:0;
 }
 .index-list .when{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
-  color:var(--ink-3); padding-top:4px; font-variant-numeric:tabular-nums;
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums; letter-spacing:.04em;
 }
-.index-list .what{font-size:17px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what{font-size:16.5px; line-height:1.6; margin:0; text-indent:0}
 .index-list .what a{border-bottom-color:transparent}
 .index-list .what a:hover{border-bottom-color:var(--accent)}
 .index-list .note{
-  margin:7px 0 0; font-size:12.5px; line-height:1.65; color:var(--ink-3);
-  font-family:var(--mono); letter-spacing:.02em; text-indent:0;
+  margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
 }
 .index-list .note b{font-weight:400; color:var(--ink-2)}
 
 .section-head{
-  font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase;
-  color:var(--ink-3); margin:58px 0 0; padding-bottom:10px;
-  border-bottom:1px solid var(--rule-2);
+  font-size:13px; color:var(--ink-3); letter-spacing:.08em;
+  margin:56px 0 4px; padding-bottom:10px; border-bottom:1px solid var(--rule-2);
 }
 
-/* ---------- 页脚 ---------- */
+/* 告警 */
+.alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
+.alert-item a{color:var(--ink-2)}
+
 .colophon{
-  margin-top:76px; padding-top:18px; border-top:1px solid var(--rule);
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
-  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:6px 22px;
-  text-transform:uppercase;
+  margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
 }
+.colophon span+span::before{content:"· "; color:var(--rule-2)}
 
-/* ---------- 窄屏 ---------- */
-@media (max-width:880px){
-  .sheet{grid-template-columns:minmax(0,1fr); gap:0; padding:40px 22px 80px}
-  .rail{position:static; margin-bottom:34px}
-  .rail .brand{border-bottom:0; padding-bottom:0; margin-bottom:16px}
-  .rail dl{display:flex; flex-wrap:wrap; gap:0 26px; margin-bottom:4px}
-  .rail dt{font-size:9px}
-  .rail dd{margin-bottom:10px}
-  .rail nav{border-top:0; padding-top:0; display:flex; gap:20px; flex-wrap:wrap}
-  .rail nav a{padding:0}
-  body{font-size:16.5px; line-height:1.9}
+@media (max-width:600px){
+  body{font-size:16.5px; line-height:1.88}
+  .top{padding:20px 20px 14px; flex-direction:column; gap:10px}
+  .top nav{gap:18px}
+  .wrap{padding:0 20px 72px}
+  .kicker{margin-top:34px}
   .body p{text-align:left}
-  .index-list li{grid-template-columns:minmax(0,1fr); gap:5px}
-  .index-list .when{padding-top:0}
-  .masthead{padding-bottom:24px}
   .body table{font-size:13px}
   .body th{white-space:normal}
   .body td,.body th{padding-right:10px}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:3px}
+  .index-list .when{padding-top:0}
 }
 
-@media (max-width:560px){
+@media (max-width:420px){
   .body table{font-size:12.5px}
   .body td,.body th{padding-right:8px}
   .body td.pct-cell{min-width:52px; font-size:13px}
@@ -219,13 +165,14 @@ main{min-width:0}
 
 @media print{
   :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
-  .rail nav,.colophon{display:none}
-  .sheet{display:block; max-width:none; padding:0}
+  .top nav,.colophon{display:none}
+  .top{border-bottom:none; padding:0}
+  .wrap{max-width:none; padding:0}
   .body h2{break-after:avoid}
   .body li,.body p{orphans:2; widows:2}
   a{text-decoration:none}
 }
-</style></head><body><div class="sheet"><aside class="rail"><a class="brand" href="/geointel/index.html">geointel</a><dl><dt>日期</dt><dd>2026-11-10</dd><dt>生成</dt><dd>09:34 UTC</dd><dt>依据</dt><dd>40 条</dd><dt>视界</dt><dd>90 天</dd><dt>置信</dt><dd>低</dd><dt>复盘</dt><dd>2027-02-08</dd></dl><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html" aria-current="page">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></aside><main><header class="masthead"><div class="kicker">GEOINTEL · 决策备忘录</div><h1 class="dateline">未来 90 天半导体出口管制升级的概率与应对</h1><div class="deck"><span>低 置信</span><span>复盘 2027-02-08</span><span>40 条依据</span></div></header><div class="body"><pre><code>{
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html">geointel</a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html" aria-current="page">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">决策备忘录</p><h1 class="dateline q">未来 90 天半导体出口管制升级的概率与应对</h1><p class="under"><span>置信度 低</span><span>复盘 2027-02-08</span><span>视界 90 天</span></p></header><div class="body"><pre><code>{
   &quot;scenarios&quot;: [
     {&quot;name&quot;: &quot;定向升级&quot;, &quot;prob&quot;: 45},
     {&quot;name&quot;: &quot;系统性升级&quot;, &quot;prob&quot;: 20},
@@ -239,110 +186,4 @@ main{min-width:0}
   ],
   &quot;confidence&quot;: &quot;low&quot;,
   &quot;review_date&quot;: &quot;2027-02-08&quot;
-}</code></pre>
-<h2><span class="idx">01</span><span class="eyebrow">SCOPE</span>问题与边界</h2>
-<p><strong>真正要选的是什么</strong>：在 2026-11-10 至 2027-02-08 这 90 天内，是否为「半导体出口管制升级」提前调整供应链与合同条款，以及调整到什么程度（不动 / 轻度对冲 / 激进重构）。决策者假定为一家在半导体供应链中有采购或敞口的企业；若角色不同（如投资机构、政策部门），第 4–6 节需重估。</p>
-<p><strong>不包含</strong>：超过 90 天的产能布局、对华直接投资、具体交易时点、中国国内政策本身的走向。</p>
-<p><strong>最晚决策时间</strong>：安全库存与替代供应商认证通常需要 45–90 天前置期（估计）。因此实质性决策最迟应在 <strong>2026-12-15</strong> 前作出，否则缓冲无法在 2027-02-08 前到位；纯监测姿态可推迟至 2027-01-15。</p>
-<p><strong>数据边界（重要）</strong>：所给 40 条情报全部来自单一来源（nikkei-asia）且标注同一日期（2026-11-10），「过去 30 天」的时间跨度在材料内部得不到证实。本备忘录的证据基础薄弱，结论以方向性判断为主，所有量化数字均为估计。</p>
-<h2><span class="idx">02</span><span class="eyebrow">RECORD</span>已知事实</h2>
-<ol>
-<li>Nvidia 成为民主党更强硬对华技术政策的早期测试案例 ——（nikkei-asia，2026-11-10）[25]</li>
-<li>Nvidia CEO 黄仁勋的婚外情调查引发中国间谍担忧，并导致股价下跌 ——（nikkei-asia，2026-11-10）[13][35]</li>
-<li>日本三井化学以 116 亿美元收购芯片材料商 JSR ——（nikkei-asia，2026-11-10）[24]</li>
-<li>台湾芯片制造商 CEO 警告内存价格上涨不可持续 ——（nikkei-asia，2026-11-10）[10]</li>
-<li>马来西亚与台湾关系恶化威胁未来芯片投资 ——（nikkei-asia，2026-11-10）[12]</li>
-<li>贸易限制威胁已使日本钢铁出口降至 30 年低点 ——（nikkei-asia，2026-11-10）[34]</li>
-<li>马斯克 Terafab 芯片制造项目正在招募日本供应商 ——（nikkei-asia，2026-11-10）[29]</li>
-<li>AI 需求推高成本，印度电子企业面临 PCB 供应紧张 ——（nikkei-asia，2026-11-10）[37]</li>
-</ol>
-<p><strong>注</strong>：材料中没有任何一条直接陈述美国或中国政府在 90 天内将出台新管制措施——升级判断是从上述信号推断的，不是事实。</p>
-<h2><span class="idx">03</span><span class="eyebrow">UNCERTAINTY</span>关键不确定性</h2>
-<p><strong>变量 1：美国管制的适用范围</strong></p>
-<ul>
-<li>当前区间：定向（个别企业/特定终端）约 50–70% vs 系统性（全链条多点）约 30–50%（估计）。</li>
-<li>判断依据：[25] 显示政策压力存在；[13][35] 显示 Nvidia 处于政治风暴中心，但材料中没有任何官方规则文本。</li>
-<li>为什么重要：定向情形只需局部应对；系统性情形需要全面供应链重构，成本相差数倍。</li>
-</ul>
-<p><strong>变量 2：中国反制的强度与形式</strong></p>
-<ul>
-<li>当前区间：从「口头警告 + 少量清单」到「镓/锗/稀土出口许可 + 不可靠实体清单扩容」之间的任一位置（估计）。</li>
-<li>判断依据：材料未直接涉及中国反制（<strong>材料不足</strong>）；[34] 仅证明贸易限制对第三方有实际冲击。</li>
-<li>为什么重要：反制会改变成本结构与合规风险，且可能先于美国新政落地。</li>
-</ul>
-<p><strong>变量 3：日本等第三方经济体的对齐程度</strong></p>
-<ul>
-<li>当前区间：从「完全追随」到「保持独立供应链」之间（估计）。</li>
-<li>判断依据：[24] 显示日本在重组芯片材料供应链；[29] 显示日本供应商同时服务于非美项目。</li>
-<li>为什么重要：若日本不追随，管制有效性下降，同时出现可替代供给——直接改变选项 2 的可行性。</li>
-</ul>
-<p><strong>变量 4：供给紧张是否会自我缓解</strong></p>
-<ul>
-<li>当前区间：内存价格见顶回落 vs 持续紧张，两者皆有可能（估计）。</li>
-<li>判断依据：[10] 明确警告价格「不可持续」；[37] 显示 AI 需求仍在推高上游成本——两个方向相反的信号并存。</li>
-<li>为什么重要：若供给自行缓解，管制的边际冲击下降，过度对冲会产生减值损失。</li>
-</ul>
-<p><strong>变量 5：政治议程窗口</strong></p>
-<ul>
-<li>当前区间：90 天内存在重大政策窗口 vs 议程被气候、区域峰会等议题占据（估计）。</li>
-<li>判断依据：[1] 提及 COP31 与东盟峰会；[7] 提及美国中期选举后的政治格局变化。</li>
-<li>为什么重要：决定行动节奏——窗口期短则必须提前布局，窗口期长则可等待更多信号。</li>
-</ul>
-<h2><span class="idx">04</span><span class="eyebrow">SCENARIOS</span>情景</h2>
-<table><thead><tr><th>情景</th><th>概率（估计）</th><th>关键观察点</th></tr></thead><tbody><tr><td>A. 定向升级：新增个别实体清单、特定终端（如 AI 数据中心 GPU）限制或出口许可收紧</td><td class="pct-cell"><strong>45</strong><span class="pct-bar" style="--p:45"></span></td><td>美国联邦公报新规则；Nvidia 案是否导致许可撤销；中国是否针对个别美企反制</td></tr><tr><td>B. 系统性升级：覆盖先进逻辑芯片、设备、材料（含 EDA）的多点管制 + 中国对等反制</td><td class="pct-cell"><strong>20</strong><span class="pct-bar" style="--p:20"></span></td><td>多部委联合规则；日本经产省协调措施；中国商务部公告；镓/锗/稀土出口数据异常</td></tr><tr><td>C. 维持现状：无新措施，焦点转向执行与合规</td><td class="pct-cell"><strong>35</strong><span class="pct-bar" style="--p:35"></span></td><td>90 天内无新规则；Nvidia 案以内部/民事方式了结；行业协会主要诉求得到回应</td></tr></tbody></table>
-<p>概率合计 = 45 + 20 + 35 = <strong>100</strong>。即未来 90 天出现某种形式升级的估计概率约 <strong>65%</strong>（A+B），但该数字基于单源单日样本，置信度低。</p>
-<h2><span class="idx">05</span><span class="eyebrow">OPTIONS</span>选项评估</h2>
-<p><strong>选项 1：不做决定（仅监测）</strong></p>
-<ul>
-<li>预期收益：避免过早投入的浪费（估计可节省库存占用与认证费用，规模取决于采购额，材料不足无法量化）。</li>
-<li>最坏情况：情景 B 下关键芯片断供，交付违约并流失客户。</li>
-<li>可逆性：高——可随时启动其他选项。</li>
-<li>执行成本：低——仅需现有人力持续阅读联邦公报与行业通报。</li>
-<li>致命缺陷：响应滞后。安全库存与供应商认证需 45–90 天前置期（估计），触发后再行动可能来不及。</li>
-</ul>
-<p><strong>选项 2：分层对冲（核心推荐）</strong></p>
-<ul>
-<li>预期收益：情景 A 下保住大部分交付（估计 80%+）；情景 B 下争取 1–2 个季度的缓冲窗口。</li>
-<li>最坏情况：情景 C + 价格回落 → 库存减值与资金占用；估计减值幅度有限（[10] 显示内存类价格本就面临下行压力）。</li>
-<li>可逆性：中高——库存在 6–12 个月内可消化；认证投入部分沉没。</li>
-<li>执行成本：中——估计为关键品类 30–45 天安全库存 + 1–2 家替代供应商认证费用。</li>
-</ul>
-<p><strong>选项 3：制度性对冲</strong></p>
-<ul>
-<li>预期收益：除选项 2 外，降低法律与关系风险，情景 B 下保护合同与客户。</li>
-<li>最坏情况：游说无果、客户拒绝重谈条款，投入沉没。</li>
-<li>可逆性：中——合同条款变更难以撤回。</li>
-<li>执行成本：中高——律师、顾问与行业联盟费用。</li>
-</ul>
-<p><strong>选项 4：激进重构</strong></p>
-<ul>
-<li>预期收益：情景 B 下生存能力最强。</li>
-<li>最坏情况：成本上升 20–40%（估计）、质量认证失败、触发美方审查升级。</li>
-<li>可逆性：低——产线切换后难以快速回退。</li>
-<li>执行成本：高。</li>
-</ul>
-<h2><span class="idx">06</span><span class="eyebrow">RECOMMENDATION</span>建议与触发条件</h2>
-<p><strong>推荐选项 2（分层对冲）</strong>，并在决策当日预先承诺：若触发条件 t1 或 t2 发生，则自动升级至选项 4 的部分措施。具体动作与时限：</p>
-<ol>
-<li><strong>2026-11-24 前</strong>：确定前 2–3 类关键芯片/材料清单，将安全库存目标设定为 30–45 天（估计）。</li>
-<li><strong>2026-12-15 前</strong>：启动 1–2 家替代供应商的技术认证（优先日本与非美设备产线，参照 [24][29] 所示供应链动向）。</li>
-<li><strong>2027-01-15 前</strong>：完成一次内部压力测试，模拟情景 B 下的交付连续性。</li>
-</ol>
-<p><strong>触发条件</strong>：</p>
-<table><thead><tr><th>ID</th><th>可观测指标</th><th>阈值</th><th>触发后动作</th></tr></thead><tbody><tr><td>t1</td><td>美国工业与安全局（BIS）或联邦公报发布涉及先进芯片、设备或材料的新规则</td><td>1 次正式公告</td><td>立即启动安全库存，并通知销售端调整交付预期</td></tr><tr><td>t2</td><td>中国商务部宣布对等出口管制或不可靠实体清单扩容（尤其涉及镓/锗/稀土或 PCB 上游）</td><td>1 次公告</td><td>启动供应链压力测试，审查对美依赖度，并评估选项 4</td></tr><tr><td>t3</td><td>日本经产省或行业联盟释放协调管制信号，或出现 Mitsui-JSR 类供应链重组的后续交易</td><td>1 次政策文件或重大并购公告</td><td>重新评估日本供应商敞口，加速替代认证</td></tr><tr><td>t4</td><td>内存现货价格连续环比下降（供给紧张自我缓解）</td><td>连续 4 周下降</td><td>将库存目标下调至 15–20 天，释放资金</td></tr></tbody></table>
-<h2><span class="idx">07</span><span class="eyebrow">FALSIFICATION</span>反面证据与证伪条件</h2>
-<p>出现以下任一情况，本备忘录的核心结论应被推翻或大幅修正：</p>
-<ol>
-<li><strong>90 天内无任何新联邦公报规则，且 Nvidia 案未导致任何出口许可变化</strong> → 则「升级概率约 65%」属高估，应下调至 40% 以下。</li>
-<li><strong>内存价格快速回落并伴随 AI 资本开支放缓</strong> → 供给紧张假设被削弱，过度对冲的理由消失。</li>
-<li><strong>中美在 COP31 或东盟峰会期间达成技术贸易谅解</strong> → 情景 C 概率应上调至 50% 以上，选项 2 的库存目标应下调。</li>
-<li><strong>日本明确拒绝协调并继续扩大对华芯片材料出口</strong> → 情景 B 的「系统性升级有效性」假设被推翻，同时选项 2 的替代供给来源反而扩大。</li>
-<li><strong>马来西亚与台湾关系修复</strong> → [12] 所示的供应链多元化障碍消除，选项 4 的紧迫性下降。</li>
-</ol>
-<h2><span class="idx">08</span><span class="eyebrow">REVIEW</span>复盘日期</h2>
-<p><strong>复盘日期：2027-02-08</strong>。届时需要回答两个问题：</p>
-<ol>
-<li>这 90 天内是否出现了新的、覆盖先进芯片/设备/材料的正式管制措施？若有，是定向还是系统性？</li>
-<li>Nvidia 案与民主党对华技术政策是否导致管制范围扩大到非美国企业（含日本、韩国、中国台湾）？若未扩大，选项 4 的触发条件是否需要重设？</li>
-</ol>
-<hr></div><footer class="colophon"><span>只基于抓取材料</span><span>magpie / group</span><span>2026-11-11 01:23 UTC</span></footer></main></div></body></html>
+}</code></pre><h2>1. 问题与边界</h2><p><strong>真正要选的是什么</strong>：在 2026-11-10 至 2027-02-08 这 90 天内，是否为「半导体出口管制升级」提前调整供应链与合同条款，以及调整到什么程度（不动 / 轻度对冲 / 激进重构）。决策者假定为一家在半导体供应链中有采购或敞口的企业；若角色不同（如投资机构、政策部门），第 4–6 节需重估。</p><p><strong>不包含</strong>：超过 90 天的产能布局、对华直接投资、具体交易时点、中国国内政策本身的走向。</p><p><strong>最晚决策时间</strong>：安全库存与替代供应商认证通常需要 45–90 天前置期（估计）。因此实质性决策最迟应在 <strong>2026-12-15</strong> 前作出，否则缓冲无法在 2027-02-08 前到位；纯监测姿态可推迟至 2027-01-15。</p><p><strong>数据边界（重要）</strong>：所给 40 条情报全部来自单一来源（nikkei-asia）且标注同一日期（2026-11-10），「过去 30 天」的时间跨度在材料内部得不到证实。本备忘录的证据基础薄弱，结论以方向性判断为主，所有量化数字均为估计。</p><h2>2. 已知事实</h2><ol><li>Nvidia 成为民主党更强硬对华技术政策的早期测试案例 ——（nikkei-asia，2026-11-10）[25]</li><li>Nvidia CEO 黄仁勋的婚外情调查引发中国间谍担忧，并导致股价下跌 ——（nikkei-asia，2026-11-10）[13][35]</li><li>日本三井化学以 116 亿美元收购芯片材料商 JSR ——（nikkei-asia，2026-11-10）[24]</li><li>台湾芯片制造商 CEO 警告内存价格上涨不可持续 ——（nikkei-asia，2026-11-10）[10]</li><li>马来西亚与台湾关系恶化威胁未来芯片投资 ——（nikkei-asia，2026-11-10）[12]</li><li>贸易限制威胁已使日本钢铁出口降至 30 年低点 ——（nikkei-asia，2026-11-10）[34]</li><li>马斯克 Terafab 芯片制造项目正在招募日本供应商 ——（nikkei-asia，2026-11-10）[29]</li><li>AI 需求推高成本，印度电子企业面临 PCB 供应紧张 ——（nikkei-asia，2026-11-10）[37]</li></ol><p><strong>注</strong>：材料中没有任何一条直接陈述美国或中国政府在 90 天内将出台新管制措施——升级判断是从上述信号推断的，不是事实。</p><h2>3. 关键不确定性</h2><p><strong>变量 1：美国管制的适用范围</strong></p><ul><li>当前区间：定向（个别企业/特定终端）约 50–70% vs 系统性（全链条多点）约 30–50%（估计）。</li><li>判断依据：[25] 显示政策压力存在；[13][35] 显示 Nvidia 处于政治风暴中心，但材料中没有任何官方规则文本。</li><li>为什么重要：定向情形只需局部应对；系统性情形需要全面供应链重构，成本相差数倍。</li></ul><p><strong>变量 2：中国反制的强度与形式</strong></p><ul><li>当前区间：从「口头警告 + 少量清单」到「镓/锗/稀土出口许可 + 不可靠实体清单扩容」之间的任一位置（估计）。</li><li>判断依据：材料未直接涉及中国反制（<strong>材料不足</strong>）；[34] 仅证明贸易限制对第三方有实际冲击。</li><li>为什么重要：反制会改变成本结构与合规风险，且可能先于美国新政落地。</li></ul><p><strong>变量 3：日本等第三方经济体的对齐程度</strong></p><ul><li>当前区间：从「完全追随」到「保持独立供应链」之间（估计）。</li><li>判断依据：[24] 显示日本在重组芯片材料供应链；[29] 显示日本供应商同时服务于非美项目。</li><li>为什么重要：若日本不追随，管制有效性下降，同时出现可替代供给——直接改变选项 2 的可行性。</li></ul><p><strong>变量 4：供给紧张是否会自我缓解</strong></p><ul><li>当前区间：内存价格见顶回落 vs 持续紧张，两者皆有可能（估计）。</li><li>判断依据：[10] 明确警告价格「不可持续」；[37] 显示 AI 需求仍在推高上游成本——两个方向相反的信号并存。</li><li>为什么重要：若供给自行缓解，管制的边际冲击下降，过度对冲会产生减值损失。</li></ul><p><strong>变量 5：政治议程窗口</strong></p><ul><li>当前区间：90 天内存在重大政策窗口 vs 议程被气候、区域峰会等议题占据（估计）。</li><li>判断依据：[1] 提及 COP31 与东盟峰会；[7] 提及美国中期选举后的政治格局变化。</li><li>为什么重要：决定行动节奏——窗口期短则必须提前布局，窗口期长则可等待更多信号。</li></ul><h2>4. 情景</h2><table><thead><tr><th>情景</th><th>概率（估计）</th><th>关键观察点</th></tr></thead><tbody><tr><td>A. 定向升级：新增个别实体清单、特定终端（如 AI 数据中心 GPU）限制或出口许可收紧</td><td class="pct-cell"><strong>45</strong><span class="pct-bar" style="--p:45"></span></td><td>美国联邦公报新规则；Nvidia 案是否导致许可撤销；中国是否针对个别美企反制</td></tr><tr><td>B. 系统性升级：覆盖先进逻辑芯片、设备、材料（含 EDA）的多点管制 + 中国对等反制</td><td class="pct-cell"><strong>20</strong><span class="pct-bar" style="--p:20"></span></td><td>多部委联合规则；日本经产省协调措施；中国商务部公告；镓/锗/稀土出口数据异常</td></tr><tr><td>C. 维持现状：无新措施，焦点转向执行与合规</td><td class="pct-cell"><strong>35</strong><span class="pct-bar" style="--p:35"></span></td><td>90 天内无新规则；Nvidia 案以内部/民事方式了结；行业协会主要诉求得到回应</td></tr></tbody></table><p>概率合计 = 45 + 20 + 35 = <strong>100</strong>。即未来 90 天出现某种形式升级的估计概率约 <strong>65%</strong>（A+B），但该数字基于单源单日样本，置信度低。</p><h2>5. 选项评估</h2><p><strong>选项 1：不做决定（仅监测）</strong></p><ul><li>预期收益：避免过早投入的浪费（估计可节省库存占用与认证费用，规模取决于采购额，材料不足无法量化）。</li><li>最坏情况：情景 B 下关键芯片断供，交付违约并流失客户。</li><li>可逆性：高——可随时启动其他选项。</li><li>执行成本：低——仅需现有人力持续阅读联邦公报与行业通报。</li><li>致命缺陷：响应滞后。安全库存与供应商认证需 45–90 天前置期（估计），触发后再行动可能来不及。</li></ul><p><strong>选项 2：分层对冲（核心推荐）</strong></p><ul><li>预期收益：情景 A 下保住大部分交付（估计 80%+）；情景 B 下争取 1–2 个季度的缓冲窗口。</li><li>最坏情况：情景 C + 价格回落 → 库存减值与资金占用；估计减值幅度有限（[10] 显示内存类价格本就面临下行压力）。</li><li>可逆性：中高——库存在 6–12 个月内可消化；认证投入部分沉没。</li><li>执行成本：中——估计为关键品类 30–45 天安全库存 + 1–2 家替代供应商认证费用。</li></ul><p><strong>选项 3：制度性对冲</strong></p><ul><li>预期收益：除选项 2 外，降低法律与关系风险，情景 B 下保护合同与客户。</li><li>最坏情况：游说无果、客户拒绝重谈条款，投入沉没。</li><li>可逆性：中——合同条款变更难以撤回。</li><li>执行成本：中高——律师、顾问与行业联盟费用。</li></ul><p><strong>选项 4：激进重构</strong></p><ul><li>预期收益：情景 B 下生存能力最强。</li><li>最坏情况：成本上升 20–40%（估计）、质量认证失败、触发美方审查升级。</li><li>可逆性：低——产线切换后难以快速回退。</li><li>执行成本：高。</li></ul><h2>6. 建议与触发条件</h2><p><strong>推荐选项 2（分层对冲）</strong>，并在决策当日预先承诺：若触发条件 t1 或 t2 发生，则自动升级至选项 4 的部分措施。具体动作与时限：</p><ol><li><strong>2026-11-24 前</strong>：确定前 2–3 类关键芯片/材料清单，将安全库存目标设定为 30–45 天（估计）。</li><li><strong>2026-12-15 前</strong>：启动 1–2 家替代供应商的技术认证（优先日本与非美设备产线，参照 [24][29] 所示供应链动向）。</li><li><strong>2027-01-15 前</strong>：完成一次内部压力测试，模拟情景 B 下的交付连续性。</li></ol><p><strong>触发条件</strong>：</p><table><thead><tr><th>ID</th><th>可观测指标</th><th>阈值</th><th>触发后动作</th></tr></thead><tbody><tr><td>t1</td><td>美国工业与安全局（BIS）或联邦公报发布涉及先进芯片、设备或材料的新规则</td><td>1 次正式公告</td><td>立即启动安全库存，并通知销售端调整交付预期</td></tr><tr><td>t2</td><td>中国商务部宣布对等出口管制或不可靠实体清单扩容（尤其涉及镓/锗/稀土或 PCB 上游）</td><td>1 次公告</td><td>启动供应链压力测试，审查对美依赖度，并评估选项 4</td></tr><tr><td>t3</td><td>日本经产省或行业联盟释放协调管制信号，或出现 Mitsui-JSR 类供应链重组的后续交易</td><td>1 次政策文件或重大并购公告</td><td>重新评估日本供应商敞口，加速替代认证</td></tr><tr><td>t4</td><td>内存现货价格连续环比下降（供给紧张自我缓解）</td><td>连续 4 周下降</td><td>将库存目标下调至 15–20 天，释放资金</td></tr></tbody></table><h2>7. 反面证据与证伪条件</h2><p>出现以下任一情况，本备忘录的核心结论应被推翻或大幅修正：</p><ol><li><strong>90 天内无任何新联邦公报规则，且 Nvidia 案未导致任何出口许可变化</strong> → 则「升级概率约 65%」属高估，应下调至 40% 以下。</li><li><strong>内存价格快速回落并伴随 AI 资本开支放缓</strong> → 供给紧张假设被削弱，过度对冲的理由消失。</li><li><strong>中美在 COP31 或东盟峰会期间达成技术贸易谅解</strong> → 情景 C 概率应上调至 50% 以上，选项 2 的库存目标应下调。</li><li><strong>日本明确拒绝协调并继续扩大对华芯片材料出口</strong> → 情景 B 的「系统性升级有效性」假设被推翻，同时选项 2 的替代供给来源反而扩大。</li><li><strong>马来西亚与台湾关系修复</strong> → [12] 所示的供应链多元化障碍消除，选项 4 的紧迫性下降。</li></ol><h2>8. 复盘日期</h2><p><strong>复盘日期：2027-02-08</strong>。届时需要回答两个问题：</p><ol><li>这 90 天内是否出现了新的、覆盖先进芯片/设备/材料的正式管制措施？若有，是定向还是系统性？</li><li>Nvidia 案与民主党对华技术政策是否导致管制范围扩大到非美国企业（含日本、韩国、中国台湾）？若未扩大，选项 4 的触发条件是否需要重设？</li></ol><hr></div><footer class="colophon"><span>只基于抓取材料</span><span>11 月 11 日 01:49 UTC 更新</span></footer></div></body></html>
