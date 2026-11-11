@@ -133,6 +133,12 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
   width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
 }
 
+/* 首段当导语：不缩进、略大、颜色更实 */
+.body h2:first-child + p{
+  text-indent:0; font-size:18px; line-height:1.85; color:var(--ink);
+  margin-bottom:1.15em;
+}
+
 /* 索引列表 */
 .index-list{list-style:none; margin:0; padding:0}
 .index-list li{
@@ -150,6 +156,11 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
   margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
 }
 .index-list .note b{font-weight:400; color:var(--ink-2)}
+
+.plain-list{list-style:none; margin:0; padding:0}
+.plain-list li{padding:13px 0; border-bottom:1px solid var(--rule); margin:0; font-size:16px}
+.plain-list a{color:var(--ink-2)}
+.plain-list a:hover{color:var(--accent); border-color:var(--accent)}
 
 .section-head{
   font-size:13px; color:var(--ink-3); letter-spacing:.08em;
@@ -374,6 +385,14 @@ def strip_lede(body):
     return "\n".join(lines[i:])
 
 
+OPS_LINE = re.compile(r"^(源状态|抓取状态|统计窗口|覆盖率)\s*[:：]")
+
+
+def strip_ops(text):
+    """删掉生成流程留在正文里的运维行（源状态、抓取条数等），读者不需要。"""
+    return "\n".join(l for l in text.split("\n") if not OPS_LINE.match(l.strip()))
+
+
 def cn_date(day):
     try:
         d = datetime.strptime(day, "%Y-%m-%d")
@@ -476,7 +495,7 @@ def build():
         day = os.path.splitext(os.path.basename(path))[0]
         _meta, body = frontmatter(path)
         write(os.path.join("digest", day + ".html"),
-              page(cn_date(day), "每日情报简报", md2html(strip_lede(body)), "digest"))
+              page(cn_date(day), "每日情报简报", md2html(strip_ops(strip_lede(body))), "digest"))
         digest_entries.append((day, _meta))
 
     decision_entries = []
@@ -496,7 +515,7 @@ def build():
         if meta.get("horizon_days"):
             under.append("视界 %s 天" % meta["horizon_days"])
         write(os.path.join("decisions", name + ".html"),
-              page(question, "决策备忘录", md2html(strip_lede(body)), "decisions",
+              page(question, "决策备忘录", md2html(strip_ops(strip_lede(body))), "decisions",
                    under=under, big=False))
         decision_entries.append({
             "name": name, "question": question, "day": day,
@@ -546,15 +565,14 @@ def build():
     if digests:
         day = digest_entries[0][0]
         _meta, body = frontmatter(digests[0])
-        body_html = md2html(strip_lede(body))
+        body_html = md2html(strip_ops(strip_lede(body)))
         archive = []
         for d, _m in digest_entries[1:31]:
-            archive.append('<li><div class="when">%s</div><div><p class="what">'
-                           '<a href="%s">%s</a></p></div></li>'
-                           % (d, href("/digest/" + d + ".html"), cn_date(d)))
+            archive.append('<li><a href="%s">%s</a></li>'
+                           % (href("/digest/" + d + ".html"), cn_date(d)))
         if archive:
             body_html += ('<div class="section-head">历史简报</div>'
-                          '<ul class="index-list">' + "".join(archive) + "</ul>")
+                          '<ul class="plain-list">' + "".join(archive) + "</ul>")
         recent = []
         for e in decision_entries[:6]:
             note = "置信度 %s" % html.escape(e["conf"]) if e["conf"] else ""
