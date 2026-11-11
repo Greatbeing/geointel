@@ -66,4 +66,5 @@ collect.py ──► data/intel.db (SQLite + FTS5)
   所有调用统一给 16000，`finish_reason=length` 时翻倍重试，仍失败换模型。
 - **中文检索**：语料全英文，中文决策问题必须经 `LEXICON` 映射，否则 FTS 零命中。
 - **云机会挂起**：空闲 30 分钟挂起，timer 不会唤醒机器；`Persistent=true` 保证唤醒后补跑。
-- **站点当前是私有仓库**：GitHub Pages 需要公开仓库或 Pro，所以现在只能离线/本地读。
+- **站点已公开**：仓库 2026-11-11 转为 public，Pages 从 `main` 的 `/docs` 构建。
+  页面根路径链接由 `render.py` 的 `BASE` 控制（默认 `/geointel`）。
