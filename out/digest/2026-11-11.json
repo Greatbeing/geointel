@@ -1,0 +1,496 @@
+{
+ "date": "2026-11-11",
+ "generated_at": "2026-11-11T00:29:18Z",
+ "items": [
+  {
+   "title": "Senior US soldier arrested in UK on suspicion of spying for Russia",
+   "source": "ft",
+   "link": "https://www.ft.com/content/94aa4846-58c6-4c17-b25a-095f122b4809?syn-25a6b1a6=1",
+   "published": "2026-11-10T21:38:55Z",
+   "category": "finance"
+  },
+  {
+   "title": "Republicans choose Jim Jordan as House minority leader",
+   "source": "ft",
+   "link": "https://www.ft.com/content/438a36a5-a711-4fe1-b3d8-83020197a0ed?syn-25a6b1a6=1",
+   "published": "2026-11-10T21:03:20Z",
+   "category": "finance"
+  },
+  {
+   "title": "How the Next Congress Can Repair the Military’s Personnel Crisis",
+   "source": "cfr",
+   "link": "https://www.cfr.org/articles/how-the-next-congress-can-repair-the-militarys-personnel-crisis",
+   "published": "2026-11-10T20:53:46Z",
+   "category": "policy"
+  },
+  {
+   "title": "Nvidia, Chinese Espionage, and the AI Race: Four Foreign Policy Issues to Watch",
+   "source": "cfr",
+   "link": "https://www.cfr.org/articles/nvidia-chinese-espionage-and-the-ai-race-four-foreign-policy-issues-to-watch",
+   "published": "2026-11-10T20:23:14Z",
+   "category": "policy"
+  },
+  {
+   "title": "US commerce department delays Megaspeed’s inclusion on trade blacklist",
+   "source": "ft",
+   "link": "https://www.ft.com/content/afb6c960-a910-4d67-9588-73ba3bea5b06?syn-25a6b1a6=1",
+   "published": "2026-11-10T20:05:21Z",
+   "category": "finance"
+  },
+  {
+   "title": "US regulator postpones Wall Street push to trade AI computing futures",
+   "source": "ft",
+   "link": "https://www.ft.com/content/269b0245-44c4-4e34-94df-202bef642539?syn-25a6b1a6=1",
+   "published": "2026-11-10T19:58:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "TSMC, Microsoft executives debate AI's impact on Day 2 of Nikkei Dialogue",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/global-management-dialogue/global-management-dialogue-2026/tsmc-microsoft-executives-debate-ai-s-impact-on-day-2-of-nikkei-dialogue",
+   "published": "2026-11-10T23:23:27Z",
+   "category": "world"
+  },
+  {
+   "title": "Nvidia hires former US prosecutor at Wachtell to lead Jensen Huang probe",
+   "source": "ft",
+   "link": "https://www.ft.com/content/8d59bf02-960e-4eb1-b5dc-55397e31cea5?syn-25a6b1a6=1",
+   "published": "2026-11-10T19:24:52Z",
+   "category": "finance"
+  },
+  {
+   "title": "Japan trading house backs Vietnam tungsten supplier that has drawn US investment",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/materials/japan-trading-house-backs-vietnam-tungsten-supplier-that-has-drawn-us-investment",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Honda bets on hybrids as mainstay of US electrification into early 2030s",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/automobiles/honda-bets-on-hybrids-as-mainstay-of-us-electrification-into-early-2030s",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "SoftBank swings to first-half loss as AI hopes face new setbacks",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/softbank/softbank-swings-to-first-half-loss-as-ai-hopes-face-new-setbacks",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Thailand tightens environmental rules for large data centers",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/technology/thailand-tightens-environmental-rules-for-large-data-centers",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Indonesian VP Gibran to resign, presidential office says",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/indonesian-vp-gibran-to-resign-presidential-office-says",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "TSMC earmarks up to $1bn to buy Anthropic and OpenAI shares",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/tsmc-earmarks-up-to-1bn-to-buy-anthropic-and-openai-shares",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Kioxia leveraged product debuts in Hong Kong in first for Japan stock",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/markets/equities/kioxia-leveraged-product-debuts-in-hong-kong-in-first-for-japan-stock",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "DeepSeek, other China AI firms have just 10% the revenue of OpenAI, Anthropic",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/deepseek-other-china-ai-firms-have-just-10-the-revenue-of-openai-anthropic",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan's ASICS steps up footwear research with Australia R&D base",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/companies/japan-s-asics-steps-up-footwear-research-with-australia-r-d-base",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Toyota to make and sell Japan-style 'kei' minitrucks in US next year",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/automobiles/toyota-to-make-and-sell-japan-style-kei-minitrucks-in-us-next-year",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Singapore's Sea targets AI boom with asset-light cloud services push",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/technology/singapore-s-sea-targets-ai-boom-with-asset-light-cloud-services-push",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "With Trump weakened, China courts US tech bosses as it seeks new Kissinger moment",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/comment/with-trump-weakened-china-courts-us-tech-bosses-as-it-seeks-new-kissinger-moment",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Eyeing China, Japan to push for trade transparency at APEC summit",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/eyeing-china-japan-to-push-for-trade-transparency-at-apec-summit",
+   "published": "2026-11-10T23:04:55Z",
+   "category": "world"
+  },
+  {
+   "title": "Eleven phones and the spectre of treason: Jakarta’s wiretap scandal",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/eleven-phones-and-the-spectre-of-treason-jakarta-s-wiretap-scandal",
+   "published": "2026-11-10T23:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Treasuries slide as ‘hot’ inflation sparks bets on Fed rate rise",
+   "source": "ft",
+   "link": "https://www.ft.com/content/8b564134-dea6-4272-8ede-e0b12ef5aebd?syn-25a6b1a6=1",
+   "published": "2026-11-10T18:53:50Z",
+   "category": "finance"
+  },
+  {
+   "title": "Why the G20 Should Listen to Faith Leaders in Utah",
+   "source": "cfr",
+   "link": "https://www.cfr.org/articles/why-the-g20-should-listen-to-faith-leaders-in-utah",
+   "published": "2026-11-10T17:35:55Z",
+   "category": "policy"
+  },
+  {
+   "title": "Philip R. Lane: The science and practice of monetary policy communication: the ECB experience",
+   "source": "ecb",
+   "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261110_1~9725b7aa07.en.html",
+   "published": "2026-11-10T16:45:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Alice Huang’s tangled web of connections",
+   "source": "ft",
+   "link": "https://www.ft.com/content/3238d92b-4074-478d-a7f2-d78b9e154fc7?syn-25a6b1a6=1",
+   "published": "2026-11-10T16:17:20Z",
+   "category": "finance"
+  },
+  {
+   "title": "U.S. LNG exports rose 23% in the first half of 2026 because of higher capacity",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68064",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "Weekly average load in ERCOT continues near record high",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68084",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "Elevated crack spreads and crude oil prices contribute to higher prices at the pump",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68104",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "New England natural gas prices have been trading near record discounts to Henry Hub",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68124",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "United States on track for record crude oil production in 2026",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68125",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "Corpus Christi LNG expansion makes facility the second-largest in the United States",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68144",
+   "published": "2026-11-11T00:05:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "Zelenskyy tells Europe to hurry up and pick a rep for peace talks with Russia",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/zelenskyy-tells-europe-pick-negotiator-peace-talks-russia-ukraine",
+   "published": "2026-11-10T22:09:28Z",
+   "category": "policy"
+  },
+  {
+   "title": "Nvidia hires Wachtell Lipton for Jensen Huang investigation",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/nvidia-hires-wachtell-lipton-for-jensen-huang-investigation",
+   "published": "2026-11-10T20:58:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Secretary of State Marco Rubio Remarks to the Press",
+   "source": "state-gov",
+   "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/11/secretary-of-state-marco-rubio-remarks-to-the-press-23",
+   "published": "2026-11-10T16:22:24Z",
+   "category": "policy"
+  },
+  {
+   "title": "New CFR Book by David Sacks Details the Life and Legacy of Hans Morgenthau",
+   "source": "cfr",
+   "link": "https://www.cfr.org/articles/new-cfr-book-by-david-sacks-details-the-life-and-legacy-of-hans-morgenthau",
+   "published": "2026-11-10T13:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Poland says Pentagon backs permanent US base, with Trump decision due in December",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/poland-says-pentagon-backs-permanent-us-base-with-trump-decision-due-in-december",
+   "published": "2026-11-10T20:18:01Z",
+   "category": "policy"
+  },
+  {
+   "title": "Australia has picked its national soundtrack – but not its story",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/australia-has-picked-its-national-soundtrack-but-not-its-story",
+   "published": "2026-11-10T16:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Brussels takes on the evils of online commerce",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/brussels-takes-on-the-evils-of-online-commerce-digital-fairness-act-commission",
+   "published": "2026-11-10T19:45:24Z",
+   "category": "policy"
+  },
+  {
+   "title": "USS Nimitz Trains New, Returning Naval Aviators",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4646092/uss-nimitz-trains-new-returning-naval-aviators",
+   "published": "2026-11-10T19:40:06Z",
+   "category": "security"
+  },
+  {
+   "title": "Ukraine and Russia discuss prisoner swap deal during ‘constructive’ talks",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/ukraine-russia-discuss-prisoner-swap-deal-constructive-talks",
+   "published": "2026-11-10T19:31:46Z",
+   "category": "policy"
+  },
+  {
+   "title": "Shanghai import expo sets several records - China Daily",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE13MGZBRGgzdUtqdFhUX2lDdEJBNW5oYlRHUWVtSzl2MVRiUEpGQUZJOE5sUVVqOF9qOFVpcGFzczdoNHFJelRqYWZmSDZFam1NVlNUenMxelV0ejhJR2VnNlBjYnYwWVhYOGZqQW41SXJXVU5mY0VTc2tJcDNTdw?oc=5",
+   "published": "2026-11-10T23:46:15Z",
+   "category": "trade"
+  },
+  {
+   "title": "How the Democrats are preparing to challenge tariffs after U.S. midterm wins - CBC",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90WWwxaFpPWXBmQnlhQVJXMllWTlM5UnItTlpUdVpQME8taXMxdmF4QmdNcjdmbk9QMGV1RHJNZVV3Q01vWDFFVm0tTnR1dFhfMkVZTXF4YlJmQQ?oc=5",
+   "published": "2026-11-10T23:34:35Z",
+   "category": "trade"
+  },
+  {
+   "title": "Hegseth, Polish Counterpart Announce Intent to Boost Military Cooperation",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4646088/hegseth-polish-counterpart-announce-intent-to-boost-military-cooperation",
+   "published": "2026-11-10T18:47:00Z",
+   "category": "security"
+  },
+  {
+   "title": "US warns of growing ISIS threat to African maritime trade - Punch Newspapers",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUzhYWXIzZ2ZsMWw4N3VnVGRKQXVwVTRaT2dQOHNyX0ROSjlVMS01aExERjhSWXRvLXZXZy1lVFVYTHZBOHR6R2ZwbXdoa3ctSW5sNVIxRi12QVY2TVpFV2Z0cGI0My1wZHBlV25BeUZiZjRTWFQ5SGZoSjQ4eXdIY0c2YmVoa2FQN3c?oc=5",
+   "published": "2026-11-10T23:09:39Z",
+   "category": "trade"
+  },
+  {
+   "title": "Go inside the cheese factories impacted by US-Canada tariffs - USA Today",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOdUZrcWhzWUZkQ3JCNUtmYlNieUpPdFI1ZnpQMjJKM0x5SnpIMG1OcGtoVW1ndW9vbEx5TzFCN3hjLUtjcHlmRnBNUW9adHVKU2NyeXdneHJZS3JXZmtCN3B5NnlJSGNuVU11WnIwT0I3TU1xUEdKRHpzTU5UU3g5Q05qNzFVdVpjNTRyZDQzU1pXeDB1WW1NcWVtWTVOMVdza0VDWUV5YzZoQnBnVWtYZzdidzlUUQ?oc=5",
+   "published": "2026-11-10T23:09:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trade surplus reaches a near-record high - KLSE Screener",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPdmpndG1iMUNtc2xuQzRSSngyOU00M1l1WHBpQngzSzRjM0hkcHp0YkJXUWdIaWxzOTU1bkVzQkkwTjlFbjdzRHN5c3hOd3F2bVpJajE0ekZHdGRudm9ORFBGRGtyQ2FzczNmbTZmcnMzTzhVaGwxR3RaZ1lwNlhoNjRCdW5JdUdSd1FmRnY4OHRhSjBG?oc=5",
+   "published": "2026-11-10T23:06:41Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trade surplus reaches a near-record high - The Star",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQeUQwTkdBUFFzamhNRnV4RVVPb2Q3ck5qU2NLMXJXTG5WR3hoVWpRSFdmQ2NGYWFIdXFONWpqdkR0NVkxV2FIOE9uS1ROMEtiU1RieEFfenplTUNWQ0tYX2RCamstRGVCMU1kdjlNc3ItYzZDRER0dkRDMlNIMXp0dFFVaWRPTGF4QkNMVnVua2pfcmh1a2pwdTlJSllYcXpneTdN?oc=5",
+   "published": "2026-11-10T23:03:45Z",
+   "category": "trade"
+  },
+  {
+   "title": "The US military seems to be getting nervous about the launch supply crunch",
+   "source": "ars",
+   "link": "https://arstechnica.com/space/2026/11/the-us-military-seems-to-be-getting-nervous-about-the-launch-supply-crunch",
+   "published": "2026-11-10T23:02:39Z",
+   "category": "tech"
+  },
+  {
+   "title": "Richard Neal focuses on healthcare, tariffs in new term - Yahoo",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPdE9XV3RpZ1FaRExnaXM5MV83ZnAzQVJEVnNndU1tMS0zZ1J3OERObE5tUXNaTld6U2dhU3JURnJYaE1rR3pwY1FPaUttbFlIcnNVTnI1eHY5N1ZjNG1xcmktRzlqa2F4SkNSVTJaendEdHNNemwzSUJ5Y0Y0eFBST2EzMHNISHF4d21nRmZmZEFwZw?oc=5",
+   "published": "2026-11-10T22:53:14Z",
+   "category": "trade"
+  },
+  {
+   "title": "Hochul cites Democratic control of Congress in pushing AI regulation, federal dollars - Spectrum News",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTms3b3dEWk1pcVF5a1Q2RjJMVlViUm55OXlac3F4Xzl1N05jRnR6VHdpNktEdmUwU3VraDZNOUwwQVdLTDBVT1kzVkRfdXJaS3hUQVhDVnZmVjRFTGwwTjZXMVRPRFFLeFZwQW8xaklxb1dXVmZqSHBJSjBHSGdKcklIYXh0cWxwQlppUE1MSGtCUEFjYVVqVW1leFhKa3RHNGtIaG1tYUg1VkNEUXpnczVmWXp1ODMwYlBkNGZQWFJVMkJKWElfZlJFbEJPbVJBWDBJWkFB?oc=5",
+   "published": "2026-11-10T22:44:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Ukraine : Mélenchon embarrassé",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/playbook-paris-podcast/ukraine-melenchon-embarrasse",
+   "published": "2026-11-10T18:02:30Z",
+   "category": "policy"
+  },
+  {
+   "title": "Ring cameras go mobile as Amazon debuts AI-powered security drone and robot",
+   "source": "ars",
+   "link": "https://arstechnica.com/ai/2026/11/ring-cameras-go-mobile-as-amazon-debuts-ai-powered-security-drone-and-robot",
+   "published": "2026-11-10T22:35:01Z",
+   "category": "tech"
+  },
+  {
+   "title": "China’s ‘Living Badly, But Not Dying’ Carmakers Spread Global Pain - Bloomberg.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOS1JadVVlemhmekgxY0lsem9uTnY3Mkd6WjE3eE1SNE9UcmpOV1lnakdSYXYzWHNUbFBrMklwQ3N2TF8ybTRfQ2dDQnNHNkpxTkVwaU5YdDV2NTVQYTBIWWR6UE51RmlJa21OUS1xZm96VWNmdGgyUGpXTWI4Q2VBT2ZzaGhnRWZrVVg3Wm9qWHZwVFRyTFREaWVFbGxLU3hBNUlRZHdKSE83RzR4ckppQkVFVFp5aDVl?oc=5",
+   "published": "2026-11-10T22:34:36Z",
+   "category": "trade"
+  },
+  {
+   "title": "Despite Democrats' sweeping midterm wins, Carney says Trump remains central to Canada-US trade talks - The Washington Post",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQbWc2UVRyNHZxeEstMjZiY3ZqMW9mekhSak1pSmhyUW1lM3Q1VjBSNjB4cEl5WFdTSmpvbDZRY3BaMVZ2VkxOcUk3dEh4R2l2Mk1wUVpIVW9uSUhRb0VWdmZUVWs4MFBkckQzaWs2bldldzdpT2NDREd3YWVBZ3FULXJyTG5BMGwyS0FiSG8tblJxeGVmNjhjYzdFMGlLVHo0Zl8wQ0JYcTNMWU5aNjJHVDUtNENRSXZRMVYwWERmZ2hCSkZVMVp5d2J0VHBwYk1Rb2Fveko3U0I?oc=5",
+   "published": "2026-11-10T22:33:21Z",
+   "category": "trade"
+  },
+  {
+   "title": "Global Business Leaders Tackle the Priorities That Will Accelerate Economic Growth at B20 Summit - U.S. Chamber of Commerce",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcl9ob0pHOERwam10OXltNkpoQnJDSG5vZ1lRZ19Ec1ZqZzdLeWpLelgzRGg3TlE0ZmtCUHp0enkwcUJmandreVhGZ0xPZVlQZXo3MXdOX3RUbFA5Z0FjbkYwMlBkM0xmdUJhRS1NZ0YtZ1duRUV4NXdFbEs1LXVkWjNRbTdvX1BYRTRKYVBFNV9RcWlLVVZLOFJhRXNjeFh2ekpHNHRrWTlYekhuNDR5YlFRUFhTYVhPeWFrcDFXdVYwWFc2UGlPMFJ3UlAzYzZDSmc?oc=5",
+   "published": "2026-11-10T22:18:45Z",
+   "category": "trade"
+  },
+  {
+   "title": "Global bullies have turned uncertainty into a weapon - The Economist",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQNkE0cFI1SXhzZXhfdkwycVFpd3VOYkxLWVowY0dCRi1IQ0wyTEVjQVJIRGVYWmhXeUFkc3NfeHNxZUpJeWhsYkxheE1yV3E5RklpbnNyQklWYk9LQVp4elhpc25Jd1Q4V3FnamNvUklLb0V2eE45RnVKRXN1UGx4dWxtR2xBSmtfR3NVRV8yRnpUbWlmVmNiemhfTUFpUEVocldWZGp3?oc=5",
+   "published": "2026-11-10T22:15:15Z",
+   "category": "trade"
+  },
+  {
+   "title": "Tariffs Push Up Costs for La Quinta Brewing Company as Local Breweries Feel the Pressure - NBC Palm Springs",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQb0g2MlAxLW0teVZucTFDZ2ZJZnRMaFZvMVJMaDNnY3FRSFJfMWVtM0FIUVZiOHVObjBFM09LYUxzR0FZSHJkd2NPcFNaUzdVREluOE5rcjY5SnNONHc0N0hLaS12LUJNeUZ6RWlrZ0Y1czU1TG96SGVuTE9ESTVDd3JlZ2xaeEFMaTFtRjdLMnJQQ2Z6MUhqR0NfMXhsa3AwUEhXZVVuSUEtQWxQQ1M5WHk2aXowOV9VTElZeENtRjAxakJJQnQ0NnA0N0htYTE2VzFJa1F2bVN6RDNsUmJz?oc=5",
+   "published": "2026-11-10T22:00:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Democrats oppose plan to stack FCC with Republicans, plan probes of Chairman Carr",
+   "source": "ars",
+   "link": "https://arstechnica.com/tech-policy/2026/11/democrats-oppose-plan-to-stack-fcc-with-republicans-plan-probes-of-chairman-carr",
+   "published": "2026-11-10T21:55:26Z",
+   "category": "tech"
+  },
+  {
+   "title": "Whitmer presses Trump administration on tariffs, grocery reimbursements - The Hill",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQc2gwRXZpR25fTDZsUDlaYWh6TDh5bWNXd0xuaFh4TDZOaFJycmVkRmhXNnB5RE14YTV6Zm1jclRZX1U2N2xieUN4T0t5d0JjUHhkWHl0Mm54SG9TR2U3N0lqbTdURUZWNjFHMTg3Mm5pWXFrUk5aSWx0NjIwM2FldGM4NElybzE2N0EybFd2Vm9SVDlaTEHSAZsBQVVfeXFMTVJJTTE3V3NVXzNEaHJfYXhVWEJYUWVKVkFSNjhsdll3ZnYwN3dST3haT1pvLWlPUHA5bVFvQjN4VlRSUkdtM0QxdzVjZGJFaEJiSVhQb0JDenFiQ1dJSmQtbEp2SHFSbmkyMy1pWXVfSHp4UkZUOVlVYVhLX0dzUE13ZDhkS2pRQ09aclpMR2lub3UzYWdnQ1FUVVE?oc=5",
+   "published": "2026-11-10T21:41:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "SelectCobb to host Tariffs Decoded on Dec. 9 - Marietta Daily Journal",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQekdkdkdFRFgtbzREYVFvQ3l4Z2hJZWxNQ0h4UF9VejRCeG1LMEJqRm0weWZld3k4NEJ4R0E2WDVsWnp4TmNlc2p0WXp1a1p1RTNYRkJwV252cjJqcWxBTERkYzBOY0ZwWGRaRWNpNUo5ZzFlUEoxSmxlUWsza0F4Mm1ralVkRi1aN0NKMkx3Nzh5NVAxOXp3b1IwRFE5OWtPcHNJVGlKcXRTQmFIWkt2eDhKbXd6SXQyTS0ybk1ieGhfOEdTb0tPb0dyU3BwOGlZQUpYSFRkQjc?oc=5",
+   "published": "2026-11-10T21:35:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Hegseth: Impeachment Over Policy Disagreement Sends Wrong Signal to Adversaries",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4645996/hegseth-impeachment-over-policy-disagreement-sends-wrong-signal-to-adversaries",
+   "published": "2026-11-10T16:52:00Z",
+   "category": "security"
+  },
+  {
+   "title": "£120m F1 races in Middle East will go ahead despite war threat - The Sun",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQeFUyTGFialVPYUNMb1Z2c25EbHE2LW5FUGlwOXdmY1NCUzdGem1vTUZQdEJwcDlzODZPS2JjQndOVjhjZ3F2V1UyUlZZNXRwSUJleDROSzRhWWNZLVpJTGozd0NZUzNEempFUXVjdkpfY1ZKREsyT25uMmxRNTN2TzlJaG90S2R2QnBR?oc=5",
+   "published": "2026-11-10T21:14:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
+   "source": "ars",
+   "link": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi",
+   "published": "2026-11-10T21:12:59Z",
+   "category": "tech"
+  },
+  {
+   "title": "What happens to mathematics when AI becomes an oracle?",
+   "source": "ars",
+   "link": "https://arstechnica.com/science/2026/11/what-happens-to-mathematics-when-ai-becames-an-oracle",
+   "published": "2026-11-10T20:30:01Z",
+   "category": "tech"
+  },
+  {
+   "title": "Google Fi adds support for a second 5G network, won't say which one",
+   "source": "ars",
+   "link": "https://arstechnica.com/google/2026/11/google-fi-adds-support-for-a-second-5g-network-wont-say-which-one",
+   "published": "2026-11-10T19:35:59Z",
+   "category": "tech"
+  },
+  {
+   "title": "Pixel phones getting new icon styles, Create My Widget, and more in November Pixel Drop",
+   "source": "ars",
+   "link": "https://arstechnica.com/gadgets/2026/11/november-pixel-drop-brings-gemini-intelligence-to-pixel-10-family",
+   "published": "2026-11-10T19:00:26Z",
+   "category": "tech"
+  },
+  {
+   "title": "Free video-streaming service Tubi lets users share curated watchlists now",
+   "source": "ars",
+   "link": "https://arstechnica.com/gadgets/2026/11/free-video-streaming-service-tubi-lets-users-share-curated-watchlists-now",
+   "published": "2026-11-10T18:39:16Z",
+   "category": "tech"
+  },
+  {
+   "title": "Middle East war: IndiGo extends suspension of Saudi Arabia flights - Gulf News",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPcmxLVjV1ZVJPZ2ZfSTZNMEM3T1BzR1lLMWM0ZTNOV05XUnlUX3k1Unc0Zk1BX2VyclVJQnh3ZDVnb3NyMHBDWXVBeXgtc2FkS1ExY2FUMDZQMmtJSjJXd0Z0eFh6bmY3WHlKYjRXWFM4bWh2LUZ1b2lQa0FPLW9yRVRTVi1ESFFMczhsM3pPUkt5YjBURExteFV4WGU2QmR5TnEtNms4TXlKd3dJb2gtQjlTRXR0M1HSAcoBQVVfeXFMTTd5djF5T0dXYjV5X2x0eXBDR0NfMEQxd3Etdml0ajNlQzVxTVI5bDVPaDhPOTZVUEhzNllaM29sUWNfVGIzUWhXTUhNNWdyRW50Z25Vei1TTGpNQ2N3dDM0VGs5UFUxMTVSU2pNNXUtRDRYRkc4czF1dTlwbF9ZYmZRaG1HbE1xUFQ2V0FzNWM4TE15ME5mUm9nQnFZWkFyZkMyaGNvcG1oMzVYNmYwQjhEak1KVnZiQnVZQVlCdEIxTWZISmpuWGY2dw?oc=5",
+   "published": "2026-11-10T18:23:57Z",
+   "category": "security"
+  },
+  {
+   "title": "Steam Deck performance gets a reality check with Valve's new FPS data",
+   "source": "ars",
+   "link": "https://arstechnica.com/gaming/2026/11/steam-deck-performance-gets-a-reality-check-with-valves-new-fps-data",
+   "published": "2026-11-10T17:26:44Z",
+   "category": "tech"
+  }
+ ]
+}
