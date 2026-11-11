@@ -45,9 +45,10 @@ body{
 ::selection{background:var(--accent); color:var(--paper)}
 
 .top{
-  max-width:720px; margin:0 auto; padding:24px 24px 18px;
+  position:sticky; top:0; z-index:5;
+  max-width:720px; margin:0 auto; padding:20px 24px 14px;
   display:flex; align-items:baseline; justify-content:space-between; gap:18px;
-  border-bottom:1px solid var(--rule);
+  background:var(--paper); border-bottom:1px solid var(--rule);
 }
 .top .brand{
   font-family:var(--mono); font-size:12px; letter-spacing:.2em;
@@ -471,28 +472,47 @@ def load_json(path):
         return {}
 
 
-def clean_alert(text):
-    """去掉告警里的运维信息：统计窗口、触发 ID、命中计数、英文线索词、内部 slug。"""
-    keep = []
+LINK_LINE = re.compile(
+    r"^-\s*(\d{4}-\d{2}-\d{2})\s+(.+?)\s*（([^）]*)）\s*(https?://\S+)\s*$")
+
+
+def clean_alert(text, seen):
+    """告警去噪：去掉统计窗口、触发 ID、命中计数、英文线索词；标题行改为可点的链接。"""
+    out, skip = [], False
     for line in text.split("\n"):
         s = line.strip()
+
+        if s.startswith("## "):
+            head = re.sub(r"^##\s*\[[^\]]+\]\s*", "", s).strip()
+            skip = head in seen
+            seen.add(head)
+            if not skip:
+                out.append("## " + head)
+            continue
+        if skip:
+            continue
+
         if s.startswith("统计窗口"):
             continue
         if re.match(r"^-\s*命中\s*\d+\s*条", s):
             continue
         m = re.match(r"^-\s*关联决策：.*?（(\d{4}-\d\d-\d\d-[a-z0-9-]+)）", s)
         if m:
-            keep.append("- 关联备忘录：{{LINK:%s}}" % m.group(1))
+            out.append("- {{LINK:%s}}" % m.group(1))
             continue
         if re.match(r"^-\s*关联决策：", s):
             continue
+        m = LINK_LINE.match(s)
+        if m:
+            out.append("- [%s](%s)（%s，%s）" % (m.group(2), m.group(4), m.group(3), m.group(1)))
+            continue
         m = re.match(r"^-\s*阈值：([^；\n]+)", s)
         if m:
-            keep.append("- 阈值：%s" % m.group(1).strip())
+            out.append("- 阈值：%s" % m.group(1).strip())
             continue
-        keep.append(line)
-    text = "\n".join(keep)
-    text = re.sub(r"^(#{1,4})\s*\[[^\]]+\]\s*", r"\1 ", text, flags=re.M)
+        out.append(line)
+
+    text = "\n".join(out)
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
     return text
 
@@ -555,25 +575,28 @@ def build():
             % (html.escape(e["day"] or "—"), e["url"], html.escape(e["question"]),
                " · ".join(note) or "—"))
     write("decisions.html",
-          page("决策备忘录", "决策备忘录",
+          page("决策备忘录", "情景 · 概率 · 行动建议",
                '<p class="lede">每个条目只回答一个问题：边界、已知事实、关键不确定性、'
                '情景与概率、选项评估、建议动作与触发条件、反面证据、复盘日期。</p>'
                '<ul class="index-list">' + ("".join(rows) or "<li>暂无</li>") + "</ul>",
                "decisions"))
 
-    # 告警：跨链到对应备忘录
+    # 告警：同一触发条件只保留最近一次，条目改为可点标题，并跨链到对应备忘录
+    seen = set()
     alert_chunks = []
-    for path in alerts[:20]:
+    for path in alerts[:12]:
         day = os.path.splitext(os.path.basename(path))[0]
-        text = clean_alert(open(path, encoding="utf-8").read())
+        text = clean_alert(open(path, encoding="utf-8").read(), seen)
+        if "## " not in text:
+            continue
         body = md2html(text, demote=True)
         body = re.sub(r"\{\{LINK:([a-z0-9-]+)\}\}",
                       lambda m: '<a href="%s">相关备忘录</a>'
                       % href("/decisions/" + m.group(1) + ".html"), body)
         alert_chunks.append("<h2>%s</h2>%s" % (cn_date(day), body))
     write("alerts.html",
-          page("触发告警", "触发告警",
-               "".join(alert_chunks) or '<p class="lede">暂无触发。</p>', "alerts"))
+          page("触发告警", "决策备忘录里的触发条件命中记录",
+               "".join(alert_chunks) or '<p class="lede">暂时没有触发。</p>', "alerts"))
 
     # 首页：最新简报 + 档案
     if digests:
