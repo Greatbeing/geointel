@@ -1,0 +1,91 @@
+{
+ "scenarios": [
+  {
+   "name": "A. 爬坡基本按计划推进，无重大政策或运营冲击（估计）",
+   "prob": 55
+  },
+  {
+   "name": "B. 地缘政治/出口管制升级主导，爬坡节奏被迫调整（估计）",
+   "prob": 25
+  },
+  {
+   "name": "C. 运营瓶颈（设备/人才/水电/良率）主导，出现可衡量延迟（估计）",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美国对华半导体出口管制或实体清单相关消息密度上升",
+   "keywords": [
+    "出口管制",
+    "实体清单",
+    "BIS",
+    "Entity List",
+    "TSMC",
+    "台积电"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "将情景B概率上调至少10个百分点，启动客户与供应商沟通预案"
+  },
+  {
+   "id": "t2",
+   "description": "台积电亚利桑那工厂运营动态（量产、招聘、设备、水电）消息密度上升",
+   "keywords": [
+    "亚利桑那",
+    "Arizona",
+    "Fab 21",
+    "量产",
+    "爬坡",
+    "TSMC Arizona"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "更新爬坡时间线评估，核对公开里程碑是否延后"
+  },
+  {
+   "id": "t3",
+   "description": "台积电月营收同比增速连续两个月低于阈值",
+   "keywords": [
+    "台积电",
+    "月营收",
+    "TSMC revenue"
+   ],
+   "threshold": 15,
+   "type": "value",
+   "action": "需求侧风险重估，下调情景A概率，复核客户库存与订单可见度"
+  },
+  {
+   "id": "t4",
+   "description": "台积电资本开支指引或设备订单出现两位数下调",
+   "keywords": [
+    "资本开支",
+    "capex",
+    "设备订单",
+    "capital expenditures"
+   ],
+   "threshold": 10,
+   "type": "value",
+   "action": "视为公司层面对需求或执行信心的信号，重估全部情景并审查供应链承诺"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-02-09",
+ "question": "未来 90 天台积电在亚利桑那产能爬坡的确定性与风险",
+ "generated_at": "2026-11-11T10:17:16Z",
+ "horizon_days": 90,
+ "items_used": 28,
+ "sources": [
+  "bis",
+  "cfr",
+  "ecb",
+  "fed",
+  "ft",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "state-gov",
+  "wto"
+ ]
+}

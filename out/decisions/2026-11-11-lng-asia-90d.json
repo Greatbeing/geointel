@@ -1,0 +1,98 @@
+{
+ "scenarios": [
+  {
+   "name": "供应宽松主导：美国新增产能兑现+中国进口持续低迷，亚洲气价中枢下移",
+   "prob": 45
+  },
+  {
+   "name": "紧平衡区间震荡：新增产能被欧洲/南亚需求吸收，寒潮与 outage 互相抵消，价格双向波动",
+   "prob": 35
+  },
+  {
+   "name": "风险溢价/寒潮主导：霍尔木兹事件或极端寒潮推升气价，产能扩张被供应中断抵消",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "监测周期内出现美国LNG产能投产/出口走强的正面报道条数（新增产能兑现信号）",
+   "keywords": [
+    "LNG export",
+    "Corpus Christi",
+    "Cheniere",
+    "liquefaction",
+    "LNG terminal",
+    "feedgas"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "将首批现货/浮动价敞口上调至冬季量的30-40%，并暂停新增长协谈判"
+  },
+  {
+   "id": "t2",
+   "description": "霍尔木兹海峡航运中断/袭击/封锁类报道条数（尾部风险信号）",
+   "keywords": [
+    "Hormuz",
+    "tanker attack",
+    "shipping disruption",
+    "strait closure",
+    "Gulf of Oman"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "立即执行尾部对冲（买入看涨期权或锁定剩余冬季长协量），将情景S3概率上调，重新评估现货敞口"
+  },
+  {
+   "id": "t3",
+   "description": "中国LNG进口回升或需求转强类报道条数（需求侧转向信号）",
+   "keywords": [
+    "China LNG imports",
+    "China natural gas demand",
+    "China imports rise",
+    "China gas procurement"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "削弱看空逻辑，将现货敞口回调至中性，重估长协比例"
+  },
+  {
+   "id": "t4",
+   "description": "JKM（或TTF）现货价格读数突破阈值，需人工读取（阈值为估计值，待基线确认）",
+   "keywords": [
+    "JKM",
+    "TTF",
+    "Japan-Korea Marker",
+    "spot LNG price",
+    "亚洲气价"
+   ],
+   "threshold": 12,
+   "type": "value",
+   "action": "若JKM≥12美元/百万英热单位且持续2周，按情景S3重估套保比例；若跌破上一冬季均价10%，加速现货采购"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-02-09",
+ "question": "未来 90 天全球 LNG 产能扩张对亚洲气价的影响",
+ "generated_at": "2026-11-11T10:17:16Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "aljazeera",
+  "bis",
+  "cfr",
+  "ecb",
+  "eia",
+  "fed",
+  "ft",
+  "gn-energy",
+  "gn-geopolitics",
+  "guardian-world",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "scmp",
+  "state-gov",
+  "wto"
+ ]
+}
