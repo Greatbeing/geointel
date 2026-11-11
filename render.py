@@ -210,7 +210,7 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 
 @media (max-width:600px){
   body{font-size:16.5px; line-height:1.88}
-  .top{padding:20px 20px 14px; flex-direction:column; gap:10px}
+  .top{padding:20px 20px 14px; flex-direction:column; align-items:flex-start; gap:10px}
   .top nav{gap:18px}
   .wrap{padding:0 20px 72px}
   .kicker{margin-top:34px}
