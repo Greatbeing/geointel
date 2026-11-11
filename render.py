@@ -83,12 +83,13 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 .body h2:first-child{margin-top:0; padding-top:0; border-top:0}
 .body h3{
   font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
-  margin:30px 0 8px;
+  margin:26px 0 6px;
 }
 .body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
 .body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
 .body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
-.body li{margin:0 0 .45em; text-align:justify}
+.body li{margin:0 0 .4em; text-align:left}
+.body .src{font-size:.84em; color:var(--ink-3); letter-spacing:0}
 .body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
 .body ul li::marker{content:"— "}
 .body strong{font-weight:600; color:var(--ink)}
@@ -215,6 +216,8 @@ def inline(s):
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2" rel="nofollow">\1</a>', s)
     s = re.sub(r"(?<![\"=>])(https?://[^\s<）)]+)", r'<a href="\1" rel="nofollow">\1</a>', s)
+    # 句末出处（来源、日期）压小压淡，让正文先被读到
+    s = SRC_RE.sub(lambda m: '<span class="src">（%s）</span>' % m.group(1), s)
     return s
 
 
@@ -386,11 +389,21 @@ def strip_lede(body):
 
 
 OPS_LINE = re.compile(r"^(源状态|抓取状态|统计窗口|覆盖率)\s*[:：]")
+FENCE_RE = re.compile(r"```[a-zA-Z]*\s*\n(.*?)```", re.S)
+SRC_RE = re.compile(r"（([^（）]*(?:\d{4}-\d{2}-\d{2}|[A-Za-z]{2,})[^（）]*)）\s*$")
 
 
 def strip_ops(text):
     """删掉生成流程留在正文里的运维行（源状态、抓取条数等），读者不需要。"""
     return "\n".join(l for l in text.split("\n") if not OPS_LINE.match(l.strip()))
+
+
+def strip_data_blocks(text):
+    """备忘录末尾常带一段 JSON（情景/触发条件的机读版），页面上已有正文化表达，不再重复展示。"""
+    def drop(m):
+        body = m.group(1).strip()
+        return "\n" if body.startswith("{") or body.startswith("[") else m.group(0)
+    return FENCE_RE.sub(drop, text)
 
 
 def cn_date(day):
@@ -515,7 +528,8 @@ def build():
         if meta.get("horizon_days"):
             under.append("视界 %s 天" % meta["horizon_days"])
         write(os.path.join("decisions", name + ".html"),
-              page(question, "决策备忘录", md2html(strip_ops(strip_lede(body))), "decisions",
+              page(question, "决策备忘录",
+                   md2html(strip_data_blocks(strip_ops(strip_lede(body)))), "decisions",
                    under=under, big=False))
         decision_entries.append({
             "name": name, "question": question, "day": day,
