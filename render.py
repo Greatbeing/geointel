@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""site.py — 把 digest / decisions / alerts 渲染成离线可读的静态站点。
+"""render.py — 把 digest / decisions / alerts 渲染成静态站点。
 
-无外部依赖、无外链资源（单文件 CSS），可以直接用浏览器打开，也可以推到 GitHub Pages。
+零外部依赖、零外链资源（CSS 内联，浏览器直接打开即可）。
+根路径链接由 BASE 控制：默认 /geointel，适配 GitHub Pages 项目页；
+本地双击预览时把 GEOINTEL_BASE 设为空串，或直接用相对路径。
 """
 import html
 import os
@@ -10,31 +12,35 @@ from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
-SITE = os.path.join(HERE, "site")
+SITE = os.path.join(HERE, "docs")
+BASE = os.environ.get("GEOINTEL_BASE", "/geointel")
 
-CSS = """
-:root{--bg:#0f1115;--fg:#e6e6e6;--dim:#8b93a1;--line:#232833;--acc:#6ea8fe}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,"Segoe UI",system-ui,sans-serif}
-.wrap{max-width:820px;margin:0 auto;padding:32px 20px 80px}
-header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}
-h1{font-size:22px;margin:0 0 6px}
-h2{font-size:18px;margin:32px 0 10px;color:#fff}
-h3{font-size:16px;margin:22px 0 8px;color:#cfd6e4}
-p,li{color:#d7dbe3}
-a{color:var(--acc);text-decoration:none}
-a:hover{text-decoration:underline}
-.meta{color:var(--dim);font-size:13px}
-ul{padding-left:22px}
-li{margin:4px 0}
-hr{border:0;border-top:1px solid var(--line);margin:28px 0}
-.nav a{margin-right:16px;font-size:14px}
-.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;background:#141821}
-.tag{display:inline-block;font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-right:6px}
-pre{background:#0b0d12;border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto}
-code{font-family:ui-monospace,Consolas,monospace;font-size:14px}
-blockquote{border-left:3px solid var(--line);margin:0;padding-left:14px;color:var(--dim)}
-"""
+CSS = ""
+"".join([
+    ":root{--bg:#0f1115;--fg:#e6e6e6;--dim:#8b93a1;--line:#232833;--acc:#6ea8fe}",
+    "*{box-sizing:border-box}",
+    "body{margin:0;background:var(--bg);color:var(--fg);",
+    "font:16px/1.75 -apple-system,Segoe UI,system-ui,sans-serif}",
+    ".wrap{max-width:820px;margin:0 auto;padding:32px 20px 80px}",
+    "header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}",
+    "h1{font-size:22px;margin:0 0 6px}",
+    "h2{font-size:18px;margin:32px 0 10px;color:#fff}",
+    "h3{font-size:16px;margin:22px 0 8px;color:#cfd6e4}",
+    "p,li{color:#d7dbe3}",
+    "a{color:var(--acc);text-decoration:none}",
+    "a:hover{text-decoration:underline}",
+    ".meta{color:var(--dim);font-size:13px}",
+    "ul{padding-left:22px}",
+    "li{margin:4px 0}",
+    "hr{border:0;border-top:1px solid var(--line);margin:28px 0}",
+    ".nav a{margin-right:16px;font-size:14px}",
+    ".card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;",
+    "margin:12px 0;background:#141821}",
+    "pre{background:#0b0d12;border:1px solid var(--line);border-radius:8px;",
+    "padding:12px;overflow:auto}",
+    "code{font-family:ui-monospace,Consolas,monospace;font-size:14px}",
+    "blockquote{border-left:3px solid var(--line);margin:0;padding-left:14px;color:var(--dim)}",
+])
 
 
 def md2html(text):
@@ -66,7 +72,7 @@ def md2html(text):
     def close_list():
         nonlocal list_mode
         if list_mode:
-            body.append(f"</{list_mode}>")
+            body.append("</%s>" % list_mode)
             list_mode = None
 
     for line in blocks:
@@ -80,7 +86,7 @@ def md2html(text):
             flush()
             close_list()
             n = len(m.group(1))
-            body.append(f"<h{n}>{inline(m.group(2))}</h{n}>")
+            body.append("<h%d>%s</h%d>" % (n, inline(m.group(2)), n))
             continue
         m = re.match(r"^[-*]\s+(.*)$", s)
         if m:
@@ -89,7 +95,7 @@ def md2html(text):
                 close_list()
                 body.append("<ul>")
                 list_mode = "ul"
-            body.append(f"<li>{inline(m.group(1))}</li>")
+            body.append("<li>%s</li>" % inline(m.group(1)))
             continue
         m = re.match(r"^\d+[.)]\s+(.*)$", s)
         if m:
@@ -98,7 +104,7 @@ def md2html(text):
                 close_list()
                 body.append("<ol>")
                 list_mode = "ol"
-            body.append(f"<li>{inline(m.group(1))}</li>")
+            body.append("<li>%s</li>" % inline(m.group(1)))
             continue
         if s in ("---", "***"):
             flush()
@@ -114,28 +120,51 @@ def md2html(text):
 def inline(s):
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
-    s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2">\1</a>', s)
+    s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2" rel="nofollow">\1</a>', s)
     return s
 
 
+def href(path):
+    return BASE + path
+
+
 def page(title, body, subtitle=""):
-    return f"""<!doctype html><html lang="zh"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title)}</title><style>{CSS}</style></head>
-<body><div class="wrap"><header>
-<h1>{html.escape(title)}</h1>
-<div class="meta">{html.escape(subtitle)}</div>
-<div class="nav"><a href="/index.html">首页</a><a href="/decisions.html">决策备忘录</a><a href="/alerts.html">触发告警</a></div>
-</header>{body}
-<hr><div class="meta">geointel · 由 magpie/group/daily 生成 · {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</div>
-</div></body></html>"""
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    head = (
+        '<!doctype html><html lang="zh"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        "<title>%s</title><style>%s</style></head>\n"
+        '<body><div class="wrap"><header>\n<h1>%s</h1>\n'
+        '<div class="meta">%s</div>\n<div class="nav">'
+    ) % (html.escape(title), CSS, html.escape(title), html.escape(subtitle))
+    links = (
+        '<a href="%s">首页</a>'
+        '<a href="%s">决策备忘录</a>'
+        '<a href="%s">触发告警</a>'
+    ) % (href("/index.html"), href("/decisions.html"), href("/alerts.html"))
+    tail = (
+        '</div>\n</header>%s\n<hr><div class="meta">'
+        'geointel · 只基于抓取材料 · %s</div>\n</div></body></html>'
+    ) % (body, now)
+    return head + links + tail
 
 
-def read_dir(sub, ext=".md"):
+def read_dir(sub):
     d = os.path.join(OUT, sub)
     if not os.path.isdir(d):
         return []
-    return sorted((os.path.join(d, f) for f in os.listdir(d) if f.endswith(ext)), reverse=True)
+    return sorted((os.path.join(d, f) for f in os.listdir(d) if f.endswith(".md")), reverse=True)
+
+
+def body_of(path):
+    raw = open(path, encoding="utf-8").read()
+    return re.sub(r"^---\n.*?\n---\n", "", raw, flags=re.S)
+
+
+def write(rel, content):
+    path = os.path.join(SITE, rel)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    open(path, "w", encoding="utf-8").write(content)
 
 
 def build():
@@ -144,57 +173,49 @@ def build():
     decisions = read_dir("decisions")
     alerts = read_dir("alerts")
 
-    latest_body = ""
-    if digests:
-        raw = open(digests[0], encoding="utf-8").read()
-        raw = re.sub(r"^---\n.*?\n---\n", "", raw, flags=re.S)
-        latest_body = md2html(raw)
-        os.makedirs(os.path.join(SITE, "digest"), exist_ok=True)
-        for path in digests:
-            name = os.path.splitext(os.path.basename(path))[0]
-            text = re.sub(r"^---\n.*?\n---\n", "", open(path, encoding="utf-8").read(), flags=re.S)
-            open(os.path.join(SITE, "digest", name + ".html"), "w", encoding="utf-8").write(
-                page("情报简报 " + name, md2html(text), "每日全球情报摘要"))
-
-    archive = "".join(
-        f'<li><a href="/digest/{os.path.splitext(os.path.basename(p))[0]}.html">'
-        f'{os.path.splitext(os.path.basename(p))[0]}</a></li>' for p in digests[:30])
-    index_body = f"""{latest_body}
-<h2>历史简报</h2><ul>{archive or '<li>暂无</li>'}</ul>"""
-
-    open(os.path.join(SITE, "index.html"), "w", encoding="utf-8").write(
-        page("全球情报简报", index_body, "每日自动采集 · 只基于抓取材料"))
+    for path in digests:
+        name = os.path.splitext(os.path.basename(path))[0]
+        write(os.path.join("digest", name + ".html"),
+              page("情报简报 " + name, md2html(body_of(path)), "每日全球情报摘要"))
 
     cards = []
-    os.makedirs(os.path.join(SITE, "decisions"), exist_ok=True)
     for path in decisions:
         name = os.path.splitext(os.path.basename(path))[0]
-        text = re.sub(r"^---\n.*?\n---\n", "", open(path, encoding="utf-8").read(), flags=re.S)
-        first = next((l.strip("# ").strip() for l in text.split("\n") if l.startswith("# ")), name)
-        cards.append(f'<div class="card"><a href="/decisions/{name}.html">{html.escape(first)}</a>'
-                     f'<div class="meta">{name}</div></div>')
-        open(os.path.join(SITE, "decisions", name + ".html"), "w", encoding="utf-8").write(
-            page(first, md2html(text), "决策备忘录 · " + name))
-    open(os.path.join(SITE, "decisions.html"), "w", encoding="utf-8").write(
-        page("决策备忘录", "".join(cards) or "<p>暂无</p>", "结构化决策分析"))
+        text = body_of(path)
+        first = next((l.lstrip("#").strip() for l in text.split("\n") if l.startswith("# ")), name)
+        cards.append('<div class="card"><a href="%s">%s</a><div class="meta">%s</div></div>'
+                     % (href("/decisions/" + name + ".html"), html.escape(first), html.escape(name)))
+        write(os.path.join("decisions", name + ".html"),
+              page(first, md2html(text), "决策备忘录 · " + name))
+    write("decisions.html", page("决策备忘录", "".join(cards) or "<p>暂无</p>", "结构化决策分析"))
 
     alert_html = []
     for path in alerts[:14]:
         name = os.path.splitext(os.path.basename(path))[0]
-        text = open(path, encoding="utf-8").read()
-        alert_html.append(f"<h2>{name}</h2>" + md2html(text))
-    open(os.path.join(SITE, "alerts.html"), "w", encoding="utf-8").write(
-        page("触发告警", "".join(alert_html) or "<p>暂无触发</p>", "决策备忘录里的触发条件命中记录"))
+        alert_html.append("<h2>%s</h2>%s" % (html.escape(name), md2html(body_of(path))))
+    write("alerts.html", page("触发告警", "".join(alert_html) or "<p>暂无触发</p>",
+                              "决策备忘录里的触发条件命中记录"))
 
-    # 清掉源文件已删除但页面还留着的陈旧 html（否则站点会积累幽灵页面）
-    keep_digest = {os.path.splitext(os.path.basename(p))[0] + ".html" for p in digests}
-    keep_dec = {os.path.splitext(os.path.basename(p))[0] + ".html" for p in decisions}
-    for sub, keep in (("digest", keep_digest), ("decisions", keep_dec)):
+    archive = []
+    for path in digests[:30]:
+        name = os.path.splitext(os.path.basename(path))[0]
+        archive.append('<li><a href="%s">%s</a></li>' % (href("/digest/" + name + ".html"),
+                                                          html.escape(name)))
+    latest = md2html(body_of(digests[0])) if digests else "<p>暂无简报，等第一轮 digest。</p>"
+    write("index.html", page("全球情报简报", latest + "<h2>历史简报</h2><ul>" +
+                             ("".join(archive) or "<li>暂无</li>") + "</ul>",
+                             "每日自动采集 · 只基于抓取材料"))
+
+    keep = {
+        "digest": {os.path.splitext(os.path.basename(p))[0] + ".html" for p in digests},
+        "decisions": {os.path.splitext(os.path.basename(p))[0] + ".html" for p in decisions},
+    }
+    for sub, names in keep.items():
         d = os.path.join(SITE, sub)
         if not os.path.isdir(d):
             continue
         for f in os.listdir(d):
-            if f.endswith(".html") and f not in keep:
+            if f.endswith(".html") and f not in names:
                 os.remove(os.path.join(d, f))
 
     return {"digests": len(digests), "decisions": len(decisions), "alerts": len(alerts)}
