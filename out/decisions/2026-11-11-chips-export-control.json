@@ -1,0 +1,87 @@
+{
+ "scenarios": [
+  {
+   "name": "显著升级：新国会通过扩大对华半导体/AI芯片管制的法案，或发布覆盖面显著扩大的行政令（含针对Nvidia生态的专项限制）",
+   "prob": 45
+  },
+  {
+   "name": "有限收紧：现有框架内强化执法（列名个别公司、发布执法指南、延长许可审批周期），无重大新立法",
+   "prob": 35
+  },
+  {
+   "name": "维持现状/缓和：中美谈判取得进展，管制不再收紧甚至部分回调",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "30天滚动窗口内，涉及新出口管制措施/清单的关键词命中条数",
+   "keywords": [
+    "export control",
+    "entity list",
+    "BIS",
+    "export license"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动半导体供应链压力测试：7日内完成关键设备/材料清单与双源化可行性评估"
+  },
+  {
+   "id": "t2",
+   "description": "30天滚动窗口内，Nvidia丑闻/间谍指控相关关键词命中条数",
+   "keywords": [
+    "Nvidia",
+    "Jensen Huang",
+    "Megaspeed",
+    "spy"
+   ],
+   "threshold": 4,
+   "type": "count",
+   "action": "审查对Nvidia生态及中国客户的销售、合规与回款敞口，必要时暂缓新增承诺"
+  },
+  {
+   "id": "t3",
+   "description": "30天滚动窗口内，中美缓和/谈判信号关键词命中条数",
+   "keywords": [
+    "truce",
+    "tariff pause",
+    "commitments"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "暂缓升级应对措施，重新评估供应链冗余的紧迫性"
+  },
+  {
+   "id": "t4",
+   "description": "SOX半导体指数较近30日高点的回撤幅度（%）——系统仅提示人工读数，无法自动判定",
+   "keywords": [],
+   "threshold": 10,
+   "type": "value",
+   "action": "降低半导体相关风险敞口，复核库存与采购承诺"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2026-12-15",
+ "question": "未来 90 天半导体出口管制升级的概率与应对",
+ "generated_at": "2026-11-11T10:17:16Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "cnbc",
+  "ft",
+  "gn-ai-reg",
+  "gn-chips",
+  "gn-climate",
+  "gn-mideast",
+  "gn-trade",
+  "lowy",
+  "marketwatch",
+  "nature",
+  "nikkei-asia",
+  "science-news",
+  "scmp",
+  "straits-times",
+  "techcrunch"
+ ]
+}

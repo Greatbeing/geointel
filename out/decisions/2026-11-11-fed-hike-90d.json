@@ -1,0 +1,82 @@
+{
+ "scenarios": [
+  {
+   "name": "加息 25bp（12 月或 1 月会议）",
+   "prob": 50
+  },
+  {
+   "name": "维持利率不变（全程按兵不动）",
+   "prob": 45
+  },
+  {
+   "name": "降息或紧急宽松（金融事故触发）",
+   "prob": 5
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "核心 CPI/PCE 连续两月环比 ≥ 0.3%",
+   "keywords": [
+    "core CPI",
+    "core PCE",
+    "month-over-month",
+    "0.3%"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "将「加息」情景概率上调至 ≥70%，建议增持短端做空/长美元头寸"
+  },
+  {
+   "id": "t2",
+   "description": "联邦基金期货隐含 12 月/1 月加息概率 ≥ 60%",
+   "keywords": [],
+   "threshold": 60,
+   "type": "value",
+   "action": "执行加息对冲：买入 3M SOFR 看涨期权、卖出 2Y/10Y 坡度曲线"
+  },
+  {
+   "id": "t3",
+   "description": "沃勒/鲍威尔公开讲话出现「不排除加息」或「政策不够限制性」表述",
+   "keywords": [
+    "not rule out hike",
+    "not restrictive enough",
+    "higher for longer",
+    "upside risk"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "立即压缩久期风险，将投资组合修正久期降至基准 -0.5 年以内"
+  },
+  {
+   "id": "t4",
+   "description": "10 年期美债收益率站上 5.25% 并日收盘确认",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "触发止损/减仓规则：平掉所有长久期债券多头，转入现金或浮息票据"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-09",
+ "question": "未来 90 天美联储加息的概率与应对",
+ "generated_at": "2026-11-11T10:17:16Z",
+ "horizon_days": 90,
+ "items_used": 37,
+ "sources": [
+  "aljazeera",
+  "bis",
+  "cfr",
+  "cnbc",
+  "ecb",
+  "fed",
+  "ft",
+  "guardian-world",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "scmp",
+  "state-gov",
+  "wto"
+ ]
+}

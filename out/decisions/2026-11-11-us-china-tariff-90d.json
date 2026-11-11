@@ -1,0 +1,73 @@
+{
+ "scenarios": [
+  {
+   "name": "有限协议或休战延期",
+   "prob": 40
+  },
+  {
+   "name": "休战到期后局部升级",
+   "prob": 35
+  },
+  {
+   "name": "全面贸易战重启",
+   "prob": 25
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "未来30天内出现'协议''达成''签署'等积极谈判关键词",
+   "keywords": [
+    "协议",
+    "达成",
+    "签署",
+    "agreement",
+    "deal"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动情景A评估，考虑减少囤货"
+  },
+  {
+   "id": "t2",
+   "description": "未来30天内出现'加征''终止休战''破裂'等升级关键词",
+   "keywords": [
+    "加征",
+    "上调",
+    "终止",
+    "破裂",
+    "expire",
+    "terminate"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动情景C应对，加速库存转移"
+  },
+  {
+   "id": "t3",
+   "description": "美国CPI同比读数≥3.5%（人工读数）",
+   "keywords": [],
+   "threshold": 3.5,
+   "type": "value",
+   "action": "提示人工评估通胀对谈判政治压力的影响"
+  },
+  {
+   "id": "t4",
+   "description": "中国对美出口同比降幅≥15%（人工读数）",
+   "keywords": [],
+   "threshold": 15,
+   "type": "value",
+   "action": "提示人工评估中方经济压力"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-01-09",
+ "question": "未来 90 天中美关税谈判走向的概率与应对",
+ "generated_at": "2026-11-11T10:17:16Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "gn-trade",
+  "straits-times"
+ ]
+}
