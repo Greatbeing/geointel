@@ -98,9 +98,83 @@ def extract_json(text):
         return {}
 
 
+def run_question(q, out_dir, now):
+    """生成一条备忘录，返回 (slug, ok, detail)。"""
+    question = q["question"]
+    days = int(q.get("days", 30))
+    horizon = int(q.get("horizon", 90))
+    items_n = int(q.get("items", 40))
+    slug = q.get("slug") or hashlib.sha1(question.encode()).hexdigest()[:6]
+    name = f"{now.strftime('%Y-%m-%d')}-{slug}"
+
+    if os.path.exists(os.path.join(out_dir, name + ".md")):
+        return slug, True, f"skip (exists: {name}.md)"
+
+    items = store.search(question, limit=items_n, days=days)
+    if not items:
+        return slug, False, "no intel available; run collect first"
+
+    prompt = TEMPLATE.format(question=question, horizon=horizon, days=days,
+                             n=len(items), material=material(items))
+    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=32000)
+
+    meta = extract_json(body)
+    if not meta.get("scenarios"):
+        body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=64000)
+        meta = extract_json(body)
+    if not meta.get("scenarios"):
+        return slug, False, "LLM produced no scenarios/triggers (budget exhausted)"
+
+    meta.update({
+        "question": question,
+        "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "horizon_days": horizon,
+        "items_used": len(items),
+        "sources": sorted({it["source"] for it in items}),
+    })
+    json.dump(meta, open(os.path.join(out_dir, name + ".json"), "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
+
+    header = ("---\n"
+              f"question: {question}\n"
+              f"generated_at: {now.strftime('%Y-%m-%dT%H:%M:%SZ')}\n"
+              f"horizon_days: {horizon}\n"
+              f"items_used: {len(items)}\n"
+              "---\n\n")
+    open(os.path.join(out_dir, name + ".md"), "w", encoding="utf-8").write(
+        header + body.strip() + "\n")
+    return slug, True, f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} " \
+                       f"triggers={len(meta.get('triggers') or [])}"
+
+
+def run_questions(path):
+    """questions.json 模式：逐条生成，跳过已存在的，状态写回。"""
+    qs = json.load(open(path, encoding="utf-8"))
+    if isinstance(qs, dict):
+        qs = qs.get("questions", [])
+    out_dir = os.path.join(HERE, "out", "decisions")
+    os.makedirs(out_dir, exist_ok=True)
+    now = datetime.now(timezone.utc)
+    results = []
+    for q in qs:
+        slug, ok, detail = run_question(q, out_dir, now)
+        results.append({"slug": slug, "question": q["question"], "ok": ok, "detail": detail})
+        print(f"  {slug}: {detail}", flush=True)
+    json.dump(results, open(path + ".state.json", "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
+    bad = [r for r in results if not r["ok"]]
+    if bad:
+        print(f"{len(results) - len(bad)}/{len(results)} ok, {len(bad)} failed", file=sys.stderr)
+        return 2
+    print(f"{len(results)}/{len(results)} ok", flush=True)
+    render.build()
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("question")
+    ap.add_argument("question", nargs="?")
+    ap.add_argument("--questions", default="")
     ap.add_argument("--days", type=int, default=30)
     ap.add_argument("--horizon", type=int, default=90)
     ap.add_argument("--items", type=int, default=40)
@@ -108,43 +182,18 @@ def main():
     ap.add_argument("--out-dir", default=os.path.join(HERE, "out", "decisions"))
     args = ap.parse_args()
 
-    items = store.search(args.question, limit=args.items, days=args.days)
-    if not items:
-        print("no intel available; run collect first", file=sys.stderr)
-        return 2
+    if args.questions:
+        return run_questions(args.questions)
 
-    prompt = TEMPLATE.format(question=args.question, horizon=args.horizon, days=args.days,
-                             n=len(items), material=material(items))
-    body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=16000)
-
+    if not args.question:
+        ap.error("question is required (or use --questions)")
     now = datetime.now(timezone.utc)
-    slug = args.slug or hashlib.sha1(args.question.encode()).hexdigest()[:6]
-    name = f"{now.strftime('%Y-%m-%d')}-{slug}"
-    os.makedirs(args.out_dir, exist_ok=True)
-
-    meta = extract_json(body)
-    meta.update({
-        "question": args.question,
-        "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "horizon_days": args.horizon,
-        "items_used": len(items),
-        "sources": sorted({it["source"] for it in items}),
-    })
-    json.dump(meta, open(os.path.join(args.out_dir, name + ".json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
-
-    header = ("---\n"
-              f"question: {args.question}\n"
-              f"generated_at: {now.strftime('%Y-%m-%dT%H:%M:%SZ')}\n"
-              f"horizon_days: {args.horizon}\n"
-              f"items_used: {len(items)}\n"
-              "---\n\n")
-    open(os.path.join(args.out_dir, name + ".md"), "w", encoding="utf-8").write(
-        header + body.strip() + "\n")
-    print(f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} "
-          f"triggers={len(meta.get('triggers') or [])}", flush=True)
+    slug, ok, detail = run_question(
+        {"question": args.question, "days": args.days, "horizon": args.horizon,
+         "items": args.items, "slug": args.slug}, args.out_dir, now)
+    print(detail, flush=True)
     render.build()
-    return 0
+    return 0 if ok else 2
 
 
 if __name__ == "__main__":

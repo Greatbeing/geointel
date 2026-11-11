@@ -1,0 +1,22 @@
+{
+ "question": "未来 90 天美联储加息的概率与应对",
+ "generated_at": "2026-11-11T08:57:06Z",
+ "horizon_days": 90,
+ "items_used": 37,
+ "sources": [
+  "aljazeera",
+  "bis",
+  "cfr",
+  "cnbc",
+  "ecb",
+  "fed",
+  "ft",
+  "guardian-world",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "scmp",
+  "state-gov",
+  "wto"
+ ]
+}
