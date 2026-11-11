@@ -147,10 +147,9 @@ def fetch(source, timeout):
         if data[:2] == b"\x1f\x8b":
             import gzip
             data = gzip.decompress(data)
-        stripped = data.lstrip()
-        if stripped[:15].lower().startswith(b"<!doctype html") or stripped[:6].lower().startswith(b"<html"):
-            return source["id"], False, 0, round(time.time() - started, 1), [], \
-                "non-XML response (HTML page - dead or wrong feed URL)"
+        head = data[:200].lower()
+        if head.lstrip().startswith(b"<!doctype html") or head.lstrip().startswith(b"<html"):
+            return source["id"], False, 0, round(time.time() - started, 1), [], "not a feed (HTML page)"
         items = parse_feed(data, source)
         return source["id"], True, len(items), round(time.time() - started, 1), items, ""
     except Exception as e:
