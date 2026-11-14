@@ -128,6 +128,13 @@ def search(query, limit=40, days=30):
 LEXICON = {
     "半导体": ["semiconductor", "chip", "chips", "foundry"],
     "芯片": ["chip", "chips", "semiconductor"],
+    "台积电": ["TSMC", "Taiwan Semiconductor"],
+    "晶圆": ["wafer", "foundry"],
+    "代工": ["foundry"],
+    "亚利桑那": ["Arizona"],
+    "产能": ["capacity", "production"],
+    "爬坡": ["ramp", "ramp-up", "ramp up"],
+    "良率": ["yield"],
     "出口管制": ["export control", "export controls", "entity list", "restriction"],
     "管制": ["control", "restriction", "sanction"],
     "关税": ["tariff", "tariffs", "trade war"],

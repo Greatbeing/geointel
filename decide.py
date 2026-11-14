@@ -12,6 +12,7 @@
   out/decisions/<日期>-<slug>.json  机读版（scenarios/triggers/confidence）
 """
 import argparse
+import glob
 import hashlib
 import json
 import os
@@ -102,6 +103,16 @@ def extract_json(text):
         return {}
 
 
+def valid_meta(meta):
+    """结构完整性：至少 2 个情景、至少 1 个触发条件，且不是「情报不足」的退化输出。"""
+    scen = meta.get("scenarios") or []
+    trig = meta.get("triggers") or []
+    if len(scen) < 2 or not trig:
+        return False
+    names = " ".join(str(s.get("name", "")) for s in scen if isinstance(s, dict))
+    return not ("情报不足" in names or "无法评估" in names)
+
+
 def run_question(q, out_dir, now):
     """生成一条备忘录，返回 (slug, ok, detail)。"""
     question = q["question"]
@@ -126,10 +137,10 @@ def run_question(q, out_dir, now):
     for budget in (32000, 64000):
         body = llm.chat(prompt, system=SYSTEM, timeout=480, max_tokens=budget)
         meta = extract_json(body)
-        if meta.get("scenarios"):
+        if valid_meta(meta):
             break
-    if not meta.get("scenarios"):
-        return slug, False, "LLM produced no scenarios/triggers (truncated or non-compliant)"
+    if not valid_meta(meta):
+        return slug, False, "LLM output incomplete (scenarios<2 or no triggers)"
     meta.update({
         "question": question,
         "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -176,10 +187,52 @@ def run_questions(path):
     return 0
 
 
+def latest_days(out_dir):
+    """slug -> 最新备忘录日期（用于轮转时挑最久没更新的问题）。"""
+    latest = {}
+    for path in glob.glob(os.path.join(out_dir, "*.json")):
+        name = os.path.basename(path)[:-5]
+        m = re.match(r"^(\d{4}-\d\d-\d\d)-(.+)$", name)
+        day, slug = (m.group(1), m.group(2)) if m else ("", name)
+        if slug not in latest or day > latest[slug]:
+            latest[slug] = day
+    return latest
+
+
+def run_rotate(path):
+    """每日轮转：只生成「最久没更新」的一个问题。
+
+    五个问题分摊到每天，站点每天都有新备忘录，单次只占一个模型的生成时间。
+    """
+    qs = json.load(open(path, encoding="utf-8"))
+    if isinstance(qs, dict):
+        qs = qs.get("questions", [])
+    if not qs:
+        print("no questions", file=sys.stderr)
+        return 2
+    out_dir = os.path.join(HERE, "out", "decisions")
+    os.makedirs(out_dir, exist_ok=True)
+    latest = latest_days(out_dir)
+
+    def age(q):
+        slug = q.get("slug") or hashlib.sha1(q["question"].encode()).hexdigest()[:6]
+        return latest.get(slug, "")
+
+    q = min(qs, key=age)
+    slug, ok, detail = run_question(q, out_dir, datetime.now(timezone.utc))
+    print(f"  {slug}: {detail}", flush=True)
+    if not ok:
+        return 2
+    render.build()
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("question", nargs="?")
     ap.add_argument("--questions", default="")
+    ap.add_argument("--rotate", action="store_true",
+                    help="配合 --questions：只生成最久没更新的一个问题")
     ap.add_argument("--days", type=int, default=30)
     ap.add_argument("--horizon", type=int, default=90)
     ap.add_argument("--items", type=int, default=40)
@@ -188,7 +241,7 @@ def main():
     args = ap.parse_args()
 
     if args.questions:
-        return run_questions(args.questions)
+        return run_rotate(args.questions) if args.rotate else run_questions(args.questions)
 
     if not args.question:
         ap.error("question is required (or use --questions)")

@@ -1,25 +1,78 @@
 {
  "scenarios": [
   {
-   "name": "情报不足无法评估",
-   "prob": 100
+   "name": "产能爬坡顺利",
+   "prob": 60
+  },
+  {
+   "name": "产能爬坡部分延迟",
+   "prob": 30
+  },
+  {
+   "name": "产能爬坡严重延迟或中断",
+   "prob": 10
   }
  ],
- "triggers": [],
- "confidence": "low",
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "监控网络安全事件：如果未来90天内台积电相关黑客攻击或数据泄露事件关键词命中次数超过阈值，则触发风险评估升级",
+   "keywords": [
+    "hack",
+    "cyberattack",
+    "security breach",
+    "TSMC hacked"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动应急响应计划，包括加强网络安全防护和供应链备份"
+  },
+  {
+   "id": "t2",
+   "description": "监控亚利桑那水电供应：如果美国西南部水电产量同比下降超过20%（基于EIA月度数据），则触产能调整评估",
+   "keywords": [],
+   "threshold": 20,
+   "type": "value",
+   "action": "评估备用能源方案，如天然气或太阳能补充，并考虑短期产能减速"
+  },
+  {
+   "id": "t3",
+   "description": "监控中美贸易政策变化：如果未来90天内中美关税或出口管制相关新闻关键词命中次数超过阈值，则触发供应链审查",
+   "keywords": [
+    "tariff",
+    "trade war",
+    "export control",
+    "Xi-Trump",
+    "FedEx flights"
+   ],
+   "threshold": 5,
+   "type": "count",
+   "action": "启动多元化供应链策略，增加非中国地区设备采购"
+  }
+ ],
+ "confidence": "medium",
  "review_date": "2027-02-12",
  "question": "未来 90 天台积电在亚利桑那产能爬坡的确定性与风险",
- "generated_at": "2026-11-14T13:52:05Z",
+ "generated_at": "2026-11-14T14:04:57Z",
  "horizon_days": 90,
- "items_used": 24,
+ "items_used": 40,
  "sources": [
-  "cfr",
-  "ecb",
-  "fed",
+  "allafrica",
+  "ars",
+  "arxiv-ai",
+  "cnbc",
+  "defense-gov",
+  "eia",
   "ft",
-  "lowy",
-  "nature",
+  "gn-ai-reg",
+  "gn-climate",
+  "gn-energy",
+  "gn-mideast",
+  "gn-trade",
+  "guardian-world",
+  "hn",
   "nikkei-asia",
-  "state-gov"
+  "scmp",
+  "techcrunch"
  ]
 }
