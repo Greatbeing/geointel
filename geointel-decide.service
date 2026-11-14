@@ -1,0 +1,15 @@
+[Unit]
+Description=geointel decide — daily rotating decision memo
+After=network-online.target magpie-gateway.service
+Wants=network-online.target magpie-gateway.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/data/workspace/geointel
+Environment=HOME=/data/home
+Environment=PATH=/data/home/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=GEOINTEL_BASE=/geointel
+ExecStart=/data/workspace/geointel/run-decide.sh --questions /data/workspace/geointel/questions.json --rotate
+StandardOutput=append:/data/workspace/geointel/logs/decide.out
+StandardError=append:/data/workspace/geointel/logs/decide.err
+TimeoutStartSec=3600

@@ -1,0 +1,10 @@
+[Unit]
+Description=geointel decide — one memo per day (01:00 UTC)
+
+[Timer]
+OnCalendar=*-*-* 01:00:00 UTC
+Persistent=true
+Unit=geointel-decide.service
+
+[Install]
+WantedBy=timers.target
