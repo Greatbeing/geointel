@@ -58,6 +58,11 @@ collect.py ──► data/intel.db (SQLite + FTS5)
 | `geointel-collect.timer` | 每 2 小时 | 采集 + 触发评估 + 发布 |
 | `geointel-digest.timer` | 00:20 UTC | 每日简报 |
 | `geointel-watch.timer` | 00:45 UTC | 独立触发评估（兜底） |
+| `geointel-decide.timer` | 周日 01:00 UTC | 按 `questions.json` 批量生成决策备忘录（已存在的跳过） |
+
+同一个 slug 周度重跑会生成新日期的新备忘录，旧文件保留可回看；
+`watch.py` 只读每个 slug 最新一份的 triggers，`render.py` 的索引也只列最新一条，
+避免同一触发条件重复告警、首页重复堆叠。
 
 ## 已知约束
 
