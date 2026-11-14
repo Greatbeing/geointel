@@ -41,7 +41,7 @@ WORDMARK = (
     '<rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg>'
 )
 
-SLOGAN = "先看材料，再下判断。"
+SLOGAN = "不预言，只推演。"
 
 CSS = """
 :root{
@@ -473,7 +473,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
         '<h1 class="dateline{q}">{title}</h1>{under}{tagline}</header>'
         '<div class="body">{body}</div>'
         '<footer class="colophon"><span class="slogan">{slogan}</span>'
-        "<span>只基于抓取材料</span>"
+        "<span>仅基于抓取材料</span>"
         "<span>{updated} 更新</span></footer></div></body></html>"
     ).format(
         title=html.escape(title), css=CSS, home=href("/index.html"), mark=WORDMARK,
