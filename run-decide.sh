@@ -9,7 +9,8 @@ cd /data/workspace/geointel || exit 1
 if [ "$1" = "--questions" ]; then
   python3 decide.py --questions "$2"
   rc=$?
-  [ $rc -eq 0 ] && ./publish.sh "decisions: $(python3 -c "import json;print(len(json.load(open('$2'))))") questions"
+  count=$(python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(len(d.get('questions',[])) if isinstance(d,dict) else len(d))" "$2" 2>/dev/null)
+  [ $rc -eq 0 ] && ./publish.sh "decisions: ${count:-?} questions"
   exit $rc
 fi
 

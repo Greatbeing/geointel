@@ -1,0 +1,89 @@
+{
+ "scenarios": [
+  {
+   "name": "大幅升级：立法通过+新规落地",
+   "prob": 50
+  },
+  {
+   "name": "渐进式收紧：仅行政动作、立法搁浅",
+   "prob": 35
+  },
+  {
+   "name": "现状维持/缓和：政治干扰+游说阻力",
+   "prob": 15
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "关键法案（如 Chip Security Act）在委员会标记通过或全院表决",
+   "keywords": [
+    "markup",
+    "floor vote",
+    "passes committee",
+    "export control bill",
+    "Chip Security Act"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "启动合规预案 B：冻结对华高端 AI 芯片出货，启动替代供应链认证"
+  },
+  {
+   "id": "t2",
+   "description": "Megaspeed 或新增实体被列入 Entity List",
+   "keywords": [
+    "entity list",
+    "added",
+    "BIS",
+    "Megaspeed",
+    "entity list addition"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "立即切断相关实体供货链路，启动尽职调查增强程序"
+  },
+  {
+   "id": "t3",
+   "description": "Nvidia 股价较 11-14 收盘跌幅超 15%（市场定价监管冲击）",
+   "keywords": [],
+   "threshold": -15,
+   "type": "value",
+   "action": "重估情景概率，向董事会提交风险升级备忘录，准备资本支出削减方案"
+  },
+  {
+   "id": "t4",
+   "description": "中国正式实施稀土/关键矿产出口管制作为反制",
+   "keywords": [
+    "rare earth",
+    "export control",
+    "retaliation",
+    "implements",
+    "critical minerals"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "激活供应链备选方案，锁定非中稀土长单，向 CFO 汇报成本冲击测算"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-12",
+ "question": "未来 90 天半导体出口管制升级的概率与应对",
+ "generated_at": "2026-11-14T13:52:05Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "aljazeera",
+  "cnbc",
+  "ft",
+  "gn-ai-reg",
+  "gn-chips",
+  "gn-trade",
+  "lowy",
+  "mit-tr",
+  "nature",
+  "nikkei-asia",
+  "scmp",
+  "straits-times",
+  "techcrunch"
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "scenarios": [
+  {
+   "name": "谈判取得突破，关税逐步降低",
+   "prob": 40
+  },
+  {
+   "name": "谈判僵持，现状维持",
+   "prob": 35
+  },
+  {
+   "name": "谈判恶化，关税升级",
+   "prob": 25
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "中美关税谈判出现积极进展关键词",
+   "keywords": [
+    "中美关税协议",
+    "关税削减",
+    "贸易休战延长",
+    "共识达成"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动积极应对策略，如优化供应链多元化"
+  },
+  {
+   "id": "t2",
+   "description": "中美贸易顺差或关税水平变化",
+   "keywords": [],
+   "threshold": 10,
+   "type": "value",
+   "action": "评估经济影响，调整库存和投资策略"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-12",
+ "question": "未来 90 天中美关税谈判走向的概率与应对",
+ "generated_at": "2026-11-14T13:52:05Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "cnbc",
+  "gn-china-econ",
+  "gn-trade",
+  "scmp",
+  "straits-times"
+ ]
+}

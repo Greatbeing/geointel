@@ -1,0 +1,91 @@
+{
+ "scenarios": [
+  {
+   "name": "宽松承压：美供应增量压制价格，中国需求疲软",
+   "prob": 45
+  },
+  {
+   "name": "地缘冲击：霍尔木兹海峡升级/美俄供应中断叠加寒冬",
+   "prob": 25
+  },
+  {
+   "name": "结构性分裂：俄/卡塔尔供给重组成本上升，船运瓶颈托底价格",
+   "prob": 30
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "霍尔木兹海峡 LNG 船只遭袭/扣押/触雷事件频发",
+   "keywords": [
+    "霍尔木兹",
+    "LNG",
+    "袭击",
+    "触雷",
+    "扣押",
+    "伊朗"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "立即建议锁定冬季剩余量期货/掉期对冲上行风险；授权现货采购上限上调 15%"
+  },
+  {
+   "id": "t2",
+   "description": "中国月度 LNG 进口量同比转正并持续 2 周以上",
+   "keywords": [
+    "中国",
+    "LNG进口",
+    "同比增长",
+    "海关"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "修正需求模型，上调 JKM 价格预测区间 $1.5-2.0/MMBtu；建议补仓 3-6 个月远期"
+  },
+  {
+   "id": "t3",
+   "description": "美国 LNG 出口日均降至 15 Bcf/d 以下（非计划检修）",
+   "keywords": [
+    "美国",
+    "LNG出口",
+    "Bcf/d",
+    "非计划",
+    "停工"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "触发供应中断预案：启用备选供应商条款，评估从卡塔尔/澳洲调拨可行性"
+  },
+  {
+   "id": "t4",
+   "description": "JKM 现货价格连续 3 个交易日收于 $16/MMBtu 以上",
+   "keywords": [],
+   "threshold": 16,
+   "type": "value",
+   "action": "执行看涨期权/掭期锁利；暂停新增现货采购，转用长协灵活量"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-01-15",
+ "question": "未来 90 天全球 LNG 产能扩张对亚洲气价的影响",
+ "generated_at": "2026-11-14T13:52:05Z",
+ "horizon_days": 90,
+ "items_used": 38,
+ "sources": [
+  "cfr",
+  "ecb",
+  "eia",
+  "fed",
+  "ft",
+  "gn-energy",
+  "gn-geopolitics",
+  "gn-mideast",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "politico-eu",
+  "scmp",
+  "state-gov",
+  "straits-times"
+ ]
+}

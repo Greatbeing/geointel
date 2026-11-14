@@ -3,30 +3,30 @@
   "slug": "fed-hike-90d",
   "question": "未来 90 天美联储加息的概率与应对",
   "ok": true,
-  "detail": "written: 2026-11-11-fed-hike-90d.md  scenarios=3 triggers=4"
+  "detail": "written: 2026-11-14-fed-hike-90d.md  scenarios=3 triggers=4"
  },
  {
   "slug": "chips-export-control",
   "question": "未来 90 天半导体出口管制升级的概率与应对",
   "ok": true,
-  "detail": "written: 2026-11-11-chips-export-control.md  scenarios=3 triggers=4"
+  "detail": "written: 2026-11-14-chips-export-control.md  scenarios=3 triggers=4"
  },
  {
   "slug": "us-china-tariff-90d",
   "question": "未来 90 天中美关税谈判走向的概率与应对",
   "ok": true,
-  "detail": "written: 2026-11-11-us-china-tariff-90d.md  scenarios=3 triggers=4"
+  "detail": "written: 2026-11-14-us-china-tariff-90d.md  scenarios=3 triggers=2"
  },
  {
   "slug": "lng-asia-90d",
   "question": "未来 90 天全球 LNG 产能扩张对亚洲气价的影响",
   "ok": true,
-  "detail": "written: 2026-11-11-lng-asia-90d.md  scenarios=3 triggers=4"
+  "detail": "written: 2026-11-14-lng-asia-90d.md  scenarios=3 triggers=4"
  },
  {
   "slug": "tsmc-arizona-90d",
   "question": "未来 90 天台积电在亚利桑那产能爬坡的确定性与风险",
   "ok": true,
-  "detail": "written: 2026-11-11-tsmc-arizona-90d.md  scenarios=3 triggers=4"
+  "detail": "written: 2026-11-14-tsmc-arizona-90d.md  scenarios=1 triggers=0"
  }
 ]

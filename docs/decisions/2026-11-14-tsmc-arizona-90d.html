@@ -1,0 +1,195 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>未来 90 天台积电在亚利桑那产能爬坡的确定性与风险</title><style>
+:root{
+  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
+  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#151513; --paper-2:#1d1d1a; --ink:#e8e4dc; --ink-2:#b3ada2;
+    --ink-3:#7e786e; --rule:#2e2b26; --rule-2:#433f38; --accent:#d0705a;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.9 var(--sans); letter-spacing:.012em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{background:var(--accent); color:var(--paper)}
+
+.top{
+  position:sticky; top:0; z-index:5;
+  max-width:720px; margin:0 auto; padding:20px 24px 14px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  background:var(--paper); border-bottom:1px solid var(--rule);
+}
+.top .brand{
+  display:flex; line-height:0; color:var(--ink); text-decoration:none;
+}
+.top .brand svg{display:block; height:26px; width:auto}
+.top nav{display:flex; gap:22px; flex-wrap:wrap}
+.top nav a{
+  font-size:13.5px; color:var(--ink-3); text-decoration:none;
+  transition:color .16s ease;
+}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current]{color:var(--ink)}
+
+.wrap{max-width:720px; margin:0 auto; padding:0 24px 100px}
+
+.kicker{font-size:12.5px; color:var(--ink-3); letter-spacing:.1em; margin:46px 0 12px}
+h1.dateline{
+  font-family:var(--serif); font-weight:400; font-feature-settings:"palt" 1;
+  font-size:clamp(27px,4.4vw,36px); line-height:1.34; letter-spacing:.02em;
+  margin:0 0 10px; color:var(--ink);
+}
+h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
+.under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
+.under span+span::before{content:" · "; color:var(--rule-2)}
+.tagline{
+  font-family:var(--serif); font-size:14.5px; letter-spacing:.22em;
+  color:var(--ink-2); margin:16px 0 0; text-indent:0;
+}
+.masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
+
+.body{padding-top:30px}
+.body h2{
+  font-size:18.5px; line-height:1.55; font-weight:600; letter-spacing:.02em;
+  margin:46px 0 12px; padding-top:20px; color:var(--ink);
+  border-top:1px solid var(--rule);
+}
+.body h2:first-child{margin-top:0; padding-top:0; border-top:0}
+.body h3{
+  font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
+  margin:26px 0 6px;
+}
+.body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
+.body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
+.body li{margin:0 0 .4em; text-align:left}
+.body .src{font-size:.84em; color:var(--ink-3); letter-spacing:0}
+.body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
+.body ul li::marker{content:"— "}
+.body strong{font-weight:600; color:var(--ink)}
+.body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
+.body hr{border:0; height:1px; background:var(--rule); margin:40px 0}
+.body a{
+  color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
+  transition:color .16s ease,border-color .16s ease; word-break:break-word;
+}
+.body a:hover{color:var(--accent); border-color:var(--accent)}
+.body blockquote{
+  margin:24px 0; padding:2px 0 2px 18px; border-left:2px solid var(--accent);
+  color:var(--ink-2);
+}
+.body blockquote p{text-indent:0}
+.body blockquote p:last-child{margin-bottom:0}
+.body pre{
+  margin:22px 0; padding:16px 18px; overflow:auto;
+  background:var(--paper-2); border:1px solid var(--rule);
+  font-family:var(--mono); font-size:13px; line-height:1.7;
+}
+.body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
+.body pre code{background:none; padding:0}
+
+/* 表格 */
+.body table{
+  width:100%; border-collapse:collapse; margin:24px 0;
+  font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
+}
+.body th{
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1px solid var(--ink); white-space:nowrap;
+}
+.body td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td:last-child,.body th:last-child{padding-right:0}
+
+/* 概率列：数字 + 一条发丝量度线 */
+.body td.pct-cell{font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px}
+.body td.pct-cell .pct-bar{display:block; height:2px; margin-top:8px; background:var(--rule); position:relative}
+.body td.pct-cell .pct-bar::after{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
+}
+
+/* 首段当导语：不缩进、略大、颜色更实 */
+.body h2:first-child + p{
+  text-indent:0; font-size:18px; line-height:1.85; color:var(--ink);
+  margin-bottom:1.15em;
+}
+
+/* 索引列表 */
+.index-list{list-style:none; margin:0; padding:0}
+.index-list li{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:0 22px;
+  padding:16px 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.index-list .when{
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums; letter-spacing:.04em;
+}
+.index-list .what{font-size:16.5px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what a{border-bottom-color:transparent}
+.index-list .what a:hover{border-bottom-color:var(--accent)}
+.index-list .note{
+  margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
+}
+.index-list .note b{font-weight:400; color:var(--ink-2)}
+
+.plain-list{list-style:none; margin:0; padding:0}
+.plain-list li{padding:13px 0; border-bottom:1px solid var(--rule); margin:0; font-size:16px}
+.plain-list a{color:var(--ink-2)}
+.plain-list a:hover{color:var(--accent); border-color:var(--accent)}
+
+.section-head{
+  font-size:13px; color:var(--ink-3); letter-spacing:.08em;
+  margin:56px 0 4px; padding-bottom:10px; border-bottom:1px solid var(--rule-2);
+}
+
+/* 告警 */
+.alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
+.alert-item a{color:var(--ink-2)}
+
+.colophon{
+  margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
+}
+.colophon span+span::before{content:"· "; color:var(--rule-2)}
+.colophon .slogan{
+  font-family:var(--serif); font-size:13.5px; letter-spacing:.16em; color:var(--ink-2);
+}
+
+@media (max-width:600px){
+  body{font-size:16.5px; line-height:1.88}
+  .top{padding:20px 20px 14px; flex-direction:column; align-items:flex-start; gap:10px}
+  .top nav{gap:18px}
+  .wrap{padding:0 20px 72px}
+  .kicker{margin-top:34px}
+  .body p{text-align:left}
+  .body table{font-size:13px}
+  .body th{white-space:normal}
+  .body td,.body th{padding-right:10px}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:3px}
+  .index-list .when{padding-top:0}
+}
+
+@media (max-width:420px){
+  .body table{font-size:12.5px}
+  .body td,.body th{padding-right:8px}
+  .body td.pct-cell{min-width:52px; font-size:13px}
+}
+
+@media print{
+  :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
+  .top nav{display:none}
+  .top{border-bottom:none; padding:0}
+  .wrap{max-width:none; padding:0}
+  .body h2{break-after:avoid}
+  .body li,.body p{orphans:2; widows:2}
+  a{text-decoration:none}
+}
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" role="img" aria-label="geointel"><g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="round"><path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/><path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/><path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/><path d="M 388.00 0.00 V -100"/><path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/><path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/><path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/><path d="M 740.00 0.00 V -152.00"/></g><g fill="currentColor" stroke="none"><rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg></a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html" aria-current="page">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">决策备忘录</p><h1 class="dateline q">未来 90 天台积电在亚利桑那产能爬坡的确定性与风险</h1><p class="under"><span>置信度 低</span><span>复盘 2027-02-12</span><span>视界 90 天</span></p></header><div class="body"><h2>1. 问题与边界</h2><p><strong>决策核心</strong>：判断台积电亚利桑那 Fab 21/22 在未来 90 天（至 2027-02-12）内的产能爬坡节奏、良率达标概率及关键风险点，以决定是否调整下游产能预订、供应链备货或资本支出节奏。 <strong>不包含</strong>：长期（&gt;1 年）产能规划、日本/德国厂进度、先进封装（CoWoS）扩产细节、地缘政治制裁的二阶推演。 <strong>最晚决策点</strong>：2027-02-12（复盘日），届时必须给出“维持/加速/减速”三选一的执行指令。</p><h2>2. 已知事实</h2><ol><li>提供的 24 条情报（2026-11-10 至 2026-11-14）均来自 FT、Fed、ECB、CFR、Nikkei Asia、State Dept、Lowy、Nature，<strong>无任何一条涉及台积电、亚利桑那厂、CHIPS 法案拨款进度、设备搬入、良率数据、人员招聘、供水/电力/许可证状态</strong>。</li><li>材料不足，无法提取任何直接或间接支撑产能爬坡判断的事实。</li></ol><h2>3. 关键不确定性</h2><table><thead><tr><th>变量名</th><th>当前区间</th><th>判断依据</th><th>重要性</th></tr></thead><tbody><tr><td>N4/N3 良率爬坡曲线</td><td>材料不足</td><td>无良率报告、无客户验收记录、无内部里程碑泄露</td><td>决定出货量与现金流</td></tr><tr><td>关键设备（EUV、浸没式光刻、刻蚀）到货与安装进度</td><td>材料不足</td><td>无 ASML/应用材料/泛林半导体交付单据、无海关/港口物流记录</td><td>瓶颈工序直接卡产能</td></tr><tr><td>熟练技工/工程师缺口</td><td>材料不足</td><td>无招聘公开数据、无 H-1B/绿卡批签统计、无工会/社区学院合作进展</td><td>人员不足会拖延 24/7 运转</td></tr><tr><td>CHIPS Act 首期拨款到账时间</td><td>材料不足</td><td>无商务部/财政部公告、无台积电 8-K 披露</td><td>现金流影响资本支出节奏</td></tr><tr><td>供水/电力/环保许可最终签署</td><td>材料不足</td><td>无亚利桑那州环保局（ADEQ）、SRP/APS 公共事业委员会会议纪要</td><td>未获许可即无法量产</td></tr></tbody></table><h2>4. 情景</h2><table><thead><tr><th>情景</th><th>概率</th><th>关键观察点（若情报出现）</th></tr></thead><tbody><tr><td>情报不足无法评估</td><td class="pct-cell">100%<span class="pct-bar" style="--p:100"></span></td><td>任一上表不确定性变量出现可验证数据点即触发重估</td></tr></tbody></table><h2>5. 选项评估</h2><table><thead><tr><th>选项</th><th>预期收益</th><th>最坏情况</th><th>可逆性</th><th>执行成本</th></tr></thead><tbody><tr><td>暂缓决策、等待情报</td><td>避免基于零证据的错误押注</td><td>错过 90 天窗口期的产能锁定机会</td><td>完全可逆</td><td>低（仅维持现有监控）</td></tr><tr><td>按原计划下单/备货</td><td>若爬坡顺利则锁定优先产能</td><td>若爬坡延迟导致库存积压或缺货罚款</td><td>部分可逆（可取消订单但有违约金）</td><td>中（订金、仓储）</td></tr><tr><td>激进加单/押注提前量产</td><td>若爬坡超预期则获超额利润</td><td>产能爬坡失败导致巨额沉没成本</td><td>难逆转（长协、定制设备）</td><td>高（预付款、专用产线）</td></tr></tbody></table><h2>6. 建议与触发条件</h2><p><strong>推荐选项</strong>：<strong>暂缓决策、等待情报</strong>（选项 1）。 <strong>理由</strong>：现有 24 条情报与决策问题零重叠，任何非盲目猜测的判断均无依据。</p><p><strong>触发条件</strong>（一旦出现以下任一可观测指标，立即召集重评会）：</p><ol><li><strong>count</strong> 台积电官方（财报电话、8-K、官网新闻稿）或可信一手媒体（Reuters/Bloomberg/EE Times/半导体产业协会）在单周内出现 <strong>≥3 条</strong> 含关键词 <code>[&quot;Arizona&quot;, &quot;Fab 21&quot;, &quot;Fab 22&quot;, &quot;N4 yield&quot;, &quot;N3 yield&quot;, &quot;CHIPS grant&quot;, &quot;tool install&quot;, &quot;mass production&quot;]</code> 的报道 → <strong>动作</strong>：启动 48 小时快速评估，更新情景概率。</li><li><strong>count</strong> 亚利桑那州环保局（ADEQ）、公共事业委员会、SRP/APS 官网在单周内出现 <strong>≥2 条</strong> 含关键词 <code>[&quot;TSMC&quot;, &quot;water permit&quot;, &quot;air permit&quot;, &quot;power upgrade&quot;, &quot;effluent&quot;]</code> 的公告/会议纪要 → <strong>动作</strong>：确认许可/供水/供电硬约束是否解除。</li><li><strong>count</strong> ASML/应用材料/泛林半导体/迪恩泰/東京电子 财报或投资者日在单周内出现 <strong>≥2 条</strong> 含关键词 <code>[&quot;Arizona&quot;, &quot;TSMC&quot;, &quot;shipment&quot;, &quot;install base&quot;, &quot;acceptance&quot;]</code> 的表述 → <strong>动作</strong>：核对关键设备到货/验收节点。</li><li><strong>value</strong> 台积电美股盘后/财报电话中披露的 <strong>亚利桑那厂良率</strong> 或 <strong>等效良率晶圆产出</strong> 达到 <strong>≥70% 的台湾同代线基准</strong> → <strong>动作</strong>：将“爬坡顺利”情景概率上调至 ≥60%，建议按原计划下单。</li></ol><h2>7. 反面证据与证伪条件</h2><p>若出现以下任一证据，本备忘录“暂缓决策”结论即被推翻，须立即转入相应情景：</p><ul><li>台积电官方宣布亚利桑那 Fab 21 已实现 <strong>N4 良率 ≥ 台湾基线 90%</strong> 且 <strong>月产出 ≥ 10k wpm</strong> → 直接采纳“激进加单”。</li><li>美国商务部宣布 <strong>CHIPS Act 首期拨款冻结/延迟 &gt; 90 天</strong> 或 <strong>环保许可被驳回</strong> → 直接采纳“减速/撤单”。</li><li>连续两周 <strong>关键设备供应商</strong> 明确确认 <strong>向亚利桑那厂交付延期 &gt; 60 天</strong> → 采纳“按原计划下单但追加缓冲库存”。</li></ul><h2>8. 复盘日期</h2><p><strong>2027-02-12</strong>（距今日 90 天）。 届时必须回答：</p><ol><li>过去 90 天内是否获得至少 3 个上表“关键不确定性”变量的可验证数据点？若无，情报搜集渠道为何失效？</li><li>基于最新情报，是否可将“情报不足无法评估”概率降至 50% 以下？若否，是否需升级为专项情报收集任务？</li></ol></div><footer class="colophon"><span class="slogan">先看材料，再下判断。</span><span>只基于抓取材料</span><span>11 月 14 日 13:58 UTC 更新</span></footer></div></body></html>

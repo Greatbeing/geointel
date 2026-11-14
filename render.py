@@ -564,6 +564,7 @@ def build():
         digest_entries.append((day, _meta))
 
     decision_entries = []
+    seen_slugs = set()
     for path in decisions:
         name = os.path.splitext(os.path.basename(path))[0]
         meta, body = frontmatter(path)
@@ -583,6 +584,13 @@ def build():
               page(question, "决策备忘录",
                    md2html(strip_data_blocks(strip_ops(strip_lede(body)))), "decisions",
                    under=under, big=False))
+        # 旧日期的备忘录页面保留（可回看同一问题此前的判断），
+        # 但索引只列每个 slug 的最新一条，否则周度重跑后首页会重复堆叠。
+        m = re.match(r"^\d{4}-\d\d-\d\d-(.+)$", name)
+        slug = m.group(1) if m else name
+        if slug in seen_slugs:
+            continue
+        seen_slugs.add(slug)
         decision_entries.append({
             "name": name, "question": question, "day": day,
             "conf": conf, "extra": extra,

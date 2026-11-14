@@ -23,8 +23,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def load_triggers(decisions_dir):
+    """读取备忘录里的 triggers。
+
+    同一 slug 只取最新一份：周度重跑会给同一个问题生成新日期的新备忘录，
+    旧文件仍留在盘上；全量读取会让同一个触发条件在告警里重复出现。
+    """
+    latest = {}
+    for path in glob.glob(os.path.join(decisions_dir, "*.json")):
+        name = os.path.basename(path)[:-5]
+        m = re.match(r"^(\d{4}-\d\d-\d\d)-(.+)$", name)
+        day, slug = (m.group(1), m.group(2)) if m else ("", name)
+        prev = latest.get(slug)
+        if prev is None or day >= prev[0]:
+            latest[slug] = (day, name, path)
+
     out = []
-    for path in sorted(glob.glob(os.path.join(decisions_dir, "*.json"))):
+    for slug in sorted(latest):
+        _day, name, path = latest[slug]
         try:
             data = json.load(open(path, encoding="utf-8"))
         except Exception:
@@ -34,7 +49,7 @@ def load_triggers(decisions_dir):
             if not kws:
                 continue
             out.append({
-                "decision": os.path.basename(path)[:-5],
+                "decision": name,
                 "question": data.get("question", ""),
                 "id": t.get("id", "?"),
                 "description": t.get("description", ""),

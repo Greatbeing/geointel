@@ -1,0 +1,81 @@
+{
+ "scenarios": [
+  {
+   "name": "12月加息后暂停观察",
+   "prob": 55
+  },
+  {
+   "name": "连续加息（12月+1月/3月）",
+   "prob": 25
+  },
+  {
+   "name": "12月按兵不动（数据反转或地缘冲击）",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "市场定价的12月加息概率持续高企",
+   "keywords": [
+    "Fed rate hike bets",
+    "December rate hike",
+    "Waller",
+    "CPI hotter"
+   ],
+   "threshold": 5,
+   "type": "count",
+   "action": "增持短端美债空头 / 买入美元看涨期权"
+  },
+  {
+   "id": "t2",
+   "description": "10年期美债收益率站上5.25%",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "加大久期对冲，准备应对金融条件过度收紧"
+  },
+  {
+   "id": "t3",
+   "description": "核心CPI月率环比回落至0.2%以下",
+   "keywords": [],
+   "threshold": 0.2,
+   "type": "value",
+   "action": "平仓加息押注，转为中性久期"
+  },
+  {
+   "id": "t4",
+   "description": "地缘政治冲击导致避险买盘涌入美债",
+   "keywords": [
+    "geopolitical shock",
+    "flight to safety",
+    "Treasury rally",
+    "Ukraine",
+    "Taiwan Strait"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "立即减少加息押注敞口，买入长端美债看涨期权"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-14",
+ "question": "未来 90 天美联储加息的概率与应对",
+ "generated_at": "2026-11-14T13:52:05Z",
+ "horizon_days": 90,
+ "items_used": 30,
+ "sources": [
+  "arxiv-ai",
+  "cfr",
+  "cnbc",
+  "ecb",
+  "fed",
+  "ft",
+  "gn-mideast",
+  "guardian-world",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "state-gov"
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "scenarios": [
+  {
+   "name": "情报不足无法评估",
+   "prob": 100
+  }
+ ],
+ "triggers": [],
+ "confidence": "low",
+ "review_date": "2027-02-12",
+ "question": "未来 90 天台积电在亚利桑那产能爬坡的确定性与风险",
+ "generated_at": "2026-11-14T13:52:05Z",
+ "horizon_days": 90,
+ "items_used": 24,
+ "sources": [
+  "cfr",
+  "ecb",
+  "fed",
+  "ft",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "state-gov"
+ ]
+}
