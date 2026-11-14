@@ -565,11 +565,13 @@ def build():
 
     decision_entries = []
     seen_slugs = set()
+    all_questions = {}
     for path in decisions:
         name = os.path.splitext(os.path.basename(path))[0]
         meta, body = frontmatter(path)
         extra = load_json(path[:-3] + ".json")
         question = meta.get("question") or extra.get("question") or name
+        all_questions[name] = question
         day = name[:10] if re.match(r"^\d{4}-\d\d-\d\d", name) else ""
         conf_raw = str(extra.get("confidence") or "").strip()
         conf = CONFIDENCE_CN.get(conf_raw.lower(), conf_raw)
@@ -622,7 +624,7 @@ def build():
                "decisions"))
 
     # 告警：同一触发条件只保留最近一次，条目改为可点标题，并跨链到对应备忘录
-    qmap = {e["name"]: e["question"] for e in decision_entries}
+    qmap = all_questions
     seen = set()
     alert_chunks = []
     for path in alerts[:12]:
