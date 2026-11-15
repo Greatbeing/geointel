@@ -1,0 +1,83 @@
+{
+ "scenarios": [
+  {
+   "name": "12月加息（25bp），后续维持限制性利率",
+   "prob": 55
+  },
+  {
+   "name": "12月按兵不动，1月/3月会议加息（25bp）",
+   "prob": 25
+  },
+  {
+   "name": "未来90天全程维持利率不变（甚至讨论降息）",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "核心CPI/PCE连续两个月超预期或重回3.5%上方",
+   "keywords": [
+    "CPI",
+    "PCE",
+    "inflation",
+    "hotter-than-expected",
+    "core"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "加大做多美元/做空债券久期头寸；若已持有对冲则解除对冲"
+  },
+  {
+   "id": "t2",
+   "description": "联储官员（尤其是沃勒、主席）公开表态支持近期加息",
+   "keywords": [
+    "Waller",
+    "Powell",
+    "rate hike",
+    "hawkish",
+    "restrictive",
+    "FOMC"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "确认12月加息预期落地，调整资产配置至浮息债券/短端国债"
+  },
+  {
+   "id": "t3",
+   "description": "10年期美债收益率站上5.00%并企稳5个交易日",
+   "keywords": [],
+   "threshold": 5.0,
+   "type": "value",
+   "action": "触发止损/止盈机制，重新评估久期风险敞口上限"
+  },
+  {
+   "id": "t4",
+   "description": "联邦基金利率期货隐含12月加息概率跌破40%",
+   "keywords": [],
+   "threshold": 40,
+   "type": "value",
+   "action": "平仓加息押注头寸，转为中性或做多久期策略"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-10",
+ "question": "未来 90 天美联储加息的概率与应对",
+ "generated_at": "2026-11-15T11:24:39Z",
+ "horizon_days": 90,
+ "items_used": 30,
+ "sources": [
+  "arxiv-ai",
+  "cfr",
+  "cnbc",
+  "ecb",
+  "fed",
+  "ft",
+  "gn-mideast",
+  "guardian-world",
+  "lowy",
+  "nature",
+  "nikkei-asia",
+  "state-gov"
+ ]
+}

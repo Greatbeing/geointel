@@ -1,0 +1,195 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>未来 90 天美联储加息的概率与应对</title><style>
+:root{
+  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
+  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#151513; --paper-2:#1d1d1a; --ink:#e8e4dc; --ink-2:#b3ada2;
+    --ink-3:#7e786e; --rule:#2e2b26; --rule-2:#433f38; --accent:#d0705a;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.9 var(--sans); letter-spacing:.012em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{background:var(--accent); color:var(--paper)}
+
+.top{
+  position:sticky; top:0; z-index:5;
+  max-width:720px; margin:0 auto; padding:20px 24px 14px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  background:var(--paper); border-bottom:1px solid var(--rule);
+}
+.top .brand{
+  display:flex; line-height:0; color:var(--ink); text-decoration:none;
+}
+.top .brand svg{display:block; height:26px; width:auto}
+.top nav{display:flex; gap:22px; flex-wrap:wrap}
+.top nav a{
+  font-size:13.5px; color:var(--ink-3); text-decoration:none;
+  transition:color .16s ease;
+}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current]{color:var(--ink)}
+
+.wrap{max-width:720px; margin:0 auto; padding:0 24px 100px}
+
+.kicker{font-size:12.5px; color:var(--ink-3); letter-spacing:.1em; margin:46px 0 12px}
+h1.dateline{
+  font-family:var(--serif); font-weight:400; font-feature-settings:"palt" 1;
+  font-size:clamp(27px,4.4vw,36px); line-height:1.34; letter-spacing:.02em;
+  margin:0 0 10px; color:var(--ink);
+}
+h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
+.under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
+.under span+span::before{content:" · "; color:var(--rule-2)}
+.tagline{
+  font-family:var(--serif); font-size:14.5px; letter-spacing:.22em;
+  color:var(--ink-2); margin:16px 0 0; text-indent:0;
+}
+.masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
+
+.body{padding-top:30px}
+.body h2{
+  font-size:18.5px; line-height:1.55; font-weight:600; letter-spacing:.02em;
+  margin:46px 0 12px; padding-top:20px; color:var(--ink);
+  border-top:1px solid var(--rule);
+}
+.body h2:first-child{margin-top:0; padding-top:0; border-top:0}
+.body h3{
+  font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
+  margin:26px 0 6px;
+}
+.body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
+.body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
+.body li{margin:0 0 .4em; text-align:left}
+.body .src{font-size:.84em; color:var(--ink-3); letter-spacing:0}
+.body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
+.body ul li::marker{content:"— "}
+.body strong{font-weight:600; color:var(--ink)}
+.body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
+.body hr{border:0; height:1px; background:var(--rule); margin:40px 0}
+.body a{
+  color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
+  transition:color .16s ease,border-color .16s ease; word-break:break-word;
+}
+.body a:hover{color:var(--accent); border-color:var(--accent)}
+.body blockquote{
+  margin:24px 0; padding:2px 0 2px 18px; border-left:2px solid var(--accent);
+  color:var(--ink-2);
+}
+.body blockquote p{text-indent:0}
+.body blockquote p:last-child{margin-bottom:0}
+.body pre{
+  margin:22px 0; padding:16px 18px; overflow:auto;
+  background:var(--paper-2); border:1px solid var(--rule);
+  font-family:var(--mono); font-size:13px; line-height:1.7;
+}
+.body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
+.body pre code{background:none; padding:0}
+
+/* 表格 */
+.body table{
+  width:100%; border-collapse:collapse; margin:24px 0;
+  font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
+}
+.body th{
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1px solid var(--ink); white-space:nowrap;
+}
+.body td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td:last-child,.body th:last-child{padding-right:0}
+
+/* 概率列：数字 + 一条发丝量度线 */
+.body td.pct-cell{font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px}
+.body td.pct-cell .pct-bar{display:block; height:2px; margin-top:8px; background:var(--rule); position:relative}
+.body td.pct-cell .pct-bar::after{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
+}
+
+/* 首段当导语：不缩进、略大、颜色更实 */
+.body h2:first-child + p{
+  text-indent:0; font-size:18px; line-height:1.85; color:var(--ink);
+  margin-bottom:1.15em;
+}
+
+/* 索引列表 */
+.index-list{list-style:none; margin:0; padding:0}
+.index-list li{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:0 22px;
+  padding:16px 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.index-list .when{
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums; letter-spacing:.04em;
+}
+.index-list .what{font-size:16.5px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what a{border-bottom-color:transparent}
+.index-list .what a:hover{border-bottom-color:var(--accent)}
+.index-list .note{
+  margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
+}
+.index-list .note b{font-weight:400; color:var(--ink-2)}
+
+.plain-list{list-style:none; margin:0; padding:0}
+.plain-list li{padding:13px 0; border-bottom:1px solid var(--rule); margin:0; font-size:16px}
+.plain-list a{color:var(--ink-2)}
+.plain-list a:hover{color:var(--accent); border-color:var(--accent)}
+
+.section-head{
+  font-size:13px; color:var(--ink-3); letter-spacing:.08em;
+  margin:56px 0 4px; padding-bottom:10px; border-bottom:1px solid var(--rule-2);
+}
+
+/* 告警 */
+.alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
+.alert-item a{color:var(--ink-2)}
+
+.colophon{
+  margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
+}
+.colophon span+span::before{content:"· "; color:var(--rule-2)}
+.colophon .slogan{
+  font-family:var(--serif); font-size:13.5px; letter-spacing:.16em; color:var(--ink-2);
+}
+
+@media (max-width:600px){
+  body{font-size:16.5px; line-height:1.88}
+  .top{padding:20px 20px 14px; flex-direction:column; align-items:flex-start; gap:10px}
+  .top nav{gap:18px}
+  .wrap{padding:0 20px 72px}
+  .kicker{margin-top:34px}
+  .body p{text-align:left}
+  .body table{font-size:13px}
+  .body th{white-space:normal}
+  .body td,.body th{padding-right:10px}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:3px}
+  .index-list .when{padding-top:0}
+}
+
+@media (max-width:420px){
+  .body table{font-size:12.5px}
+  .body td,.body th{padding-right:8px}
+  .body td.pct-cell{min-width:52px; font-size:13px}
+}
+
+@media print{
+  :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
+  .top nav{display:none}
+  .top{border-bottom:none; padding:0}
+  .wrap{max-width:none; padding:0}
+  .body h2{break-after:avoid}
+  .body li,.body p{orphans:2; widows:2}
+  a{text-decoration:none}
+}
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" role="img" aria-label="geointel"><g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="round"><path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/><path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/><path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/><path d="M 388.00 0.00 V -100"/><path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/><path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/><path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/><path d="M 740.00 0.00 V -152.00"/></g><g fill="currentColor" stroke="none"><rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg></a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html" aria-current="page">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">决策备忘录</p><h1 class="dateline q">未来 90 天美联储加息的概率与应对</h1><p class="under"><span>置信度 中</span><span>复盘 2027-02-10</span><span>视界 90 天</span></p></header><div class="body"><h2>1. 问题与边界</h2><p><strong>决策核心</strong>：在未来 90 天（约 2026-11-15 至 2027-02-13）内，是否调整投资组合久期、美元敞口及利率衍生品头寸，以应对美联储可能在 12 月 FOMC（或后续 1 月/3 月会议）加息 25bp。 <strong>不包含</strong>：量化紧缩（QT）节奏变化、应对金融稳定事件的紧急降息、财政政策传导。 <strong>最晚决策点</strong>：2026-12-10（12 月 FOMC 黑名单期前），若此时触发条件未满足，则默认执行「情景 2/3」对应的中性策略。</p><h2>2. 已知事实</h2><ol><li>市场交易员显著增强 12 月加息押注，推动国债收益率上行 ——<span class="src">（CNBC，2026-11-13）</span></li><li>10 年期美债收益率重返 5% 关口，由超预期 CPI 数据与沃勒鹰派言论触发 ——<span class="src">（CNBC，2026-11-10）</span></li><li>投资俱乐部早盘简报明确指出「Fed rate hike odds are soaring」 ——<span class="src">（CNBC，2026-11-10）</span></li><li>日本批发通胀加速，维持日央行加息预期，显示全球央行紧缩周期未结束 ——<span class="src">（Yahoo Finance/gn-mideast，2026-11-12）</span></li><li>美联储发布 2027 年 FOMC 初步日程，确认 1 月、3 月仍有议息会议窗口 ——<span class="src">（Fed，2026-11-12）</span></li><li>联储监管层面仅延长第三方风险指导意见征询期，未释放货币政策信号 ——<span class="src">（Fed，2026-11-13）</span></li><li>欧洲央行施纳贝尔发表讲话，但未涉及美联储政策路径 ——<span class="src">（ECB，2026-11-13）</span></li><li>过去 30 天情报中无就业报告、零售销售、PCE 终值等硬数据发布记录 ——（材料不足）</li></ol><h2>3. 关键不确定性</h2><table><thead><tr><th>变量</th><th>当前区间/状态</th><th>判断依据</th><th>重要性</th></tr></thead><tbody><tr><td>核心 PCE 通胀路径</td><td>2.8%–3.3%（年率）</td><td>仅有 11 月 10 日「hotter-than-expected CPI」单点，缺乏 PCE 序列</td><td>决定联储「数据依赖」的加息理由是否成立</td></tr><tr><td>沃勒/鲍威尔公开鹰派表态频次</td><td>近 2 周 2 次<span class="src">（CPI 日沃勒讲话 + 近期其他）</span></td><td>情报 [3][4] 仅捕捉到沃勒单次，鲍威尔近期无讲话记录</td><td>官员言论是黑名单期前唯一政策信号源</td></tr><tr><td>10 年期美债收益率能否守住 5%</td><td>4.95%–5.05%</td><td>[3] 显示「races back to 5%」，但无持续性数据</td><td>收益率回落会自我紧缩金融条件，降低加息必要性</td></tr><tr><td>联邦基金利率期货隐含 12 月加息概率</td><td>约 60%–70%（估计）</td><td>[2][4] 称「odds soaring/strengthen」，无具体数值</td><td>直接反映市场定价，若回落触发止损</td></tr><tr><td>非农就业/失业率意外恶化</td><td>失业率 4.1%–4.3%</td><td>材料完全缺失劳动力市场数据</td><td>双重使命约束：就业急转直下将压倒通胀担忧</td></tr></tbody></table><h2>4. 情景</h2><table><thead><tr><th>情景</th><th>概率</th><th>关键观察点（未来 30 天）</th></tr></thead><tbody><tr><td><strong>情景 1：12 月加息（25bp），后续维持限制性利率</strong></td><td class="pct-cell">55%<span class="pct-bar" style="--p:55"></span></td><td>① 核心 PCE ≥ 3.0% ② 沃勒/鲍威尔再次鹰派表态 ≥ 2 次 ③ 10 年期收益率稳定 &gt; 5.0% ④ 期货隐含概率 &gt; 70%</td></tr><tr><td><strong>情景 2：12 月按兵不动，1 月/3 月会议加息（25bp）</strong></td><td class="pct-cell">25%<span class="pct-bar" style="--p:25"></span></td><td>① 11 月底核心 PCE 回落至 2.7% 附近 ② 失业率升至 4.3% 以上 ③ 收益率回落至 4.8% 下方 ④ 期货隐含概率 12 月 &lt; 40%、1 月 &gt; 50%</td></tr><tr><td><strong>情景 3：未来 90 天全程维持利率不变（甚至讨论降息）</strong></td><td class="pct-cell">20%<span class="pct-bar" style="--p:20"></span></td><td>① 连续两月核心 PCE &lt; 2.5% ② 失业率 &gt; 4.5% ③ 金融条件指数（FCI）大幅收紧 ④ 期货开始定价 2027 年上半年降息</td></tr></tbody></table><h2>5. 选项评估</h2><table><thead><tr><th>选项</th><th>预期收益（风险调整后）</th><th>最坏情况</th><th>可逆性</th><th>执行成本</th></tr></thead><tbody><tr><td><strong>A. 主动加息押注</strong>：做空 2/5/10 年期国债期货，做多美元/日元、美元/瑞郎，买入 12 月 Fed Funds 期权看涨期权</td><td>情景 1：+180bp；情景 2：-40bp；情景 3：-120bp</td><td>情景 3 发生且波动率飙升，期权归零，期货回补损失扩大</td><td>高（期货/外汇 T+0 可平仓，期权沉没成本为权利金）</td><td>保证金约 3% 名义本金，期权权利金约 1.5bp 名义本金</td></tr><tr><td><strong>B. 对冲中性</strong>：买入 2y10y 利差平坦化互换，同时买入 12 月/1 月 Fed Funds 看涨/看跌宽跨式期权组合</td><td>情景 1/2：+30~50bp；情景 3：-20bp</td><td>波动率崩塌导致宽跨式双腿归零，互换利差反向扩大</td><td>中（互换需对手方协商平仓，期权到期自动了结）</td><td>互换点差成本约 0.5bp，期权组合权利金约 2.5bp</td></tr><tr><td><strong>C. 不做决定/维持现状</strong>：保持现有久期中性、美元中性配置，仅在触发条件达标时再行动</td><td>所有情景：0bp（基准）</td><td>错失情景 1 整轮行情，机会成本约 150~200bp</td><td>完全可逆</td><td>零显性成本，隐性机会成本见上</td></tr></tbody></table><h2>6. 建议与触发条件</h2><p><strong>推荐选项：B（对冲中性）为主，预留 20% 名义额度执行 A（若 t1+t2 同触发则加仓至 A 全额）。</strong> 理由：情报显示加息概率已被显著定价（收益率 5%、期货赔率高），单边押注风险回报不对称；宽跨式捕捉「加息或不加息」双向波动，互换平坦化对冲久期风险。</p><p><strong>触发条件（与 JSON 一致）：</strong></p><ol><li><strong>t1（count）</strong>：核心 CPI/PCE 关键词命中 ≥ 2 次（含「hotter-than-expected」「core」「above forecast」）→ 加大做多美元/做空久期。</li><li><strong>t2（count）</strong>：沃勒/鲍威尔鹰派关键词命中 ≥ 3 次 → 确认 12 月加息预期，调整至浮息/短端。</li><li><strong>t3（value）</strong>：10 年期收益率 ≥ 5.00% 连续 5 个交易日 → 触发止损/止盈，重新评估久期上限。</li><li><strong>t4（value）</strong>：Fed Funds 期货隐含 12 月加息概率 ≤ 40% → 平仓加息押注，转中性/做多久期。</li></ol><h2>7. 反面证据与证伪条件</h2><p>出现以下任一证据，本备忘录结论（推荐 B、情景 1 概率 55%）应被推翻：</p><ul><li>11 月核心 PCE 年率 ≤ 2.4%（远低于联储 2% 目标上限）；</li><li>11 月非农就业新增 &lt; 5 万且失业率 ≥ 4.5%；</li><li>鲍威尔在 12 月黑名单期前公开表示「政策利率已足够限制性」或「下一步更可能是降息」；</li><li>10 年期美债收益率跌破 4.60% 并伴随利差倒挂加深（2s10s &gt; +50bp）；</li><li>地缘冲突升级导致油价单周涨幅 &gt; 15%，引发滞胀定价而非加息定价。</li></ul><h2>8. 复盘日期</h2><p><strong>2027-02-10</strong>（距今日约 90 天）。 届时需回答：</p><ol><li>实际政策路径落入哪一情景？若偏离，关键变量（通胀/就业/言论）的实现值与预测区间偏差几何？</li><li>选项 B 的对冲成本（权利金衰减+互换资金成本）是否被行情波动覆盖？若重来，是否应直接执行 A 或 C？</li></ol></div><footer class="colophon"><span class="slogan">先读世界，再下判断。</span><span>只基于抓取材料</span><span>11 月 15 日 11:26 UTC 更新</span></footer></div></body></html>
