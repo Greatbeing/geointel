@@ -1,0 +1,496 @@
+{
+ "date": "2026-11-17",
+ "generated_at": "2026-11-17T09:38:30Z",
+ "items": [
+  {
+   "title": "US tech stocks set to open lower amid Nvidia fallout",
+   "source": "ft",
+   "link": "https://www.ft.com/content/12d927a9-98b1-40b9-8f75-01fb56a693d1?syn-25a6b1a6=1",
+   "published": "2026-11-16T12:32:01Z",
+   "category": "finance"
+  },
+  {
+   "title": "Why Putin, Trump and Xi cannot be the new ‘big three’",
+   "source": "ft",
+   "link": "https://www.ft.com/content/f87fc05f-6689-4051-9d6b-40754315355f?syn-25a6b1a6=1",
+   "published": "2026-11-16T12:22:48Z",
+   "category": "finance"
+  },
+  {
+   "title": "‘Success and fame’ undermine tech leaders, warns Nvidia and Tesla investor",
+   "source": "ft",
+   "link": "https://www.ft.com/content/5b39e975-b9f5-4ff9-a7d2-ce6a30c4fdbd?syn-25a6b1a6=1",
+   "published": "2026-11-16T11:00:03Z",
+   "category": "finance"
+  },
+  {
+   "title": "Ukraine strikes Crimean Bridge in record drone attack",
+   "source": "ft",
+   "link": "https://www.ft.com/content/cf57a196-bcbc-4605-a977-73fa0498aeed?syn-25a6b1a6=1",
+   "published": "2026-11-16T10:29:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "Subaru retools boxer engine for fuel economy, with eye on hybrids",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/automobiles/subaru-retools-boxer-engine-for-fuel-economy-with-eye-on-hybrids",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "China's century-old 'porcelain capital' eyes global luxury",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/life-arts/arts/china-s-century-old-porcelain-capital-eyes-global-luxury",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Sri Lanka reality contrasts with new World Bank upper-middle-income status",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/economy/sri-lanka-reality-contrasts-with-new-world-bank-upper-middle-income-status",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Gaming emerges as a new corporate networking tool in Japan",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/business-trends/gaming-emerges-as-a-new-corporate-networking-tool-in-japan",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "APEC summit in Shenzhen, Indonesia monetary policy, ASEAN diplomacy",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/your-week-in-asia/apec-summit-in-shenzhen-indonesia-monetary-policy-asean-diplomacy",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "ASEAN falls short on Myanmar crisis, South China Sea pact at Manila summit",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/asean-falls-short-on-myanmar-crisis-south-china-sea-pact-at-manila-summit",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "How Japan's defense bases are exposed by smartphone data",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/defense/how-japan-s-defense-bases-are-exposed-by-smartphone-data",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan shipping group ONE transits Red Sea choke point for 1st time in 3 years",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/transportation/japan-shipping-group-one-transits-red-sea-choke-point-for-1st-time-in-3-years",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Toward a stronger and more prosperous Indo-Pacific, together",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/opinion/toward-a-stronger-and-more-prosperous-indo-pacific-together",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Asian investors chase indirect access to Anthropic shares amid IPO fever",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/markets/trading-asia/asian-investors-chase-indirect-access-to-anthropic-shares-amid-ipo-fever",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "China central bank hikes foreign reserve requirement for 1st time in 5 years",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/economy/china-central-bank-hikes-foreign-reserve-requirement-for-1st-time-in-5-years",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "What an Anthropic index says about Japan's AI challenges",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/comment/what-an-anthropic-index-says-about-japan-s-ai-challenges",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan's Q3 GDP drops an annualized 0.1%, below market expectations",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/economy/japan-s-q3-gdp-drops-an-annualized-0.1-below-market-expectations",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "Singapore's One Championship aims to revive combat sports in Japan",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/sports/singapore-s-one-championship-aims-to-revive-combat-sports-in-japan2",
+   "published": "2026-11-16T10:53:48Z",
+   "category": "world"
+  },
+  {
+   "title": "EU sanctions Russian trolls, hackers",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-sanctions-russian-trolls-hackers",
+   "published": "2026-11-16T12:11:02Z",
+   "category": "policy"
+  },
+  {
+   "title": "Frankreich drängt nach Supermarkt-Hacks auf schnelle EU-Sanktionen gegen Iran",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/frankreich-draengt-nach-supermarkt-hacks-auf-schnelle-eu-sanktionen-gegen-iran",
+   "published": "2026-11-16T11:44:37Z",
+   "category": "policy"
+  },
+  {
+   "title": "Brussels will present plan for €45B Ukraine loan backed by EU budget",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/brussels-plan-e45b-ukraine-loan-eu-budget",
+   "published": "2026-11-16T11:30:21Z",
+   "category": "policy"
+  },
+  {
+   "title": "Le Pen says she was wrong to oppose dual citizenship, same-sex marriage",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/marine-le-pen-dual-citizenship-same-sex-marriage-le-pen-lifts-opposition-to",
+   "published": "2026-11-16T11:26:01Z",
+   "category": "policy"
+  },
+  {
+   "title": "EU genehmigt Übernahme der Commerzbank durch UniCredit",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-genehmigt-uebernahme-der-commerzbank-durch-unicredit",
+   "published": "2026-11-16T11:25:23Z",
+   "category": "policy"
+  },
+  {
+   "title": "France pushes for rapid EU sanctions on Iran for supermarket hacks",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/france-pushes-for-rapid-eu-sanctions-on-iran-for-supermarket-hacks",
+   "published": "2026-11-16T11:24:36Z",
+   "category": "policy"
+  },
+  {
+   "title": "Europe’s top soccer bodies face EU antitrust complaint",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/uefa-efc-face-eu-antitrust-complaint",
+   "published": "2026-11-16T10:59:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Brussels clears UniCredit takeover of Commerzbank over Berlin’s objections",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-clears-unicredit-takeover-of-commerzbank",
+   "published": "2026-11-16T10:38:36Z",
+   "category": "policy"
+  },
+  {
+   "title": "Russia says Ukraine attacked Crimean bridge",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/russia-claims-ukraine-attacked-crimean-bridge-moscow",
+   "published": "2026-11-16T10:36:44Z",
+   "category": "policy"
+  },
+  {
+   "title": "EU chief diplomat Kallas blasts Russian peace demands as ‘absurd’",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-chief-diplomat-kallas-blasts-russian-peace-demands-as-absurd",
+   "published": "2026-11-16T10:24:07Z",
+   "category": "policy"
+  },
+  {
+   "title": "War, latest news. Yemen: the Houthis are at the gates of the capital: ‘We have taken control of the Bab el-Mandeb Strait’ - Il Sole 24 ORE",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOdHo1b1JPUTUwaHpEOGlUY1ZOLVVtUmUzdDdXZ1AwTzlhQUNPNDlKSzlhM0xCUU9aLXNONlNTdHVOX3QtWlE5Y09HQUthczV3bG0tcW4tdnc5QzJ0Y1JGdUx2RFVoZ21fVnF4OXFxOWFfdFVfR3lNdFdtMFVVc19hZFFseGlMNVhTN0JFalpMRkZVdEJvWHpmaXhfMVlwcE9rZUJzakRsb3pNeW40ZjVuZnl3eDdEY193V0E?oc=5",
+   "published": "2026-11-16T12:46:32Z",
+   "category": "security"
+  },
+  {
+   "title": "Policy synergy supports China's steady growth - Xinhua",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE94eWd0VUhtQWJkNHhSOVdfVXlvbHd3VUtTTy1pWXd0X19KUGFtbVg1ZlZIWjRsbEt1RFF3aXRNbzRqd0tVMnljZWdDcVlFQ0ExczV0aTZUV1M5WkNWcTlIVkdyc1owN3RJeEctOEdSQjNWV3lwY2ZPb0RoMXk?oc=5",
+   "published": "2026-11-16T12:42:15Z",
+   "category": "finance"
+  },
+  {
+   "title": "FedEx triples capacity in southern China amid regional cargo growth - South China Morning Post",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPVTJuV1pJZTBzZl9TelViTDdmLWVHeFUzSzQ0MVZtSE15eTVPT2hBQWFfaHZobnB1S0lTWHNZS0RCOVhpU2hwNDM1ekVMb05ocFZ6dUd1RFBQRm9hSFlNNGZfdzJqN2o1UEZHMFBld1J3Qnl3T0V1YnV3Zk95LVhKeXRNNGwzdVQ3X1ZmT25FaFFRX3hLSHB6bUc4OVZSSDQ5UXFIck9xVGdOQ1p4UmfSAa4BQVVfeXFMUFJsb2MySnRla0NvbEM5QTMydWl4WGtWUllxVDZQWktMaXR3LWpkT0J6NzdqNktxYUFRaHJTdTdydjNjOUhrcDdZSC1SeXF4bjhLWEFhdmpjYXIyakQ1aV9EcEZURFdoRGdjdDJoS0FzbXlyZTVXZGVMeW9tSUY5a2JxVVBhcG45akNwVnlGdGRHYVlRUk1VODR2MHhHUDc2MkFYMTRwdmJhZnpKMHNR?oc=5",
+   "published": "2026-11-16T12:40:54Z",
+   "category": "finance"
+  },
+  {
+   "title": "China’s economy slows in October but full-year growth target remains within reach: analysts - 联合早报",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPVzRqZ3JVUDUxOWZOUTdsTFlndGdiSGZoelFDM0FENGlQOU8tNkJxbTJIYkx0Zm5uZWVubmFOYjhpTnhlWHVQMy13akJmZndDcXM5dHJ0Szc3blMtWmJOTEwwOFBtV1d3SFpTc1Voelp5djlxcFQzMFlBRmpXWXF2QWJNSW9EWk1GZGZPNmx0TnVXSkNnT1JvWGdSRE9fcmVDaVBWRVBqaGJjbW55elFUY1RyakVuR0x4Sjg3eU9xWQ?oc=5",
+   "published": "2026-11-16T12:40:13Z",
+   "category": "finance"
+  },
+  {
+   "title": "Trump Tariffs Congress - TelegraphHerald.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQUG1fdUEtcGlzcFpyNHlVX0tTZ1VkVmpyTVJxM0tPRlpTbjFJbW53bjZoRmdENTVDd2plWHFNZzVHZkdvTG5TNThwQVpWMGwtd05xWG9WOUp4cmFWNEFyaThsYkxnV04xSUtBSV8tVTlLRV9EYW5mYVNqenAwX2s5Z0gxeFl6bjl2QWRRUHR5SEQ0TWcxaXc?oc=5",
+   "published": "2026-11-16T12:25:11Z",
+   "category": "trade"
+  },
+  {
+   "title": "PTV. . #PTVNewsNow | Brazilian President Lula da Silva defends multilateralism amid rising U.S. tariffs and Trump’s political retaliation - Facebook",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOMXd3bW5URVlicVhRbDZ2UWN1UzQ0TmJFQlN6N2NkQWJmSjRER0k0RS1sV0t6OG5sUzRqZFBzRzlMekFLVWQxZWZJUmFuX0ctQ2JBeGhqUmNpVlhPVm1RZlJvcG52S2wwb0RnMlN2dXJ4Q0xpS0xQYTFJcnF4eXZRaGduUGxTTHdoSGl2bllOT0dGa2Y3UXRsbE9IZEJFbG55UU1jb0RkNlA5VGF5Mmh6LXBhOXZUbC1sMXNIbVFodXBEX1ZMWmlPUDd1UTVVUTRkN3c?oc=5",
+   "published": "2026-11-16T12:20:12Z",
+   "category": "trade"
+  },
+  {
+   "title": "France bans facial recognition in CCTV but not in police probes - Pasquale Pillitteri",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPRU81bVJzcnlIdDI5V0xQaGdfd0RxX1V0Z3AzeGVvZ0FJc2V4cWZqLVRicDF4MEY2LUxjeEItb2VYUy1mcVhib0MwSDQzNlAtRXNBY0haT1FsLVd0ZjBxS0tWZEtLb3k1SGM5NDV3RzgzMGZBNzVXeFlqTzZRLXVNY1h2OUEwVUxWWHBQWnUwUFZZYzBfUVdNbFdSMU01UQ?oc=5",
+   "published": "2026-11-16T12:19:49Z",
+   "category": "policy"
+  },
+  {
+   "title": "PPC says it won’t panic at price war, sees Moz tariffs landing soon - News24",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPSEN0REhydXFLQndMZHFoeFgzZi1FWUtXTmxPb211QnpOb3c3X2dlWEYteEJPcWExVEthbHk3ZkFsZlc4X2NUaUQ0Uk1SRW5XRVA2Y21zZlJkTHJINFpkcE8zYjlvYXN4MTdyTlhONFpnYnplTXZ1dTZSZ2FTV09JZjd0ZTVjZVByRFFhOUdNZFIyeUJSZlRkaExJQmg1d21yWTBRZzctTHdVRUhOd2JYV3ZKc1h2cXNLRDNmZzF3?oc=5",
+   "published": "2026-11-16T12:15:53Z",
+   "category": "trade"
+  },
+  {
+   "title": "Middle East conflict: Iran’s automotive industry under pressure - Just Auto",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbWlScThJMFk5R2lIRzVEdGpPcS1Vd05vSEJSOVJMaGhrRW95NVRHZFRtUWo3Y1ZyN0x2WmlRUlAyVWpkcmJRbGlIa1d0azh4UzJTQWhWV002V3hldmZNSVljOFBVNi1sV0h4di1meVNTYUMzaTd5ZGp5MFlnUS1pdmQya3I1dUg3M2JXWExjV25hU2hEQ3RZZ1FrYld4azNUdEZINjFaaw?oc=5",
+   "published": "2026-11-16T12:13:10Z",
+   "category": "security"
+  },
+  {
+   "title": "Delivery drones are coming. For some with PTSD, that's a terrifying prospect.",
+   "source": "ars",
+   "link": "https://arstechnica.com/gadgets/2026/11/the-drone-delivery-boom-could-be-a-nightmare-for-people-traumatized-by-war",
+   "published": "2026-11-16T12:00:57Z",
+   "category": "tech"
+  },
+  {
+   "title": "Trump's tariffs are unpopular -- but they'll be tough to repeal despite Democrats' landslide win - AP News",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSlFhSVZELUZUeUhzNmZtN0tSS0V4QVdwZnpjRUZsQXZLc1N2dENaLTdUSXY4YWdFMmJlXzQ4UENJQndKVVBMel91OS01NVNqSHluSG9hMF9wdHNLWWthU0tDRERMc2EtM2s0ZGZ0VEZhQzBXMnVfaGNaQ3lsUnAyQ2haUEl4U0d2djVRR0JnV0w2TS1vNHIwckNNdzVoZmhrM2pBSWgtRU8?oc=5",
+   "published": "2026-11-16T12:00:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Indonesia-Canada economic partnership agreement takes effect in December, scrapping tariffs on thousands of goods - 联合早报",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNNzh6anEzNUd0eWFjRk1zMGJwR1hoMlRhaFB2c0NBLUVLOU03UXh3ZU9PeVp1Smk5MUVkcDdJcjd6bTRtbXJOUnh0U0g3MHVJTDBxbEg3cjZuYXhxSGhlLWxRMGQ5YzRyMHBINTJHWWtONkY3a1ZZTERjSVkzaUNNR1lpNXZwckZNMnRwWGdoS3hhUmxoOHZYZXRVX0ZTS2FNaHk2WUFwaTNHTW15aDZ2UnFvaXJqQ2ZBV01vRlR5bnhhc3o5Vk1GQVFUclhRV1pr?oc=5",
+   "published": "2026-11-16T11:48:47Z",
+   "category": "trade"
+  },
+  {
+   "title": "Second CFD Auction Tariffs Inadequate Amid Rising Costs - Iberia Capital Limited - BM.GE",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQdWpwV3JZZThYdHJydlFPeGdOQzNEb250TEdvZmtXTDk0OEg3dFRrX1Yyb0VGdmQtanNCdkowS3VtRlh2MEZpclJONUJELXQzOTAzRXJKN29WTVpBYWtWbzAyNzJldTFaamVnRXRDZVo4N0twcEJTb0gydmxPNkRSemJISHZLekZSVk5BZi1MVDhzU0Y1UW5LX3VtSXBPNm1jVGc?oc=5",
+   "published": "2026-11-16T11:15:56Z",
+   "category": "trade"
+  },
+  {
+   "title": "Dry Taps, Extortionate Tankers, and Rigged Tariffs: How Ghana Water Limited’s Management Failures Are Bleeding Citizens Dry - Modern Ghana",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTEJOcG5mQXRpdEZqeTFCdVlub01WaVhiRUEtQXRham9QcmVsSUQ4SzhRbC1NNGxPTzRBZG1adVpiS2FYbFhBbzZnZ21oaTZNRzV1R2FhRUpldkJEdVUzbjJUY0NXVWxCaTV4T2p4b0NOb0tzMlF4TGc4cE1mS0JzWXlCb211NHc2ZFhHS3JKUG5OaGRabWhZSFJn0gGYAUFVX3lxTE11TEhZRGJHVi1OOVZvcGFhbUlFbm9McUNUUE1FUlZlR1poNWVTQ05iZEo4NlZLV19OSkhYcmVuUlJkZFdSX2tQQmlOSmRhb3dqMF8zb3l3ZHR6M1ByT3FZRUlMR1hPU0RvUlJYa0ZYeGlrSkkwSEZ5SUhlOVdCZG9BX3BJeGRfTWYzQzJRV1ZTTEpfUFVlWEM1?oc=5",
+   "published": "2026-11-16T11:09:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trump Tariffs Congress - chronicleonline.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVEczaUxFMGQzTExzNUtuRGs4SDgyZ29BRGw1bU42Q3NONjg4T25zU2NlaTM4Q3M5U3N5QTBhbG1sX09WOEgxMEJJTlN5cmwwY2RhYzl0U21NX3R5YXRqMTc0Y1I4THZSd0tkMHRiSlpuZlIwaFZMRlU5UGt6bkxscGFacXhkb1NsY2RTMHBOa1gwZktXcm5aaXkyNldLRTF3RlMtbndyU3BSMHpXMHhSN1JvNW82NGs?oc=5",
+   "published": "2026-11-16T11:00:26Z",
+   "category": "trade"
+  },
+  {
+   "title": "South African exporters face higher US tariffs and massive competition as AGOA benefits end in 2027 - FreshFruitPortal.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1WU2ZvSFZCc0x2dGhpeTczUk9ySlNWTzU1cnNiYUdPOVd1RUxPVHFZcEpNWlpwUGk4VjFIV1NoQ2ZwRGhnRV9TMTc0MnNHNXliZWZGS05kcWxFQlJJS3d2bTJFN2ZZNVFrY1B6RGVLZW9rQUF2d0E?oc=5",
+   "published": "2026-11-16T11:00:05Z",
+   "category": "trade"
+  },
+  {
+   "title": "IMF backs further increases in Uzbekistan energy tariffs - UzDaily",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNkgwTmNoZWFiN2xtRXlxdXo2cjVrS2VnTGdTM1NTOVpiOVFpWXZSbk1Ua20xQTdxVGtYZGhfc0Vtbk9DZ0xVUVl2Zm1oMk1iWkcwQzQ2TXkwUHNza25lalhfUlNodE04ZzBHc3V4SXo1SnQtSmxDcy1iS2JCQnBBOEZYR19OWENfZGJv?oc=5",
+   "published": "2026-11-16T10:33:26Z",
+   "category": "trade"
+  },
+  {
+   "title": "Carney says US tariffs could push Canadian carmakers towards China - Euronews",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0JnV1I0WGd2RUpRM0VYbkN4QWxfNXE0aFpzYWdOUXc4OWVxXy1pRm4wa3NfS281bzhydDl0cW5MLWVyVW9mTjIxYjVReVZmQjJYcV9CakIzNzlkS2RLelNxWUZwQkg1MVJyVTBvVFo2Und4blhiREVKektXcEFOZFQwNkNWYW5hczVtNlR0R0h5Zld4ZC11Vjh5WUNLMVk4QlVtRw?oc=5",
+   "published": "2026-11-16T10:24:51Z",
+   "category": "trade"
+  },
+  {
+   "title": "Middle East latest: Tanker struck by unknown projectile in Strait of Hormuz, UKMTO says - The National",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWUhsb2pnODdZNmUya1pnTkFma1Rsb0ozYnVkNGRzd0M0Q0VHT2xuVHhkaFc1NlREdnBiT2d0aW1oTjNRXzVOWkxnRmdzX1pvcmx4dWRIQmJySzFSOG52ZHZ3S0FpWTZOcFllRFRaaTg0ZEFsam8zdHlkME9rdFZGbWdxaVZtMDB6THQ2aGdCaEdLZjRMeTZfNURNZEUyWGoycVBkTg?oc=5",
+   "published": "2026-11-16T10:24:21Z",
+   "category": "security"
+  },
+  {
+   "title": "Kyrgyzstan's consumer prices and service tariffs rise 8.8% in ten months - Trend News Agency",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IRjNNWXVQV0R3emRyamwtalRIbkJtU3JRX05jS0ZvbzBVaklSQXNlbTZyV3MxZUlzSlNRTUZuWU94TXA4RmpQbW1QUk5sTmNnLWVvZlBibUNNOEhwdWp3?oc=5",
+   "published": "2026-11-16T10:23:08Z",
+   "category": "trade"
+  },
+  {
+   "title": "Three US Aircraft Carriers Now In Middle East As Iran Tensions Raise Fears Of Wider Conflict - The Times of India",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPVXJHMkZydGxWWmJKYW9EWHAxcy1sd2tEU190VHg4N3VhRElTRVQxYllBQ0w4cV8tRU9jYzVZa192OWFzTUZ6MmtmeHgyLWFmcFBVenc1ZFJnT194Q3RKWHR3ZWxlRHhlMWR5ZHIzTXhlYkFWZVlUVjhZN1J1ZHJia0s0MEljZTZJZlF2ajlIU0dVYmp0V1dzV3Vzd0ZlMmdxQkx4T0h4dEoyOXR2NUVVNk9MZTU3SVYyWUNEdXpCZVZQaVYwWXhZVFZKS1VWcFNaU2NFOS1CSG45dVJ2WERYX0VwTG1zTjNfUDE4WFk3ekt3REx3QTZHUW9BSjhjWjBIQ0Rv0gGIAkFVX3lxTE1lV2ZIcEg1NGZ1QzdGVkRRZXl0c1AweWdUUlR0eW13WHUxaVFPdFVSMTF2VFJLSl9sTFRKb3JYMkZZLUlPU2p1cW9HbUo5UDhhWHhCM2xJWDZNSmtDYW5mUXBhTUdPQUF6cGxNSjlVZG1Lc0VoZWlFdGdWUkVwOUZyUVM0ZUs4eFI0SUpOWHBraUxHeEVEUWRjU2ZFcG1FRm1QWUduRXNoNEhJdjVvNFV1WWZmTTVWMmg3RW5UaTZ0X0s1R2VBMjlKZVRPdTVhZzM5T1NybDgxVlJOVzVGOWRjb3dpZDY2dEc1WEszNk40SXJqQllQSkVJSm9sRGxhOTdka3RyX2wtTQ?oc=5",
+   "published": "2026-11-16T10:21:31Z",
+   "category": "security"
+  },
+  {
+   "title": "Third US aircraft carrier reaches Middle East - novanews.co.za",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBnVmdtcGVSQ0R4aGhBaU1JRjhLN0RIREF0Q1NHTDVMOHM2eVM2OHhlb1NqRG5aZWZZUHNwNmN2Y1J2NEM2WHdhcnRuWG1jeHVpY1lvUUdPSENlMTVnQmcxa01KLVBLMFVMRl85UmFBb0RpejJ6cm9kTw?oc=5",
+   "published": "2026-11-16T10:20:00Z",
+   "category": "security"
+  },
+  {
+   "title": "USS Roosevelt arrives in Middle East: Is the US-Iran war about to resume? - Al Jazeera",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPeV9idVVUaFB2a1hNbHIxci1yVmxNTTQwczhxSFdvZXFxWVIwX2NDVUd1Wjc2UHprbUxsaU44R1JvYWpqMmdVLTVuNy1Cb2lTYkpTQ3BuMW90a1B0TFdEUEYzcndiZVI2WDNHRDd1Qmt0N0ZwSzR3Si1iS09SYXZXMTV3bExYMEZNTGZTU19nbW54QzQ0VVVVc3loY1RQcHg4djY5eVJXVDdLeDFWZC1oUVl4NNIBuAFBVV95cUxNQ0dvV2xFTmFuLWVhbmVycEw3T1VsUVA5bDVsc19Ibkl3ZUtRWm93MEVjTlBKV01pSFNiWXkwbWItdzZaV0JyZ2FuUVJTM0ljV3RaWDVqLThWcDBTdEN5NGk2NTdyRmdBWDhDRkUxRi1CVWQ5M0xVcFZBU3Q1OGE3djBWenFYczdJYjFaVnVrRlp2OW8zX3ZFeW5TZGdhVDItM05WelpTVVdtb0g4eEFoRGg0M1pLNFBl?oc=5",
+   "published": "2026-11-16T10:16:59Z",
+   "category": "security"
+  },
+  {
+   "title": "EU publishes common rules for AI regulatory sandboxes - CASRAI",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4wb29sd3Y5N2I5Z0hjZEFNT1FiNVl5YVJaQnZsOGFIbmpQTGV4OGNDTk40R29CenUwVU52VHFVSE1KazctUGNpNTQ3VzlUQUFXYi1wXzJCSTByelFMV0o3b1AtYm5CRWFXdWF1cTVtTjliVGxycjJKZW50YmQ?oc=5",
+   "published": "2026-11-16T10:08:38Z",
+   "category": "policy"
+  },
+  {
+   "title": "Iran war live: US, Israel accused of ‘state terrorism in most blatant form’ - Al Jazeera",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNNzh6c3o5bEFNTllEY21FaVJJTkk3SzBhWWtBV1hjQkxETmNSTXdQemp5TXBqbTUxTHVlVzNKbzEzYjFidWtMNld5OFFFY1ZIYmkwd2ZuUEdBZ2Fabmc1YjR5ZUJUbzdfLVFRT1pPNlRBdGgxSHNxQWlBbmlWSXhWOS1HRHBjdUU3YkRhTmltSEhpa3FsNTFDUUF0Mm9PTmFDU2wtZXpReDkwWG81XzJqZFMycE53MVdFZlY4SE1pZ9IBxAFBVV95cUxOOG9VVnFZTngzajNEOWVjZk9SbV8td3JQOUk2MnpQYVBrd1Z0VEFGd29xTVdFRlhRR3daUi11LVQxNDlVaE91cUYtMVZxelVrejhnVlVmQU14RDZTZEtndTNjdGJfeU5DZ1Fwc0wxM2RzME5lQnJKNm1veEZLRVk4V2ptY1hqQk93Qmh3YmFqOGJ4dVJlVjI2ck8zNXNpem1BYnRKa2FTTWVnMEtyT29wa2h3QnFwMDJaNkNiWVNGYmJWUmFJ?oc=5",
+   "published": "2026-11-16T10:03:50Z",
+   "category": "security"
+  },
+  {
+   "title": "Can Canada claw its way back into the Chinese lobster market? - CBC",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQSzRhUEM4UUtONGQyU1dQNFVINlV0UWFPMmNWc2tBRXktbFdPMkU3Q0dTa1VaaV8zMWZXbklSbl9uZVppSFZ5NGlKVXRhbW9EM1VjN1paR1VuLUVDOEJRby1EV1dON05PT0RfQlR4Qk1DSWEzSlZ0Q1lBNzZrR3gwTTJDUDZKcEJIU2l2Z20zRl9qbk5kcUZqQ21mNERxdw?oc=5",
+   "published": "2026-11-16T10:00:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "GCC National Oil Companies' CapEx To Hit Average $125B In 2026-2027: S&P - Forbes Middle East",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNLVhiekNGLVM4Mmw4UWFoeTJrNzdyYXkxU0dqNjlraFFvdnhlRTZqS1hFaVdBVEs4MVJCSl9XejVfd0Vsa1ZLY3J3N045am9SWjlZSlVZVXZUNlpBQTVqb3JWZ3dpX0NtRjJMVUNHNEh0T1FYelZMeXdUaHBtbmlCY0Y3b3BFZF9BekkxQkNqOFRiOG9uY2w2UjJxVnhELVNvOUo4QWdPa3pSdlFIWTRzWVlnUENVTHJrcS1GOEpxRUZPbkF2VjNDek5DbVF5Zw?oc=5",
+   "published": "2026-11-16T09:55:14Z",
+   "category": "security"
+  },
+  {
+   "title": "Sunil Mittal wants mobile tariff hiked to ₹350/month: What it means for telcos, impact on customer wallets; explained - Livemint",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNa1NVLU5FRzNveWR6VzFtcEllT1BzSjhFRUFvbmo4bG94bnVvZnVSaHNnSWJFWk44WUJtQWszeW9GYmRORzFhRXFXZVZRTmZLSUhWNkJvdlBnQWpSQjdFdGhDdTVXUUlCVjRNQXo4TWxOWDNYc3R5SWoyeWZKZVlzbDRBQm1PTzlLLVczZVp3ckpLcE5ValFrSWg2VHpBX1ItRTAxT1ZuQUQ4ZHl3NU4xMWZSbGZNMjNPSFB1QWZsaE9ZWkRwSFRLWFhUSF9ta0ZGelZLdFpNQnVZY0twSTgwN0ppZ1EzdjZZOVNBS1pHRTFvLW55MHJtRjZrUGQ1Mk3SAYQCQVVfeXFMTlRGeHo3dnFnMXZhRTczd3BfOTFNTnlPMHJlOVNNbWNndFBMZEZWODZNN1hlc3R5ZTc2QXpwak90Rlp3Zk1oVkFGQnloTWtObUpwMzhpeWJ5bmlqSlMxdHd3QUVYdVQtSlNBZUVJaG9oODFrb3hmWGkyYjZTSi1tVlUwMXl4TVFzRE1JbDdrRnFjdng2aU03THpqUlFEZlFuMElwSXl1VDdmQTgycUtYUnpLWDFFTjdSNFNnOGxDenVCOWN5QXUyci10TGF2R0U0ZkFpVnFHMFpGd1BZcVJZN2xLTnZqeWFZa1Q2RS1nQWY4ZjZ0cWxoTHFHZjJzd3NINkZOYUM?oc=5",
+   "published": "2026-11-16T09:51:03Z",
+   "category": "trade"
+  },
+  {
+   "title": "Practical cooperation, digital ties chart China-ASEAN course for shared future - China Daily",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9qazJDRVdlYnlJdWNDM0hWelg4TWVtdW4yYVVXQWtYeHJuUnMxeVBQWlhnbGs4YzZlR3RpcU1rLXRvY3dpZTdVRWo0Y1pTT0cxRnZsQlhRYVA?oc=5",
+   "published": "2026-11-16T09:40:09Z",
+   "category": "finance"
+  },
+  {
+   "title": "Anthropic’s IPO is forcing investors to assess uninsurable risks they’ve never encountered before",
+   "source": "marketwatch",
+   "link": "https://www.marketwatch.com/story/anthropics-ipo-is-forcing-investors-to-assess-uninsurable-risks-theyve-never-encountered-before-dea85fbf?mod=mw_rss_topstories",
+   "published": "2026-11-16T12:33:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Freshworks alums raise $53M to take on Salesforce, HubSpot with AI-native CRM",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/16/freshworks-alums-raise-53m-to-take-on-salesforce-hubspot-with-ai-native-crm",
+   "published": "2026-11-16T12:30:00Z",
+   "category": "tech"
+  },
+  {
+   "title": "Three questions for anyone considering the Nvidia CEO job",
+   "source": "marketwatch",
+   "link": "https://www.marketwatch.com/story/three-questions-for-anyone-considering-the-nvidia-ceo-job-08ef8120?mod=mw_rss_topstories",
+   "published": "2026-11-16T12:17:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Warren Buffett donates $5.5 billion, says kindness 'compounds' in Thanksgiving letter",
+   "source": "cnbc",
+   "link": "https://www.cnbc.com/2026/11/16/warren-buffett-donates-5point5-billion-thanksgiving.html",
+   "published": "2026-11-16T12:16:29Z",
+   "category": "finance"
+  },
+  {
+   "title": "Nvidia stock falls nearly 4% as investors price in fallout from Jensen Huang's resignation",
+   "source": "cnbc",
+   "link": "https://www.cnbc.com/2026/11/16/nvidia-stock-price-jensen-huang.html",
+   "published": "2026-11-16T12:12:44Z",
+   "category": "finance"
+  },
+  {
+   "title": "Big-ticket holiday items may be harder to find as shipping costs rise",
+   "source": "cnbc",
+   "link": "https://www.cnbc.com/2026/11/16/holiday-big-ticket-inventory-shipping-costs.html",
+   "published": "2026-11-16T12:00:01Z",
+   "category": "finance"
+  },
+  {
+   "title": "Zoox robotaxis are now on the Uber app in Las Vegas",
+   "source": "techcrunch",
+   "link": "https://techcrunch.com/2026/11/16/zoox-robotaxis-are-now-on-the-uber-app-in-las-vegas",
+   "published": "2026-11-16T12:00:00Z",
+   "category": "tech"
+  },
+  {
+   "title": "Why Nvidia can avoid the fate of most stocks that reached the market-cap apex, according to one strategist",
+   "source": "marketwatch",
+   "link": "https://www.marketwatch.com/story/why-nvidia-can-avoid-the-fate-of-most-stocks-that-reached-the-apex-by-market-cap-according-to-one-strategist-461e33be?mod=mw_rss_topstories",
+   "published": "2026-11-16T11:07:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "The Neglected Half of Change (SSIR) - Stanford Social Innovation Review",
+   "source": "gn-climate",
+   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOc2VfcUtiUmpVSzJzZXNHZDhPNzFaWUVlanZHM1VmMHVVZG5ybXVLa1ZQWS1uYU5saXMzU1ZuVXN3b0FFS05LUTN2b2VjZGtGR2tZeUZIZWx0SDNGVF9oSW5UOTdKbDE3RGpCWG1INTZEaHpjRVViWDRkb0lidW9tQg?oc=5",
+   "published": "2026-11-16T12:51:15Z",
+   "category": "science"
+  },
+  {
+   "title": "'French Fractures': Public opinion increasingly links human activity to climate change - Le Monde.fr",
+   "source": "gn-climate",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOVXNBZzVyYXJZdFBBajN3THNGcHdxSTBjM2hQMGNzNU9ZN3hETEdlN0trem5EVWNWcVVsSWxmdXA1OWoteHM2dlViVFhiT3QxY2MyWTFyd1NKaXpMME5uZ1RPZVZkZWpSNi02anJrZU52R01QUUE4QnlKWHgzSXotWVdzWUdMcGo5ajExN3ZWa04xR0QxTkppUzJtSk1lWWpHazZYYVdGQzd3SmtyLUpIbHY4ZXBxNmxndl92TklJQ3lTUHM2UWFGU2hOZjRIbEM3M3pQOGozVldVTnA0OXl4X0pqaDJnY0U?oc=5",
+   "published": "2026-11-16T12:30:04Z",
+   "category": "science"
+  },
+  {
+   "title": "Can AI data centres help power underserved African communities? - Climate Home News",
+   "source": "gn-climate",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOa0RzSzdPS1VUUjZweGE3NVFKMFFtSjI1REQ4N3VYMFlNWFJMVHdqWjlHUlpBTXk0RGw0TEdmMEFjdWJleWVnX3BRYlM3aFpoWVZzX1Rlb2lMT1VjeUdiSkZoeGRYU1E1NC1Sa19xR0Q1dGNoLVUzTHlFQ2RySGd6UG5XeV9hT1c0SDRmNFFDLUlHdnkzZlFfcm9BaGNOcElUQ082VHFKek9Jazh5?oc=5",
+   "published": "2026-11-16T12:09:53Z",
+   "category": "science"
+  },
+  {
+   "title": "‘When the sun came out it felt like it opened a scar’ – This is climate breakdown - The Guardian",
+   "source": "gn-climate",
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPZFJtOHJ5THJDTEw0N2E1bzBHbkdsbG1mSTZUU2pITlFSdUpKdHlpR0tLSi1iRXg3TTdsbFd5U21kSGNuLVdzX0ZQRERtZXlWMWk3NDNsbjB6SUt2ZWFjWlFadU1oSUlvc1JFQk5Xc1FhX0dkc1ZZYlNqa044NVV6UC1kVWVGb0I2akhhOUJXXzQ0cXExVkhYcHJnQXRLMzlSY2hlTmc0dUY2RGpqSU9xbTVWajV4YjZCWXBNWUZZUWZybDhrU1l2MHVQUl9iNzVyX3ZPcUVmRlpEcnZE?oc=5",
+   "published": "2026-11-16T12:00:00Z",
+   "category": "science"
+  },
+  {
+   "title": "What Governor Becerra Needs to Know About Just Land Transition - The Equation - Union of Concerned Scientists",
+   "source": "gn-climate",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZTF5M1Z2dE8xTWdJMy1sTnVjVHdZMjhHRmQ0YkEyZXF1ZC1GV0xLeEdGcEV3bU1aVkVCT3Q3YjR4ZGFoRGFPaVhwWjc1NzBiUUt5UXlyX0VWN2gweUpISTQ3MnZGV0JMUVFiWDFoNjAtVjB0ekM4dWlhdnY3czY4T0NnLW9SMEZheGk3MS1JcmFvQks0akR4ZWoyNVRMQQ?oc=5",
+   "published": "2026-11-16T12:00:00Z",
+   "category": "science"
+  }
+ ]
+}
