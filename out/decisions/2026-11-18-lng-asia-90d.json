@@ -1,0 +1,73 @@
+{
+ "scenarios": [
+  {
+   "name": "供应扩张主导，亚洲气价下跌5-10%",
+   "prob": 40
+  },
+  {
+   "name": "需求疲软主导，亚洲气价稳定或小幅下跌0-5%",
+   "prob": 30
+  },
+  {
+   "name": "地缘政治中断主导，亚洲气价上涨10-20%",
+   "prob": 30
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "未来30天内，全球LNG产能扩张相关关键词命中条数",
+   "keywords": [
+    "LNG产能扩张",
+    "LNG出口增加",
+    "LNG项目投产"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动增加LNG采购合同的评估"
+  },
+  {
+   "id": "t2",
+   "description": "亚洲LNG现货价格指数（如JKM）下跌幅度",
+   "keywords": [],
+   "threshold": 10,
+   "type": "value",
+   "action": "执行长期LNG采购协议锁定低价"
+  },
+  {
+   "id": "t3",
+   "description": "地缘政治风险事件命中条数",
+   "keywords": [
+    "中东冲突",
+    "LNG航运中断",
+    "Strait of Hormuz"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "启动供应替代方案评估，如增加库存"
+  }
+ ],
+ "confidence": "low",
+ "review_date": "2027-02-15",
+ "question": "未来 90 天全球 LNG 产能扩张对亚洲气价的影响",
+ "generated_at": "2026-11-18T03:08:07Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "allafrica",
+  "ars",
+  "arxiv-ai",
+  "cnbc",
+  "eia",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-energy",
+  "gn-geopolitics",
+  "gn-mideast",
+  "gn-trade",
+  "nikkei-asia",
+  "politico-eu",
+  "scmp",
+  "straits-times"
+ ]
+}
