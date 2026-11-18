@@ -1,0 +1,496 @@
+{
+ "date": "2026-11-18",
+ "generated_at": "2026-11-18T03:10:50Z",
+ "items": [
+  {
+   "title": "How Jensen Huang’s family shaped Nvidia’s Singapore dealings",
+   "source": "ft",
+   "link": "https://www.ft.com/content/65ff066f-a81c-4d24-95da-73c2d7b83a27?syn-25a6b1a6=1",
+   "published": "2026-11-17T15:33:25Z",
+   "category": "finance"
+  },
+  {
+   "title": "US dollar rally erases ‘liberation day’ losses as rate expectations rise",
+   "source": "ft",
+   "link": "https://www.ft.com/content/b8215e9c-bed2-49e8-a36f-6d7aca599bba?syn-25a6b1a6=1",
+   "published": "2026-11-17T13:07:17Z",
+   "category": "finance"
+  },
+  {
+   "title": "Trump meets Quad leaders, says 4 nations agree on 'critical mineral deals'",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/indo-pacific/trump-meets-quad-leaders-says-4-nations-agree-on-critical-mineral-deals",
+   "published": "2026-11-17T15:37:21Z",
+   "category": "world"
+  },
+  {
+   "title": "ASEAN, major partners seek action on cybercrime at Manila summit",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/asean-major-partners-seek-action-on-cybercrime-at-manila-summit",
+   "published": "2026-11-17T15:37:21Z",
+   "category": "world"
+  },
+  {
+   "title": "A misty outlook for rates",
+   "source": "ft",
+   "link": "https://www.ft.com/content/c53ae58c-64b9-4d90-8a0b-d338e80f4614?syn-25a6b1a6=1",
+   "published": "2026-11-17T12:30:05Z",
+   "category": "finance"
+  },
+  {
+   "title": "AI grapples with the return of the Antichrist",
+   "source": "ft",
+   "link": "https://www.ft.com/content/551f078e-4cd5-4302-8143-96b8ed5c9eeb?syn-25a6b1a6=1",
+   "published": "2026-11-17T12:20:22Z",
+   "category": "finance"
+  },
+  {
+   "title": "Berlin picks ECB board nominee, paving way for Spanish presidency",
+   "source": "ft",
+   "link": "https://www.ft.com/content/10fd3d24-04b1-40a2-93d3-8b64023cc869?syn-25a6b1a6=1",
+   "published": "2026-11-17T10:48:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "Japan and South Korea sustain thaw ahead of key APEC gathering",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/japan-and-south-korea-sustain-thaw-ahead-of-key-apec-gathering",
+   "published": "2026-11-17T13:37:21Z",
+   "category": "world"
+  },
+  {
+   "title": "Nvidia creates committee to oversee compliance with US chip export controls",
+   "source": "ft",
+   "link": "https://www.ft.com/content/aeacbf89-5511-4d1c-81c2-b4c227bdfceb?syn-25a6b1a6=1",
+   "published": "2026-11-17T10:26:44Z",
+   "category": "finance"
+  },
+  {
+   "title": "Brussels raises Eurozone growth forecasts as AI boom drives exports",
+   "source": "ft",
+   "link": "https://www.ft.com/content/ce0f66b9-703d-4e04-b046-bf04a3d9209a?syn-25a6b1a6=1",
+   "published": "2026-11-17T10:06:29Z",
+   "category": "finance"
+  },
+  {
+   "title": "How does EIA account for small differences between energy supply and demand data?",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php?id=68464",
+   "published": "2026-11-17T15:37:21Z",
+   "category": "finance"
+  },
+  {
+   "title": "Carney eyes 'other options' for embattled Canadian auto sector on China trip",
+   "source": "bbc-world",
+   "link": "https://www.bbc.co.uk/news/articles/cq98xlz09ye0o?at_medium=RSS&at_campaign=rss",
+   "published": "2026-11-17T15:17:49Z",
+   "category": "world"
+  },
+  {
+   "title": "Trump warns Iran over reported ‘dirty bomb’ threat plans against Washington",
+   "source": "aljazeera",
+   "link": "https://www.aljazeera.com/video/newsfeed/2026/11/17/trump-warns-iran-over-reported-dirty-bomb-threat-plans-against-washington?traffic_source=rss",
+   "published": "2026-11-17T15:13:57Z",
+   "category": "world"
+  },
+  {
+   "title": "Scammed migrant workers in UK to be considered possible victims of modern slavery",
+   "source": "guardian-world",
+   "link": "https://www.theguardian.com/uk-news/2026/nov/17/scammed-migrant-workers-modern-slavery-home-office",
+   "published": "2026-11-17T15:00:15Z",
+   "category": "world"
+  },
+  {
+   "title": "‘Chloe’s policy’ aims to prevent repeat of case of Treasury worker who took her own life",
+   "source": "guardian-world",
+   "link": "https://www.theguardian.com/politics/2026/nov/17/chloe-moffat-policy-parents-treasury-worker-employers",
+   "published": "2026-11-17T15:00:14Z",
+   "category": "world"
+  },
+  {
+   "title": "Planes, trains and automobiles: what we know about Kim Jong-un’s foreign travels",
+   "source": "scmp",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3374779/planes-trains-and-automobiles-what-we-know-about-kim-jong-uns-foreign-travels",
+   "published": "2026-11-17T15:00:13Z",
+   "category": "world"
+  },
+  {
+   "title": "‘China question’: Nvidia crisis and new US chip curbs split Washington and Silicon Valley",
+   "source": "scmp",
+   "link": "https://www.scmp.com/tech/tech-war/article/3374770/china-question-nvidia-crisis-and-new-us-chip-curbs-split-washington-and-silicon-valley",
+   "published": "2026-11-17T15:00:09Z",
+   "category": "world"
+  },
+  {
+   "title": "Ukraine destroys section of Crimea bridge in fierce exchange",
+   "source": "ft",
+   "link": "https://www.ft.com/content/eb8031c0-a96a-4408-b762-b92ff0402f82?syn-25a6b1a6=1",
+   "published": "2026-11-17T09:01:17Z",
+   "category": "finance"
+  },
+  {
+   "title": "Is Iran plotting a ‘dirty bomb’ attack in the US? What we know",
+   "source": "aljazeera",
+   "link": "https://www.aljazeera.com/news/2026/11/17/is-iran-plotting-a-dirty-bomb-attack-in-the-us-what-we-know?traffic_source=rss",
+   "published": "2026-11-17T14:59:39Z",
+   "category": "world"
+  },
+  {
+   "title": "US senators demand FAA pause upgrades linked to nationwide ground stop",
+   "source": "aljazeera",
+   "link": "https://www.aljazeera.com/news/2026/11/17/us-senators-demand-faa-pause-upgrades-linked-to-nationwide-ground-stop?traffic_source=rss",
+   "published": "2026-11-17T14:57:33Z",
+   "category": "world"
+  },
+  {
+   "title": "US toy sellers pin tariff hopes on third Trump-Xi meeting this year",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/economy/trade-war/trump-tariffs/us-toy-sellers-pin-tariff-hopes-on-third-trump-xi-meeting-this-year",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan's Taisei to launch $150mn fund with Silicon Valley venture capital firm",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/startups/japan-s-taisei-to-launch-150mn-fund-with-silicon-valley-venture-capital-firm",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan's wagyu prices hit record high on ranch closures, overseas demand",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/food-beverage/japan-s-wagyu-prices-hit-record-high-on-ranch-closures-overseas-demand",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "world"
+  },
+  {
+   "title": "Research Reports",
+   "source": "mit-tr",
+   "link": "https://www.technologyreview.com/2026/11/17/1148203/research-reports",
+   "published": "2026-11-17T14:39:46Z",
+   "category": "tech"
+  },
+  {
+   "title": "DOW Looks for 'Next Great American Base,' Challenges States to Think Futuristically",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4649602/dow-looks-for-next-great-american-base-challenges-states-to-think-futuristically",
+   "published": "2026-11-17T14:28:43Z",
+   "category": "security"
+  },
+  {
+   "title": "Polish far-right lawmaker Braun charged over hospital ‘citizen’s arrest’",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/poland-grzegorz-braun-charged-over-hospital-citizens-arrest",
+   "published": "2026-11-17T14:10:09Z",
+   "category": "policy"
+  },
+  {
+   "title": "Leak of 15mn Deutsche Bank files exposes systemic failures",
+   "source": "ft",
+   "link": "https://www.ft.com/content/df518845-ed97-4a38-8a38-7fa9d4d24003?syn-25a6b1a6=1",
+   "published": "2026-11-17T08:09:20Z",
+   "category": "finance"
+  },
+  {
+   "title": "Crimea bridge destruction will impair Russian supply chains, says Ukraine",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/zelenskyy-gives-details-on-ukraine-crimea-bridge-operation",
+   "published": "2026-11-17T13:52:18Z",
+   "category": "policy"
+  },
+  {
+   "title": "Rwanda hits back at asylum-seeker return hub criticism",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/rwanda-hit-back-return-hub-criticism",
+   "published": "2026-11-17T13:50:47Z",
+   "category": "policy"
+  },
+  {
+   "title": "The Download: Jensen Huang’s open-source dilemma and cognitive immortality",
+   "source": "mit-tr",
+   "link": "https://www.technologyreview.com/2026/11/17/1148679/the-download-jensen-huang-open-source-ai-cognitive-immortality",
+   "published": "2026-11-17T13:10:00Z",
+   "category": "tech"
+  },
+  {
+   "title": "EU countries postpone vote to lift Brazilian chicken ban",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-countries-postpone-vote-to-lift-brazilian-chicken-ban",
+   "published": "2026-11-17T12:27:43Z",
+   "category": "policy"
+  },
+  {
+   "title": "America's Corps of Cadets Will Build Patriotic, Honorable Leaders of Character",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4649570/americas-corps-of-cadets-will-build-patriotic-honorable-leaders-of-character",
+   "published": "2026-11-17T12:21:00Z",
+   "category": "security"
+  },
+  {
+   "title": "House Democrats promise a US return to global climate talks",
+   "source": "ars",
+   "link": "https://arstechnica.com/tech-policy/2026/11/house-democrats-promise-a-us-return-to-global-climate-talks",
+   "published": "2026-11-17T15:32:43Z",
+   "category": "tech"
+  },
+  {
+   "title": "Middle East War: 8 things UAE residents need to know tonight, November 17 - Gulf News",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNR1pRanctSGZGQndvcWp4ZzhGZWIzVUhzaHlOMGtxNFZSdkdZdm1tMXhlMDB2WlJIT1gtWHJpRVZDTG5YZlNjV2VsRHRGd1BxbGlVQ0ZzN0t2N3RTUXlHdlhnQWJzdGJLMUtvUjFyVGRvaTVJNFBYRU1Fbmp3ZjN5Vm1KaE56dzZuQUd5VUk2elJaY2M2RXBfX0oyNGpXbmhqWTVZd2Q5OWxYbncy0gG8AUFVX3lxTE9UYzROQ0JZVFJ1RTdkRjFPaGhVSGhyUTZ4azlzVENYN190RzVqeFVFQlgtN2NORGdJQnU0NDVHY2JVeTYxQmpsQmhyZ3NYRjNsRjBtaHM5dHpnTnNSX2w1RXVMYUlQQ05FelVmY1dSam9CNVNoUFNTRzRlLVJiX253NWJsUnBvMkgyOXZ0a3cxeDFGWTRLUkg1ZHpVa2Zrb2dlNHFzMlRBRWVaNm1XX195N1dvUEFvcXBRTkN0?oc=5",
+   "published": "2026-11-17T15:19:56Z",
+   "category": "security"
+  },
+  {
+   "title": "Longtime NIH contractor named director of infectious disease institute",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/longtime-nih-contractor-named-director-infectious-disease-institute",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "Neanderthal brain gene may lower odds of schizophrenia",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/neanderthal-brain-gene-may-lower-odds-schizophrenia",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "Supreme Court rejects Trump’s bid to appeal decision restoring terminated grants",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/supreme-court-rejects-trump-s-bid-appeal-decision-restoring-terminated-grants",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "Energy Department to delay atom smasher and speed AI, quantum, and fusion projects",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/energy-department-delay-atom-smasher-and-speed-ai-quantum-and-fusion-projects",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "Scientific peer review should rate quality and impact separately, study argues",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/scientific-peer-review-should-rate-quality-and-impact-separately-study-argues",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "Chinese gene therapy researchers fired after probe into child’s death",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/chinese-gene-therapy-researchers-fired-after-probe-child-s-death",
+   "published": "2026-11-17T11:36:23Z",
+   "category": "science"
+  },
+  {
+   "title": "EU sees eurozone economy hold up despite Iran war - France 24",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTUZmMjhWY3BDUFZFWlF2dGlGZ2E5WFR3eXl0aG92Nm56VDRkTFNSci1KaFA3VUtaZVVLUEF0N0d6SmJrSEttY1l3NUc3SmNPX3ZGUXQ1d0xzdXNRb1NfM2xGMnZweHhqVFVtQkFMWDhvRkk4YXZlVHJ5WG54VHpOQ2dlUEo5UUhmSzFrajFDcXR3Z19vYjA5TnVLRzZhbGs?oc=5",
+   "published": "2026-11-17T15:05:21Z",
+   "category": "security"
+  },
+  {
+   "title": "China cuts tariffs on Canadian pork and seafood as Canada extends steel relief for Chinese imports - MLQ.ai",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNeU1nSnZXVUxlNnlTSnR6TXZFdURyODJJcDdrXzJXQnpJSG1na3FUTlAzSnVzNF8yVGd5Mmp3RmRaUW5vNHBWaHlPNktoTnZXdzdjWDk1VVlBbnV1S1BmaWZWbjgxYm03MUdGZWV3UzdTeU1Fek1vUFU2cDZQcG1OTmoxTVpFdzVjMzhXVEtKSk02OUlnZHJ6RlpNYTZJaWpkb2hLRkZVM2lMdS04THQ3X1BRWFczQzZGeTdV?oc=5",
+   "published": "2026-11-17T15:01:06Z",
+   "category": "trade"
+  },
+  {
+   "title": "‘Katastrophe’: inside the chaos at Germany’s biggest bank",
+   "source": "ft",
+   "link": "https://www.ft.com/content/4f8dae68-bfec-43bd-bef6-b830815ec538?syn-25a6b1a6=1",
+   "published": "2026-11-17T06:00:07Z",
+   "category": "finance"
+  },
+  {
+   "title": "An ‘awful mistake’ that leaked Trump’s tax statements",
+   "source": "ft",
+   "link": "https://www.ft.com/content/784cbdc7-c852-4081-b1e5-390779e9fad1?syn-25a6b1a6=1",
+   "published": "2026-11-17T06:00:06Z",
+   "category": "finance"
+  },
+  {
+   "title": "Epstein’s dealings with Deutsche were far larger than previously known",
+   "source": "ft",
+   "link": "https://www.ft.com/content/72ac6fee-55f3-4db5-a1e3-873ef39c0b96?syn-25a6b1a6=1",
+   "published": "2026-11-17T06:00:06Z",
+   "category": "finance"
+  },
+  {
+   "title": "China drops some tariffs for more steel exports from Canada - Global News",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTDR2YXBmUkdtc1Rweng3MTBfaE1pd2JnbG11RmxzUFhHSUgzZWp5V2sycVU0Yk9NSzFmWmVrdC1vMjNZUGpPRFdLXzI5QVNnUVBUVmFzN1MxTGhQaWcwenNuXzJ3YjlGN3pJU3ZZNkxUNXFkWDU2VXFRVDJ2T3ZhMmFiZUdyNndYdWlmV1RTMVF2cmVFeHh0UVpOVmlsZw?oc=5",
+   "published": "2026-11-17T14:52:01Z",
+   "category": "trade"
+  },
+  {
+   "title": "Irish regulator stops X training AI with data gathered by agents",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/x-stops-training-ai-with-agents-data-after-ireland-intervened",
+   "published": "2026-11-17T10:54:01Z",
+   "category": "policy"
+  },
+  {
+   "title": "Thailand to eliminate tariffs on US exports under trade deal: Trump - TRT World",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5UeVNUSmo2dWFNNUhlVk5BenI2YU94SThhNmx1eFJfMFROVjlNUW5PYWZNVG82dndwNHBMT01pWUFqRG9jSW9JRmxOQURmSG5HTnU4dDJOaVY?oc=5",
+   "published": "2026-11-17T14:25:02Z",
+   "category": "trade"
+  },
+  {
+   "title": "Taoiseach says Christian Brothers must ‘face up to their responsibilities’ to abuse survivors - BreakingNews.ie",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOZU9uNlRwd3o0ODV5U2drZVd4Vm0yVnRYSWNsRHBjZm1XbFdYQ01Pc1BmOTlxTGJfUFA2RWdkRnk4MW8zTXdkbEhMc2RWQVRRYjBPRDdwSFRlZnpjLW1VNWJfWHd0V1F3S2UyNktxakczd3FaRWdPQW42bmcyOXBNRk0xc1lCWVV0Mmt1TnRHUE9EcnI0MkpwekdlTG41emJrTm9wTUhLUGtUajRJVHBlSTVwaHRWODBaMC12X3VvTFIxSFFZVGhXcjY2WGR2WTJxV05B?oc=5",
+   "published": "2026-11-17T14:23:13Z",
+   "category": "security"
+  },
+  {
+   "title": "Trump says Thailand will eliminate tariffs on US exports under new deal - Yahoo",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNLWwwaTczaWE4WFdveGxHTS1KSlRjckdLZVl4N216UEJEMUJMQ1JiUGpraGRlZFd0Tkoyd2VaMHVwOWdjX3V4RHJsWFA3NUFVYnFWVk5BQzIxRkI1V2ViOWVIbnJzYS1fNDRmUHNaSFVlMXdNN0E1YlRhNzVLZTlFMnVWNnVZa2VYNjdPSGhMQQ?oc=5",
+   "published": "2026-11-17T14:21:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "‘Are u really threatening to play China off the U.S.?’ Trump trade adviser asks PM Carney - CTV News",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQSi1ucmk5RzdZNVlKLW9pMkFNREdIdzBLQ1lfXzA3emVVd3ZWYTloLUQ1b1AyMGs4UlQtVFd4YUltajUtYmRHdnpDSVVyZ2l2dmNmT0pjMXdhakoxY0tDcjB0WGxXVnBRNmlGYkRmRk9ubjdJUjRxREFRdHBMVWlSMTJqbG5acVdXay11R1dRZ3RpWEVCVjh4N0t2a2pOMVZXQUtlVzU1Q0NEZ1R4SFQwNWstWS1BWEJ5ZkJIVVh5TEZhZjMyb182aHUzOWk4cHdLM1hN?oc=5",
+   "published": "2026-11-17T14:20:30Z",
+   "category": "trade"
+  },
+  {
+   "title": "Worsening public finances overshadow EU growth",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/public-finances-eu-growth-eurozone-debt",
+   "published": "2026-11-17T10:48:30Z",
+   "category": "policy"
+  },
+  {
+   "title": "China to cut tariffs on Canadian pork, seafood after Carney, Xi meeting - The Western Producer",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOR1FzZU1zcG45VVNqOGpBb004UGY0SUQtV2ZqQlFGSEowVHhhbGZtN0NFRV9mcmRyX0pMVHZrbVVlYV81QkhKUk5YUE9KNS1WYktxay1BYm1qNkZkT3g5OG56ZUVWVWpzczZDMnNoc3RsNGg5dmoycWdSWExtYWdaRlkxMzRVSWFQMXE0aUhZa3dkMDVqM3ZsOE1hSlBSM1kyai1n?oc=5",
+   "published": "2026-11-17T14:19:09Z",
+   "category": "trade"
+  },
+  {
+   "title": "Canada and China extend trade deals, cut tariffs - CTV News",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOZk1PS2V2LXBqM2pqR21TVWN0cmtUZFhibGlJS3duS085UllCUElQbEVjSEJtRUNfNlJBd2FFZWxhLW9DV0RuMDQ4UFAzU09pY2s4UTRram9BYkd5OXRJLU45WUVMNjNRemdoQk82aDJZckdySGh6c0ZwZHNMOFp4T1FLcG5zc1hCVG1YQWs1NFA1QQ?oc=5",
+   "published": "2026-11-17T14:13:20Z",
+   "category": "trade"
+  },
+  {
+   "title": "Canada and China extend trade deals, cut tariffs - CP24",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPS2xYYXZQc29CU3Rha09PTFA4bk9TRlhKc3NiVE9UTFhCblUzbEcyQnA4UVN5QmkxQk91SVBrcnVmTVBjaUlqZ3FNdHVwaUl3RkU5N3NFdER1anFmeW9oc0luam0yTldLdXF6NExReDZJUnJqZnFPcF9TRnFRc190SUlSS3lhSm14TjZpS3JiZw?oc=5",
+   "published": "2026-11-17T14:13:20Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trump says Thailand will eliminate tariffs on US exports under new deal - The Hill",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQd3duZzZsQXd5dmt6dXhMakpFbzBKUzdCdi1DQ1haeExneXR0UHJPdUhQUnhEVVBQaUN2SWhoek9VZlZRb3QzRThmanVLdFlydGp6NGY5NXJJV3lXSlMyeG1rcWFWZHl5cUZObFNNc3czN190WGZBeGtvbVY2azhaZWlvbnbSAYoBQVVfeXFMUHJhdWRWUDM5dEdHZGd1azhaSzhSUVBTMExvSW53bmRzSEF2OUY5NTVMZ29JejNRSGRiczV5NFZrRmNpc3FRV3hHR2pQMzdRdTNSNHpxVTY0X0w0czdGOHJDTnFnTmFjWkVBb3hWYmhzanZjdFZ6NkpGZkJJaFFsSFd2dDk2TU1pYmdn?oc=5",
+   "published": "2026-11-17T14:11:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "COP31: Carbon Capture Emerges As A Strategic Tool For Exporters Facing EU Carbon Border Tariffs - Carbon Herald",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQOGZmcHhMRXczZGUwQnJzRDFLRXV5MTJWU3lnRzhVb1NLRjV4TGljUWNHZ1BfamdCTS1hRnlSc3lUZjZnUVIzcVpIUDBrWndNOV9seDVFUHRsam5VR0xzaFEtQmtjM3d0NEpPcG1DTFl2bTFwUmMzc1o4aGVZQklMWUczb0pjbjFrNnByOHRseE56cmhMQUJYT0NnX3BucF9JNUxidmpSdDBEdDFzMEI0Ty1DalE5NFczV0JqSQ?oc=5",
+   "published": "2026-11-17T14:06:50Z",
+   "category": "trade"
+  },
+  {
+   "title": "Lula champions global trade as antidote to US tariffs at ASEAN Summit - www.agnavigator.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSnNQYXBZSFBzZTVseWVmUmQtMzFic3RHZFVnRjgteFliUklDaThEQnRMR2ROVXA3WXZabXgwZkFQbkFzRlRDX2JBR2xKVEN4TXlkb3VYWGM0dDRTdGVDdGFoRFgxbDN1R2RRcXN6dU5sNjZVSUx5SVJRWm5SRVNiNjVxZkdRc1RFREJlQkt0ekNhbk43UnJPUmh4bnZHbldWX2xiWEZzN213NG1KLV9RNzhNV2JqMDc0QVVhcW1pZ2I?oc=5",
+   "published": "2026-11-17T14:04:18Z",
+   "category": "trade"
+  },
+  {
+   "title": "Grok Bot took unapproved actions, ignored orders to stop, and then denied it",
+   "source": "ars",
+   "link": "https://arstechnica.com/security/2026/11/grok-bot-took-unapproved-actions-ignored-orders-to-stop-and-then-denied-it",
+   "published": "2026-11-17T14:00:29Z",
+   "category": "tech"
+  },
+  {
+   "title": "Tariffs can raise fabric prices. They can’t rebuild an industry overnight. | Kate McIvor - The Missoulian",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPQ1NOclQ0WlRjSzY4MnM5eTUzUzg4NmFYakhFLWYyLURobG5jM1haRmNfUU1lcnRfUkh4X0pqSDZWb3dibHlQUXAwZ1BQVDZCbEprSTZVc0RCNXp3Mkh5eEZ1dEs0alhyUFBJcFJkeDV1TGZ2S3FTS0xnN0lWV18yb01UUGZGVU8yZVFDREdhRGc?oc=5",
+   "published": "2026-11-17T14:00:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trump Says U.S.-Thailand Trade Pact Near Signing, With Bangkok to Drop All Tariffs on American Goods - BigGo Finance",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5BY2RtMXlWV1piYVRlQVV4bVdNM3JTMjJqb3dtZ1ZjdDAyLVhoRm42a3lGMGprWWxMTDlfdnkzM29rVWlmYlNycnlIYkJtNXlZVng4bjc4bzluYWdMNjA4TXJjLXJIRllOa2Jod2RjRl9lbUFsX3c?oc=5",
+   "published": "2026-11-17T13:55:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trump reaches deal with Thailand to remove tariffs on goods imported from the US - Armenpress",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE14dUl6ZlhqT1FQNHlMb3BNY3lxQkg3cXg1TlJnejRZT2U4STdJVERQVFY1ODZ3MXN4TXk1TWI2REZjdHU1aWNOSnA0b2JfNmYxQlHSAVdBVV95cUxQckV0T2VfUkZHVzFraVZJMnRHaTh3enpzeTRZNVNQZ2tvalR4dzRiWHpOb2hSNExaRUd1b0dzWkQ0Tl81Q2JEUktPajB0bGtIak1WNHZhdDg?oc=5",
+   "published": "2026-11-17T13:47:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Germany poised to nominate Brunnermeier as ECB chief economist",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/germany-set-to-nominate-markus-brunnermeier-ecb-chief-economist",
+   "published": "2026-11-17T10:15:28Z",
+   "category": "policy"
+  },
+  {
+   "title": "Finland urges European leaders to talk to Putin directly",
+   "source": "ft",
+   "link": "https://www.ft.com/content/671d7a7d-c06f-4947-a0ac-72c41e262cca?syn-25a6b1a6=1",
+   "published": "2026-11-17T05:00:25Z",
+   "category": "finance"
+  },
+  {
+   "title": "Les Européens comptent sur la Chine pour garder les négociations climatiques sur la bonne voie",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/les-europeens-comptent-sur-la-chine-pour-garder-les-negociations-climatiques-sur-la-bonne-voie",
+   "published": "2026-11-17T09:09:50Z",
+   "category": "policy"
+  },
+  {
+   "title": "Artist brings old Space Shuttle tank back to life",
+   "source": "ars",
+   "link": "https://arstechnica.com/space/2026/11/how-an-artist-gave-shape-to-a-space-shuttles-new-towering-exhibit",
+   "published": "2026-11-17T12:15:54Z",
+   "category": "tech"
+  },
+  {
+   "title": "Ukraine strikes Crimean bridge in ‘unprecedented operation,’ Zelenskyy says",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/russian-missiles-hit-two-major-kyiv-bridges",
+   "published": "2026-11-17T08:51:35Z",
+   "category": "policy"
+  },
+  {
+   "title": "The Middle East's Yalta moment: Why a US-Russia-China deal could leave Israel alone with Iran - Ynetnews",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE41a0RkNjMyWV80SnJQeVpCV25RcGNkNzNqMk90UnVBTEJfeF9aN3FFcVc0UWxiZzNnVnE2U0VqOWRLU3Z4Q2ZkaGJrT0xJMzZvMWRMVmhDY3N2aDVNQmpLU1ZGbVhlaWFIQWJ3M08zaw?oc=5",
+   "published": "2026-11-17T12:07:31Z",
+   "category": "security"
+  },
+  {
+   "title": "The AI deregulation illusion: Why CIOs face more rules, not fewer - CIO",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPYkpMVUxwT0hYUUNyODJsa3pEcWpURjRKcjJMMmRhWWpabFBIaXRkMjlEVkpzSUVjMGVxUkdVRXpsY1ZxZEZpaVpjcXRVQVZaX0ZVTGZDU1E2bzFSZmU0aXBzWXpYNGprMlJXT1lUVWJhMy0wZE5zNnF1RE5tMlA2MkdPTzBxWU5sM0dUMGRvSGFsaXliWk1iQ25PWGd1NHB1M2l3a1Rtbw?oc=5",
+   "published": "2026-11-17T12:03:36Z",
+   "category": "policy"
+  },
+  {
+   "title": "Will Burnham’s welfare bazooka hit the target?",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/politics-at-sam-and-annes/will-burnhams-welfare-bazooka-hit-the-target",
+   "published": "2026-11-17T08:34:15Z",
+   "category": "policy"
+  }
+ ]
+}
