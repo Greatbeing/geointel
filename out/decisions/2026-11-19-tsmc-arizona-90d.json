@@ -1,0 +1,84 @@
+{
+ "scenarios": [
+  {
+   "name": "按计划爬坡",
+   "prob": 40
+  },
+  {
+   "name": "边际延迟与约束",
+   "prob": 40
+  },
+  {
+   "name": "重大中断",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "亚利桑那良率/爬坡异常信号放大",
+   "keywords": [
+    "TSMC Arizona yield",
+    "Fab 21 yield",
+    "亚利桑那 良率",
+    "爬坡 延迟"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动双源备选方案，锁定台湾备产能"
+  },
+  {
+   "id": "t2",
+   "description": "科罗拉多河供水宣布二级短缺",
+   "keywords": [],
+   "threshold": 1050,
+   "type": "value",
+   "action": "触发用水应急预案，评估产能削减 10-15%"
+  },
+  {
+   "id": "t3",
+   "description": "网络事件蔓延至生产操作层 (OT)",
+   "keywords": [
+    "TSMC cyber production",
+    "Fab 21 downtime",
+    "OT 攻击",
+    "生产中断"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "援引不可抗力条款，重谈交付时间表"
+  },
+  {
+   "id": "t4",
+   "description": "CHIPS 补贴被追回或加征半导体关税",
+   "keywords": [],
+   "threshold": 10,
+   "type": "value",
+   "action": "重测亚利桑那晶圆全成本，必要时将订单转回台湾"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-28",
+ "question": "未来 90 天台积电在亚利桑那产能爬坡的确定性与风险",
+ "generated_at": "2026-11-19T03:27:49Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "allafrica",
+  "ars",
+  "arxiv-ai",
+  "bbc-world",
+  "cnbc",
+  "eia",
+  "gn-ai-reg",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-energy",
+  "gn-mideast",
+  "gn-trade",
+  "guardian-world",
+  "hn",
+  "nikkei-asia",
+  "scmp"
+ ]
+}
