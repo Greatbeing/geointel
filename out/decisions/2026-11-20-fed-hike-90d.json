@@ -1,0 +1,78 @@
+{
+ "scenarios": [
+  {
+   "name": "12月加息（25-50bp）",
+   "prob": 55
+  },
+  {
+   "name": "12月按兵不动，1-2月加息",
+   "prob": 25
+  },
+  {
+   "name": "全周期维持/转向降息",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "FOMC 票委/替补公开讲话出现鹰派关键词集中命中",
+   "keywords": [
+    "rate hike",
+    "tighten",
+    "restrictive",
+    "inflation sticky",
+    "upside risk"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "上调 12 月加息概率至 70%+，建议增持短端国债期权做空或买入 SOFR 期货看跌期权"
+  },
+  {
+   "id": "t2",
+   "description": "核心 PCE 环比年化 ≥ 0.35%（或 CPI 同比重回 ≥ 3.5%）",
+   "keywords": [],
+   "threshold": 0.35,
+   "type": "value",
+   "action": "确认 12 月加息基准情景，建议将久期压缩至 2 年以内，增配浮息债"
+  },
+  {
+   "id": "t3",
+   "description": "10 年期美债收益率站上 5.25% 并日收线企稳",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "市场已定价 50bp 加息，建议卖出 12 月联邦基金期货看涨期权获取权利金"
+  },
+  {
+   "id": "t4",
+   "description": "连续两周初请失业金人数 ≥ 25 万且 ISM 制造业 < 47",
+   "keywords": [],
+   "threshold": 2,
+   "type": "count",
+   "action": "切换至「按兵不动/降息」情景，建议买入 5-7 年期国债看涨期权，久延长至基准+1 年"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-01-15",
+ "question": "未来 90 天美联储加息的概率与应对",
+ "generated_at": "2026-11-20T01:00:15Z",
+ "horizon_days": 90,
+ "items_used": 36,
+ "sources": [
+  "arxiv-ai",
+  "cfr",
+  "cnbc",
+  "ecb",
+  "fed",
+  "ft",
+  "gn-mideast",
+  "guardian-world",
+  "lowy",
+  "marketwatch",
+  "nature",
+  "nikkei-asia",
+  "scmp",
+  "state-gov"
+ ]
+}
