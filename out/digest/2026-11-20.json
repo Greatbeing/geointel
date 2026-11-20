@@ -1,0 +1,496 @@
+{
+ "date": "2026-11-20",
+ "generated_at": "2026-11-20T00:22:36Z",
+ "items": [
+  {
+   "title": "UK and EU poised to finalise deal to ‘reset’ relations",
+   "source": "ft",
+   "link": "https://www.ft.com/content/912a7730-2428-4d4c-8dde-9c41a99ab562?syn-25a6b1a6=1",
+   "published": "2026-11-19T22:44:56Z",
+   "category": "finance"
+  },
+  {
+   "title": "Anthropic shares jump 17% after record Wall Street listing",
+   "source": "ft",
+   "link": "https://www.ft.com/content/2b203097-7c61-464f-810f-962912a133dd?syn-25a6b1a6=1",
+   "published": "2026-11-19T21:02:09Z",
+   "category": "finance"
+  },
+  {
+   "title": "Australian PM to meet Xi Jinping as iron ore tensions loom",
+   "source": "ft",
+   "link": "https://www.ft.com/content/ddbf0f75-047a-421a-87c0-3e60bf42ed22?syn-25a6b1a6=1",
+   "published": "2026-11-19T21:00:10Z",
+   "category": "finance"
+  },
+  {
+   "title": "Law firms that caved to Trump brace for scrutiny from new Congress",
+   "source": "ft",
+   "link": "https://www.ft.com/content/4e712188-9dfc-4e2a-b997-3dacde95bf08?syn-25a6b1a6=1",
+   "published": "2026-11-19T20:35:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Alibaba trains next-gen AI model on own chips amid tighter US curbs",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/technology/alibaba-trains-next-gen-ai-model-on-own-chips-amid-tighter-us-curbs",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "APEC live: China releases leaders' statement after its disappearance from APEC website",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/apec/apec-live-china-releases-leaders-statement-after-its-disappearance-from-apec-website",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan's Logisteed to buy US peer Neovia, expanding 3rd-party logistics",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/business-deals/japan-s-logisteed-to-buy-us-peer-neovia-expanding-3rd-party-logistics",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Myanmar committed genocide against Rohingya, ICJ rules in landmark verdict",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/myanmar-committed-genocide-against-rohingya-icj-rules-in-landmark-verdict",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan spacecraft supported by NEC, others set to reach Mercury",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/science/japan-spacecraft-supported-by-nec-others-set-to-reach-mercury",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan weighs raising new-drug prices closer to overseas levels",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/pharmaceuticals/japan-weighs-raising-new-drug-prices-closer-to-overseas-levels",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "India to let Japan use firing ranges for surface-to-ship missile tests",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/india-to-let-japan-use-firing-ranges-for-surface-to-ship-missile-tests",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "AI volatility 'expected' as winners, losers emerge: JPMorgan co-president",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/editor-s-picks/interview/ai-volatility-expected-as-winners-losers-emerge-jpmorgan-co-president",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Japan ethylene output depressed despite normal naphtha supplies",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/materials/japan-ethylene-output-depressed-despite-normal-naphtha-supplies2",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Itochu, Sony partner to market artist-branded merchandise in IP push",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/media-entertainment/itochu-sony-partner-to-market-artist-branded-merchandise-in-ip-push",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "U.S. Steel agrees with union to raise wages 19.25% over 4 years",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/companies/u.s.-steel-agrees-with-union-to-raise-wages-19.25-over-4-years",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Anthropic IPO draws rush of Japan retail investors",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/markets/ipo/anthropic-ipo-draws-rush-of-japan-retail-investors",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Rural Japan fears new visas will divert foreign workers to Tokyo",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/spotlight/policy-asia/rural-japan-fears-new-visas-will-divert-foreign-workers-to-tokyo",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "Japanese automakers brace for 3rd year of global sales decline",
+   "source": "nikkei-asia",
+   "link": "https://asia.nikkei.com/business/automobiles/japanese-automakers-brace-for-3rd-year-of-global-sales-decline",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "world"
+  },
+  {
+   "title": "AMD shares fall after short seller report on China links",
+   "source": "ft",
+   "link": "https://www.ft.com/content/69fd7870-a2cf-4e75-88bc-a1c4036efded?syn-25a6b1a6=1",
+   "published": "2026-11-19T18:40:23Z",
+   "category": "finance"
+  },
+  {
+   "title": "First Lady Melania Trump’s Fostering the Future Together Gathers ASEAN First Spouses For Event Hosted by Philippine First Lady Louise Araneta-Marcos",
+   "source": "state-gov",
+   "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/11/first-lady-melania-trumps-fostering-the-future-together-gathers-asean-first-spouses-for-event-hosted-by-philippine-first-lady-louise-araneta-marcos",
+   "published": "2026-11-19T20:40:23Z",
+   "category": "policy"
+  },
+  {
+   "title": "China is importing thousands of research primates, sparking fears of monkey trade war",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/china-importing-thousands-research-primates-sparking-fears-monkey-trade-war",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "science"
+  },
+  {
+   "title": "Exclusive: I got to eavesdrop on AI agents doing science. It was eye opening",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/exclusive-i-got-eavesdrop-ai-agents-doing-science-it-was-eye-opening",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "science"
+  },
+  {
+   "title": "Chemists are uncovering a hidden world of pollution",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/chemists-are-uncovering-hidden-world-pollution",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "science"
+  },
+  {
+   "title": "Flawed research papers should be retracted faster, U.S. academy urges",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/flawed-research-papers-should-be-retracted-faster-u-s-academy-urges",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "science"
+  },
+  {
+   "title": "Killing more sea lions won’t help endangered salmon recover, model suggests",
+   "source": "science-news",
+   "link": "https://www.science.org/content/article/killing-more-sea-lions-won-t-help-endangered-salmon-recover-model-suggests",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "science"
+  },
+  {
+   "title": "Oil flows through Middle East chokepoints increased in the third quarter",
+   "source": "eia",
+   "link": "https://www.eia.gov/todayinenergy/detail.php",
+   "published": "2026-11-20T00:05:10Z",
+   "category": "finance"
+  },
+  {
+   "title": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp",
+   "source": "fed",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm",
+   "published": "2026-11-19T16:00:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "EU-UK summit — live updates",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/eu-uk-summit-live-updates",
+   "published": "2026-11-19T23:05:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "The dangers of AI ‘handoverism’",
+   "source": "ft",
+   "link": "https://www.ft.com/content/45194ea4-4fa7-4c38-a5b2-137eb7402d57?syn-25a6b1a6=1",
+   "published": "2026-11-19T14:04:09Z",
+   "category": "finance"
+  },
+  {
+   "title": "The key to Anthropic’s value",
+   "source": "ft",
+   "link": "https://www.ft.com/content/aa8290dc-a20a-45af-97ab-1e71f97f236a?syn-25a6b1a6=1",
+   "published": "2026-11-19T13:47:00Z",
+   "category": "finance"
+  },
+  {
+   "title": "Expeditionary Wing Sharpens Counter-Small UAS Skills",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4654857/expeditionary-wing-sharpens-counter-small-uas-skills",
+   "published": "2026-11-19T21:06:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Xi, Trump and Putin hail ‘groundbreaking’ meeting",
+   "source": "ft",
+   "link": "https://www.ft.com/content/3fde6008-d9c4-46a3-89f8-0f7611cd9b3a?syn-25a6b1a6=1",
+   "published": "2026-11-19T13:00:44Z",
+   "category": "finance"
+  },
+  {
+   "title": "Targeting Cyber Scam Center Enablers in Southeast Asia",
+   "source": "state-gov",
+   "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/11/targeting-cyber-scam-center-enablers-in-southeast-asia",
+   "published": "2026-11-19T16:01:01Z",
+   "category": "policy"
+  },
+  {
+   "title": "Businesses have responsibility to stop modern slavery. So do police",
+   "source": "lowy",
+   "link": "https://www.lowyinstitute.org/the-interpreter/businesses-have-responsibility-to-stop-modern-slavery-so-do-police",
+   "published": "2026-11-19T16:00:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "During Milestone Visit, Hegseth Champions U.S.-Venezuelan Partnership",
+   "source": "defense-gov",
+   "link": "https://www.war.gov/News/News-Stories/Article/Article/4654839/during-milestone-visit-hegseth-champions-us-venezuelan-partnership",
+   "published": "2026-11-19T19:55:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Sanctioning Major International Drug Trafficking Organizations Linked to Foreign Terrorist Organizations",
+   "source": "state-gov",
+   "link": "https://www.state.gov/releases/office-of-the-spokesman/2026/11/sanctioning-major-international-drug-trafficking-organizations-linked-to-foreign-terrorist-organizations",
+   "published": "2026-11-19T15:55:17Z",
+   "category": "policy"
+  },
+  {
+   "title": "How to watch the UK-EU summit like a pro",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/how-to-watch-the-uk-eu-summit-like-a-pro",
+   "published": "2026-11-19T19:42:27Z",
+   "category": "policy"
+  },
+  {
+   "title": "The web is held together by volunteers. AI could tear it apart.",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/article/ai-internet-website-shutdown-hack-cyberattack",
+   "published": "2026-11-19T19:32:08Z",
+   "category": "policy"
+  },
+  {
+   "title": "UN court rules Myanmar committed genocide in landmark ruling",
+   "source": "ft",
+   "link": "https://www.ft.com/content/411d28f3-5adf-4a2f-9390-bc3372b4b3a9?syn-25a6b1a6=1",
+   "published": "2026-11-19T12:08:41Z",
+   "category": "finance"
+  },
+  {
+   "title": "Samsung, TSMC Halt Some Chip Shipments to China as US Tightens Export Curbs - bloomingbit",
+   "source": "gn-chips",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9QZDY1dElBc3BHalVPRVdreGxJTXdRQjktcVctSzBQVDRFZDZ6d0R0S3lwTzV6MGJtTktlSlBLNi1xb2EyODBsVlRnVkpsVlc0QjlfWg?oc=5",
+   "published": "2026-11-19T23:33:38Z",
+   "category": "tech"
+  },
+  {
+   "title": "Iowa soybean farmers hope latest meeting between Trump, Chinese leader will result in end of tariffs - weareiowa.com",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQZ1ZITzVEZjdZS1c0VS1FeG9YMXpqelNlVEpOVzlkLVdOdkZaYWxfQS05eG9jUTgzMlVha3dTcUxmenZiYjFpNWYtdWdBajZIRGx2bmdkd2J3aXhKQTFlbHFKcHh0alFzWklVM0N0WFV0VHBOTjY3VVQ0RGFJZEFJV1Z4ck11WTE2QTlDbm1hOVk2TUczVkJjVTBuTE1jelY5eTJlVl94dVRzWUVhT05zNXFNdU5tRTk0ZThYbUJiaUxqTDR6bko2Um1WMnB2Z3lyaDJzWXRkaEF4YzhGWXhybFJzVFBiSnJmZGJGU0VSMlRaZG5Ib1RVWVc3WVhGeVJLZ0dwYl9FOS15OFZ0MWRmRzhXTGJVMl91?oc=5",
+   "published": "2026-11-19T23:21:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Officials raise concerns about tariffs' impact on California - North Penn Now",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNMUZNdnBFeXZzVVhfc05zUjZqWVRDRktFSkVNTXVKZjNaRklGMW9INnRpcHlvOHFmdG1IZjlaeXgwVERHV3ptVXpqOWpuQ0d3Tk55WXU3QnFLZGRqV29tbUFUdE9TNFR5YnJaTnNPa3h1T3ZaX096MlA1eVZRTDJHSmFZM3pPUzctc19NUW82WTNnT0tfLTlRS3dYTzZMb2pI?oc=5",
+   "published": "2026-11-19T23:20:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Thailand Says US Trade Deal Includes Lowering of Forced Labor Duties - WWD",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNaTFDNFJwdlc5ZWhndUJwU3FsQTVtdEFPLU5oQlgtNVZRcUpwQkppem50MjA5RFRLVzNXRUpXeklQUFJjVFM0REo4M0FEVmNxYnJ4eE9KNUdnb3FOTVU4cTRxd0tTQ0dSWGc0VWloU3pwTjZBMUc3LUdGR1lMMjlHalI5N1NLR1k1ZUhqalQ1b0hhYlNMRFZiVXI3R0VBT2l3TEh6bXYwNC1vbWJnZUpwb0R3?oc=5",
+   "published": "2026-11-19T23:10:40Z",
+   "category": "trade"
+  },
+  {
+   "title": "Why South Africa needs a constitutional approach to AI regulation - Mail & Guardian",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPcUJWRUFjeWFsWXI4LWpxVl8yS2twUGxQTy1GeHYza1Z6VmxsclU2b2hQQUk5UjdlUm9GVVhZajR5dldjOXAxU0JBX1ZyYWZTNml4ay1ZeFNTUldfa3kxWTBzUWplZ1BsTDJXMXNmT1ZkQVV6MkVuZjBMUkVQdjlud1F0bDd2RUF0?oc=5",
+   "published": "2026-11-19T22:46:23Z",
+   "category": "policy"
+  },
+  {
+   "title": "GM Expects Tariffs And Operating Cost Increases To Reach $5.5B In 2026 - GM Authority",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNaGVQSEpnWExRVzlkU3pxbWhreHBFOGhMTHBQMDB3akFjbEVrMXg5S3R0OFVWcjJ5ZnVsVU5TTE9BLWJmektfQ0l2bTVNSmhxR2NaZjFiMUY1UjdvN2tESmNNRHRqbXFyb3B1V1BRazVfYU9xNVBKSmlPbkJwcjhfVWZFVEtyM281TjNxQWRXdG5jLWhmVTJlSDNLb3ZjcHgwODZKQVpmY3hXNmM?oc=5",
+   "published": "2026-11-19T22:45:04Z",
+   "category": "trade"
+  },
+  {
+   "title": "Anthropic is a ‘must own’",
+   "source": "ft",
+   "link": "https://www.ft.com/content/4224e2ed-116c-466b-97f4-54a5ef43a54e",
+   "published": "2026-11-19T11:06:08Z",
+   "category": "finance"
+  },
+  {
+   "title": "Geraldo Rivera: Where's the regulation for the AI industry, safety valve for society? - Yahoo",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNangzRmZrSFF0eWlfYnFvWjdmSms4SXpCVmNvLUkzMmViemNDRTZBbGVyTEpheUNrMnNhU3NLQzlpaXp6c2xTSnZfRUVCZXZVUmVhRlNtOUJqUlFWYlZrMTU1RWViN19WdzRHOTA0RWxJa1pPUEVNNDdTZzdEdmRudDZObXVINVU1RzV1TA?oc=5",
+   "published": "2026-11-19T22:38:57Z",
+   "category": "policy"
+  },
+  {
+   "title": "Anthropic to make Wall Street debut after record IPO",
+   "source": "ft",
+   "link": "https://www.ft.com/content/7a6b211d-c73b-4953-97ee-ed92dab8ee07?syn-25a6b1a6=1",
+   "published": "2026-11-19T10:58:44Z",
+   "category": "finance"
+  },
+  {
+   "title": "Van Hollen Puts AI at Center of His Challenge to Schumer - Time Magazine",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNaVZtMXItb3VGd1kzTlEzdk1jTlBtNkVxMkQ5b0dVcnpYYmYzZmctX0lOZVlJZENJcThURW5wSDN3dzRFQUcwTTdrZVZ6aXBZOVZ5eUwxNFYtbENBX21YQ3lOeDRHVk85MTRTVWlCWERueVJmMFliYWl4ck4zUHhpbUV4U0FoOWNkcEY3bjU2U21oQUpILWxhTnpRdE5tWGhW?oc=5",
+   "published": "2026-11-19T22:25:16Z",
+   "category": "policy"
+  },
+  {
+   "title": "Canada seeking interim trade arrangement with U.S. by end of year - CBC",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRnBjZG05NFlOU0JObDJ1R2wxMDEtSUFqZy1iWFJINXNpSlhKbkpiYVA0WHZfdnBta0VjRkF4YWI0clF6MEdNdTFYVkpHamFJT2paaGU0Rk11eGxrRnRYOFVOWHFQc19NMHAtNS1VazhRcmFWdkJ0NlZ6MG5fODVfZkZscWxYbl93aEE?oc=5",
+   "published": "2026-11-19T22:22:57Z",
+   "category": "trade"
+  },
+  {
+   "title": "Trump opposes ‘globalist regulation’ of AI - Daily Tribune",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBuUHZaRGZZdjRoa1U4QjBxemQ0dVBqNU9SZ3czc3gxUF8yWjNPSDhOd19KRHI0OUhDSVVlNjlRMDBsYXF2NWJXSG5idFlZRUNnaDJRUDI3U3RkSzNIN0RqXzRMNXdXSGpHUFRUdnp3MUdfY0NfSm5WaklRMHljN0E?oc=5",
+   "published": "2026-11-19T22:18:41Z",
+   "category": "policy"
+  },
+  {
+   "title": "Lessons from Brazil and Peru on how to build AI-ready institutions across Latin America - Atlantic Council",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZERNUFpYamtnSkFOcHhGTE1VZlRtTTM4aHExRi12ekVnTDFqdHRaMWdGZWUxV0F5MG5ETTVfLTFCTWlfd2Fvem9IZWVEdF9wemVrZHRFTkhiZjJaMFNVZXpFVVZGY3lIRnBxTUtveW9abHRGNDF0RUUxYnJMTWtBR3BhWW5SRjVpS0ZTR190aDRITUZkRHZDOWtndzBDSVhaeWM3Vk9tVmFHNEZhdERGbGg2bFUzdVhRblNWbFlwejQ5NHdPSWJnX1M4REtaV1RaODEzb1FR?oc=5",
+   "published": "2026-11-19T22:17:00Z",
+   "category": "policy"
+  },
+  {
+   "title": "Amazon fights the Delivery Protection Act with homepage banner, in-app pop-up",
+   "source": "ars",
+   "link": "https://arstechnica.com/tech-policy/2026/11/amazon-takes-its-fight-against-nyc-delivery-bill-to-shoppers-with-in-app-pop-up",
+   "published": "2026-11-19T22:16:37Z",
+   "category": "tech"
+  },
+  {
+   "title": "Mexico Seeks G20 Deal With Trump to Cut U.S. Auto and Metals Tariffs - Ag Bull Trading",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPSkllMmZKZ0s1OU1Wd2ItOGpVN1ZfV0VDcXN3VVpQYU52X284Z1FPdkw0SzNrVm0ybHdMNkhYSlVaazgxejlXUXJUWDl6NFFpOGNmQ1BhLTFpU09BaWc1TjYzeWxJUXkySGZsaV9SdjdkT0dPblFnSmVNcHVVbEh2ZFRpUnJfMEJCZGFFZmZnYlNRYlI3VXc?oc=5",
+   "published": "2026-11-19T22:12:03Z",
+   "category": "trade"
+  },
+  {
+   "title": "Confidence in Hormuz has been 'crushed' by war on Iran, IEA says - Middle East Eye",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQMDhIT1NocDBzaEswWDVsQ1dpMVVyM1E2YWZlMjdkaHJEdVpGSkM4WUZfZGlYTWRRWmFoR0pFNG5kdE9CQ0UtdE5NY3NSbEQwZzU3NWFTUG1XdUotQjBTTXY0WWw5c3ZidGdWMHo0djNpNDZyZzVVQWlHZ1lhYzctV29JakR1U2g5aEFvRkc4QVM?oc=5",
+   "published": "2026-11-19T22:03:00Z",
+   "category": "security"
+  },
+  {
+   "title": "New China-Laos railway connections could reshape trade – in Asean and beyond - South China Morning Post",
+   "source": "gn-china-econ",
+   "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQekJraHViTXVGVXE3YmZSYmNMdm0wbEM5bzNtR2tlTTVScFpsTk84emc3aW14TVEwZkwxSGwzeTdXRk4tY2pNc3B1eTdvYW9tUGlqQWJVWGlRSi1MaUFhTlhSVHN3ZWY1dnYwQ1ZkSDRjNno1clpMZE1BNDVPUm9oZVNyZWY4MkVkZ2M1S2h4bkJtVTdLVnpmbXpkd04ydDRvOUFEdEtPQ1l6cF9ZNXVUdVhkQzZka3h2UkQtRkJLaVFmYWNaNnVWejlPZEFyaTc1OC1BRWV3ZVU0Z9IB2gFBVV95cUxPMnJKcGh3dGQ5bFAyRmR3RnNjUm5GaWgtcFVsenNTM3dGLTZLNGZnamZCYm1JLVdOa2N3aEtfcU4wTzA4bzhDSk5jZWJqbUZfM1k2OTNRalB4ZU5ZOUdUMlR6TkdSY3JZQmJyMG4weEd1X0xrNWxHcnhkdFJyUnU1eGRnMUxXWjVDQldCemNRakpKLVZScmRTRzh6TzNKdFdlcFEzNHZ5RTN2NVdpSkRNb29RX0RQX0pTemM4YjctLVgtQ1VnSUExRURRY2tSTUU4RXNlTTRMOExUQQ?oc=5",
+   "published": "2026-11-19T22:00:11Z",
+   "category": "finance"
+  },
+  {
+   "title": "Senate vote to curb Trump war on Iran fails again - Middle East Eye",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOV3lCQkxqUEhpMHJpUnB2ZDYycEZHLVZWcnBHNTk5VmVZM3Nyd0hhUGhZMmt6dXozZ21iZnA3akMzRzdGaXVRbVlkeWRIdEU1VWNPVXJ3eVBpZWp6bGFNUzFGNDlLajBFdHhhQlVMQnV6ZWhGTmFMSGRoRlBrNnR3ekFuU25Xcm1XN3NzUUlsVzlYd01feEZYX2prUXJhSHNLWnc?oc=5",
+   "published": "2026-11-19T22:00:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Big Rock Brewery lands federal PrairiesCan grant to fight US tariffs - Dealroom",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQNHJyakxLTjlEMUpKUFVVcUNfTGlBTGM4QXZJYzA2dnljZ09rcGJRT3JVWVBCY1dRV2xDbjh6YmtCa3Y0Z3JmeXlnNjR1MVlqWXc3clpLXzJOTk55X3dDZWItQy1lcGlTT1ltSkVYRV9tU2x3eGJSbWpGMUtWdXMwUUlvWXhrQmVZNWdOXzRqRktLRTZFMjZpc1dabFRWN3BtZk0yQw?oc=5",
+   "published": "2026-11-19T21:48:34Z",
+   "category": "trade"
+  },
+  {
+   "title": "JCTC: Tariffs and lost cedar sales deepened losses as liquidity strategy pivots to fencing and asset sales - TradingView",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxOc0sxSGwxNmNKWGJVdGhlTEg3dlBRMlNXYzJ1V3ZxOUFBdVJ6RExSdUxBelcxeW9RbXd3MUhUZVJ0NzRRVWpOTkh4MEFSMDFwbl9LVHJYZFRIX2JyWm12anc4VTBsOXVBZjVLYmg3Z3JhQXhnTGZtZlpIaGd1cmo1c29MR2dCd1ZCV01JbUdGNXJsRU9TRWZzNUJvNlRqa1l6QXFMVF9DbXA3M0czeWcyeXNUeERCYmYwQTc2VlVNb3dPM3p0MlRDVzUwQjVNSk9QWnlnczRYSzYyc0d1TGQxcVVtN1BIVzdnVXNjU1ZMYTQ1YVRvaTVNT01takp2WF9VQnlkbEhicW9KZjQ0TlZqdWNwQTlPS2c?oc=5",
+   "published": "2026-11-19T21:41:48Z",
+   "category": "trade"
+  },
+  {
+   "title": "70 percent of Americans back targeted tariffs on steel: Poll - The Hill",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPd2tERkktWWhMRWRpRmZCa0FMR1AyaTBWcFRzRUdqMjhVVFo4MmdmUkhlVDdrbHd2MFZWREotNHJuZk5nbUg3bDhVcmdCRGV6Y2RKelBuZE5aS0NrSFpCY0hTY3ByYUd0YmdvSFFsQkNPbHA1cGV3Z0loYTE0WHVjeU16b0HSAYoBQVVfeXFMTk15Q21qNnM4T1BENkwwMjNoWk1RZC1IUzRaQ1lfa0dxTThTT1dyNUxVQm9fLW9mbk1iRk94RlpIeW1aX1JxOTkyZEN5bUZVV1RQTFdzaHZ1cDlIbmtXNU40c0VyaUpVT1B6V01fUTRBUG1qNGEwMGZFaExKak9pUTVsWGgyZ2VpTVFR?oc=5",
+   "published": "2026-11-19T21:31:00Z",
+   "category": "trade"
+  },
+  {
+   "title": "Zucman, le retour",
+   "source": "politico-eu",
+   "link": "https://www.politico.eu/podcast/playbook-paris-podcast/zucman-le-retour",
+   "published": "2026-11-19T16:53:19Z",
+   "category": "policy"
+  },
+  {
+   "title": "Israel says struck Hezbollah weapons site in east Lebanon - Al Arabiya English",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOYUplekJWcmlxUFVJaEpUWDJScVZWZ3Fmd1d4WXktd3BZNTVuWkJhX0tMR0FJSWlSNVlwMzQteE40SzVvZ0xkM2Z3NlZDY2VHa2xfVElGRFVKTDZvRE9tdi1tNnN3eDZ4UTRhcDNaMHlpNHRabk9tLTVmYkVlU2VhejZSQmtuVXdXb3UzcU16b3FQV0FrWjV4VF9tWTJxNkF2SnFtUmpfMHBZRm9BU2QtUU5wM1pDUdIBuwFBVV95cUxPb1liSk1Va3R5LUxXcGFFckFmOXJ0amhVaGRHeElVNzFOT2VLRTFxd0pLdWN4bDhTbFZKOEVRQ1dyUlNydnh4QV8tYVFCNVNJZW9hYnp4clZZTHV6ZVZqNHl5SC0yVE0zdlZaSEFnbk1zRkp5VERJTEp2Rm1XWW4yUk1uM2lKT0JIM1RReWFrbjB5OFo5b0htYmNBQkw5SnRZeWFXSkV6aHVXMFZ2NUE1SzBWM0NRSnhlSllz?oc=5",
+   "published": "2026-11-19T21:22:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Trump says he opposes 'globalist' AI regulation during APEC Summit - USA Today",
+   "source": "gn-ai-reg",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOWnRHdi1xT1dPeEVzT3lqbjdQSUE2dGpaX0FnQWRXUDVUbFY3cVYyV0l6N3JkZmxOa3hNX240ajFhVmZIbkNtYXEtZHk1d0w5LUUzMjdSbWRCRTFRbnNkdkRvRl9hdUFZQnE1aVJtTmdIc2h2bFZJdmR6a21xbDBjRFpnVU5BdUJkTG5Dbnhrc2VKZzNnbWpla2NmZHRmN0tUWXZNLTkzOTctWVJyek9ITnV1YzZtT3dCWFRLT2pNUm9Ud1E?oc=5",
+   "published": "2026-11-19T21:20:24Z",
+   "category": "policy"
+  },
+  {
+   "title": "MAHA PAC spent more on steak, luxury club than candidates, report shows",
+   "source": "ars",
+   "link": "https://arstechnica.com/health/2026/11/maha-pac-spent-more-on-steak-luxury-club-than-candidates-report-shows",
+   "published": "2026-11-19T21:19:12Z",
+   "category": "tech"
+  },
+  {
+   "title": "US-Israeli war on Iran 'leave lasting marks' on global energy market, says IEA chief - Middle East Eye",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQlhORkVhMmE0NkxJYnFkRy1zNkRDcjEwaUx1WURET1RMMG5PRktEZlJvb0hrMk9taGQ3SlN3RkpnQXNkRUZaZVZqOHpFRW8yelJfNmc4SWNfbFZoLXVmdVJRZXFDbzIyMnZ1Szkxc2FHUU9RWGJsY0FBQWVJdXJYbVdEQUZwdU1mVUxjcktla0I5M3RLYS0tSHJhUzNDMDE2am1hYTJPckxfOEVUUnNpVTZXNklxc2VoS0pGdEpaeGZpUTNN?oc=5",
+   "published": "2026-11-19T21:01:00Z",
+   "category": "security"
+  },
+  {
+   "title": "US Senate blocks Iran war powers resolution - Middle East Monitor",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPZ0tIc1E4Q3NBMkwyRWlLNmY1Ri1adEYzVDVZclBERlV0a3hlUlVVMFdNTGlGVnJ2NjZhQVdjQ01zbjkwWjVjTHVtYUFkRmZHazJIcTFlWThldXpiT3dld1dSNXlkYTdtQjFhaUM3aXBSN2d3WnBacjZkMjBGQU51c3pUaTFGMTNLXzV4TFRYYnTSAZYBQVVfeXFMTWpUVVVXdV9PM0tXaHp4WFE2UUF4WEctYWx0X3NSYWQ0UUs1VmtmTkhsMGVGeUdxVEY1Ri05R3g0Ym5aZWI2Y0R5WlJRdEx2N25iLVVrNm9RNXV3Y3pzaGE2a1NOOVJWT2JZWFBoTFZNeFFBTjNud1Vjc0lBMkV2UzRtZldtekRIcjRLUmhwcWl5V1FERVln?oc=5",
+   "published": "2026-11-19T20:31:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Man hired by Russia spied on Silicon Valley tech and defense company, feds say",
+   "source": "ars",
+   "link": "https://arstechnica.com/security/2026/11/man-charged-with-spying-on-silicon-valley-tech-and-defense-company-for-russia",
+   "published": "2026-11-19T20:29:46Z",
+   "category": "tech"
+  },
+  {
+   "title": "US Senate Republicans reject resolution curbing Trump's Iran war powers - Middle East Eye",
+   "source": "gn-mideast",
+   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZTdINUtpZXVFOTlLTGdZQkVHZEI4Z0RIWmtjVzk1ZU1nNnNRLVVrd3pwZzVpOGlHazJ6cnB5MkRGb3kwUkx4dFZnc0JHSnUwSlU4SGxJRUFnRjZRNG1pZkxqMzBYWDgzb2VhWWYta1o3RG9ZU1cwM092WVQ1dnpnVXN5Ri15cnhMWkdMank4MjJQUW9JRFhsUFF4eVhwNk56THQ4bEd2dzJIZjZnbUJualFLaDFSLUZaT3dxb0prNXpOXzNNNXc?oc=5",
+   "published": "2026-11-19T20:25:00Z",
+   "category": "security"
+  },
+  {
+   "title": "Traumatized teens sue school, cops after Doritos bag triggers AI gun alert",
+   "source": "ars",
+   "link": "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert",
+   "published": "2026-11-19T20:19:28Z",
+   "category": "tech"
+  },
+  {
+   "title": "BMW Wants Lower U.S. Tariffs After Investing $1.7 Billion - bmwblog",
+   "source": "gn-trade",
+   "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9QU2x2SzVsXzRSU1d0R2lpNVV1bElkcmVmNFhhX1oxZ2ZVaUdleDMxTnlBbmoxYUlJZEltUjMyQ0Jsbmd4UlBncHpOOVlKMFFyMUdrTXJYX2tjNTgtYkhKRmQzNmNQc3Fkc2VvOUIwbw?oc=5",
+   "published": "2026-11-19T20:09:34Z",
+   "category": "trade"
+  }
+ ]
+}
