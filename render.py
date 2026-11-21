@@ -504,6 +504,29 @@ def load_json(path):
         return {}
 
 
+def load_scores(path=None):
+    """读 scores.jsonl：{memo 名: 结构分}。文件缺失返回 {}；坏行跳过，不阻断建站。"""
+    path = path or os.path.join(HERE, "scores.jsonl")
+    out = {}
+    try:
+        f = open(path, encoding="utf-8")
+    except OSError:
+        return {}
+    with f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            s = (row.get("structural") or {}).get("score")
+            if row.get("memo") and isinstance(s, (int, float)):
+                out[row["memo"]] = s
+    return out
+
+
 LINK_LINE = re.compile(
     r"^-\s*(\d{4}-\d{2}-\d{2})\s+(.+?)\s*（([^）]*)）\s*(https?://\S+)\s*$")
 
@@ -566,6 +589,7 @@ def build():
     decision_entries = []
     seen_slugs = set()
     all_questions = {}
+    scores = load_scores()
     for path in decisions:
         name = os.path.splitext(os.path.basename(path))[0]
         meta, body = frontmatter(path)
@@ -578,6 +602,8 @@ def build():
         under = []
         if conf:
             under.append("置信度 %s" % conf)
+        if name in scores:
+            under.append("结构分 %s/100" % scores[name])
         if extra.get("review_date"):
             under.append("复盘 %s" % extra["review_date"])
         if meta.get("horizon_days"):
@@ -595,7 +621,7 @@ def build():
         seen_slugs.add(slug)
         decision_entries.append({
             "name": name, "question": question, "day": day,
-            "conf": conf, "extra": extra,
+            "conf": conf, "score": scores.get(name), "extra": extra,
             "url": href("/decisions/" + name + ".html"),
         })
 
@@ -605,6 +631,8 @@ def build():
         note = []
         if e["conf"]:
             note.append("置信度 %s" % html.escape(e["conf"]))
+        if e.get("score") is not None:
+            note.append("结构分 %s/100" % e["score"])
         scen = e["extra"].get("scenarios") or []
         if scen:
             top = max(scen, key=lambda s: s.get("prob") or 0)
@@ -658,7 +686,12 @@ def build():
                           '<ul class="plain-list">' + "".join(archive) + "</ul>")
         recent = []
         for e in decision_entries[:6]:
-            note = "置信度 %s" % html.escape(e["conf"]) if e["conf"] else ""
+            bits = []
+            if e["conf"]:
+                bits.append("置信度 %s" % html.escape(e["conf"]))
+            if e.get("score") is not None:
+                bits.append("结构分 %s/100" % e["score"])
+            note = " · ".join(bits)
             recent.append('<li><div class="when">%s</div><div><p class="what">'
                           '<a href="%s">%s</a></p>%s</div></li>'
                           % (html.escape(e["day"] or "—"), e["url"],

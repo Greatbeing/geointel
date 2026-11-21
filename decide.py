@@ -38,11 +38,19 @@ TEMPLATE = """决策问题：{question}
 可用情报（过去 {days} 天抓取，共 {n} 条，含来源与日期）：
 {material}
 
+最新硬数据（市场序列，数值与日期以表为准）：
+{market_table}
+
 **输出顺序硬要求**：先输出 JSON 代码块，再输出完整备忘录。
 （JSON 在最前，即使后文被截断，结构数据也一定已给出。）
 
 第一步，输出一个 JSON 代码块（```json ... ```），字段：
-{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"..."}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"...","series":"DFF","op":">=","window":1}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+触发条件里的 series / op / window 只用于 value 型：series 是市场序列名
+（如 DFF、DGS10、USDCNY），op 是 >= / > / <= / < / ==（默认 >=），
+window 是最近几条观测都要满足（默认 1）。
+数值类触发条件若对应硬数据表里的序列，必须写上这三个字段，让系统能自动判定；
+实在对应不上的才留空，系统会提示人工读数。
 
 第二步，紧接着输出完整备忘录，严格按以下结构（中文）：
 
@@ -52,13 +60,16 @@ TEMPLATE = """决策问题：{question}
 说明这个决策真正要选的是什么、不包含什么、最晚什么时候必须决定。
 
 ## 2. 已知事实
-5–8 条，每条格式：事实 ——（来源，日期）。只写材料里有的。
+先贴一张硬数据快照表：从上面“最新硬数据”里挑与本题相关的行，照抄数值和日期，
+不要改数字、不要写表里没有的数。再列 5–8 条事实，每条格式：事实 ——（来源，日期）[n]，
+n 是上面材料列表里的编号。只写材料里有的。
 
 ## 3. 关键不确定性
 3–5 个变量。每个写：变量名、当前区间、判断依据、为什么它重要。
 
 ## 4. 情景
 3 个互斥情景，给出概率（整数，合计 100）与每个情景下的关键观察点。
+每个情景的关键观察点必须锚定到材料编号 [n] 或硬数据表里的具体数值，不能空写。
 
 ## 5. 选项评估
 至少 3 个选项（含「不做决定」）。每个写：预期收益、最坏情况、可逆性、执行成本。
@@ -67,8 +78,9 @@ TEMPLATE = """决策问题：{question}
 明确推荐一个选项，并给 2–4 个触发条件：可观测指标 + 阈值 + 触发后的动作。
 触发条件必须分两类：
 - **count**：靠关键词命中条数判定，`threshold` 是条数（整数）。适合「某事件是否发生」。
-- **value**：靠指标数值判定，`threshold` 是数值。适合「通胀≥X%」「收益率≥Y%」这类，
-  系统只能提示人工读数，无法自动判定。
+- **value**：靠指标数值判定，`threshold` 是数值。适合「通胀≥X%」「收益率≥Y%」这类；
+  对应硬数据表里序列的，必须写 series / op / window，让系统自动判定，
+  只有对应不上的才留空走人工读数。
 不要用 count 类型表达数值指标，否则会出现「命中 12 条」这种无意义告警。
 
 ## 7. 反面证据与证伪条件
@@ -77,8 +89,16 @@ TEMPLATE = """决策问题：{question}
 ## 8. 复盘日期
 具体日期，以及届时需要回答的 2 个问题。
 
+## 9. 历史周期代价对照
+找 1–2 个可比的历史 episode（如 2022 年激进加息周期、2013 年 taper tantrum、
+2008 年金融危机、1994 年加息周期），写清当时发生了什么、代价是什么
+（利率走了多少、利差扩了多少、持续了多久、谁付了代价），以及对当前决策的启示。
+没有可靠材料支撑的 episode 就写「材料不足」，不编数字。
+
 硬规则：
 - 概率必须合计 100；没有依据的数字标注「估计」。
+- 硬数据表里的数字是唯一可用的市场数值；写到备忘录里的利率/汇率必须与表一致，
+  不得凭记忆写，不得把表里没有的数写成事实。
 - 不编造来源、日期、机构；材料不足就写「材料不足」。
 - 建议必须可执行，不能是「密切关注」这类空话。
 - JSON 块与备忘录正文中的情景、触发条件必须一致。
@@ -113,6 +133,33 @@ def valid_meta(meta):
     return not ("情报不足" in names or "无法评估" in names)
 
 
+def market_table():
+    """最新硬数据表（market_series），供模板注入。没有数据时返回一句说明，不编数字。"""
+    try:
+        import market_collect
+        latest = store.latest_market()
+    except Exception:  # noqa: BLE001 — 市场表不可用也不阻断备忘录生成
+        return "（市场数据暂不可用，以下备忘录不得引用任何利率/汇率数值。）"
+    if not latest:
+        return "（市场数据暂不可用，以下备忘录不得引用任何利率/汇率数值。）"
+    lines = ["| 指标 | 最新值 | 日期 | 来源 |", "|---|---|---|---|"]
+    for name in ("DFF", "DGS2", "DGS10", "US210", "USDCNY", "EURUSD", "USDJPY", "DTWEXBGS"):
+        row = latest.get(name)
+        if not row:
+            continue
+        info = market_collect.SERIES[name]
+        lines.append("| %s | %s | %s | %s |" % (
+            info["label"], info["fmt"].format(row["value"]), row["date"], row["source"]))
+    return "\n".join(lines)
+
+
+def build_prompt(question, horizon, days, items):
+    """拼一条备忘录的完整提示词：问题 + 情报材料 + 最新硬数据表。"""
+    return TEMPLATE.format(question=question, horizon=horizon, days=days,
+                           n=len(items), material=material(items),
+                           market_table=market_table())
+
+
 def run_question(q, out_dir, now):
     """生成一条备忘录，返回 (slug, ok, detail)。"""
     question = q["question"]
@@ -129,8 +176,7 @@ def run_question(q, out_dir, now):
     if not items:
         return slug, False, "no intel available; run collect first"
 
-    prompt = TEMPLATE.format(question=question, horizon=horizon, days=days,
-                             n=len(items), material=material(items))
+    prompt = build_prompt(question, horizon, days, items)
     # JSON 块已被挪到模板最前：即使正文被截断，结构数据也一定先落盘。
     # 仍留两档重试兜底：先 32k，拿不到 JSON 再 64k（给 reasoning 更多预算）。
     meta = {}
