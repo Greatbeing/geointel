@@ -1,0 +1,85 @@
+{
+ "scenarios": [
+  {
+   "name": "加速收紧",
+   "prob": 45
+  },
+  {
+   "name": "管控常态化",
+   "prob": 35
+  },
+  {
+   "name": "碎片化升级",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "两项以上跨党派出口管制法案通过众院委员会",
+   "keywords": [
+    "export control bill",
+    "House committee",
+    "passes",
+    "bipartisan"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "启动供应链去风险预案（选项1）"
+  },
+  {
+   "id": "t2",
+   "description": "至少两个关键盟友（荷/日/新/韩）正式采纳与美国等效的管制措施",
+   "keywords": [
+    "Netherlands",
+    "Japan",
+    "Singapore",
+    "South Korea",
+    "adopts",
+    "aligned with US",
+    "export controls"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "加速非美供应链合规审计"
+  },
+  {
+   "id": "t3",
+   "description": "BIS 对华 AI 芯片（H100/H200/B200 级）许可证拒签率连续两月超过 50%",
+   "keywords": [],
+   "threshold": 50,
+   "type": "value",
+   "action": "冻结所有面向中国的先进制程流片计划"
+  },
+  {
+   "id": "t4",
+   "description": "中国正式发布针对美防务/科技领域的稀土出口许可限制",
+   "keywords": [
+    "rare earth",
+    "export restrictions",
+    "China",
+    "retaliation"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "触发备选采购合同与库存调拨预案"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-18",
+ "question": "未来 90 天半导体出口管制升级的概率与应对",
+ "generated_at": "2026-11-21T04:11:02Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "aljazeera",
+  "cnbc",
+  "ft",
+  "gn-chips",
+  "gn-trade",
+  "nikkei-asia",
+  "scmp",
+  "straits-times",
+  "techcrunch"
+ ]
+}
