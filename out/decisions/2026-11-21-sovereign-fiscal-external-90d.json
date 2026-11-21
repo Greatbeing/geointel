@@ -1,0 +1,109 @@
+{
+ "scenarios": [
+  {
+   "name": "Higher for Longer + Risk-Off",
+   "prob": 45
+  },
+  {
+   "name": "Managed Disinflation + Selective Access",
+   "prob": 35
+  },
+  {
+   "name": "Financial Stability Shock",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储加息 50bp 或终端利率预期上移",
+   "keywords": [],
+   "threshold": 4.38,
+   "type": "value",
+   "action": "立即冻结非必要美元债发行，启动备选货币/期限方案",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "10 年期美债收益率突破 5.30%，术语溢价飙升",
+   "keywords": [],
+   "threshold": 5.3,
+   "type": "value",
+   "action": "缩短发行久期，增加浮息/短券比例，对冲长端利率风险",
+   "series": "DGS10",
+   "op": ">=",
+   "window": 2
+  },
+  {
+   "id": "t3",
+   "description": "美元指数飙升带动离岸人民币贬值破 7.0",
+   "keywords": [],
+   "threshold": 7.0,
+   "type": "value",
+   "action": "加速人民币计价/双币种发行准备，评估汇率对冲成本",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t4",
+   "description": "主权评级下调/展望负面/违约关键词单周命中 ≥3 次",
+   "keywords": [
+    "downgrade",
+    "negative outlook",
+    "default",
+    "IMF program",
+    "rating watch"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "触发应急融资预案，动用多边/双边备用信贷额度",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t5",
+   "description": "对冲基金/基差交易/主权债波动关键词单周命中 ≥3 次（ECB 预警兑现）",
+   "keywords": [
+    "hedge fund",
+    "basis trade",
+    "volatility",
+    "sovereign bond",
+    "ECB warning"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "暂停长久期固定利率发行，改发短券/浮息债，请求央行/财政部流动性后盾",
+   "series": "",
+   "op": "",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-15",
+ "question": "未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响",
+ "generated_at": "2026-11-21T23:24:00Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-news",
+  "aljazeera",
+  "allafrica",
+  "bis-speeches",
+  "cnbc",
+  "ft",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-mideast",
+  "guardian-world",
+  "marketwatch",
+  "nikkei-asia",
+  "scmp",
+  "straits-times"
+ ]
+}

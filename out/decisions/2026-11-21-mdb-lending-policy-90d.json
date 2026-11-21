@@ -1,0 +1,95 @@
+{
+ "scenarios": [
+  {
+   "name": "加速气候政策性贷款（PBL/PforR为主）",
+   "prob": 45
+  },
+  {
+   "name": "项目融资与私人资本撬动为主",
+   "prob": 35
+  },
+  {
+   "name": "宏观约束下的收缩与精选",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美债10年收益率持续升破5.25%，美元流动性收紧传导至MDB融资成本",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "上调「宏观约束」情景权重至40%，建议锁定现有利率敞口、推迟非刚性管线",
+   "series": "DGS10",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t2",
+   "description": "美元/人民币升破7.0关口，触发中国跨境资本流出压力，影响亚投行/亚行对华业务节奏",
+   "keywords": [],
+   "threshold": 7.0,
+   "type": "value",
+   "action": "关注亚投行/亚行对华新批项目放缓信号，评估人民币计价融资比例调整",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t3",
+   "description": "未来30天内出现≥2条「ESF/保障政策/采购框架修订/咨询」关键词命中，标志规则层面实质动作",
+   "keywords": [
+    "ESF review",
+    "Safeguards update",
+    "Procurement framework revision",
+    "Environmental and Social Framework amendment",
+    "采购框架修订",
+    "环社框架更新"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "启动合规缺口自查，准备新框架下的招标文件模板",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t4",
+   "description": "未来30天内「私人部门撬动/资本市场/担保/混合融资」关键词命中≥5条，确认情景2为主线",
+   "keywords": [
+    "private sector mobilization",
+    "capital markets",
+    "guarantee",
+    "blended finance",
+    "私人部门撬动",
+    "资本市场",
+    "混合融资"
+   ],
+   "threshold": 5,
+   "type": "count",
+   "action": "优先推进具备银行担保/可行性缺口资金结构的绿色项目管线",
+   "series": "",
+   "op": "",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-18",
+ "question": "未来 90 天世界银行、亚行、亚投行贷款重点投向（气候融资与绿色基建）及采购/环社框架（ESF）规则演变趋势",
+ "generated_at": "2026-11-21T23:24:00Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-news",
+  "allafrica",
+  "gn-aiib-ndb",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-energy",
+  "gn-imf-debt",
+  "gn-mdb-policy",
+  "gn-wb-imf",
+  "scmp"
+ ]
+}

@@ -1,0 +1,195 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响</title><style>
+:root{
+  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
+  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#151513; --paper-2:#1d1d1a; --ink:#e8e4dc; --ink-2:#b3ada2;
+    --ink-3:#7e786e; --rule:#2e2b26; --rule-2:#433f38; --accent:#d0705a;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.9 var(--sans); letter-spacing:.012em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{background:var(--accent); color:var(--paper)}
+
+.top{
+  position:sticky; top:0; z-index:5;
+  max-width:720px; margin:0 auto; padding:20px 24px 14px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  background:var(--paper); border-bottom:1px solid var(--rule);
+}
+.top .brand{
+  display:flex; line-height:0; color:var(--ink); text-decoration:none;
+}
+.top .brand svg{display:block; height:26px; width:auto}
+.top nav{display:flex; gap:22px; flex-wrap:wrap}
+.top nav a{
+  font-size:13.5px; color:var(--ink-3); text-decoration:none;
+  transition:color .16s ease;
+}
+.top nav a:hover{color:var(--ink)}
+.top nav a[aria-current]{color:var(--ink)}
+
+.wrap{max-width:720px; margin:0 auto; padding:0 24px 100px}
+
+.kicker{font-size:12.5px; color:var(--ink-3); letter-spacing:.1em; margin:46px 0 12px}
+h1.dateline{
+  font-family:var(--serif); font-weight:400; font-feature-settings:"palt" 1;
+  font-size:clamp(27px,4.4vw,36px); line-height:1.34; letter-spacing:.02em;
+  margin:0 0 10px; color:var(--ink);
+}
+h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
+.under{font-size:13px; color:var(--ink-3); margin:0 0 8px}
+.under span+span::before{content:" · "; color:var(--rule-2)}
+.tagline{
+  font-family:var(--serif); font-size:14.5px; letter-spacing:.22em;
+  color:var(--ink-2); margin:16px 0 0; text-indent:0;
+}
+.masthead{border-bottom:1.5px solid var(--ink); padding-bottom:26px; margin-bottom:4px}
+
+.body{padding-top:30px}
+.body h2{
+  font-size:18.5px; line-height:1.55; font-weight:600; letter-spacing:.02em;
+  margin:46px 0 12px; padding-top:20px; color:var(--ink);
+  border-top:1px solid var(--rule);
+}
+.body h2:first-child{margin-top:0; padding-top:0; border-top:0}
+.body h3{
+  font-size:15.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-2);
+  margin:26px 0 6px;
+}
+.body p{margin:0 0 .6em; text-indent:2em; text-align:justify; text-justify:inter-ideograph}
+.body p.lede{text-indent:0; font-size:16.5px; color:var(--ink-2); margin-bottom:1.1em}
+.body ul,.body ol{margin:0 0 1.1em; padding-left:1.5em}
+.body li{margin:0 0 .4em; text-align:left}
+.body .src{font-size:.84em; color:var(--ink-3); letter-spacing:0}
+.body li::marker{color:var(--ink-3); font-family:var(--mono); font-size:12.5px}
+.body ul li::marker{content:"— "}
+.body strong{font-weight:600; color:var(--ink)}
+.body em{font-style:normal; border-bottom:1px dashed var(--rule-2)}
+.body hr{border:0; height:1px; background:var(--rule); margin:40px 0}
+.body a{
+  color:inherit; text-decoration:none; border-bottom:1px solid var(--rule-2);
+  transition:color .16s ease,border-color .16s ease; word-break:break-word;
+}
+.body a:hover{color:var(--accent); border-color:var(--accent)}
+.body blockquote{
+  margin:24px 0; padding:2px 0 2px 18px; border-left:2px solid var(--accent);
+  color:var(--ink-2);
+}
+.body blockquote p{text-indent:0}
+.body blockquote p:last-child{margin-bottom:0}
+.body pre{
+  margin:22px 0; padding:16px 18px; overflow:auto;
+  background:var(--paper-2); border:1px solid var(--rule);
+  font-family:var(--mono); font-size:13px; line-height:1.7;
+}
+.body code{font-family:var(--mono); font-size:.88em; background:var(--paper-2); padding:1px 4px}
+.body pre code{background:none; padding:0}
+
+/* 表格 */
+.body table{
+  width:100%; border-collapse:collapse; margin:24px 0;
+  font-size:14px; line-height:1.72; font-variant-numeric:tabular-nums;
+}
+.body th{
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1px solid var(--ink); white-space:nowrap;
+}
+.body td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.body td:last-child,.body th:last-child{padding-right:0}
+
+/* 概率列：数字 + 一条发丝量度线 */
+.body td.pct-cell{font-family:var(--mono); font-size:14.5px; white-space:nowrap; min-width:66px}
+.body td.pct-cell .pct-bar{display:block; height:2px; margin-top:8px; background:var(--rule); position:relative}
+.body td.pct-cell .pct-bar::after{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:calc(var(--p) * 1%); background:var(--accent); opacity:.65;
+}
+
+/* 首段当导语：不缩进、略大、颜色更实 */
+.body h2:first-child + p{
+  text-indent:0; font-size:18px; line-height:1.85; color:var(--ink);
+  margin-bottom:1.15em;
+}
+
+/* 索引列表 */
+.index-list{list-style:none; margin:0; padding:0}
+.index-list li{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:0 22px;
+  padding:16px 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.index-list .when{
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums; letter-spacing:.04em;
+}
+.index-list .what{font-size:16.5px; line-height:1.6; margin:0; text-indent:0}
+.index-list .what a{border-bottom-color:transparent}
+.index-list .what a:hover{border-bottom-color:var(--accent)}
+.index-list .note{
+  margin:5px 0 0; font-size:13px; line-height:1.6; color:var(--ink-3); text-indent:0;
+}
+.index-list .note b{font-weight:400; color:var(--ink-2)}
+
+.plain-list{list-style:none; margin:0; padding:0}
+.plain-list li{padding:13px 0; border-bottom:1px solid var(--rule); margin:0; font-size:16px}
+.plain-list a{color:var(--ink-2)}
+.plain-list a:hover{color:var(--accent); border-color:var(--accent)}
+
+.section-head{
+  font-size:13px; color:var(--ink-3); letter-spacing:.08em;
+  margin:56px 0 4px; padding-bottom:10px; border-bottom:1px solid var(--rule-2);
+}
+
+/* 告警 */
+.alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
+.alert-item a{color:var(--ink-2)}
+
+.colophon{
+  margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
+}
+.colophon span+span::before{content:"· "; color:var(--rule-2)}
+.colophon .slogan{
+  font-family:var(--serif); font-size:13.5px; letter-spacing:.16em; color:var(--ink-2);
+}
+
+@media (max-width:600px){
+  body{font-size:16.5px; line-height:1.88}
+  .top{padding:20px 20px 14px; flex-direction:column; align-items:flex-start; gap:10px}
+  .top nav{gap:18px}
+  .wrap{padding:0 20px 72px}
+  .kicker{margin-top:34px}
+  .body p{text-align:left}
+  .body table{font-size:13px}
+  .body th{white-space:normal}
+  .body td,.body th{padding-right:10px}
+  .index-list li{grid-template-columns:minmax(0,1fr); gap:3px}
+  .index-list .when{padding-top:0}
+}
+
+@media (max-width:420px){
+  .body table{font-size:12.5px}
+  .body td,.body th{padding-right:8px}
+  .body td.pct-cell{min-width:52px; font-size:13px}
+}
+
+@media print{
+  :root{--paper:#fff; --ink:#000; --ink-2:#333; --ink-3:#666; --rule:#ccc; --rule-2:#999; --accent:#000}
+  .top nav{display:none}
+  .top{border-bottom:none; padding:0}
+  .wrap{max-width:none; padding:0}
+  .body h2{break-after:avoid}
+  .body li,.body p{orphans:2; widows:2}
+  a{text-decoration:none}
+}
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" role="img" aria-label="geointel"><g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="round"><path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/><path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/><path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/><path d="M 388.00 0.00 V -100"/><path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/><path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/><path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/><path d="M 740.00 0.00 V -152.00"/></g><g fill="currentColor" stroke="none"><rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg></a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html" aria-current="page">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">决策备忘录</p><h1 class="dateline q">未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响</h1><p class="under"><span>置信度 中</span><span>复盘 2027-02-15</span><span>视界 90 天</span></p></header><div class="body"><h2>1. 问题与边界</h2><p><strong>决策核心</strong>：主权及地方财政在未来 90 天（2026-11-19 至 2027-02-15）如何安排外部融资节奏、币种结构、期限分布与应急额度，以在利率中枢上行、评级分化加剧、跨境资本流动不稳定的环境下，将融资成本锁定在可承受区间、避免滚动违约风险。 <strong>不包含</strong>：国内货币政策操作、企业级融资策略、结构性改革建议。 <strong>最晚决策点</strong>：2026-12-15 前完成 2027 年一季度融资窗口安排（含预发行、备选货币文件准备、备用信贷协议签署）。</p><h2>2. 已知事实</h2><h3>硬数据快照<span class="src">（2026-11-19/13）</span></h3><table><thead><tr><th>指标</th><th>最新值</th><th>日期</th><th>来源</th></tr></thead><tbody><tr><td>美联邦基金利率</td><td>3.88%</td><td>2026-11-19</td><td>FRED</td></tr><tr><td>美债 2 年收益率</td><td>4.76%</td><td>2026-11-19</td><td>FRED</td></tr><tr><td>美债 10 年收益率</td><td>5.04%</td><td>2026-11-19</td><td>FRED</td></tr><tr><td>美债 2–10 年利差</td><td>+0.28pp</td><td>2026-11-19</td><td>FRED-derived</td></tr><tr><td>美元/人民币</td><td>6.67</td><td>2026-11-13</td><td>FRED</td></tr><tr><td>欧元/美元</td><td>1.1034</td><td>2026-11-13</td><td>FRED</td></tr><tr><td>美元/日元</td><td>159.9</td><td>2026-11-13</td><td>FRED</td></tr><tr><td>美元广义指数</td><td>122.7</td><td>2026-11-13</td><td>FRED</td></tr></tbody></table><h3>关键事实（5–8 条）</h3><ol><li>美联储 11 月会议纪要与 Waller 讲话显示官员仍倾向“数据依赖”，但市场定价 12 月有 50bp 加息概率 ——（MarketWatch，2026-11-17）[13]</li><li>英格兰央行 Lombardelli 与 Waller 言论分歧，BoE 倾向继续加息，NIESR 警告“更高更久” ——（FT，2026-11-17；Guardian，2026-11-11/14）[16,23,29]</li><li>ECB 连续发布预警：对冲基金杠杆基差交易放大欧洲主权债波动，可能传染保险业 ——（Hedgeweek/Beinsure/Brussels Times/Tooze/Bloomberg，2026-11-17/18/19/20）[3,5,6,7,36]</li><li>印尼央行因卢比创历史新低被迫加息，秘鲁央行时隔 14 月首次加息至 5.25% ——（Nikkei Asia，2026-11-18；Latin Times，2026-11-14）[34,10]</li><li>卢旺达 B+/Stable 维持不变；非洲新评级机构启动，旨在改变大陆评级叙事 ——（AllAfrica，2026-11-17；Al Jazeera，2026-11-21）[1,8]</li><li>IMF 暂停乌克兰放款待 EU 支持；布鲁塞尔拟推 450 亿欧元对乌贷款（以 EU 预算担保） ——（IFR，2026-11-17；FT，2026-11-16）[11,25]</li><li>中东冲突预计持续至 2027 年，S&amp;P 警告主权评级下行压力 ——（Gulf Business，2026-11-11）[40]</li><li>中国跨境支付体系（CIPS 等）在地缘张力下仍获进展 ——（Asian Business Review，2026-11-15）[33]</li></ol><h2>3. 关键不确定性</h2><table><thead><tr><th>变量</th><th>当前区间/状态</th><th>判断依据</th><th>重要性</th></tr></thead><tbody><tr><td>美联储终端利率路径</td><td>3.88% → 4.13%-4.38%（隐含）</td><td>远期利率、Waller 讲话、BofA 50bp 选项 [13]</td><td>决定美元融资成本天花板与 EM 利差锚</td></tr><tr><td>ECB/BoE 金融稳定干预力度</td><td>口头预警阶段，未出手</td><td>ECB 连续 5 篇预警 [3,5,6,7,36]</td><td>若演变为施行工具（回购便利、资本缓冲），将改变欧洲主权债流动性溢价</td></tr><tr><td>对冲基金基差交易规模与去杠杆速度</td><td>不透明，ECB 称“放大波动”</td><td>Tooze/ECB 言论 [7,36]</td><td>无序平仓可引发跨大洲主权债抛售，冲击新兴市场准入</td></tr><tr><td>主权评级分化与非洲新机构影响力</td><td>传统三大垄断，新机构刚启动</td><td>卢旺达维持 B+ [1]、非洲机构启动 [8]</td><td>评级方法论变化直接影响发行利差与投资者基数</td></tr><tr><td>地缘政治融资挤出效应（乌克兰/中东）</td><td>EU 450 亿欧元贷款待定，中东战事延至 2027</td><td>[11,25,40]</td><td>官方部门资源占用可能压缩对其他前沿市场的优惠融资</td></tr></tbody></table><h2>4. 情景</h2><table><thead><tr><th>情景</th><th>概率</th><th>核心逻辑</th><th>关键观察点（锚定材料/数值）</th></tr></thead><tbody><tr><td><strong>Higher for Longer + Risk-Off</strong></td><td class="pct-cell">45%<span class="pct-bar" style="--p:45"></span></td><td>美联储 12 月加息 25-50bp，终端上移；美元指数升向 125+；EM 资本外流，利差扩 50-100bp；前沿市场评级负面动作增多</td><td>DFF ≥ 4.38%（t1）、DGS10 ≥ 5.30%（t2）、USDCNY ≥ 7.00（t3）、评级负面关键词周命中 ≥3（t4）</td></tr><tr><td><strong>Managed Disinflation + Selective Access</strong></td><td class="pct-cell">35%<span class="pct-bar" style="--p:35"></span></td><td>美联储 12 月暂停，点阵图暗示 2027 上半年降息；美元回落至 118-120；基本面强者（印尼、印度、越南）维持市场准入，弱者依赖官方窗口</td><td>DFF 维持 3.88-4.13%、DGS10 回落至 4.80% 下方、EMBI 利差稳定、非洲新机构发布首批方法论 [8]</td></tr><tr><td><strong>Financial Stability Shock</strong></td><td class="pct-cell">20%<span class="pct-bar" style="--p:20"></span></td><td>对冲基金基差交易无序平仓 → 欧洲主权债流动性枯竭 → 传染 EM 本币债 → 央行被迫启动非常规工具</td><td>对冲基金/波动关键词周命中 ≥3（t5）、欧债 CDS 跳升 &gt;50bp、EM 本币债基金周赎回 &gt;5%</td></tr></tbody></table><h2>5. 选项评估</h2><table><thead><tr><th>选项</th><th>预期收益（基准情景加权）</th><th>最坏情况<span class="src">（Shock 情景）</span></th><th>可逆性</th><th>执行成本</th></tr></thead><tbody><tr><td><strong>A. 前置美元发行（11-12 月窗口锁定 2027 Q1 需求 60-70%）</strong></td><td>以 5.0-5.2% 票息锁定长期成本，避免后续加息溢价</td><td>若 Shock 导致一级市场冻结，已发行债二级价格大跌，声誉受损</td><td>低（发行即锁定）</td><td>承销费 30-50bp、法律准备 2-3 周</td></tr><tr><td><strong>B. 多币种/多期限分散（USD 40% + EUR 30% + CNY/Sukuk 30%，久期 5-7 年为主）</strong></td><td>综合成本加权约 4.6%，汇率/利率分散化降低尾部风险</td><td>EUR/USD 跌破 1.05 且 CNY 贬值破 7.2，汇率敞口产生未实现损失</td><td>中（可通过掉期调整）</td><td>文件准备 4-6 周、多司法管辖区合规成本</td></tr><tr><td><strong>C. 建立预防性信贷额度（IMF PLL/SCF、MDB 政策性贷款、双边互换），不立即提款</strong></td><td>保留市场准入选项权，边际成本仅承诺费 10-20bp</td><td>官方部门资源被乌克兰/中东挤占，额度到位延迟</td><td>高（未提款可撤销）</td><td>谈判周期 8-12 周、政策条件性审查</td></tr><tr><td><strong>D. 不做决定（维持滚动发行、视窗口随机应变）</strong></td><td>节省前期准备成本</td><td>遭遇 Shock 窗口关闭，被迫高成本短债/本币融资，滚动风险失控</td><td>最高</td><td>机会成本极大，隐性风险不可量化</td></tr></tbody></table><h2>6. 建议与触发条件</h2><p><strong>推荐组合</strong>：<strong>主选 B（多币种分散）+ 辅选 C（预防性额度）</strong>，并在 11 月底前完成 USD 短券（2-3 年）预发行 10-15% 需求作为流动性垫。 <strong>触发条件</strong>（与 JSON 一致，分类标注）：</p><table><thead><tr><th>类型</th><th>指标/关键词</th><th>阈值</th><th>触发动作</th></tr></thead><tbody><tr><td><strong>value</strong></td><td>DFF (美联邦基金利率)</td><td>≥ 4.38%</td><td>冻结非必要美元长债发行，启动 B 方案中 EUR/CNY/Sukuk 替代文件</td></tr><tr><td><strong>value</strong></td><td>DGS10 (10 年美债)</td><td>≥ 5.30% (连续 2 日)</td><td>缩短发行久期至 3-5 年，增加浮息债比例至 30%</td></tr><tr><td><strong>value</strong></td><td>USDCNY (离岸人民币)</td><td>≥ 7.00 (连续 3 日)</td><td>加速人民币债/双币种债路演，锁定远期汇率对冲成本</td></tr><tr><td><strong>count</strong></td><td>评级负面关键词</td><td>单周 ≥ 3 条</td><td>启动 C 方案应急提款程序，同步向双边互换央行申请额度</td></tr><tr><td><strong>count</strong></td><td>对冲基金/波动关键词</td><td>单周 ≥ 3 条</td><td>暂停固定长债发行，改发 1-2 年浮息/短券，请求本币回购便利</td></tr></tbody></table><h2>7. 反面证据与证伪条件</h2><p>出现以下任一证据，本备忘录结论（推荐 B+C 组合）应被推翻：</p><ol><li><strong>美联储 12 月降息或明确指引 2027 Q1 降息</strong>（DFF 期货隐含利率跌破 3.60%）；</li><li><strong>美元广义指数跌破 115 且 EMBI 综合利差连续两周收窄 &gt;30bp</strong>；</li><li><strong>ECB 宣布针对主权债的结构性流动性后盾（类似 TPI）正式运行</strong>，且对冲基金杠杆指标（如 repo fail rate）回落至 2024 年均值以下；</li><li><strong>非洲新评级机构发布方法论并获主要基金认可，导致至少 3 个前沿市场评级上调</strong>；</li><li><strong>乌克兰/中东融资缺口被完全填补（官方承诺 &gt;800 亿欧元），释放多边机构对其他主权的额度</strong>。</li></ol><h2>8. 复盘日期</h2><p><strong>2027-02-15</strong>（距今日 88 天） 届时需回答：</p><ol><li>实际融资执行情况（币种、期限、成本）是否落在基准情景（Managed Disinflation）的置信区间内？</li><li>五大触发条件中有多少被命中？对应动作是否按时执行？若未执行，卡点在哪里？</li></ol><h2>9. 历史周期代价对照</h2><table><thead><tr><th>Episode</th><th>发生了什么</th><th>代价（利率/利差/持续/受损主体）</th><th>对当前决策的启示</th></tr></thead><tbody><tr><td><strong>2013 Taper Tantrum</strong> (2013.5-9)</td><td>美联储暗示缩减 QE → 10Y 美债从 1.6% 跃至 3.0%，EMBI 利差扩 150bp，印尼/印度/巴西/土耳其/南非（“脆弱五国”）货币贬值 15-25%，外储流失 $1000 亿+</td><td>利率 +140bp/3 个月，利差 +150bp/4 个月，持续至 2014 Q1，经常账户赤字国被迫加息 300-500bp、动用 IMF 预防性信贷</td><td><strong>提前发行、缩短久期、储备外币流动性</strong>；基本面弱者最先失去市场准入</td></tr><tr><td><strong>2022 激进加息周期</strong> (2022.3-2023.7)</td><td>美联储累计加息 525bp，前沿市场斯里兰卡、加纳、赞比亚、苏里南违约；EMBI 利差峰值 450bp，平均发行成本 +300bp，全年 EM 主权发行量腰斩</td><td>利率 +525bp/16 个月，利差 +300bp 峰值，违约潮持续 18 个月，私营债权人平均回收率 35-45%</td><td><strong>官方部门预防性额度（PLL/SCF）比事后重组便宜 10 倍</strong>；本币债市场深度决定抗冲击能力</td></tr><tr><td><strong>材料不足</strong></td><td>1994 年加息周期、2008 年金融危机跨境传导细节</td><td>缺乏可比的高频主权发行微观数据</td><td>不纳入量化参考，仅作定性提醒：利率冲击传导滞后 2-3 个季度</td></tr></tbody></table><hr><p><strong>备注</strong>：所有概率为整数估计，合计 100%。硬数据严格引用上表，不外推。触发条件已在 JSON 与正文双向校验。</p></div><footer class="colophon"><span class="slogan">先读世界，再下判断。</span><span>只基于抓取材料</span><span>11 月 21 日 23:31 UTC 更新</span></footer></div></body></html>

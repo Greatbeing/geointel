@@ -1,0 +1,105 @@
+{
+ "scenarios": [
+  {
+   "name": "同步收紧-强美元",
+   "prob": 40
+  },
+  {
+   "name": "分化博弈-美元见顶回落",
+   "prob": 30
+  },
+  {
+   "name": "信用事件-风险厌恶冲击",
+   "prob": 30
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储 12 月加息 25bp，联邦基金利率触及 4.13% 以上",
+   "keywords": [],
+   "threshold": 4.13,
+   "type": "value",
+   "action": "加码对冲至 80% 覆盖率，压缩美元债久期至 2 年内",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "10 年期美债收益率突破 5.25%，长端利率失锚",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "启动应急信贷额度，预留 3 个月美元流动性缓冲",
+   "series": "DGS10",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t3",
+   "description": "离岸人民币兑美元跌破 7.00 关口",
+   "keywords": [],
+   "threshold": 7.0,
+   "type": "value",
+   "action": "将离岸融资切换至人民币计价，动用跨境互换额度",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t4",
+   "description": "情报流中出现 3 条以上信用事件/流动性危机关键词",
+   "keywords": [
+    "credit event",
+    "default",
+    "liquidity crunch",
+    "intervention",
+    "bailout"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "触发流动性应急预案，向央行申请互换额度",
+   "series": "",
+   "op": "",
+   "window": 0
+  },
+  {
+   "id": "t5",
+   "description": "情报流中出现 3 条以上联储转鸽/暂停/降息关键词",
+   "keywords": [
+    "Fed pivot",
+    "rate cut",
+    "dovish",
+    "pause"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "降低对冲比例至 40%，延长债务久期捕捉降息红利",
+   "series": "",
+   "op": "",
+   "window": 0
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-01-15",
+ "question": "未来 90 天全球金融条件收紧或分化情景下的外币债务与汇率风险（对照历史紧缩周期代价）与应对",
+ "generated_at": "2026-11-21T23:24:00Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "allafrica",
+  "cnbc",
+  "ft",
+  "gn-aiib-ndb",
+  "gn-china-econ",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-mideast",
+  "gn-trade",
+  "hn",
+  "nikkei-asia",
+  "npr-world",
+  "scmp"
+ ]
+}

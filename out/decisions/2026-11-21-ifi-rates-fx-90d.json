@@ -1,0 +1,106 @@
+{
+ "scenarios": [
+  {
+   "name": "美联储高位维稳・美元强势・人民币被动贬值",
+   "prob": 45
+  },
+  {
+   "name": "同步软着陆・主要央行分化降息・人民币区间波动",
+   "prob": 35
+  },
+  {
+   "name": "地缘政治冲击・避险潮・汇率剧烈偏离",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储联邦基金利率上调至 4.125% 或以上（暗示加息 25bp）",
+   "keywords": [],
+   "threshold": 4.125,
+   "type": "value",
+   "action": "立即锁定剩余年度美元融资成本，启动借款人美元转欧元/日元转换窗口",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "美元/人民币现汇突破 7.15 关口（年内新高）",
+   "keywords": [],
+   "threshold": 7.15,
+   "type": "value",
+   "action": "建议借款国提前偿还美元债或行使货币转换条款，暂停新增美元敞口",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t3",
+   "description": "欧央行正式宣布新行长人选（拉加德继任者落定）",
+   "keywords": [
+    "ECB President",
+    "appointed",
+    "confirmed",
+    "new chief",
+    "继任者"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "评估新行长政策倾向，若偏鸽则扩大欧元计价贷款份额",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t4",
+   "description": "美元/日元跌破 152（日央行加息或实质性干预生效）",
+   "keywords": [],
+   "threshold": 152,
+   "type": "value",
+   "action": "开启日元融资窗口，评估以日元替代部分美元融资的成本收益",
+   "series": "USDJPY",
+   "op": "<=",
+   "window": 2
+  },
+  {
+   "id": "t5",
+   "description": "中国央行下调 1 年期/5 年期 LPR（宽货币信号明确）",
+   "keywords": [
+    "LPR",
+    "cut",
+    "lower",
+    "下调",
+    "降低"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "测算人民币融资成本优势，向符合条件借款人推广本币贷款或掉期安排",
+   "series": "",
+   "op": "",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-01-15",
+ "question": "未来 90 天美联储、欧央行、日央行利率路径与美元/欧元/日元对人民币汇率变动对国际金融组织外币贷款成本及利率货币转换窗口的影响",
+ "generated_at": "2026-11-21T23:24:00Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "bis-speeches",
+  "boj",
+  "cnbc",
+  "dw-world",
+  "fed",
+  "ft",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-mideast",
+  "marketwatch",
+  "politico-eu",
+  "straits-times"
+ ]
+}
