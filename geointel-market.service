@@ -1,0 +1,15 @@
+[Unit]
+Description=geointel market data — fetch FRED/ECB/FX into market_series
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/data/workspace/geointel
+Environment=HOME=/data/home
+Environment=PATH=/data/home/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=GEOINTEL_BASE=/geointel
+ExecStart=/data/workspace/geointel/run-market-collect.sh
+StandardOutput=append:/data/workspace/geointel/logs/market.out
+StandardError=append:/data/workspace/geointel/logs/market.err
+TimeoutStartSec=300

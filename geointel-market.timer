@@ -1,0 +1,10 @@
+[Unit]
+Description=geointel market data — daily FRED/ECB/FX fetch (00:10 UTC)
+
+[Timer]
+OnCalendar=*-*-* 00:10:00 UTC
+Persistent=true
+Unit=geointel-market.service
+
+[Install]
+WantedBy=timers.target

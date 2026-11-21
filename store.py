@@ -27,6 +27,17 @@ CREATE INDEX IF NOT EXISTS idx_items_category  ON items(category);
 CREATE INDEX IF NOT EXISTS idx_items_source    ON items(source);
 CREATE VIRTUAL TABLE IF NOT EXISTS items_fts
   USING fts5(id UNINDEXED, title, summary, tokenize='unicode61');
+-- 市场硬数据（Week 2）：利率/汇率等数值序列，来源 FRED / ECB / Frankfurter。
+-- 主键 (series, date)：同一序列同一日期只留最新一次抓取的值。
+CREATE TABLE IF NOT EXISTS market_series (
+  series     TEXT NOT NULL,
+  date       TEXT NOT NULL,
+  value      REAL NOT NULL,
+  source     TEXT,
+  fetched_at TEXT NOT NULL,
+  PRIMARY KEY (series, date)
+);
+CREATE INDEX IF NOT EXISTS idx_market_series ON market_series(series, date);
 """
 
 
@@ -276,3 +287,67 @@ def stats():
         " ORDER BY 2 DESC", (since,)).fetchall()
     con.close()
     return {"total": total, "last_24h": day, "by_category": by_cat}
+
+
+# ---- 市场硬数据（Week 2）----
+
+def upsert_market(rows):
+    """写入市场序列行。rows: list of dict(series, date, value, source)。
+    返回写入/更新的行数。"""
+    con = connect()
+    fetched = iso(now_utc())
+    n = 0
+    with con:
+        for r in rows:
+            cur = con.execute(
+                "INSERT OR REPLACE INTO market_series"
+                "(series,date,value,source,fetched_at) VALUES(?,?,?,?,?)",
+                (r["series"], r["date"], float(r["value"]),
+                 r.get("source", ""), fetched),
+            )
+            n += cur.rowcount
+    con.close()
+    return n
+
+
+def latest_market(series_ids=None):
+    """每个序列的最新一行：{series: {"date":..., "value":..., "source":...}}。
+    不传 series_ids 则返回全部序列的最新值。"""
+    con = connect()
+    if series_ids:
+        q = ",".join("?" for _ in series_ids)
+        rows = con.execute(
+            f"SELECT series,date,value,source FROM market_series"
+            f" WHERE series IN ({q}) ORDER BY date DESC",
+            tuple(series_ids)).fetchall()
+    else:
+        rows = con.execute(
+            "SELECT series,date,value,source FROM market_series"
+            " ORDER BY date DESC").fetchall()
+    con.close()
+    out = {}
+    for s, d, v, src in rows:
+        if s not in out:
+            out[s] = {"date": d, "value": v, "source": src}
+    return out
+
+
+def market_history(series, limit=60):
+    """某序列最近 limit 条 (date, value)，按日期从新到旧。"""
+    con = connect()
+    rows = con.execute(
+        "SELECT date,value FROM market_series WHERE series=? ORDER BY date DESC LIMIT ?",
+        (series, limit)).fetchall()
+    con.close()
+    return [(d, v) for d, v in rows]
+
+
+def prune_market(days=180):
+    """删掉超过 days 天的市场旧行，控制库增长。返回删除行数。"""
+    cutoff = (now_utc() - timedelta(days=days)).strftime("%Y-%m-%d")
+    con = connect()
+    with con:
+        cur = con.execute("DELETE FROM market_series WHERE date < ?", (cutoff,))
+        n = cur.rowcount
+    con.close()
+    return n

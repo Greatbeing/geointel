@@ -15,6 +15,7 @@ import sys
 from datetime import datetime, timezone
 
 import llm
+import market_collect
 import render
 import store
 
@@ -137,6 +138,11 @@ def main():
     prompt = TEMPLATE.format(hours=args.hours, n=len(items), material=material(items))
     body = llm.chat(prompt, system=SYSTEM, timeout=420, max_tokens=16000)
 
+    # Week 2：简报顶部贴核心利率/汇率仪表条。数据超过 3 天没更新就先补抓一轮
+    # （best-effort，抓不到也不阻断简报；仪表条按自己的 3 天窗口决定显示或写“暂无更新”）。
+    market_collect.ensure_fresh(max_age_days=3)
+    strip = market_collect.dashboard_strip()
+
     now = datetime.now(timezone.utc)
     day = now.strftime("%Y-%m-%d")
     os.makedirs(args.out_dir, exist_ok=True)
@@ -163,7 +169,7 @@ def main():
         if failed:
             line += f"，失败：{', '.join(failed)}"
         body_text += line
-    open(path, "w", encoding="utf-8").write(header + body_text + "\n")
+    open(path, "w", encoding="utf-8").write(header + strip + "\n" + body_text + "\n")
 
     meta = {
         "date": day,
