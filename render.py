@@ -453,7 +453,8 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
     navs = []
     for label, path, key in (("简报", "/index.html", "digest"),
                              ("决策备忘录", "/decisions.html", "decisions"),
-                             ("触发告警", "/alerts.html", "alerts")):
+                             ("触发告警", "/alerts.html", "alerts"),
+                             ("概率校准", "/calibration.html", "calibration")):
         cur = ' aria-current="page"' if key == current else ""
         navs.append('<a href="%s"%s>%s</a>' % (href(path), cur, label))
     under_html = ""

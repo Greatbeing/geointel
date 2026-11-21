@@ -70,11 +70,12 @@ N 为情景数，pᵢ 为第 i 个情景的预测概率（0–1），oᵢ = 1（
 - `scores.jsonl` 每行已留好 review.py 要用的字段：`memo`（文件名）、`slug`
   （去掉日期前缀的 memo 标识）、`review_date`、结构分、结果分（复核日前为
   `null`，等复核日再填）。
-- Week 4 的 review.py 将来直接读 `scores.jsonl` 生成 `docs/calibration.html`；
-  每周汇总推送（邮件/Webhook）也是 Week 4 的事。
-- **本次不做**：review.py、calibration 页面、每周邮件/Webhook 推送，
-  以及 Week 2（market_collect.py、watch.py 数值阈值）和 Week 3
-  （decide.py 模板升级、render.py 备忘录）——那些要等用户点头。
+- Week 4 已做完（2026-11-22）：`review.py` 直接读 `scores.jsonl`，
+  到期未复盘的列出来等人确认实际走向，确认后登记结果分，
+  `--build-page` 生成 `docs/calibration.html`（站内导航有“概率校准”入口）；
+  每周汇总推送由 `weekly_summary.py` 实现（默认只打印，`--send` 需 Webhook URL）。
+
+## 复核流程（Week 4：review.py）
 
 ## 记录文件 scores.jsonl
 
@@ -92,10 +93,18 @@ N 为情景数，pᵢ 为第 i 个情景的预测概率（0–1），oᵢ = 1（
 `outcome` 在复核日前为 `null`；复核后记 `occurred / brier / calibration /
 top_hit / coverage_failure / scored_at`。
 
-## 复核流程
+## 复核流程（Week 4：review.py）
 
 1. 到了某份 memo 的 `review_date`，人工判定实际走向。
-2. 跑 `--outcome` 登记结果分。
-3. 顺带过一遍上面的人工复核项。
+2. 跑 `python3 review.py --memo <memo.md> --occurred "情景名"`（或 `none`）
+   登记结果分；`python3 review.py` 随时看到期/将到期清单。
+3. 跑 `python3 review.py --build-page` 刷新 `docs/calibration.html`。
 4. 攒够 5–10 份有结果分的 memo 后，可以看平均校准分和最高概率命中率，
    判断这套 memo 的概率是不是系统性偏高或偏低——那时再谈调 decide 的提示词。
+
+## 每周汇总（Week 4：weekly_summary.py）
+
+- `python3 weekly_summary.py` 打印本周汇总（新 memo、将到期、已逾期、校准快照）。
+- `--send` 需 Webhook URL（`--webhook <URL>` 或环境变量
+  `GEOINTEL_WEEKLY_WEBHOOK`）；没给就停下并明说缺什么，不猜地址。
+- 邮件渠道没接：需要用户给收件地址 + 发件配置。
