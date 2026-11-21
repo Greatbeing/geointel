@@ -90,7 +90,7 @@ def search(query, limit=40, days=30):
     terms = expand(query)
     rows = []
     if terms:
-        match = " OR ".join(f'"{t}"' for t in terms[:16])
+        match = " OR ".join(f'"{t}"' for t in terms[:24])
         try:
             rows = con.execute(
                 "SELECT i.id,i.source,i.region,i.category,i.title,i.link,i.summary,i.published,i.weight"
@@ -182,14 +182,76 @@ LEXICON = {
     "汽车": ["auto", "car", "EV"],
     "电池": ["battery", "EV", "lithium"],
     "航运": ["shipping", "freight", "Red Sea"],
+    # 国际金融组织与多边开发银行（IFI / MDB）
+    "世界银行": ["World Bank", "IBRD", "IDA"],
+    "世行": ["World Bank", "IBRD", "IDA"],
+    "亚洲开发银行": ["Asian Development Bank", "ADB"],
+    "亚行": ["ADB", "Asian Development Bank"],
+    "亚投行": ["AIIB", "Asian Infrastructure Investment Bank"],
+    "新开发银行": ["New Development Bank", "NDB"],
+    "农发基金": ["IFAD"],
+    "国际货币基金组织": ["IMF", "International Monetary Fund"],
+    "基金组织": ["IMF"],
+    "国际清算银行": ["BIS", "Bank for International Settlements"],
+    "金融稳定理事会": ["FSB", "Financial Stability Board"],
+    "多边开发银行": ["multilateral development bank", "MDB", "World Bank", "ADB", "AIIB"],
+    "多边机构": ["multilateral", "MDB", "World Bank", "ADB", "IMF"],
+    "国际金融组织": ["World Bank", "ADB", "AIIB", "IMF", "MDB"],
+    "经合组织": ["OECD"],
+    "世贸组织": ["WTO"],
+    # 央行、利率与汇率
+    "美联储": ["Federal Reserve", "Fed", "FOMC"],
+    "欧央行": ["ECB", "European Central Bank"],
+    "日央行": ["Bank of Japan", "BOJ"],
+    "英央行": ["Bank of England", "BOE"],
+    "人行": ["PBOC", "People's Bank of China"],
+    "基准利率": ["SOFR", "EURIBOR", "policy rate", "benchmark rate"],
+    "利率转换": ["interest rate conversion", "fixed rate", "floating rate", "SOFR"],
+    "货币转换": ["currency conversion", "hedging", "FX"],
+    "利差": ["spread", "yield spread", "interest rate differential"],
+    "收益率": ["yield", "Treasury yield", "bond yield"],
+    "国债": ["Treasury", "sovereign bond", "government bond"],
+    "美元": ["dollar", "USD", "DXY"],
+    "欧元": ["euro", "EUR", "EURIBOR"],
+    "日元": ["yen", "JPY", "BOJ"],
+    "人民币": ["yuan", "renminbi", "CNY", "RMB"],
+    "特别提款权": ["SDR", "Special Drawing Rights"],
+    "外汇": ["FX", "foreign exchange", "currency"],
+    "资本流动": ["capital flows", "cross-border", "portfolio flows"],
+    # 主权债务、财政与多边规则合规
+    "主权担保": ["sovereign guarantee", "sovereign-backed", "sovereign loan"],
+    "主权": ["sovereign", "sovereign debt", "sovereign credit"],
+    "主权债务": ["sovereign debt", "public debt", "debt sustainability"],
+    "债务可持续": ["debt sustainability", "DSF", "debt distress"],
+    "外债": ["external debt", "foreign currency debt"],
+    "外币": ["foreign currency", "FX", "dollar", "euro", "yen"],
+    "转贷": ["on-lending", "sub-loan", "sovereign loan"],
+    "贷款": ["loan", "lending", "financing", "credit facility"],
+    "融资": ["financing", "funding", "credit"],
+    "财政": ["fiscal", "public finance", "budget", "Ministry of Finance"],
+    "地方债": ["local government debt", "municipal debt", "subnational debt"],
+    "信用评级": ["credit rating", "sovereign rating", "Moody's", "Fitch", "S&P"],
+    "环社框架": ["Environmental and Social Framework", "ESF", "safeguards"],
+    "环境与社会": ["environmental and social", "safeguards", "ESF"],
+    "采购": ["procurement", "bidding", "tender"],
+    "合规": ["compliance", "safeguards", "governance"],
+    "气候融资": ["climate finance", "green finance", "climate adaptation"],
+    "绿色基建": ["green infrastructure", "sustainable infrastructure", "clean energy"],
+    "绿色金融": ["green finance", "green bond", "sustainable finance"],
+    "转型金融": ["transition finance", "energy transition"],
+    "基础设施": ["infrastructure", "project finance"],
+    "紧缩": ["tightening", "rate hike", "financial conditions"],
+    "金融条件": ["financial conditions", "liquidity", "tightening"],
+    "绩效评估": ["performance evaluation", "project evaluation"],
+    "重组": ["debt restructuring", "restructuring"],
 }
 
 
 def expand(query):
-    """把中文问题扩成英文检索词；英文原词照留。"""
+    """把中文问题扩成英文检索词；保留英文原词与缩写，过滤纯中文串避免挤占 FTS 配额。"""
     out = []
-    for t in "".join(c if c.isalnum() else " " for c in query).split():
-        if len(t) > 2 and not t.isdigit():
+    for t in "".join(c if (c.isascii() and c.isalnum()) else " " for c in query).split():
+        if len(t) >= 2 and not t.isdigit():
             out.append(t)
     for zh, ens in LEXICON.items():
         if zh in query:

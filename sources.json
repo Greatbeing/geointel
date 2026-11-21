@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-11-10",
+  "updated": "2026-11-21",
   "sources": [
     {"id": "bbc-world", "name": "BBC World", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "region": "global", "category": "world", "weight": 1.0},
     {"id": "guardian-world", "name": "The Guardian World", "url": "https://www.theguardian.com/world/rss", "region": "global", "category": "world", "weight": 1.0},
@@ -42,6 +42,19 @@
     {"id": "gn-ai-reg", "name": "Google News · AI Regulation", "url": "https://news.google.com/rss/search?q=%22AI+regulation%22&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "policy", "weight": 0.9},
     {"id": "gn-trade", "name": "Google News · Trade", "url": "https://news.google.com/rss/search?q=%22trade+war%22+OR+tariffs&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "trade", "weight": 0.9},
     {"id": "gn-latam", "name": "Google News · Latin America", "url": "https://news.google.com/rss/search?q=%22latin+america%22+economy&hl=en-US&gl=US&ceid=US:en", "region": "americas", "category": "world", "weight": 0.7},
-    {"id": "gn-climate", "name": "Google News · Climate", "url": "https://news.google.com/rss/search?q=%22climate+change%22&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "science", "weight": 0.7}
+    {"id": "gn-climate", "name": "Google News · Climate", "url": "https://news.google.com/rss/search?q=%22climate+change%22&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "science", "weight": 0.7},
+
+    {"id": "adb-news", "name": "Asian Development Bank News", "url": "https://feeds.feedburner.com/adb_news", "region": "asia", "category": "ifi", "weight": 1.3},
+    {"id": "adb-pubs", "name": "Asian Development Bank Publications", "url": "https://feeds.feedburner.com/adb_publications", "region": "asia", "category": "ifi", "weight": 1.1},
+    {"id": "fsb", "name": "Financial Stability Board", "url": "https://www.fsb.org/feed/", "region": "global", "category": "ifi", "weight": 1.2},
+    {"id": "wto", "name": "World Trade Organization", "url": "https://www.wto.org/library/rss/latest_news_e.xml", "region": "global", "category": "ifi", "weight": 1.1},
+    {"id": "bis-speeches", "name": "BIS Central Bankers' Speeches", "url": "https://www.bis.org/doclist/cbspeeches.rss", "region": "global", "category": "macro_policy", "weight": 1.2},
+    {"id": "boj", "name": "Bank of Japan", "url": "https://www.boj.or.jp/en/rss/whatsnew.xml", "region": "asia", "category": "macro_policy", "weight": 1.2},
+    {"id": "boe", "name": "Bank of England", "url": "https://www.bankofengland.co.uk/rss/news", "region": "europe", "category": "macro_policy", "weight": 1.1},
+    {"id": "gn-wb-imf", "name": "World Bank & IMF · Official Releases", "url": "https://news.google.com/rss/search?q=site:worldbank.org+OR+site:imf.org&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "ifi", "weight": 1.3},
+    {"id": "gn-aiib-ndb", "name": "Google News · AIIB & NDB", "url": "https://news.google.com/rss/search?q=(%22AIIB%22+OR+%22New+Development+Bank%22+OR+%22Asian+Infrastructure+Investment+Bank%22)&hl=en-US&gl=US&ceid=US:en", "region": "asia", "category": "ifi", "weight": 1.2},
+    {"id": "gn-mdb-policy", "name": "Google News · MDB Policy & Climate Finance", "url": "https://news.google.com/rss/search?q=(%22World+Bank%22+OR+%22ADB%22+OR+%22AIIB%22)+(%22climate+finance%22+OR+%22procurement%22+OR+%22safeguards%22+OR+%22green+bond%22)&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "ifi", "weight": 1.2},
+    {"id": "gn-imf-debt", "name": "Google News · IMF & Sovereign Debt", "url": "https://news.google.com/rss/search?q=(%22IMF%22+OR+%22sovereign+debt%22+OR+%22debt+sustainability%22)&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "macro_policy", "weight": 1.1},
+    {"id": "gn-fx-rates", "name": "Google News · Global Rates & FX", "url": "https://news.google.com/rss/search?q=(%22SOFR%22+OR+%22EURIBOR%22+OR+%22PBOC%22+OR+%22yuan%22+OR+%22central+bank+rates%22)&hl=en-US&gl=US&ceid=US:en", "region": "global", "category": "macro_policy", "weight": 1.1}
   ]
 }

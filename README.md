@@ -6,7 +6,7 @@
 ## 流水线
 
 ```
-sources.json (37 源)
+sources.json (49 源，含多边金融/宏观政策)
       │
       ▼
 collect.py ──► data/intel.db (SQLite + FTS5)
@@ -25,7 +25,7 @@ collect.py ──► data/intel.db (SQLite + FTS5)
 
 | 文件 | 作用 |
 |---|---|
-| `sources.json` | 37 个 RSS/Atom/RDF 源，含 region / category / weight |
+| `sources.json` | 49 个 RSS/Atom/RDF 源（含多边开发银行与国际金融组织 `ifi` / `macro_policy`），含 region / category / weight |
 | `collect.py` | 并发抓取、HTML 实体与 gzip 容错、URL 规范化去重、入库 |
 | `store.py` | SQLite 存储 + FTS5 检索；中文问题经 `LEXICON` 映射成英文检索词 |
 | `llm.py` | 统一走本机 magpie 网关 `127.0.0.1:3425`，`max_tokens>=16000`，预算翻倍重试 |
