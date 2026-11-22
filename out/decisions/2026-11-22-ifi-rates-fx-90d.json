@@ -1,0 +1,89 @@
+{
+ "scenarios": [
+  {
+   "name": "基准情景：美联储再加息一次、欧央行维持利率、日央行缓慢常态化、人民币汇率受管制升值",
+   "prob": 45
+  },
+  {
+   "name": "鹰派冲击：美联储加息 50bp、欧央行被迫跟进、日央行加速退出负利率、资本外流压制人民币",
+   "prob": 30
+  },
+  {
+   "name": "通胀回落/转向预期：美联储按兵不动并预期降息、欧央行降息、日央行暂停、人民币大幅升值",
+   "prob": 25
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储联邦基金利率上调至 4.13% 或以上（即再加息 25bp）",
+   "keywords": [],
+   "threshold": 4.13,
+   "type": "value",
+   "action": "锁定美元融资成本，启用利率互换将浮动债务转固定，暂停新增美元浮动利率借款",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "美元/人民币即期汇率跌破 6.60（人民币大幅升值），触发货币转换窗口行权条件",
+   "keywords": [],
+   "threshold": 6.6,
+   "type": "value",
+   "action": "行使外币贷款合同中的货币转换条款，将部分美元债务转为人民币计价，降低本金偿付成本",
+   "series": "USDCNY",
+   "op": "<=",
+   "window": 3
+  },
+  {
+   "id": "t3",
+   "description": "美元/日元跌破 150（日元大幅升值），日央行加息预期落地",
+   "keywords": [],
+   "threshold": 150,
+   "type": "value",
+   "action": "评估日元计价借款的展期/转换成本，若日元融资成本低于对冲后美元成本，启动日元融资窗口",
+   "series": "USDJPY",
+   "op": "<=",
+   "window": 3
+  },
+  {
+   "id": "t4",
+   "description": "监测到‘美联储暂停加息’或‘欧央行降息’关键词在权威财新/路透/彭博电讯中单日命中 ≥3 条",
+   "keywords": [
+    "美联储暂停加息",
+    "Fed pause",
+    "欧央行降息",
+    "ECB cut"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "重估‘鹰派冲击’情景概率下调至 ≤10%，将浮动利率敞口保留比例从 30% 提升至 50%，节省对冲成本",
+   "series": "",
+   "op": "",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-01-20",
+ "question": "未来 90 天美联储、欧央行、日央行利率路径与美元/欧元/日元对人民币汇率变动对国际金融组织外币贷款成本及利率货币转换窗口的影响",
+ "generated_at": "2026-11-22T01:00:15Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "bis-speeches",
+  "boj",
+  "cnbc",
+  "dw-world",
+  "fed",
+  "ft",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-latam",
+  "gn-mideast",
+  "marketwatch",
+  "politico-eu",
+  "straits-times"
+ ]
+}
