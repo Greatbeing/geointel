@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Unit tests for Week 4: review.py auto-review + calibration page,
-weekly_summary.py weekly digest + webhook mechanism.
+weekly_summary.py weekly digest + Feishu webhook push.
 Stdlib only, no network — fixtures are inline, webhook is mocked.
 """
 import json
@@ -239,11 +239,14 @@ class TestWeeklySummary(unittest.TestCase):
                  "--scores", self.scores, "--date", "2026-11-22"])
         self.assertEqual(code, 2)
 
-    def test_send_posts_text_payload(self):
+    def test_send_posts_feishu_payload(self):
         seen = {}
 
         class FakeResp:
             status = 200
+
+            def read(self):
+                return b'{"code": 0, "msg": "success"}'
 
             def __enter__(self):
                 return self
@@ -263,8 +266,49 @@ class TestWeeklySummary(unittest.TestCase):
                  "--date", "2026-11-22"])
         self.assertEqual(code, 0)
         self.assertEqual(seen["url"], "https://example.invalid/hook")
-        self.assertIn("每周汇总", seen["body"]["text"])
-        self.assertIn("未来 90 天测试问题的走向", seen["body"]["text"])
+        # 飞书自定义机器人标准格式：msg_type text + content.text
+        self.assertEqual(seen["body"]["msg_type"], "text")
+        text = seen["body"]["content"]["text"]
+        self.assertIn("每周汇总", text)
+        self.assertIn("未来 90 天测试问题的走向", text)
+        self.assertNotIn("# geointel", text)  # markdown 标题号已去掉
+
+    def test_feishu_payload_strips_markdown_headings(self):
+        payload = weekly_summary.build_feishu_payload(
+            "# 标题\n\n## 小节\n- 一条\n")
+        self.assertEqual(payload["msg_type"], "text")
+        text = payload["content"]["text"]
+        self.assertIn("标题", text)
+        self.assertIn("小节", text)
+        self.assertIn("- 一条", text)
+        self.assertNotIn("#", text)
+
+    def test_feishu_payload_truncates_long_text(self):
+        payload = weekly_summary.build_feishu_payload("x" * 20000)
+        text = payload["content"]["text"]
+        self.assertLessEqual(len(text), weekly_summary.FEISHU_MAX_TEXT)
+        self.assertTrue(text.endswith("……（内容过长，已截断）"))
+
+    def test_send_feishu_error_code_fails(self):
+        class FakeResp:
+            status = 200
+
+            def read(self):
+                return b'{"code": 1, "msg": "boom"}'
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        with mock.patch("urllib.request.urlopen",
+                        lambda req, timeout=15: FakeResp()):
+            code = weekly_summary.main(
+                ["--send", "--webhook", "https://example.invalid/hook",
+                 "--decisions", self.decisions, "--scores", self.scores,
+                 "--date", "2026-11-22"])
+        self.assertEqual(code, 1)
 
 
 if __name__ == "__main__":

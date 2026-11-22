@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
-"""weekly_summary.py — geointel Week 4：每周汇总推送（机制）。
+"""weekly_summary.py — geointel Week 4：每周汇总推送（飞书）。
 
 汇总内容（全部来自仓库已有数据，不调 LLM）：
 - 本周新决策 memo（标题、主情景+概率、结构分、复核日）
 - 未来 7 天到复核日的 memo、已逾期未复盘的 memo
 - 概率校准快照（已复盘数、平均校准度、最高概率命中率）
 
-推送渠道——机制搭好了，但地址要用户给：
+推送渠道——飞书自定义机器人 Webhook（用户 2026-11-22 定）：
 - 默认只打印（--dry-run），不发往任何地方。
-- --send 时把汇总 POST 到 Webhook URL；URL 来自 --webhook 或环境变量
-  GEOINTEL_WEEKLY_WEBHOOK。没给 URL 就停下并明说缺什么，不猜地址。
-- 邮件渠道没接：发邮件需要收件地址 + SMTP/发件配置，用户没给之前
-  不搭（搭了也发不出去）。
+- --send 时把汇总按飞书标准格式 POST 到 Webhook URL：
+  {"msg_type": "text", "content": {"text": "..."}}。
+  URL 来自 --webhook 或环境变量 GEOINTEL_WEEKLY_WEBHOOK。
+  没给 URL 就停下并明说缺什么，不猜地址，不把真实 URL 写进代码。
+- 飞书机器人若开了“签名校验”，光 POST 会被拒（返回非 0 code，
+  本程序会报失败）；到时用户说一声，再加签名逻辑。
 
 用法：
   python3 weekly_summary.py                      # 打印本周汇总
@@ -123,16 +125,53 @@ def build_summary(decisions_dir=DECISIONS, scores_path=SCORES_PATH,
     return "\n".join(lines)
 
 
+FEISHU_MAX_TEXT = 10000  # 飞书 text 消息正文上限留余，超长截断
+FEISHU_TRUNCATED = "\n……（内容过长，已截断）"
+
+
+def _to_plain_text(md):
+    """汇总是 markdown；飞书 text 消息不渲染 markdown，
+    去掉标题行的 # 号，其余原样保留（换行、列表都在）。"""
+    out = []
+    for line in md.split("\n"):
+        stripped = line.lstrip()
+        if stripped.startswith("#"):
+            line = stripped.lstrip("#").strip()
+        out.append(line)
+    return "\n".join(out)
+
+
+def build_feishu_payload(text):
+    """把汇总转成飞书自定义机器人 text 消息：
+    {"msg_type": "text", "content": {"text": "..."}}。
+    纯函数，不发网，便于测试。"""
+    plain = _to_plain_text(text).strip("\n")
+    if len(plain) > FEISHU_MAX_TEXT:
+        plain = plain[:FEISHU_MAX_TEXT - len(FEISHU_TRUNCATED)] + FEISHU_TRUNCATED
+    return {"msg_type": "text", "content": {"text": plain}}
+
+
 def send_webhook(url, text, timeout=15):
-    """POST {"text": ...} 到 Webhook。返回 HTTP 状态码。
-    不同机器人对字段要求不同（飞书/钉钉/企微各有自己的 msgtype 信封），
-    拿到用户给的渠道后再按那家的格式调；这里先用最通用的 text 字段。"""
-    body = json.dumps({"text": text}, ensure_ascii=False).encode("utf-8")
+    """POST 飞书 text 消息到自定义机器人 Webhook。返回 HTTP 状态码。
+    飞书成功时返回 {"code": 0, ...}；code 非 0 说明被拒
+    （如签名校验未过、关键词不匹配），按失败处理并抛出原因。"""
+    body = json.dumps(build_feishu_payload(text),
+                      ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(
         url, data=body, method="POST",
         headers={"Content-Type": "application/json; charset=utf-8"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.status
+        status = resp.status
+        raw = resp.read() if hasattr(resp, "read") else b""
+        try:
+            data = json.loads(raw.decode("utf-8")) if raw else {}
+        except Exception:
+            data = {}
+        code = data.get("code") if isinstance(data, dict) else None
+        if code is not None and code != 0:
+            raise RuntimeError(
+                f"飞书拒绝推送：code={code}，msg={data.get('msg')}")
+        return status
 
 
 def main(argv=None):
@@ -162,11 +201,12 @@ def main(argv=None):
     if args.send:
         url = args.webhook or os.environ.get(WEBHOOK_ENV)
         if not url:
-            print("未配置推送渠道：没有 Webhook URL。", file=sys.stderr)
+            print("未配置推送渠道：没有飞书自定义机器人 Webhook URL。",
+                  file=sys.stderr)
             print(f"给一个地址就能发：设置环境变量 {WEBHOOK_ENV}=<Webhook URL>，"
                   "或用 --webhook <URL>。", file=sys.stderr)
-            print("（邮件渠道也一样：需要用户给收件地址 + 发件配置，现在没有。）",
-                  file=sys.stderr)
+            print("地址在飞书群里拿：群设置 → 群机器人 → 自定义机器人 → "
+                  "复制 Webhook 地址。", file=sys.stderr)
             return 2
         try:
             status = send_webhook(url, text)
