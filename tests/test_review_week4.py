@@ -204,6 +204,70 @@ class TestBuildPage(unittest.TestCase):
         self.assertIn("2026-11-21-bbb", text)
 
 
+class TestReviewWindowBlindSpot(unittest.TestCase):
+    """复盘窗口盲区回归：horizon 90 天的 memo 首个复核日通常在 3 周后，
+    固定 14/7 天窗口会漏掉唯一一条复盘安排，任何视图都看不见。"""
+
+    def setUp(self):
+        self.rows = [
+            row("2026-11-11-chips-export-control", "2026-12-15"),
+            row("2026-11-21-mdb-lending-policy-90d", "2027-02-18"),
+        ]
+        self.today = date(2026, 11, 23)
+
+    def test_next_review_picks_earliest_pending(self):
+        nxt = review.next_review(self.rows, self.today)
+        self.assertIsNotNone(nxt)
+        rd, r = nxt
+        self.assertEqual(rd, date(2026, 12, 15))
+        self.assertEqual(r["memo"], "2026-11-11-chips-export-control")
+
+    def test_next_review_skips_reviewed_and_past(self):
+        done = dict(self.rows[0])
+        done["outcome"] = {"occurred": "A", "brier": 0.1, "calibration": 95.0,
+                           "top_hit": True, "coverage_failure": False}
+        nxt = review.next_review([done, self.rows[1]], self.today)
+        self.assertEqual(nxt[0], date(2027, 2, 18))
+        # 全部复盘完 / 都已过期 -> None
+        self.assertIsNone(review.next_review([done], self.today))
+
+    def test_upcoming_window_widens_to_reach_next_review(self):
+        # 22 天 > 14 天：窗口自动放宽，保证最近一条可见
+        win, widened = review.upcoming_window(self.rows, self.today, days=14)
+        self.assertEqual(win, 22)
+        self.assertTrue(widened)
+        # 已在窗口内则不放大
+        win2, widened2 = review.upcoming_window(self.rows, date(2026, 12, 8), days=14)
+        self.assertEqual(win2, 14)
+        self.assertFalse(widened2)
+
+    def test_calibration_page_shows_next_review_when_14d_empty(self):
+        with tempfile.TemporaryDirectory() as d:
+            scores = os.path.join(d, "scores.jsonl")
+            self._write(scores)
+            out = review.build_page(scores, os.path.join(d, "c.html"), today=self.today)
+            text = open(out, encoding="utf-8").read()
+            # 不再只是一句"未来 14 天内到复核日"的空列表
+            self.assertIn("最近一次在", text)
+            self.assertIn("2026-12-15", text)
+
+    def test_weekly_summary_shows_next_review_when_7d_empty(self):
+        with tempfile.TemporaryDirectory() as d:
+            scores = os.path.join(d, "scores.jsonl")
+            self._write(scores)
+            decisions = os.path.join(d, "decisions")
+            os.makedirs(decisions)
+            text = weekly_summary.build_summary(
+                decisions, scores, today=self.today, days=7)
+            self.assertIn("未来 7 天内无复核", text)
+            self.assertIn("2026-12-15", text)
+
+    def _write(self, path):
+        with open(path, "w", encoding="utf-8") as f:
+            for r in self.rows:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
 class TestWeeklySummary(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

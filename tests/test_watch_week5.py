@@ -15,7 +15,7 @@ import os
 import sys
 import tempfile
 import unittest
-from datetime import date as _date
+from datetime import date as _date, datetime, timezone
 from unittest import mock
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -385,6 +385,57 @@ class TestAutoScoreMemo(unittest.TestCase):
                                    side_effect=OSError("disk full")):
                 with self.assertRaises(OSError):
                     decide.auto_score_memo(path)
+
+
+class TestReviewDateClamp(unittest.TestCase):
+    """复核日兜底回归：horizon=90 的 memo 若被模型写成 3 周后，
+    情景还没被验证就失效，必须在落盘前校正。"""
+
+    NOW = datetime(2026, 11, 23, 1, 0, 0, tzinfo=timezone.utc)
+
+    def _run(self, review_date):
+        meta = {
+            "scenarios": [{"name": "A", "prob": 60}, {"name": "B", "prob": 40}],
+            "triggers": [{"id": "t1", "description": "测试触发条件描述足够长",
+                          "keywords": ["x"], "threshold": 1, "type": "count",
+                          "action": "动作"}],
+            "confidence": "medium", "review_date": review_date,
+        }
+        body = ("```json\n" + json.dumps(meta, ensure_ascii=False) + "\n```\n\n"
+                "# 正文\n\n## 1. 问题与边界\n最晚决策点：2027-01-01。\n")
+        items = [{"source": "t", "published": "2026-11-22T00:00:00Z",
+                  "title": "t", "summary": "s", "link": "u"}]
+        tmp = tempfile.mkdtemp()
+        with mock.patch.object(decide.llm, "chat", return_value=body), \
+             mock.patch.object(decide.store, "search", return_value=items), \
+             mock.patch.object(decide.render, "build", return_value={}), \
+             mock.patch.object(decide.scoring, "record_structural", return_value={}):
+            slug, ok, detail = decide.run_question(
+                {"question": "测试问题", "days": 30, "horizon": 90, "slug": "t1"},
+                tmp, self.NOW)
+        self.assertTrue(ok)
+        with open(os.path.join(tmp, "2026-11-23-t1.json"), encoding="utf-8") as f:
+            return json.load(f), detail
+
+    def test_too_early_review_date_is_clamped(self):
+        saved, detail = self._run("2026-12-15")  # 34 天后，偏差 -56
+        self.assertEqual(saved["review_date"], "2027-02-21")  # 生成日 + 90
+        self.assertEqual(saved["review_date_raw"], "2026-12-15")
+        self.assertIn("review_date", detail)
+
+    def test_correct_review_date_untouched(self):
+        saved, detail = self._run("2027-02-21")
+        self.assertEqual(saved["review_date"], "2027-02-21")
+        self.assertNotIn("review_date_raw", saved)
+
+    def test_small_deviation_within_tolerance_untouched(self):
+        saved, _ = self._run("2027-02-18")  # 偏差 -3 天，允许
+        self.assertEqual(saved["review_date"], "2027-02-18")
+        self.assertNotIn("review_date_raw", saved)
+
+    def test_missing_review_date_is_filled(self):
+        saved, _ = self._run("")
+        self.assertEqual(saved["review_date"], "2027-02-21")
 
 
 class TestScoreGroupsSatisfyKeywordRule(unittest.TestCase):

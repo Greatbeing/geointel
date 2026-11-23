@@ -18,7 +18,7 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import llm
 import memo
@@ -98,6 +98,8 @@ n 是上面材料列表里的编号。只写材料里有的。
 
 ## 8. 复盘日期
 具体日期，以及届时需要回答的 2 个问题。
+复盘日期必须等于「生成日 + {horizon} 天」附近（允许 ±3 天内浮动），
+不要提前到几周之后——那会让情景在被验证前就失效。
 
 ## 9. 历史周期代价对照
 找 1–2 个可比的历史 episode（如 2022 年激进加息周期、2013 年 taper tantrum、
@@ -170,6 +172,14 @@ def build_prompt(question, horizon, days, items):
                            market_table=market_table())
 
 
+def _parse_memo_date(value):
+    """把 review_date 解析成 date；缺失或不合法返回 None（不抛异常）。"""
+    try:
+        return datetime.strptime(str(value)[:10], "%Y-%m-%d").date()
+    except (TypeError, ValueError):
+        return None
+
+
 def auto_score_memo(memo_path, scores_path=None):
     """给 memo 评结构分并写入 scores.jsonl（Week 5）。
 
@@ -214,6 +224,17 @@ def run_question(q, out_dir, now):
             break
     if not valid_meta(meta):
         return slug, False, "LLM output incomplete (scenarios<2 or no triggers)"
+    # 复核日兜底：horizon 90 天的备忘录若把 review_date 写到 3 周后，
+    # 情景还没被验证就失效，复盘得分失真。偏差 >7 天一律校正为生成日+horizon，
+    # 并把模型原值留在 review_date_raw，便于事后核查模型是否跑偏。
+    review_fixed = None
+    raw_review = meta.get("review_date")
+    want = (now.date() + timedelta(days=horizon))
+    got = _parse_memo_date(raw_review)
+    if got is None or abs((got - want).days) > 7:
+        meta["review_date_raw"] = raw_review
+        meta["review_date"] = want.isoformat()
+        review_fixed = (raw_review, meta["review_date"])
     meta.update({
         "question": question,
         "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -234,6 +255,8 @@ def run_question(q, out_dir, now):
     open(memo_path, "w", encoding="utf-8").write(header + body.strip() + "\n")
     detail = f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} " \
              f"triggers={len(meta.get('triggers') or [])}"
+    if review_fixed:
+        detail += f"  review_date {review_fixed[0]!r} -> {review_fixed[1]}"
     # Week 5：落盘即评结构分；失败不阻断备忘录，只留提示。
     try:
         s, deductions = auto_score_memo(memo_path)

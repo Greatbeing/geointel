@@ -61,6 +61,39 @@ def upcoming_reviews(rows, today, days=14):
     return out
 
 
+def next_review(rows, today):
+    """最近一个尚未复盘的复核日 (date, row)；没有则 None。
+
+    用来判断固定窗口（14/7 天）是否漏掉了唯一的复核安排：
+    备忘录的 horizon 多为 90 天，首个复核日常在 3 周之后，落在
+    「14 天」窗口之外就任何视图都看不见，复盘闭环等于没有预警。
+    """
+    pending = []
+    for r in rows:
+        rd = scoring._parse_date(r.get("review_date"))
+        if rd and rd > today and not r.get("outcome"):
+            pending.append((rd, r))
+    if not pending:
+        return None
+    pending.sort(key=lambda x: (x[0], x[1].get("memo") or ""))
+    return pending[0]
+
+
+def upcoming_window(rows, today, days=14):
+    """返回 (实际使用的窗口天数, 是否因最近的复核日更远而自动放宽)。
+
+    窗口取 days 与「距最近复核日的天数」的较大值，保证默认视图
+    至少能看到下一条要复盘的备忘录，不再静默漏报。
+    """
+    nxt = next_review(rows, today)
+    if nxt is None:
+        return days, False
+    gap = (nxt[0] - today).days
+    if gap > days:
+        return gap, True
+    return days, False
+
+
 def _plus_days(d, n):
     from datetime import timedelta
 
@@ -192,6 +225,16 @@ def build_page(scores_path=SCORES_PATH, out_path=CALIBRATION_PAGE, today=None):
                 _esc(r.get("review_date")))
             for r in upcoming)
         parts.append("<p>未来 14 天内到复核日：</p><ul>" + items + "</ul>")
+    else:
+        # 14 天窗口内没有安排也要给出最近一条，避免页面上看不出何时复盘
+        nxt = next_review(rows, today)
+        if nxt is not None:
+            rd, r = nxt
+            parts.append(
+                "<p>未来 14 天内无复核；最近一次在 %s 天后（%s）：</p><ul><li>%s 《%s》"
+"——复核日 %s</li></ul>" % (
+                    (rd - today).days, _esc(rd), _esc(r.get("memo_date")),
+                    _esc(r.get("question")), _esc(r.get("review_date"))))
 
     # 全部结构分一览
     parts.append("<h2>结构分一览</h2>")
@@ -241,6 +284,16 @@ def _print_status(rows, today):
         for r in up:
             print(f"  {r.get('memo_date')} 《{r.get('question')}》"
                   f"——复核日 {r.get('review_date')}")
+    else:
+        # 固定 14 天窗口为空时，至少把最近一条复核安排报出来，不留盲区
+        win, widened = upcoming_window(rows, today, days=14)
+        nxt = next_review(rows, today)
+        if nxt is not None:
+            rd, r = nxt
+            note = f"；窗口已放宽到 {win} 天" if widened else ""
+            print(f"\n未来 14 天内无复核{note}；最近一次在 {(rd - today).days} 天后"
+                  f"（{rd}）：")
+            print(f"  {r.get('memo_date')} 《{r.get('question')}》——复核日 {rd}")
 
 
 def main(argv=None):

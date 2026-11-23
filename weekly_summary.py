@@ -90,9 +90,15 @@ def build_summary(decisions_dir=DECISIONS, scores_path=SCORES_PATH,
             + (f" · 复盘 {data.get('review_date')}" if data.get("review_date") else ""))
     lines.append("")
 
-    lines.append("## 即将复盘（未来 7 天）")
+    lines.append("## 即将复盘")
     if not upcoming:
-        lines.append("无。")
+        nxt = review_mod.next_review(rows, today)
+        if nxt is not None:
+            rd, r = nxt
+            lines.append(f"未来 7 天内无复核；最近一次在 {(rd - today).days} 天后（{rd}）：")
+            lines.append(f"- {r.get('memo_date')}《{r.get('question')}》——复核日 {rd}")
+        else:
+            lines.append("无。")
     for r in upcoming:
         lines.append(f"- {r.get('memo_date')}《{r.get('question')}》"
                      f"——复核日 {r.get('review_date')}")
