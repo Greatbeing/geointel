@@ -199,6 +199,17 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 .alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
 .alert-item a{color:var(--ink-2)}
 
+/* 首页战绩卡：显著但不喧宾夺主——边框 + 底色 + 可点整块 */
+.track-card{
+  margin:26px 0 34px; border:1px solid var(--rule-2); background:var(--paper-2);
+}
+.track-card a{
+  display:block; padding:20px 22px; text-decoration:none; color:var(--ink);
+}
+.track-card a p{margin:0; text-indent:0; font-variant-numeric:tabular-nums}
+.track-card:hover{border-color:var(--accent)}
+.track-card:hover a p.kicker{color:var(--accent)}
+
 .colophon{
   margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
   font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
@@ -454,6 +465,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
     for label, path, key in (("简报", "/index.html", "digest"),
                              ("决策备忘录", "/decisions.html", "decisions"),
                              ("触发告警", "/alerts.html", "alerts"),
+                             ("预测战绩", "/track-record.html", "track-record"),
                              ("概率校准", "/calibration.html", "calibration")):
         cur = ' aria-current="page"' if key == current else ""
         navs.append('<a href="%s"%s>%s</a>' % (href(path), cur, label))
@@ -526,6 +538,103 @@ def load_scores(path=None):
             if row.get("memo") and isinstance(s, (int, float)):
                 out[row["memo"]] = s
     return out
+
+
+def load_score_rows(path=None):
+    """读 scores.jsonl 的整行（战绩页用：需要 outcome 与日期，不只结构分）。
+
+    返回按 (memo_date, memo) 排序的行列表；坏行跳过。"""
+    path = path or os.path.join(HERE, "scores.jsonl")
+    rows = []
+    try:
+        f = open(path, encoding="utf-8")
+    except OSError:
+        return rows
+    with f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            if isinstance(row, dict) and row.get("memo"):
+                rows.append(row)
+    rows.sort(key=lambda r: (r.get("memo_date") or "", r.get("memo") or ""), reverse=True)
+    return rows
+
+
+def _fmt_brier(v):
+    return "%.3f" % v if isinstance(v, (int, float)) else "—"
+
+
+def build_track_record(rows, question_map):
+    """生成战绩页正文（render.build 调用；导航 key 为 track-record）。
+
+    rows: load_score_rows 的结果；question_map: {memo stem: 首页问题文本}（无则用行里的 question）。
+    累计 Brier 只对已复盘（outcome 非 None）的 memo 计算；预测 vs 结果
+    逐条列出：主情景（最高概率）→ 实际走向 → 命中与否。
+    """
+    reviewed = [r for r in rows if r.get("outcome")]
+    pending = [r for r in rows if not r.get("outcome")]
+    briers = [r["outcome"]["brier"] for r in reviewed
+              if isinstance(r["outcome"].get("brier"), (int, float))]
+    n_hit = sum(1 for r in reviewed if r["outcome"].get("top_hit"))
+    n_cover_fail = sum(1 for r in reviewed if r["outcome"].get("coverage_failure"))
+
+    stats = []
+    stats.append("已复盘 <strong>%d</strong> 份" % len(reviewed))
+    stats.append("待复盘 <strong>%d</strong> 份" % len(pending))
+    if briers:
+        stats.append("累计 Brier <strong>%s</strong>（越低越好）" % _fmt_brier(sum(briers) / len(briers)))
+    else:
+        stats.append("累计 Brier <strong>—</strong>")
+    if reviewed:
+        stats.append("最高概率情景命中 <strong>%d/%d</strong>" % (n_hit, len(reviewed)))
+        stats.append("覆盖失败 <strong>%d</strong> 次" % n_cover_fail)
+    parts = [
+        '<p class="lede">每一条决策备忘录都要在复核日对答案：当时给的概率分布，'
+        '和实际发生了什么。Brier 分累计越低，预测越准；没到期的先欠着，不猜。</p>',
+        "<p>" + " · ".join(stats) + "</p>",
+    ]
+
+    # 每条备忘录：预测 vs 结果
+    parts.append("<h2>预测 vs 结果</h2>")
+    if not rows:
+        parts.append("<p>还没有备忘录进入战绩表。</p>")
+    else:
+        items = []
+        for r in rows:
+            o = r.get("outcome")
+            name = r.get("memo") or ""
+            q = question_map.get(name) or r.get("question") or name
+            day = r.get("memo_date") or (name[:10] if re.match(r"^\d{4}-\d\d-\d\d", name) else "")
+            scen = r.get("scenarios") or []
+            top = max(scen, key=lambda s: s.get("prob") or 0) if scen else None
+            link = href("/decisions/" + name + ".html")
+            if o is None:
+                state = "待复盘（%s）" % (r.get("review_date") or "复核日待定")
+                detail = top and ("预测主情景：%s %s%%" % (top.get("name"), top.get("prob"))) or ""
+            else:
+                state = "已复盘"
+                hit = "命中" if o.get("top_hit") else "未命中"
+                lines = ["预测主情景：%s" % (top.get("name") if top else "—")]
+                lines.append("实际走向：%s" % (o.get("occurred") or "—"))
+                lines.append("Brier %s" % _fmt_brier(o.get("brier")))
+                detail = " · ".join(lines) + " · %s" % hit
+            items.append(
+                '<li><div class="when">%s</div><div><p class="what"><a href="%s">%s</a></p>'
+                '<p class="note">%s · %s</p></div></li>'
+                % (html.escape(day or "—"), link, html.escape(str(q)),
+                   html.escape(state), html.escape(str(detail))))
+        parts.append('<ul class="index-list">' + "".join(items) + "</ul>")
+
+    parts.append(
+        '<p class="note" style="text-indent:0;color:var(--ink-3);font-size:13px">'
+        "Brier 分对多情景概率分布打分（0 完美，2 最差）；只在复核日登记了实际走向后计入。"
+        "登记由人完成——系统不猜「发生了什么」。</p>")
+    return "".join(parts)
 
 
 LINK_LINE = re.compile(
@@ -673,11 +782,32 @@ def build():
           page("触发告警", "决策备忘录里的触发条件命中记录",
                "".join(alert_chunks) or '<p class="lede">暂时没有触发。</p>', "alerts"))
 
+    # 战绩页：累计 Brier + 已复盘/待复盘 + 每条备忘录预测 vs 结果
+    score_rows = load_score_rows()
+    track_body = build_track_record(score_rows, all_questions)
+    write("track-record.html",
+          page("预测战绩", "复盘 · Brier · 预测 vs 结果", track_body,
+               "track-record", big=False))
+
     # 首页：最新简报 + 档案
     if digests:
         day = digest_entries[0][0]
         _meta, body = frontmatter(digests[0])
         body_html = md2html(strip_ops(strip_lede(body)))
+        # 显著入口：战绩卡（在最新简报正文之前）
+        reviewed_n = sum(1 for r in score_rows if r.get("outcome"))
+        pending_n = len(score_rows) - reviewed_n
+        briers = [r["outcome"]["brier"] for r in score_rows
+                  if r.get("outcome") and isinstance(r["outcome"].get("brier"), (int, float))]
+        mean_brier = _fmt_brier(sum(briers) / len(briers)) if briers else "—"
+        track_card = (
+            '<div class="track-card"><a href="%s">'
+            '<p class="kicker" style="margin:0 0 6px">预测战绩</p>'
+            "<p>已复盘 %d 份 · 待复盘 %d 份 · 累计 Brier %s</p>"
+            '<p class="note" style="margin:6px 0 0;color:var(--ink-3);text-indent:0">'
+            "每条备忘录都在复核日对答案，预测准不准，看这一页。</p></a></div>"
+            % (href("/track-record.html"), reviewed_n, pending_n, mean_brier))
+        body_html = track_card + body_html
         archive = []
         for d, _m in digest_entries[1:31]:
             archive.append('<li><a href="%s">%s</a></li>'
@@ -719,7 +849,8 @@ def build():
             if f.endswith(".html") and f not in names:
                 os.remove(os.path.join(d, f))
 
-    return {"digests": len(digests), "decisions": len(decisions), "alerts": len(alerts)}
+    return {"digests": len(digests), "decisions": len(decisions), "alerts": len(alerts),
+            "track_records": len(score_rows)}
 
 
 if __name__ == "__main__":
