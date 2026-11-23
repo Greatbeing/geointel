@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300">
+  <style>
+    .bg{fill:#f6f3ec}.ink{fill:#1d1d1b}.mute{fill:#7a756b}.line{stroke:#1d1d1b}.hair{stroke:#c9c2b4}.acc{fill:#9b2c1f}.accs{stroke:#9b2c1f}
+    .serif{font-family:'Source Han Serif SC','Noto Serif SC','Songti SC',Georgia,serif}
+    .mono{font-family:'SF Mono',Menlo,Consolas,monospace}
+    @media (prefers-color-scheme:dark){.bg{fill:#14140f}.ink{fill:#ece7db}.mute{fill:#8f897c}.line{stroke:#ece7db}.hair{stroke:#3a372f}.acc{fill:#e0715f}.accs{stroke:#e0715f}}
+  </style>
+  <rect class="bg" width="1280" height="300"/>
+  <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#9a9385" stroke-width="1"/></marker></defs>
+  <g class="serif">
+    <g transform="translate(96,0)">
+      <text class="mute mono" y="96" font-size="12" letter-spacing="2">01</text>
+      <text class="ink" y="136" font-size="26">采集</text>
+      <text class="mute" y="170" font-size="14">49 个信源</text><text class="mute" y="192" font-size="14">SQLite · FTS5</text>
+    </g>
+    <g transform="translate(316,0)">
+      <text class="mute mono" y="96" font-size="12" letter-spacing="2">02</text>
+      <text class="ink" y="136" font-size="26">简报</text>
+      <text class="mute" y="170" font-size="14">每日要点</text><text class="mute" y="192" font-size="14">附原文与时间</text>
+    </g>
+    <g transform="translate(536,0)">
+      <text class="mute mono" y="96" font-size="12" letter-spacing="2">03</text>
+      <text class="ink" y="136" font-size="26">备忘录</text>
+      <text class="mute" y="170" font-size="14">情景概率</text><text class="mute" y="192" font-size="14">触发 · 证伪 · 复盘日</text>
+    </g>
+    <g transform="translate(756,0)">
+      <text class="mute mono" y="96" font-size="12" letter-spacing="2">04</text>
+      <text class="ink" y="136" font-size="26">监控</text>
+      <text class="mute" y="170" font-size="14">关键词组 + LLM 复核</text><text class="mute" y="192" font-size="14">飞书推送</text>
+    </g>
+    <g transform="translate(996,0)">
+      <text class="acc mono" y="96" font-size="12" letter-spacing="2">05</text>
+      <text class="acc" y="136" font-size="26">认账</text>
+      <text class="mute" y="170" font-size="14">到期结算 Brier</text><text class="mute" y="192" font-size="14">战绩全部公开</text>
+    </g>
+  </g>
+  <g stroke="#9a9385" stroke-width="1" fill="none" marker-end="url(#a)">
+    <line x1="200" y1="128" x2="290" y2="128"/><line x1="420" y1="128" x2="510" y2="128"/><line x1="660" y1="128" x2="730" y2="128"/><line x1="900" y1="128" x2="970" y2="128"/>
+  </g>
+  <path class="accs" d="M1040,214 C1040,262 600,262 600,214" fill="none" stroke-width="1" stroke-dasharray="3 4" marker-end="url(#a)"/>
+  <text class="mute serif" x="820" y="278" font-size="13" text-anchor="middle" font-style="italic">校准结果反哺下一份备忘录</text>
+</svg>
