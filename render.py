@@ -45,8 +45,8 @@ SLOGAN = "先读世界，再下判断。"
 
 CSS = """
 :root{
-  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
-  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --paper:#f6f3ec; --paper-2:#efebe1; --ink:#1d1d1b; --ink-2:#4f4b44;
+  --ink-3:#86806f; --rule:#e2dccf; --rule-2:#c9c2b4; --accent:#9b2c1f;
   --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
   --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
@@ -256,6 +256,51 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
   .body li,.body p{orphans:2; widows:2}
   a{text-decoration:none}
 }
+/* ---- 编辑式打磨 ---- */
+.top{max-width:760px; padding:22px 24px 16px; border-bottom:0;
+  border-bottom:1px solid var(--rule); background:var(--paper);
+  backdrop-filter:saturate(1.2) blur(8px)}
+.top nav a{font-size:13px; letter-spacing:.06em; position:relative; padding:2px 0}
+.top nav a[aria-current]::after{content:""; position:absolute; left:0; right:0; bottom:-17px;
+  height:2px; background:var(--accent)}
+.wrap{max-width:760px}
+.kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; margin-top:56px}
+h1.dateline{font-size:clamp(32px,5.4vw,48px); font-weight:600; letter-spacing:.01em; margin-bottom:14px}
+.masthead{border-bottom:0; padding-bottom:30px; position:relative}
+.masthead::after{content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+  border-top:1.5px solid var(--ink); border-bottom:.5px solid var(--ink)}
+.tagline{color:var(--ink-3); letter-spacing:.3em}
+.body h2{font-family:var(--serif); font-size:23px; font-weight:600; letter-spacing:.04em;
+  margin:64px 0 18px; padding-top:0; border-top:0; display:flex; align-items:center; gap:14px}
+.body h2::after{content:""; flex:1; height:1px; background:var(--rule-2)}
+.body h3{font-family:var(--mono); font-size:11.5px; font-weight:400; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--accent); margin:30px 0 8px}
+.body ol{counter-reset:item; list-style:none; padding-left:0}
+.body ol>li{counter-increment:item; position:relative; padding:12px 0 12px 44px;
+  margin:0; border-bottom:1px solid var(--rule); line-height:1.8}
+.body ol>li:last-child{border-bottom:0}
+.body ol>li::before{content:counter(item,decimal-leading-zero); position:absolute; left:0; top:15px;
+  font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.05em}
+.body .src{font-size:12px; color:var(--ink-3); margin-left:4px}
+.track-card{border:0; background:transparent;
+  border-bottom:1px solid var(--rule-2); margin:8px 0 10px}
+.track-card a{padding:22px 0}
+.track-card a p:not(.kicker){font-family:var(--serif); font-size:20px}
+.track-card a p.kicker{margin:0 0 8px}
+.track-card a p:last-child{font-size:14px; color:var(--ink-3); font-family:var(--sans); margin-top:6px}
+.section-head{font-family:var(--mono); text-transform:uppercase; font-size:11.5px;
+  letter-spacing:.24em; color:var(--ink-3); margin-top:80px; border-bottom:1.5px solid var(--ink)}
+.plain-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0 24px}
+.plain-list li{font-size:14.5px; padding:11px 0; font-variant-numeric:tabular-nums}
+.index-list .what{font-family:var(--serif); font-size:18px; line-height:1.55}
+.index-list li{padding:20px 0}
+.colophon{border-top:1.5px solid var(--ink); margin-top:96px}
+@media (max-width:600px){
+  .top nav a[aria-current]::after{bottom:-4px}
+  .body ol>li{padding-left:34px}
+  .body h2{font-size:20px; margin-top:48px}
+}
+@media print{.masthead::after,.body h2::after{display:none}}
 """
 
 
