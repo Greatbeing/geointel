@@ -17,11 +17,17 @@
   exclude_keywords: ["education", "exam"]
 
 用法：
-  watch.py [--hours 24] [--out-dir out/alerts]
+  watch.py [--hours 24] [--out-dir out/alerts] [--llm-verify]
   GEOINTEL_ALERT_WEBHOOK=https://... watch.py --send
 
 站点报告保留当前所有活跃告警；--send 只通知“上次未活跃、这次活跃”的
 触发器，成功后才写状态，避免每 2 小时重复推送，网络失败也不会丢通知。
+
+LLM 语义复核（--llm-verify 或环境变量 GEOINTEL_WATCH_LLM_VERIFY=1）：
+关键词粗筛命中后，逐条把材料交给 LLM 判断「是否真支持该触发条件」，
+返回 yes/no + 理由 + 引用的原文片段。LLM 不可用（网关挂了、超时、
+返回不合规格）一律降级回规则口径：保留粗筛结果并在告警里注明
+「未复核」。复核后的告警带理由与原文链接。
 """
 import argparse
 import glob
@@ -31,6 +37,7 @@ import re
 import sys
 from datetime import datetime, timezone
 
+import llm
 import render
 import store
 import weekly_summary
@@ -39,6 +46,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # 数值触发用的市场数据超过这么多天没更新，就判为过期，不拿旧数判定
 VALUE_STALE_DAYS = 7
 ALERT_WEBHOOK_ENV = "GEOINTEL_ALERT_WEBHOOK"
+# LLM 复核总开关（1/true/yes 都算开）；--llm-verify 优先于它
+LLM_VERIFY_ENV = "GEOINTEL_WATCH_LLM_VERIFY"
 
 
 def _terms(value):
@@ -136,6 +145,101 @@ def count_hits(t, items):
     return hits
 
 
+# ---- LLM 语义复核（paid-ready 第 1 步：告警可信度）----
+
+VERIFY_SYSTEM = (
+    "你是一个严谨的事实核查员。你只根据给出的新闻材料判断它是否支持指定的触发条件，"
+    "绝不使用材料之外的知识，不猜测。答案必须是纯 JSON。"
+)
+
+def _verify_prompt(t, it):
+    hay = ((it.get("title") or "") + "\n" + (it.get("summary") or "")).strip()
+    return (
+        "触发条件：{desc}\n"
+        "关联问题：{q}\n\n"
+        "新闻材料：\n标题：{title}\n摘要：{summary}\n\n"
+        "判断这份材料是否真的支持上述触发条件（即：材料报告的事实就是该条件描述的事件本身，"
+        "而不是碰巧含相关词的其他新闻）。只输出一个 JSON 对象，格式：\n"
+        '{{"verdict": "yes" 或 "no", "reason": "一句话理由", "quote": "材料原文里支撑判断的片段（不超过 120 字，没有就写空串）"}}'
+    ).format(desc=(t.get("description") or t.get("id") or "").strip(),
+             q=(t.get("question") or "").strip(),
+             title=(it.get("title") or "").strip(),
+             summary=(it.get("summary") or "").strip(),
+             hay=hay)
+
+
+def parse_verdict(text):
+    """把 LLM 的回复解析成 (verdict, reason, quote)。
+
+    宽容解析：先剥 ```json 围栏，再找第一段 {…}；失败返回 None（调用方
+    按未复核处理，绝不让一次坏输出把流水线弄崩）。yes/no 只认这两个词，
+    其他（含“可能是”）一律视为未定 → 降级规则口径。
+    """
+    if not text:
+        return None
+    s = text.strip()
+    m = re.search(r"```(?:json)?\s*(.*?)```", s, re.S)
+    if m:
+        s = m.group(1).strip()
+    m = re.search(r"\{.*\}", s, re.S)
+    if not m:
+        return None
+    try:
+        obj = json.loads(m.group(0))
+    except ValueError:
+        return None
+    if not isinstance(obj, dict):
+        return None
+    verdict = str(obj.get("verdict", "")).strip().lower()
+    if verdict not in ("yes", "no"):
+        return None
+    reason = str(obj.get("reason", "")).strip()[:200]
+    quote = str(obj.get("quote", "")).strip()[:160]
+    return verdict, reason, quote
+
+
+def verify_hit(t, it, timeout=90):
+    """对一条粗筛命中做 LLM 语义复核。
+
+    返回 dict：{verdict, reason, quote, ok}。ok=False 表示 LLM 不可用
+    或输出不合规格，调用方降级为规则口径（按命中处理，标未复核）。
+    任何异常都在这里吃掉——watch 是生产流水线，复核失败不能崩。
+    """
+    fallback = {"verdict": None, "reason": "", "quote": "", "ok": False}
+    try:
+        text = llm.chat(_verify_prompt(t, it), system=VERIFY_SYSTEM,
+                        timeout=timeout, max_tokens=2000)
+    except Exception as e:  # noqa: BLE001 — 网关挂了/超时：降级，不崩
+        fallback["reason"] = f"LLM 复核不可用（{type(e).__name__}）"
+        return fallback
+    parsed = parse_verdict(text)
+    if parsed is None:
+        fallback["reason"] = "LLM 复核输出不合规格"
+        return fallback
+    verdict, reason, quote = parsed
+    return {"verdict": verdict, "reason": reason, "quote": quote, "ok": True}
+
+
+def verify_hits(t, hits, timeout=90):
+    """逐条复核粗筛命中；返回 (保留的 hits, 逐条元数据)。
+
+    元数据 dict 以 item id 为键：{verdict, reason, quote}。
+    - verdict == "no"：材料不支持触发条件 → 从告警里剔除。
+    - verdict == "yes"：保留，附理由与原文引用。
+    - 复核失败（LLM 不可用/超时/输出坏）：该条按规则口径保留，页面上
+      标「未复核」——单次网络抖动不能静默吞掉一条真告警。
+    """
+    meta = {}
+    kept = []
+    for it in hits:
+        v = verify_hit(t, it, timeout=timeout)
+        meta[it["id"]] = v
+        if v["ok"] and v["verdict"] == "no":
+            continue
+        kept.append(it)
+    return kept, meta
+
+
 OPS = {
     ">=": lambda v, t: v >= t,
     ">": lambda v, t: v > t,
@@ -229,6 +333,11 @@ def send_new_alerts(events, state_path, webhook):
     return len(fresh)
 
 
+def _env_flag(name):
+    v = os.environ.get(name, "").strip().lower()
+    return v in ("1", "true", "yes", "on")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=24)
@@ -238,7 +347,12 @@ def main(argv=None):
     ap.add_argument("--webhook", default="", help=f"飞书 Webhook；也可用 {ALERT_WEBHOOK_ENV}")
     ap.add_argument("--state", default=os.path.join(HERE, "data", "alert-state.json"),
                     help="实时通知去重状态（默认在 gitignore 的 data/ 下）")
+    ap.add_argument("--llm-verify", action="store_true", default=None,
+                    help="关键词粗筛后用 LLM 语义复核（判断材料是否真支持触发条件）；"
+                         f"也可用 {LLM_VERIFY_ENV}=1")
     args = ap.parse_args(argv)
+
+    llm_verify = args.llm_verify if args.llm_verify is not None else _env_flag(LLM_VERIFY_ENV)
 
     triggers = load_triggers(args.decisions_dir)
     if not triggers:
@@ -276,6 +390,12 @@ def main(argv=None):
             continue
 
         hits = count_hits(t, items)
+        vmeta = {}
+        if llm_verify and hits:
+            try:
+                hits, vmeta = verify_hits(t, hits)
+            except Exception as e:  # noqa: BLE001 — 双保险：复核内部异常也不能崩
+                print(f"  LLM 复核异常（降级规则口径）：{e}", file=sys.stderr)
         try:
             need = float(t["threshold"])
         except (TypeError, ValueError):
@@ -287,11 +407,22 @@ def main(argv=None):
             start = len(lines)
             lines.append(f"## [{t['id']}] {t['description']}")
             lines.append(f"- 关联决策：{t['question']}（{t['decision']}）")
-            lines.append(f"- 命中 {len(hits)} 条（阈值 {need:g}）")
+            verified_n = sum(1 for it in hits if (vmeta.get(it["id"]) or {}).get("ok"))
+            verify_note = f"，LLM 复核确认 {verified_n} 条" if vmeta else ""
+            lines.append(f"- 命中 {len(hits)} 条（阈值 {need:g}{verify_note}）")
             if t["action"]:
                 lines.append(f"- 触发后动作：{t['action']}")
             for it in hits[:5]:
-                lines.append(f"  - {it['published'][:10]} {it['title']}（{it['source']}）{it['link']}")
+                link = it.get("link") or ""
+                lines.append(f"  - {it['published'][:10]} {it['title']}（{it['source']}）{link}")
+                v = vmeta.get(it["id"]) or {}
+                if v.get("ok") and (v.get("reason") or v.get("quote")):
+                    if v.get("reason"):
+                        lines.append(f"    - 复核：{v['reason']}")
+                    if v.get("quote"):
+                        lines.append(f"    - 原文：{v['quote']}")
+                elif vmeta:
+                    lines.append("    - 复核：未复核（LLM 不可用，按规则口径保留）")
             lines.append("")
             fired_events.append(_event(t, "\n".join(lines[start:])))
 
