@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import store  # noqa: E402
 
 UA = {"User-Agent": "curl/7.81.0"}
+FX_FRESH_BDAYS = 2
 TIMEOUT = 30
 
 # series: 中文名 / 单位 / 显示格式 / 来源
@@ -158,7 +159,14 @@ def collect(days=35):
     rows.extend(derive_spread(rows))
 
     # 3. 汇率备用：FRED 没给出的 FX 序列才用 ECB / Frankfurter 补
-    have_fx = {r["series"] for r in rows if r["series"] in ("USDCNY", "EURUSD", "USDJPY")}
+    fred_fx_newest = {}
+    for r in rows:
+        if r["series"] in ("USDCNY", "EURUSD", "USDJPY"):
+            if r["date"] > fred_fx_newest.get(r["series"], ""):
+                fred_fx_newest[r["series"]] = r["date"]
+    # 只有足够新（≤ FX_FRESH_BDAYS 个工作日）的 FRED 汇率才算“已有”，否则仍去备用源取最新一天
+    have_fx = {n for n, d in fred_fx_newest.items()
+               if business_days_between(date.fromisoformat(d), today) <= FX_FRESH_BDAYS}
     if len(have_fx) < 3:
         fx = {}
         try:
@@ -186,6 +194,8 @@ def collect(days=35):
         for name in ("USDCNY", "EURUSD", "USDJPY"):
             if name not in have_fx and name in fx:
                 d, v, src = fx[name]
+                if d <= fred_fx_newest.get(name, ""):
+                    continue  # 备用源不比 FRED 新，不重复写
                 rows.append({"series": name, "date": d, "value": round(v, 6), "source": src})
         missing = [n for n in ("USDCNY", "EURUSD", "USDJPY")
                    if n not in have_fx and n not in fx]
@@ -195,7 +205,23 @@ def collect(days=35):
     return rows, failed
 
 
-def ensure_fresh(max_age_days=1):
+def business_days_between(older, newer):
+    """older 到 newer 之间经过的工作日数（不含周末；older 当天不计）。"""
+    if newer <= older:
+        return 0
+    n, d = 0, older
+    while d < newer:
+        d += timedelta(days=1)
+        if d.weekday() < 5:
+            n += 1
+    return n
+
+
+def _age(newest, today):
+    return business_days_between(date.fromisoformat(newest), today)
+
+
+def ensure_fresh(max_age_days=5):
     """保证市场数据新鲜：最新数据超过 max_age_days 天就抓一轮。
     供 digest.py 在出简报前调用（best-effort，失败不阻断简报）。
     返回 True 表示数据新鲜可用。"""
@@ -205,8 +231,7 @@ def ensure_fresh(max_age_days=1):
     if latest:
         newest = max(v["date"] for v in latest.values())
         try:
-            age = (today - date.fromisoformat(newest)).days
-            fresh = age <= max_age_days
+            fresh = _age(newest, today) <= max_age_days
         except ValueError:
             fresh = False
     if not fresh:
@@ -216,23 +241,22 @@ def ensure_fresh(max_age_days=1):
                 store.upsert_market(rows)
                 latest = store.latest_market()
                 newest = max(v["date"] for v in latest.values())
-                return (today - date.fromisoformat(newest)).days <= max_age_days
+                return _age(newest, today) <= max_age_days
         except Exception:  # noqa: BLE001 — 抓取失败也不阻断简报
             return False
     return fresh
 
 
-def dashboard_strip(max_age_days=3):
+def dashboard_strip(max_age_days=5):
     """仪表条（markdown，供 digest.py 贴到简报顶部）。
-    数据缺失或过期超过 max_age_days 天时，返回一句“暂无更新”，不编数字。"""
+    数据缺失或最新数据超过 max_age_days 个工作日时，返回一句“暂无更新”，不编数字。"""
     latest = store.latest_market()
     today = date.today()
     newest = None
     if latest:
         try:
             newest = max(v["date"] for v in latest.values())
-            age = (today - date.fromisoformat(newest)).days
-            if age > max_age_days:
+            if _age(newest, today) > max_age_days:
                 newest = None
         except ValueError:
             newest = None
