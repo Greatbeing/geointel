@@ -174,7 +174,7 @@ def collect(days=35):
             if ecb_date and "USD" in ecb and "CNY" in ecb:
                 fx["USDCNY"] = (ecb_date, ecb["CNY"] / ecb["USD"], "ECB")
             if ecb_date and "USD" in ecb:
-                fx["EURUSD"] = (ecb_date, 1.0 / ecb["USD"], "ECB")
+                fx["EURUSD"] = (ecb_date, ecb["USD"], "ECB")  # ECB 报价为 1 EUR 兑多少 USD，本身就是 EURUSD
             if ecb_date and "USD" in ecb and "JPY" in ecb:
                 fx["USDJPY"] = (ecb_date, ecb["JPY"] / ecb["USD"], "ECB")
         except Exception as e:  # noqa: BLE001
