@@ -210,6 +210,14 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 .track-card:hover{border-color:var(--accent)}
 .track-card:hover a p.kicker{color:var(--accent)}
 
+/* 备忘录材料出处清单：比索引更紧凑，编号用等宽小字 */
+.mat-list li{display:block; padding:7px 0; border-bottom:1px solid var(--rule);
+ margin:0; font-size:13.5px; line-height:1.6; text-indent:0}
+.mat-list .mat-n{font-family:var(--mono); font-size:12px; color:var(--ink-3);
+ margin-right:6px; font-variant-numeric:tabular-nums}
+.mat-list a{color:var(--ink-2); border-bottom-color:transparent}
+.mat-list a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
 .colophon{
   margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
   font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
@@ -682,6 +690,41 @@ def clean_alert(text, seen):
     return text
 
 
+def materials_section(extra):
+    """备忘录尾部的「材料出处」清单：编号 → 原文链接 + 来源 + 日期。
+
+    extra["materials"] 由 decide.py 落盘（编号/标题/来源/发布日期/链接）。
+    没有该字段（旧备忘录）返回空串，页面不出现空节。
+    """
+    mats = extra.get("materials")
+    if not isinstance(mats, list) or not mats:
+        return ""
+    items = []
+    for m in mats:
+        if not isinstance(m, dict):
+            continue
+        n = m.get("n")
+        link = (m.get("link") or "").strip()
+        title = str(m.get("title") or "").strip()
+        src = str(m.get("source") or "").strip()
+        day = str(m.get("published") or "").strip()
+        bits = [b for b in (src, day) if b]
+        note = "，".join(bits)
+        if link:
+            inner = '<a href="%s" rel="nofollow">%s</a>' % (html.escape(link, quote=True),
+                                                             html.escape(title or link))
+        else:
+            inner = html.escape(title or "（无标题）")
+        items.append(
+            '<li><span class="mat-n">[%s]</span> %s%s</li>'
+            % (html.escape(str(n)), inner,
+               ' <span class="src">（%s）</span>' % html.escape(note) if note else ""))
+    if not items:
+        return ""
+    return ('<div class="section-head">材料出处</div>'
+            '<ul class="index-list mat-list">' + "".join(items) + "</ul>")
+
+
 def build():
     os.makedirs(SITE, exist_ok=True)
     digests = read_dir("digest")
@@ -720,7 +763,8 @@ def build():
             under.append("视界 %s 天" % meta["horizon_days"])
         write(os.path.join("decisions", name + ".html"),
               page(question, "决策备忘录",
-                   md2html(strip_data_blocks(strip_ops(strip_lede(body)))), "decisions",
+                   md2html(strip_data_blocks(strip_ops(strip_lede(body)))) +
+                   materials_section(extra), "decisions",
                    under=under, big=False))
         # 旧日期的备忘录页面保留（可回看同一问题此前的判断），
         # 但索引只列每个 slug 的最新一条，否则周度重跑后首页会重复堆叠。
