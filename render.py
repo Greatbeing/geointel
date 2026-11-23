@@ -21,12 +21,13 @@ BASE = os.environ.get("GEOINTEL_BASE", "/geointel")
 
 CONFIDENCE_CN = {"low": "低", "medium": "中", "high": "高"}
 
-# 纯字母 wordmark（几何单线条骨架，小写、正圆、直竖），由 geointel-brand/gen.py 生成：
+# 标记 + wordmark：圆=世界，横线=地平线，砖红方块=写下的概率；字母部分（几何单线条骨架，小写、正圆、直竖），由 geointel-brand/gen.py 生成：
 # 统一线宽 16/100 x-height + geo/intel 之间留一格呼吸 + i 的点改成小方块（数据点）。
 # currentColor 继承页面文字色，深色模式自动跟随。
 WORDMARK = (
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" '
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-190.00 -162.00 938.00 236.00" '
     'role="img" aria-label="geointel">'
+    '<g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"><circle cx="-112" cy="-50" r="62"/><path d="M -174 -50 H -50"/></g><rect x="-80" y="-108" width="22" height="22" style="fill:var(--accent,#9b2c1f)"/>'
     '<g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" '
     'stroke-linejoin="round">'
     '<path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/>'
@@ -41,7 +42,7 @@ WORDMARK = (
     '<rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg>'
 )
 
-SLOGAN = "先读世界，再下判断。"
+SLOGAN = "先读世界，再下判断，到期认账。"
 
 CSS = """
 :root{
@@ -531,6 +532,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
     return (
         '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2730%27 cy=%2734%27 r=%2722%27 fill=%27none%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Cpath d=%27M8 34H52%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Crect x=%2740%27 y=%276%27 width=%2714%27 height=%2714%27 fill=%27%239b2c1f%27/%3E%3C/svg%3E">'
         "<title>{title}</title><style>{css}</style></head><body>"
         '<div class="top"><a class="brand" href="{home}">{mark}</a>'
         "<nav>{nav}</nav></div>"

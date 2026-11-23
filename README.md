@@ -125,4 +125,6 @@ python3 -m unittest discover -s tests
 
 <br>
 
+<p align="center"><b>先读世界，再下判断，到期认账。</b></p>
+
 <p align="center"><sub>横幅中的概率与分数为示意。真实记录见 <a href="https://greatbeing.github.io/geointel/track-record.html">预测战绩</a>。</sub></p>
