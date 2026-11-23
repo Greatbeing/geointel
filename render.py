@@ -25,9 +25,9 @@ CONFIDENCE_CN = {"low": "低", "medium": "中", "high": "高"}
 # 统一线宽 16/100 x-height + geo/intel 之间留一格呼吸 + i 的点改成小方块（数据点）。
 # currentColor 继承页面文字色，深色模式自动跟随。
 WORDMARK = (
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-190.00 -162.00 938.00 236.00" '
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-250.00 -162.00 998.00 236.00" '
     'role="img" aria-label="geointel">'
-    '<g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"><circle cx="-112" cy="-50" r="62"/><path d="M -174 -50 H -50"/></g><rect x="-80" y="-108" width="22" height="22" style="fill:var(--accent,#9b2c1f)"/>'
+    '<g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"><circle cx="-150" cy="-50" r="70"/><path d="M -220 -50 H -80"/></g><rect x="-112" y="-122" width="26" height="26" style="fill:var(--accent,#9b2c1f)"/>'
     '<g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" '
     'stroke-linejoin="round">'
     '<path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/>'
@@ -76,7 +76,7 @@ body{
 .top .brand{
   display:flex; line-height:0; color:var(--ink); text-decoration:none;
 }
-.top .brand svg{display:block; height:26px; width:auto}
+.top .brand svg{display:block; height:30px; width:auto}
 .top nav{display:flex; gap:22px; flex-wrap:wrap}
 .top nav a{
   font-size:13.5px; color:var(--ink-3); text-decoration:none;
@@ -270,7 +270,7 @@ h1.dateline{font-size:clamp(32px,5.4vw,48px); font-weight:600; letter-spacing:.0
 .masthead{border-bottom:0; padding-bottom:30px; position:relative}
 .masthead::after{content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
   border-top:1.5px solid var(--ink); border-bottom:.5px solid var(--ink)}
-.tagline{color:var(--ink-3); letter-spacing:.3em}
+.tagline{color:var(--ink-2); letter-spacing:.06em; font-weight:400; font-size:17px}
 .body h2{font-family:var(--serif); font-size:23px; font-weight:600; letter-spacing:.04em;
   margin:64px 0 18px; padding-top:0; border-top:0; display:flex; align-items:center; gap:14px}
 .body h2::after{content:""; flex:1; height:1px; background:var(--rule-2)}
@@ -301,6 +301,13 @@ h1.dateline{font-size:clamp(32px,5.4vw,48px); font-weight:600; letter-spacing:.0
   .body ol>li{padding-left:34px}
   .body h2{font-size:20px; margin-top:48px}
 }
+.top nav a,.top nav a:visited{color:var(--ink-3)}
+.top nav a[aria-current],.top nav a:hover{color:var(--ink)}
+.tagline{font-family:var(--sans)!important; font-weight:400!important}
+.body ol.index-list>li{padding:20px 0; counter-increment:none}
+.body ol.index-list>li::before{content:none}
+@media (max-width:600px){.top nav{flex-wrap:nowrap; overflow-x:auto; gap:16px; width:100%; scrollbar-width:none}.top nav a{white-space:nowrap}}.body .index-list{padding-left:0!important; margin-left:0!important}
+.body .index-list>li{padding-left:0!important}
 @media print{.masthead::after,.body h2::after{display:none}}
 """
 
