@@ -62,6 +62,8 @@ class FxFallbackTest(unittest.TestCase):
             newest[r["series"]] = max(newest.get(r["series"], ""), r["date"])
         for n in ("USDCNY", "EURUSD", "USDJPY"):
             self.assertEqual(newest[n], "2026-11-20", n)
+        eur = [r["value"] for r in rows if r["series"] == "EURUSD" and r["date"] == "2026-11-20"][0]
+        self.assertAlmostEqual(eur, 1.05)  # ECB 报价即 EURUSD，不能取倒数
 
     def test_fresh_fred_fx_skips_backup(self):
         def fake_fred(fid, start, end):
