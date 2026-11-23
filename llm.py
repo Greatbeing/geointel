@@ -59,7 +59,8 @@ def _post(url, headers, payload, timeout):
 
 
 def _once(model, messages, max_tokens, timeout, base_url=None, api_key=None):
-    base = base_url or GATEWAY
+    # magpie 网关需带 /v1；备用端点 base_url 约定已含 /v1（如 https://api.deepseek.com/v1）
+    base = base_url or (GATEWAY + "/v1")
     headers = {"Content-Type": "application/json"}
     if api_key:
         headers["Authorization"] = "Bearer " + api_key
