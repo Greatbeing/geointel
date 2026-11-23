@@ -1,0 +1,86 @@
+{
+ "scenarios": [
+  {
+   "name": "加速气候政策性贷款与私人资本动员",
+   "prob": 45
+  },
+  {
+   "name": "碎片化渐进主义与流程僵局",
+   "prob": 35
+  },
+  {
+   "name": "危机应对式转向",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "AIIB 或亚行新增单笔 ≥10 亿美元气候政策性贷款（PBL）或灾害应急融资（CDF）",
+   "keywords": [
+    "气候政策性贷款",
+    "contingent disaster financing",
+    "CDF",
+    "PBL",
+    "10亿美元"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "上调情景 A 概率至 60%，建议激进配置绿色管线"
+  },
+  {
+   "id": "t2",
+   "description": "世界银行董事会通过 ESF 修订草案或采购新规（如可持续采购强制条款）",
+   "keywords": [
+    "ESF 修订",
+    "环社框架",
+    "采购新规",
+    "可持续采购",
+    "World Bank Board"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "启动合规体系升级，锁定新规下首批标书资格"
+  },
+  {
+   "id": "t3",
+   "description": "美债 10 年收益率连续 3 个交易日 ≥ 5.25%",
+   "keywords": [],
+   "threshold": 5.25,
+   "type": "value",
+   "action": "上调情景 C 概率至 40%，削减长久期基建敞口，增持短期流动性缓冲",
+   "series": "DGS10",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t4",
+   "description": "美元/人民币连续 5 个交易日 ≥ 7.10",
+   "keywords": [],
+   "threshold": 7.1,
+   "type": "value",
+   "action": "重估中资项目汇率风险敞口，要求新项目含对冲条款或本币融资比例 ≥ 50%",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 5
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-18",
+ "question": "未来 90 天世界银行、亚行、亚投行贷款重点投向（气候融资与绿色基建）及采购/环社框架（ESF）规则演变趋势",
+ "generated_at": "2026-11-23T01:10:25Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-news",
+  "allafrica",
+  "gn-aiib-ndb",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-energy",
+  "gn-imf-debt",
+  "gn-mdb-policy",
+  "gn-mideast",
+  "gn-wb-imf"
+ ]
+}
