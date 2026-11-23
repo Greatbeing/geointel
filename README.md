@@ -28,7 +28,7 @@ collect.py ──► data/intel.db (SQLite + FTS5)
 | `sources.json` | 49 个 RSS/Atom/RDF 源（含多边开发银行与国际金融组织 `ifi` / `macro_policy`），含 region / category / weight |
 | `collect.py` | 并发抓取、HTML 实体与 gzip 容错、URL 规范化去重、入库 |
 | `store.py` | SQLite 存储 + FTS5 检索；中文问题经 `LEXICON` 映射成英文检索词；`market_series` 存市场硬数据 |
-| `llm.py` | 统一走本机 magpie 网关 `127.0.0.1:3425`，`max_tokens>=16000`，预算翻倍重试 |
+| `llm.py` | 统一走本机 magpie 网关 `127.0.0.1:3425`，`max_tokens>=16000`，预算翻倍重试；主网关整体失败时自动回退到环境变量配置的备用 OpenAI 兼容端点 |
 | `digest.py` | 每日简报：今日要点 / 区域动态 / 技术与产业 / 金融与政策 / 值得跟踪的信号；顶部贴利率/汇率仪表条 |
 | `decide.py` | 决策备忘录：事实 / 不确定性 / 情景概率 / 选项评估 / 触发条件 / 证伪条件 / 复盘日期；落盘即自动评结构分 |
 | `watch.py` | 读 `out/decisions/*.json` 的 triggers，统计命中并写告警；支持结构化关键词组、排除词与实时推送去重 |
@@ -80,6 +80,25 @@ GEOINTEL_ALERT_WEBHOOK=https://open.feishu.cn/open-apis/bot/v2/hook/xxx \
 - 发送失败不推进状态，下一轮自动重试；`run-collect.sh` 检测到环境变量会自动加 `--send`。
 - 站点 `docs/alerts.html` 始终保留当日全部活跃告警，与推送互不影响。
 
+
+## paid-ready 新功能
+
+- **LLM 语义复核告警**：`watch.py --llm-verify`（或 `GEOINTEL_WATCH_LLM_VERIFY=1`）。关键词粗筛命中后，逐条让 LLM 判断材料是否真的支持触发条件；`no` 剔除，`yes` 保留并附理由、原文片段与链接。LLM 异常或输出无法解析时降级为规则结果并标「未复核」，流水线不中断。默认关闭。
+- **预测战绩页**：`render.py` 生成 `docs/track-record.html`，展示累计 Brier、已复盘/待复盘数量、每条备忘录的预测与结果及链接；首页有显著入口。
+- **可追溯性**：备忘录与简报中的结论尽量附原文链接与抓取时间。
+- **collect 失败源汇总**：每轮采集末尾打印 `collect failed sources (N/M):` 汇总块，逐行列出失败源与原因；部分失败仍返回 0，全部失败返回 1。
+
+## 环境变量
+
+| 变量 | 作用 | 默认 |
+|---|---|---|
+| `GEOINTEL_WATCH_LLM_VERIFY` | `1/true/yes` 开启告警 LLM 语义复核（等价 `--llm-verify`） | 关闭 |
+| `GEOINTEL_LLM_BASE_URL` | 备用 OpenAI 兼容端点，如 `https://api.deepseek.com/v1` | 不设 |
+| `GEOINTEL_LLM_MODEL` | 备用端点模型名，如 `deepseek-chat` | 不设 |
+| `GEOINTEL_LLM_API_KEY` | 备用端点 key（可空，空则不带真实 key） | 不设 |
+| `GEOINTEL_ALERT_WEBHOOK` | 飞书机器人 Webhook，实时告警推送 | 不设 |
+
+`BASE_URL` 与 `MODEL` 都设置才启用备用端点；不设时行为与旧版完全一致。主网关所有模型失败后才会请求备用端点，两边都失败时报错信息包含双方原因。key 只放环境变量，不要写进仓库。
 
 ## 用法
 

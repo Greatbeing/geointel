@@ -15,7 +15,7 @@ import os
 import sys
 import tempfile
 import unittest
-from datetime import date as _date, datetime, timezone
+from datetime import date as _date, datetime, timedelta, timezone
 from unittest import mock
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +26,14 @@ import store  # noqa: E402
 import watch  # noqa: E402
 import weekly_summary  # noqa: E402
 
+
+def _ts(hours_ago):
+    """相对 now 的时间戳。固定日期样本 + --hours 24 滑动窗口会按钟点 flaky：
+    半夜跑测试时 2026-11-22 的样本可能已滑出窗口，误报复现不出来。"""
+    return (datetime.now(timezone.utc) - timedelta(hours=hours_ago)
+            ).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 # 真实出处：out/alerts/2026-11-23.md 里的误报条目（2026-11-21-chips 备忘录 t2/t4）
 JP_EDU = {
     "id": "noise-jp-edu", "source": "guardian-world", "region": "asia",
@@ -33,7 +41,7 @@ JP_EDU = {
     "title": "Calls grow for Japan's education minister to step down over scandals",
     "link": "https://example.org/jp-edu",
     "summary": "South Korean minister quits after AI cheating scandal engulfs university exams.",
-    "published": "2026-11-22T10:00:00Z", "weight": 1.0,
+    "published": _ts(6), "weight": 1.0,
 }
 JP_RARE_EARTH = {
     "id": "true-positive", "source": "nikkei-asia", "region": "asia",
@@ -41,14 +49,14 @@ JP_RARE_EARTH = {
     "title": "China announces rare earth export restrictions for defense uses",
     "link": "https://example.org/rare-earth",
     "summary": "Beijing unveils a licensing regime covering exports of rare earth minerals.",
-    "published": "2026-11-22T11:00:00Z", "weight": 1.1,
+    "published": _ts(5), "weight": 1.1,
 }
 ALLY_TRUE = {
     "id": "true-ally", "source": "csis", "region": "global", "category": "security",
     "title": "Netherlands formally adopts export controls aligned with US rules",
     "link": "https://example.org/ally",
     "summary": "The Dutch government implements measures matching US export control policy.",
-    "published": "2026-11-22T12:00:00Z", "weight": 1.2,
+    "published": _ts(4), "weight": 1.2,
 }
 
 # 升级后的触发器：同一事件拆成主体 / 动作 / 对象三组，噪声带排除词

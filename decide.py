@@ -112,6 +112,9 @@ n 是上面材料列表里的编号。只写材料里有的。
 - 硬数据表里的数字是唯一可用的市场数值；写到备忘录里的利率/汇率必须与表一致，
   不得凭记忆写，不得把表里没有的数写成事实。
 - 不编造来源、日期、机构；材料不足就写「材料不足」。
+- 每条事实、情景观察点、反面证据都必须带材料编号 [n]；材料列表每条
+  已含来源、日期与原文链接——读者要能顺着 [n] 找到原文核对。没有 [n]
+  支撑的判断必须写成判断，不得写成事实。
 - 建议必须可执行，不能是「密切关注」这类空话。
 - JSON 块与备忘录正文中的情景、触发条件必须一致。
 """
@@ -121,7 +124,9 @@ def material(items):
     lines = []
     for i, it in enumerate(items, 1):
         summary = (it.get("summary") or "")[:200].replace("\n", " ")
-        lines.append(f"[{i}] ({it['source']} · {it['published'][:10]}) {it['title']} — {summary}")
+        link = (it.get("link") or "").strip()
+        tail = " " + link if link else ""
+        lines.append(f"[{i}] ({it['source']} · {it['published'][:10]}) {it['title']} — {summary}{tail}")
     return "\n".join(lines)
 
 
@@ -241,6 +246,14 @@ def run_question(q, out_dir, now):
         "horizon_days": horizon,
         "items_used": len(items),
         "sources": sorted({it["source"] for it in items}),
+        # 可追溯性：编号 → 标题/来源/发布时间/原文链接，正文里的 [n] 可逐条核对
+        "materials": [
+            {"n": i, "title": (it.get("title") or "").strip(),
+             "source": it.get("source") or "",
+             "published": (it.get("published") or "")[:10],
+             "link": (it.get("link") or "").strip()}
+            for i, it in enumerate(items, 1)
+        ],
     })
     json.dump(meta, open(os.path.join(out_dir, name + ".json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)

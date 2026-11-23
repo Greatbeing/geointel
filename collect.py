@@ -156,12 +156,12 @@ def fetch(source, timeout):
         return source["id"], False, 0, round(time.time() - started, 1), [], f"{type(e).__name__}: {e}"
 
 
-def main():
+def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--sources", default=os.path.join(HERE, "sources.json"))
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--timeout", type=int, default=20)
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     sources = json.load(open(args.sources, encoding="utf-8"))["sources"]
     print(f"collect: {len(sources)} sources", flush=True)
@@ -199,6 +199,12 @@ def main():
     os.makedirs(runs, exist_ok=True)
     path = os.path.join(runs, summary["at"].replace(":", "") + ".json")
     json.dump(summary, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    # 失败源汇总日志：一眼看到哪些源坏了、坏因是什么（逐源行在 49 行输出里会被淹没）
+    failed = [r for r in report if not r["ok"]]
+    if failed:
+        print(f"collect failed sources ({len(failed)}/{len(sources)}):", flush=True)
+        for r in failed:
+            print(f"  FAIL {r['source']:<22} {r['seconds']:>5}s {r['error'][:120]}", flush=True)
     print(f"done: {summary['ok']}/{summary['sources']} sources ok, "
           f"{len(unique)} fetched, {new} new -> {path}", flush=True)
     return 0 if summary["ok"] else 1
