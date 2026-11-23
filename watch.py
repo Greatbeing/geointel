@@ -153,7 +153,6 @@ VERIFY_SYSTEM = (
 )
 
 def _verify_prompt(t, it):
-    hay = ((it.get("title") or "") + "\n" + (it.get("summary") or "")).strip()
     return (
         "触发条件：{desc}\n"
         "关联问题：{q}\n\n"
@@ -164,8 +163,7 @@ def _verify_prompt(t, it):
     ).format(desc=(t.get("description") or t.get("id") or "").strip(),
              q=(t.get("question") or "").strip(),
              title=(it.get("title") or "").strip(),
-             summary=(it.get("summary") or "").strip(),
-             hay=hay)
+             summary=(it.get("summary") or "").strip())
 
 
 def parse_verdict(text):
