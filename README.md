@@ -13,7 +13,7 @@
 [告警](https://greatbeing.github.io/geointel/alerts.html) ·
 [校准](https://greatbeing.github.io/geointel/calibration.html)
 
-[![Tests](https://github.com/Greatbeing/geointel/actions/workflows/tests.yml/badge.svg)](https://github.com/Greatbeing/geointel/actions/workflows/tests.yml)
+[![Tests](https://github.com/Greatbeing/geointel/actions/workflows/test.yml/badge.svg)](https://github.com/Greatbeing/geointel/actions/workflows/test.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3b5b7a)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-5a7a5a)
 
