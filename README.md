@@ -27,13 +27,59 @@ collect.py ──► data/intel.db (SQLite + FTS5)
 |---|---|
 | `sources.json` | 49 个 RSS/Atom/RDF 源（含多边开发银行与国际金融组织 `ifi` / `macro_policy`），含 region / category / weight |
 | `collect.py` | 并发抓取、HTML 实体与 gzip 容错、URL 规范化去重、入库 |
-| `store.py` | SQLite 存储 + FTS5 检索；中文问题经 `LEXICON` 映射成英文检索词 |
+| `store.py` | SQLite 存储 + FTS5 检索；中文问题经 `LEXICON` 映射成英文检索词；`market_series` 存市场硬数据 |
 | `llm.py` | 统一走本机 magpie 网关 `127.0.0.1:3425`，`max_tokens>=16000`，预算翻倍重试 |
-| `digest.py` | 每日简报：今日要点 / 区域动态 / 技术与产业 / 金融与政策 / 值得跟踪的信号 |
-| `decide.py` | 决策备忘录：事实 / 不确定性 / 情景概率 / 选项评估 / 触发条件 / 证伪条件 / 复盘日期 |
-| `watch.py` | 读 `out/decisions/*.json` 的 triggers，统计命中并写告警 |
+| `digest.py` | 每日简报：今日要点 / 区域动态 / 技术与产业 / 金融与政策 / 值得跟踪的信号；顶部贴利率/汇率仪表条 |
+| `decide.py` | 决策备忘录：事实 / 不确定性 / 情景概率 / 选项评估 / 触发条件 / 证伪条件 / 复盘日期；落盘即自动评结构分 |
+| `watch.py` | 读 `out/decisions/*.json` 的 triggers，统计命中并写告警；支持结构化关键词组、排除词与实时推送去重 |
+| `market_collect.py` | 市场硬数据抓取（FRED / ECB / Frankfurter，零 key），供 value 型触发与仪表条 |
+| `memo.py` / `deliver.py` | memo 解析与聊天版摘要（只读） |
+| `score.py` / `review.py` | 结构分（确定性检查）+ 复核日 Brier 校准分；`docs/calibration.html` |
+| `weekly_summary.py` | 每周汇总（飞书 Webhook，`--send` 需 URL） |
+| `questions.py` / `questions.json` | 周度轮转的问题清单 |
 | `render.py` | 把三类产物渲染成离线可读的静态站点（单文件 CSS，无外链） |
 | `publish.sh` | `git add -A` + commit + push，无变化则静默退出 |
+
+## 触发条件关键词（Week 5 告警可信度）
+
+count 型触发器支持三档写法，向后兼容：
+
+```json
+{
+  "id": "t2", "type": "count", "threshold": 2,
+  "keywords": ["netherlands", "japan", "adopts", "export controls"],
+  "keyword_groups": [
+    ["netherlands", "japan", "south korea", "singapore"],
+    ["adopts", "aligned with us", "implements"],
+    ["export control", "export restrictions"]
+  ],
+  "exclude_keywords": ["education", "exam"]
+}
+```
+
+- `keywords`（旧）：任一词命中即计数——简单，但 "Japan 教育部丑闻" 也会给
+  "盟友采纳管制" 凑数，2026-11-23 的告警已出现这类误报。
+- `keyword_groups`（推荐）：组内任一（同义表达），组间全部（必须同一篇材料
+  同时成立）。行为主体 / 动作 / 事件对象各占一组，单篇社会新闻不可能凑齐三组。
+- `exclude_keywords`：任一命中即排除该材料（"education" 挡住教育部新闻）。
+- ASCII 关键词按词边界匹配并兼容复数（`export control` 命中 `export controls`）；
+  中日韩关键词按子串匹配。
+
+value 型触发器：绑定了 `series` 的按 `market_series` 数值自动判定；
+没绑定的不再被静默丢弃，统一进入告警页「需人工读数」清单。
+
+## 实时告警推送（可选）
+
+```bash
+GEOINTEL_ALERT_WEBHOOK=https://open.feishu.cn/open-apis/bot/v2/hook/xxx \
+  python3 watch.py --hours 24 --send
+```
+
+- 只推「上次未活跃、这次活跃」的触发器；持续活跃的告警不重复打扰，
+  活跃解除后再次触发会重新通知（去重状态在 `data/alert-state.json`，不入库不入站）。
+- 发送失败不推进状态，下一轮自动重试；`run-collect.sh` 检测到环境变量会自动加 `--send`。
+- 站点 `docs/alerts.html` 始终保留当日全部活跃告警，与推送互不影响。
+
 
 ## 用法
 

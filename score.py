@@ -105,8 +105,9 @@ def structural_score(m):
                 deductions.append((2, f"{tid} 触发条件没有对应动作"))
             ttype = (t.get("type") or "").lower()
             kws = t.get("keywords") or []
+            groups = t.get("keyword_groups") or []
             if ttype == "count":
-                if kws:
+                if kws or groups:
                     pts += 2
                 else:
                     deductions.append((2, f"{tid} 为 count 型但没有关键词"))

@@ -21,7 +21,9 @@ import sys
 from datetime import datetime, timezone
 
 import llm
+import memo
 import render
+import score as scoring
 import store
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -45,12 +47,18 @@ TEMPLATE = """决策问题：{question}
 （JSON 在最前，即使后文被截断，结构数据也一定已给出。）
 
 第一步，输出一个 JSON 代码块（```json ... ```），字段：
-{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"threshold":3,"type":"count|value","action":"...","series":"DFF","op":">=","window":1}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
+{{"scenarios":[{{"name":"...","prob":40}}],"triggers":[{{"id":"t1","description":"...","keywords":["..."],"keyword_groups":[["..."],["..."]],"exclude_keywords":["..."],"threshold":3,"type":"count|value","action":"...","series":"DFF","op":">=","window":1}}],"confidence":"low|medium|high","review_date":"YYYY-MM-DD"}}
 触发条件里的 series / op / window 只用于 value 型：series 是市场序列名
 （如 DFF、DGS10、USDCNY），op 是 >= / > / <= / < / ==（默认 >=），
 window 是最近几条观测都要满足（默认 1）。
 数值类触发条件若对应硬数据表里的序列，必须写上这三个字段，让系统能自动判定；
 实在对应不上的才留空，系统会提示人工读数。
+count 型必须给 keyword_groups：组内关键词是 OR（同义表达），组间是 AND
+（必须同时成立的概念）。例如“盟友采纳出口管制”应写成
+[["Netherlands","Japan","South Korea"],["adopts","aligns","implements"],
+["export control","export restriction"]]，而不是把三组词平铺后任中一词。
+keywords 保留为各组词的并集，供旧工具读取；exclude_keywords 用于排除已知的
+同词异义噪声，没有就写 []。任一排除词命中即排除该材料，宁缺毋滥。
 
 第二步，紧接着输出完整备忘录，严格按以下结构（中文）：
 
@@ -78,6 +86,8 @@ n 是上面材料列表里的编号。只写材料里有的。
 明确推荐一个选项，并给 2–4 个触发条件：可观测指标 + 阈值 + 触发后的动作。
 触发条件必须分两类：
 - **count**：靠关键词命中条数判定，`threshold` 是条数（整数）。适合「某事件是否发生」。
+  必须用 `keyword_groups` 拆开行为主体、动作和事件对象，避免「日本教育新闻」
+  仅因含 Japan 就触发出口管制动告警；同义替代词才放同一组。
 - **value**：靠指标数值判定，`threshold` 是数值。适合「通胀≥X%」「收益率≥Y%」这类；
   对应硬数据表里序列的，必须写 series / op / window，让系统自动判定，
   只有对应不上的才留空走人工读数。
@@ -160,6 +170,23 @@ def build_prompt(question, horizon, days, items):
                            market_table=market_table())
 
 
+def auto_score_memo(memo_path, scores_path=None):
+    """给 memo 评结构分并写入 scores.jsonl（Week 5）。
+
+    生成时即登记结构分，review.py / calibration 页立即可用，不再靠
+    事后手工补跑 score.py --all。失败向上抛，由调用方兜住：评分挂了
+    不能把已经落盘的备忘录作废。scores_path 缺省用仓库根的 scores.jsonl，
+    测试可注入临时路径。返回 (分数, 扣分列表)。
+    """
+    m = memo.load_memo(memo_path)
+    s, deductions = scoring.structural_score(m)
+    if scores_path:
+        scoring.record_structural(m, s, deductions, path=scores_path)
+    else:
+        scoring.record_structural(m, s, deductions)
+    return s, deductions
+
+
 def run_question(q, out_dir, now):
     """生成一条备忘录，返回 (slug, ok, detail)。"""
     question = q["question"]
@@ -203,10 +230,19 @@ def run_question(q, out_dir, now):
               f"horizon_days: {horizon}\n"
               f"items_used: {len(items)}\n"
               "---\n\n")
-    open(os.path.join(out_dir, name + ".md"), "w", encoding="utf-8").write(
-        header + body.strip() + "\n")
-    return slug, True, f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} " \
-                       f"triggers={len(meta.get('triggers') or [])}"
+    memo_path = os.path.join(out_dir, name + ".md")
+    open(memo_path, "w", encoding="utf-8").write(header + body.strip() + "\n")
+    detail = f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} " \
+             f"triggers={len(meta.get('triggers') or [])}"
+    # Week 5：落盘即评结构分；失败不阻断备忘录，只留提示。
+    try:
+        s, deductions = auto_score_memo(memo_path)
+        detail += f"  structural={s}/100"
+        for pts, reason in deductions:
+            print(f"  {slug} 扣分 -{pts}：{reason}", flush=True)
+    except Exception as e:  # noqa: BLE001
+        detail += f"  scoring failed: {type(e).__name__} {e}"
+    return slug, True, detail
 
 
 def run_questions(path):
