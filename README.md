@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://greatbeing.github.io/geointel/"><img src=".github/assets/banner.svg" alt="geointel — 全球情报 · 决策备忘录 · 预测复盘" width="100%"></a>
+  <a href="https://greatbeing.github.io/geointel/"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.png"><img src=".github/assets/banner-light.png" alt="geointel — 全球情报 · 决策备忘录 · 预测复盘" width="100%"></picture></a>
 </p>
 
 <p align="center">
@@ -26,42 +26,19 @@
 
 <br>
 
-<img src=".github/assets/loop.svg" alt="采集 → 简报 → 备忘录 → 监控 → 认账" width="100%">
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/loop-dark.png"><img src=".github/assets/loop-light.png" alt="采集 → 简报 → 备忘录 → 监控 → 认账" width="100%"></picture>
 
 <br>
 
 ### 四条原则
 
-<table>
-<tr>
-<td width="50%" valign="top">
+**只说材料里有的。** 每个结论附原文链接与抓取时间；材料不够，就写「材料不足」，不让模型补。
 
-**只说材料里有的**<br>
-<sub>每个结论附原文链接与抓取时间。材料不够，就写「材料不足」，不让模型补。</sub>
+**给概率，不给形容词。** 「可能」「或将」不算判断。备忘录写情景概率、触发条件、证伪条件和复盘日期。
 
-</td>
-<td width="50%" valign="top">
+**宁缺毋滥的告警。** 主体、动作、对象须在同一篇材料里同时成立；可再请 LLM 逐条复核，出错时降级而不沉默。
 
-**给概率，不给形容词**<br>
-<sub>「可能」「或将」不算判断。备忘录写情景概率、触发条件、证伪条件和复盘日期。</sub>
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**宁缺毋滥的告警**<br>
-<sub>主体、动作、对象须在同一篇材料里同时成立；可再请 LLM 逐条复核，出错时降级而不沉默。</sub>
-
-</td>
-<td valign="top">
-
-**到期认账**<br>
-<sub>复盘日自动结算 Brier 分数。猜对的、猜错的，都留在战绩页上。</sub>
-
-</td>
-</tr>
-</table>
+**到期认账。** 复盘日自动结算 Brier 分数。猜对的、猜错的，都留在战绩页上。
 
 <br>
 
