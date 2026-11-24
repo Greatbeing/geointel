@@ -342,12 +342,32 @@ def market_history(series, limit=60):
     return [(d, v) for d, v in rows]
 
 
-def prune_market(days=180):
-    """删掉超过 days 天的市场旧行，控制库增长。返回删除行数。"""
-    cutoff = (now_utc() - timedelta(days=days)).strftime("%Y-%m-%d")
+# 月度序列保留更久：同比需要 12 个月前的点，再留一年的余量
+MONTHLY_KEEP_DAYS = 730
+MONTHLY_SERIES = ("CPILFESL", "PCEPILFE")
+
+
+def prune_market(days=180, monthly_days=None):
+    """删掉超过 days 天的市场旧行，控制库增长。返回删除行数。
+
+    月度序列（见 MONTHLY_SERIES）按 monthly_days（默认 730 天）保留：
+    它们一年只有 12 行，但同比要回看 12 个月，按日线阈值裁会把去年同期删掉。"""
+    monthly_days = monthly_days or MONTHLY_KEEP_DAYS
     con = connect()
+    n = 0
     with con:
-        cur = con.execute("DELETE FROM market_series WHERE date < ?", (cutoff,))
+        cutoff = (now_utc() - timedelta(days=days)).strftime("%Y-%m-%d")
+        if len(MONTHLY_SERIES) == 1:
+            not_monthly = "series <> ?"
+            params = (MONTHLY_SERIES[0], cutoff)
+        else:
+            not_monthly = "series NOT IN (%s)" % ",".join("?" * len(MONTHLY_SERIES))
+            params = MONTHLY_SERIES + (cutoff,)
+        cur = con.execute("DELETE FROM market_series WHERE " + not_monthly + " AND date < ?", params)
         n = cur.rowcount
+        cutoff_m = (now_utc() - timedelta(days=monthly_days)).strftime("%Y-%m-%d")
+        cur = con.execute("DELETE FROM market_series WHERE series IN (%s) AND date < ?"
+                          % ",".join("?" * len(MONTHLY_SERIES)), MONTHLY_SERIES + (cutoff_m,))
+        n += cur.rowcount
     con.close()
     return n

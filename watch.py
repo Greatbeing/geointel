@@ -89,15 +89,16 @@ def monthly_yoy(series, lookback=13):
         return None
     if len(hist) < lookback:
         return None
-    newest, oldest = hist[0], hist[-1]
+    # store.market_history 返回 (date, value) 元组，按日期从新到旧
+    (new_d, new_v), (old_d, old_v) = hist[0], hist[-1]
     try:
-        months = (int(newest["date"][:4]) * 12 + int(newest["date"][5:7])
-                  - int(oldest["date"][:4]) * 12 - int(oldest["date"][5:7]))
-    except (KeyError, ValueError):
+        months = (int(new_d[:4]) * 12 + int(new_d[5:7])
+                  - int(old_d[:4]) * 12 - int(old_d[5:7]))
+    except (TypeError, ValueError, IndexError):
         return None
-    if months != 12 or not oldest["value"]:
+    if months != 12 or not old_v:
         return None
-    return round((newest["value"] / oldest["value"] - 1) * 100, 2)
+    return round((new_v / old_v - 1) * 100, 2)
 
 
 def infer_series(trig):

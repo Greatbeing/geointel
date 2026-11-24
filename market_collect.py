@@ -313,10 +313,11 @@ def main(argv=None):
     n = store.upsert_market(rows) if rows else 0
     pruned = store.prune_market(days=args.prune_days)
     latest = store.latest_market()
-    for name in ("DFF", "DGS2", "DGS10", "US210", "USDCNY", "EURUSD", "USDJPY", "DTWEXBGS"):
+    for name in SERIES:
         row = latest.get(name)
         if row:
-            print(f"{name}: {row['value']} ({row['date']}, {row['source']})")
+            info = SERIES[name]
+            print(f"{name}: {info['fmt'].format(row['value'])} ({row['date']}, {row['source']})")
     print(f"market_collect: {n} 行写入，{pruned} 行过期删除" + (f"；失败：{'; '.join(failed)}" if failed else ""))
     return 0 if rows else 2
 

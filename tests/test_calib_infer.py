@@ -57,6 +57,7 @@ class MonthlyYoyTest(unittest.TestCase):
             year, month = 2025 + (9 + i) // 12, (9 + i) % 12 + 1
             hist.append({"date": f"{year}-{month:02d}-01", "value": 100 * (1.03 ** (i / 12))})
         hist.reverse()
+        hist = [(h["date"], h["value"]) for h in hist]  # 真实返回是 (date, value) 元组
         with unittest.mock.patch.object(watch.store, "market_history", side_effect=lambda s, limit: hist):
             y = watch.monthly_yoy("X")
         self.assertAlmostEqual(y, 3.0, places=1)
