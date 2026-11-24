@@ -66,6 +66,16 @@ class DraftTest(Base):
         res = self._run(lambda *a, **k: '{"occurred":"升级","confidence":"high","reason":"r","evidence":[]}')
         self.assertEqual(res[0]["verdict"]["occurred"], "unclear")
 
+    def test_string_or_inline_evidence_accepted(self):
+        res = self._run(lambda *a, **k: '{"occurred":"维持","confidence":"medium","reason":"r","evidence":["[2]"]}')
+        self.assertEqual(res[0]["verdict"]["evidence"], [2])
+        self.assertEqual(res[0]["verdict"]["occurred"], "维持")
+
+    def test_evidence_from_reason_text(self):
+        res = self._run(lambda *a, **k: '{"occurred":"升级","confidence":"medium","reason":"见[1][2]","evidence":[]}', force=True)
+        self.assertEqual(res[0]["verdict"]["evidence"], [1, 2])
+        self.assertEqual(res[0]["verdict"]["occurred"], "升级")
+
     def test_unknown_scenario_becomes_unclear(self):
         res = self._run(lambda *a, **k: '{"occurred":"别的","confidence":"low","reason":"r","evidence":[1]}')
         self.assertEqual(res[0]["verdict"]["occurred"], "unclear")
