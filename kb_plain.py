@@ -7,6 +7,9 @@
 """
 import argparse, json, os, re, sys
 
+# 审校用另一个模型：同一模型看不出自己的错
+REVIEW_MODEL = os.environ.get("GEOINTEL_REVIEW_MODEL", "nvidia/nvidia/nemotron-3-ultra-550b-a55b")
+
 import kb_refs
 
 DRAFTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "kb_plain_drafts.jsonl")
@@ -118,12 +121,16 @@ def check(text, title="", title_en=""):
     return t, issues
 
 
-def write_one(r, chat):
-    """写 -> 核对 -> 必要时重写一次。返回 (文本, 问题列表)。"""
+def write_one(r, chat, review_model=None):
+    """写 -> 用另一个模型核对 -> 必要时重写一次。返回 (文本, 问题列表)。"""
+    rm = review_model or REVIEW_MODEL
     text = chat(prompt_for(r), system=SYSTEM)
     t, issues = check(str(text), r["title_zh"], r.get("title_en", ""))
     for attempt in range(2):
-        v = parse_verdict(str(chat(verify_prompt(r, t), system=VERIFY_SYSTEM)))
+        try:
+            v = parse_verdict(str(chat(verify_prompt(r, t), system=VERIFY_SYSTEM, model=rm)))
+        except Exception:
+            v = None
         problem = ""
         if v is None:
             problem = ""  # 审校回复无法解析，只看硬规则
@@ -140,7 +147,7 @@ def write_one(r, chat):
     return t, issues
 
 
-def draft(groups, chat=None, limit=None, redo=(), path=DRAFTS):
+def draft(groups, chat=None, limit=None, redo=(), path=DRAFTS, review_model=None):
     if chat is None:
         import llm
         chat = llm.chat
@@ -167,7 +174,7 @@ def draft(groups, chat=None, limit=None, redo=(), path=DRAFTS):
             if limit is not None and n >= limit:
                 break
             try:
-                t, issues = write_one(r, chat)
+                t, issues = write_one(r, chat, review_model)
             except Exception as e:
                 print("skip", r["slug"], e, file=sys.stderr)
                 continue
@@ -178,8 +185,16 @@ def draft(groups, chat=None, limit=None, redo=(), path=DRAFTS):
     return n
 
 
-def apply(path=DRAFTS):
-    """写入无问题的草稿（同一词条以最后一版为准）。返回写入条数。"""
+HARD = ("banned:", "english:", "empty", "too_long", "markup", "name_in_first")
+
+
+def hard_ok(issues):
+    return not any(str(i).startswith(HARD) for i in issues or [])
+
+
+def apply(path=DRAFTS, force=()):
+    """写入草稿：默认只收无问题的；force 里的只要过硬规则就写（人工放行审校误判）。"""
+    force = set(force)
     if not os.path.exists(path):
         return 0
     latest = {}
@@ -193,7 +208,9 @@ def apply(path=DRAFTS):
     n = 0
     with con:
         for d in latest.values():
-            if d["plain"] and not d.get("issues"):
+            ok = d["plain"] and (not d.get("issues") or
+                                 (d["slug"] in force and hard_ok(d.get("issues"))))
+            if ok:
                 con.execute("INSERT OR REPLACE INTO kb_plain(slug, plain) VALUES(?,?)",
                             (d["slug"], d["plain"]))
                 n += 1
@@ -208,13 +225,16 @@ def main(argv=None):
     d.add_argument("--groups", default="")
     d.add_argument("--limit", type=int)
     d.add_argument("--redo", default="", help="逗号分隔的 slug，强制重写")
-    sub.add_parser("apply")
+    d.add_argument("--review-model", default="")
+    a2 = sub.add_parser("apply")
+    a2.add_argument("--force", default="", help="人工放行的 slug")
     a = ap.parse_args(argv)
     if a.cmd == "draft":
         print("drafted", draft({g for g in a.groups.split(",") if g}, limit=a.limit,
-                               redo=[s for s in a.redo.split(",") if s]))
+                               redo=[s for s in a.redo.split(",") if s],
+                               review_model=a.review_model or None))
     else:
-        print("applied", apply())
+        print("applied", apply(force=[s for s in a.force.split(",") if s]))
 
 
 if __name__ == "__main__":
