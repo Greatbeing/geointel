@@ -87,30 +87,43 @@ def monthly_yoy(series, lookback=13):
         hist = store.market_history(series, limit=lookback)
     except Exception:
         return None
-    if len(hist) < lookback:
+    if len(hist) < 2:
         return None
-    # store.market_history 返回 (date, value) 元组，按日期从新到旧
-    (new_d, new_v), (old_d, old_v) = hist[0], hist[-1]
+    # store.market_history 返回 (date, value) 元组，按日期从新到旧。
+    # 找“正好早 12 个月”的那一行，而不是最旧的一行：多抓几个月也不影响。
+    new_d, new_v = hist[0]
     try:
-        months = (int(new_d[:4]) * 12 + int(new_d[5:7])
-                  - int(old_d[:4]) * 12 - int(old_d[5:7]))
+        ty, tm = int(new_d[:4]), int(new_d[5:7])
     except (TypeError, ValueError, IndexError):
         return None
-    if months != 12 or not old_v:
-        return None
-    return round((new_v / old_v - 1) * 100, 2)
+    want_y, want_m = ty - 1, tm  # 12 个月前
+    for d, v in hist[1:]:
+        try:
+            if int(d[:4]) == want_y and int(d[5:7]) == want_m:
+                return round((new_v / v - 1) * 100, 2) if v else None
+        except (TypeError, ValueError, IndexError):
+            continue
+    return None
 
 
 def infer_series(trig):
     if trig.get("kind") != "value" or trig.get("series"):
         return trig
     desc = (trig.get("description") or "").lower()
-    found = {s for s, hints in SERIES_HINTS if any(h.lower() in desc for h in hints)}
+    # 按描述里出现的位置排序：多个序列同时出现时取最先提到的那个
+    # （“核心 PCE … （或 CPI …）” 以 PCE 为准）
+    hits = []
+    for s, hints in SERIES_HINTS:
+        pos = min((desc.find(h.lower()) for h in hints if h.lower() in desc), default=-1)
+        if pos >= 0:
+            hits.append((pos, s))
+    hits.sort()
+    found = [s for _pos, s in hits[:1]]
     try:
         float(trig.get("threshold"))
     except (TypeError, ValueError):
         return trig
-    if len(found) != 1:
+    if not found:
         return trig
     up = any(w in desc for w in UP_WORDS)
     down = any(w in desc for w in DOWN_WORDS)
