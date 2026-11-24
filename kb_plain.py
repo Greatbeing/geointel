@@ -1,6 +1,8 @@
 """给术语写「大白话」解释（ljg-plain 红线）。单独存表，重新导入术语不会冲掉。
 
+流程：写 -> 对照专业定义核对 -> 有错带着问题重写一次 -> 再核对。
   python3 kb_plain.py draft --groups statistics --limit 5   # 草稿 -> data/kb_plain_drafts.jsonl
+  python3 kb_plain.py draft --redo t-derivatives-gamma      # 强制重写指定词条
   python3 kb_plain.py apply                                 # 抽查后写入 kb_plain 表
 """
 import argparse, json, os, re, sys
@@ -9,23 +11,31 @@ import kb_refs
 
 DRAFTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "kb_plain_drafts.jsonl")
 SCHEMA = "CREATE TABLE IF NOT EXISTS kb_plain (slug TEXT PRIMARY KEY, plain TEXT NOT NULL)"
-MAX_LEN = 260
+MAX_LEN = 240
 
 SYSTEM = (
     "你在给聪明的 12 岁孩子讲金融术语。只输出解释正文，不要标题、不要列表、不要引号。\n"
+    "动笔前先想清楚：这个概念到底在量什么、因为什么而变。类比必须和这个机制一一对应，"
+    "对不上就换类比，宁可不用类比也不要讲错。\n"
     "红线：\n"
     "1. 读出声像跟朋友聊天；只砍「此外」「值得注意的是」这类机械连词。\n"
-    "2. 零术语：先用大白话把意思落地，最后才顺带提术语名。\n"
-    "3. 短词优先，一句只说一件事，长句拆短。\n"
-    "4. 具体：用看得见的东西举例（小卖部、雨伞、房租、张三借钱），给具体数字。\n"
-    "5. 第一句就让人想读第二句，不铺垫不背景。\n"
-    "6. 不填充、不软化、不写金句、不写「打个比方」「简单来说」。\n"
-    "7. 类比要承重；如果类比在某处不成立，用一句话点出那道裂缝。\n"
-    "8. 不确定就别说，绝不编造。\n"
-    "总长 80-220 字，3-6 句。"
+    "2. 零术语：第一句不许出现术语名，先用大白话把意思落地，最后一句才顺带点出名字。"
+    "中途不许冒出别的没解释过的术语。\n"
+    "3. 短词优先，一句只说一件事。\n"
+    "4. 具体：用看得见的东西和具体数字举例，全文只用一个类比，别中途换。\n"
+    "5. 第一句就让人想读第二句，不铺垫。\n"
+    "6. 不填充、不写金句、不写「打个比方」「简单来说」「记住」。\n"
+    "7. 只解释，不给建议，不劝人买卖或远离。\n"
+    "8. 类比在哪里不成立，可以用一句话点出；不要先说像、再说不像。\n"
+    "9. 不确定就别说，绝不编造。\n"
+    "总长 80-200 字，3-6 句。"
 )
 
-BANNED = ("打个比方", "简单来说", "值得注意的是", "此外", "总而言之", "**")
+VERIFY_SYSTEM = ("你是严格的金融审校。只输出一个 JSON 对象："
+                 "{\"ok\": true/false, \"problem\": \"...\"}。不要其他文字。")
+
+BANNED = ("打个比方", "简单来说", "值得注意的是", "此外", "总而言之", "记住",
+          "离它远点", "建议你", "**")
 
 
 def ensure(con):
@@ -42,13 +52,42 @@ def load(con=None):
     return d
 
 
-def prompt_for(r):
-    return "术语：%s（%s）\n专业定义：%s\n%s" % (
-        r["title_zh"], r["title_en"], r["definition"],
-        ("补充：%s" % r["why"]) if r.get("why") else "")
+def facts(r):
+    lines = ["术语：%s（%s）" % (r["title_zh"], r["title_en"]), "专业定义：%s" % r["definition"]]
+    for k, label in (("formula", "公式"), ("why", "为什么重要"), ("caveat", "常见误区")):
+        if r.get(k):
+            lines.append("%s：%s" % (label, r[k]))
+    return "\n".join(lines)
 
 
-def check(text):
+def prompt_for(r, problem="", previous=""):
+    p = facts(r)
+    if problem:
+        p += "\n\n上一版：%s\n审校指出的问题：%s\n请重写，彻底修掉这个问题。" % (previous, problem)
+    return p
+
+
+def verify_prompt(r, text):
+    return (facts(r) + "\n\n白话解释：" + text + "\n\n"
+            "检查白话解释：1) 机制有没有讲错，类比和概念的结构是否真对得上；"
+            "2) 有没有把它和别的概念搞混；3) 有没有给投资建议。"
+            "都没问题 ok=true；否则 ok=false，problem 用一句话说清错在哪。")
+
+
+def parse_verdict(text):
+    m = re.search(r"\{.*\}", text or "", re.S)
+    if not m:
+        return None
+    try:
+        d = json.loads(m.group(0))
+    except ValueError:
+        return None
+    if not isinstance(d, dict) or not isinstance(d.get("ok"), bool):
+        return None
+    return d["ok"], str(d.get("problem") or "").strip()
+
+
+def check(text, title=""):
     """返回 (清洗后文本, 问题列表)。"""
     t = re.sub(r"\s+", "", (text or "").strip().strip('"“”'))
     issues = []
@@ -59,6 +98,32 @@ def check(text):
     issues += ["banned:" + b for b in BANNED if b in t]
     if re.search(r"^#|^\*|\n-", text or ""):
         issues.append("markup")
+    first = re.split(r"[。？！?!]", t, maxsplit=1)[0]
+    name = re.sub(r"\s+", "", title or "")
+    if name and name in first:
+        issues.append("name_in_first_sentence")
+    return t, issues
+
+
+def write_one(r, chat):
+    """写 -> 核对 -> 必要时重写一次。返回 (文本, 问题列表)。"""
+    text = chat(prompt_for(r), system=SYSTEM)
+    t, issues = check(str(text), r["title_zh"])
+    for attempt in range(2):
+        v = parse_verdict(str(chat(verify_prompt(r, t), system=VERIFY_SYSTEM)))
+        problem = ""
+        if v is None:
+            problem = ""  # 审校回复无法解析，只看硬规则
+        elif not v[0]:
+            problem = v[1] or "机制不准确"
+        if issues and not problem:
+            problem = "违反硬规则：" + "，".join(issues)
+        if not problem:
+            return t, issues if v is not None else issues + ["unverified"]
+        if attempt == 1:
+            return t, issues + ["inaccurate:" + problem]
+        text = chat(prompt_for(r, problem, t), system=SYSTEM)
+        t, issues = check(str(text), r["title_zh"])
     return t, issues
 
 
@@ -67,35 +132,41 @@ def draft(groups, chat=None, limit=None, redo=(), path=DRAFTS):
         import llm
         chat = llm.chat
     have = load()
+    redo = set(redo)
     done = set()
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             done = {json.loads(l)["slug"] for l in f if l.strip()}
-    done -= set(redo)
+    done -= redo
     os.makedirs(os.path.dirname(path), exist_ok=True)
     n = 0
     with open(path, "a", encoding="utf-8") as f:
         for r in kb_refs.all_refs():
-            if r["layer"] != "term" or (groups and r["kind"] not in groups):
+            if r["layer"] != "term":
+                continue
+            if redo:
+                if r["slug"] not in redo:
+                    continue
+            elif groups and r["kind"] not in groups:
                 continue
             if r["slug"] in done or (r["slug"] in have and r["slug"] not in redo):
                 continue
             if limit is not None and n >= limit:
                 break
             try:
-                reply = chat(prompt_for(r), system=SYSTEM)
+                t, issues = write_one(r, chat)
             except Exception as e:
                 print("skip", r["slug"], e, file=sys.stderr)
                 continue
-            t, issues = check(reply if isinstance(reply, str) else str(reply))
             f.write(json.dumps({"slug": r["slug"], "title_zh": r["title_zh"],
                                 "plain": t, "issues": issues}, ensure_ascii=False) + "\n")
+            f.flush()
             n += 1
     return n
 
 
 def apply(path=DRAFTS):
-    """写入无问题的草稿（后写覆盖先写）。返回写入条数。"""
+    """写入无问题的草稿（同一词条以最后一版为准）。返回写入条数。"""
     if not os.path.exists(path):
         return 0
     latest = {}
