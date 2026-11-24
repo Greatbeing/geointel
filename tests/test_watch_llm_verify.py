@@ -186,7 +186,10 @@ class TestWatchMainWithVerify(unittest.TestCase):
         with mock.patch.object(watch.render, "build", return_value={}):
             rc = watch.main(argv)
         self.assertEqual(rc, 0)
-        with open(os.path.join(self.out, "2026-11-23.md"), encoding="utf-8") as f:
+        # 输出文件按运行当天日期命名，不能写死日期
+        mds = sorted(n for n in os.listdir(self.out) if n.endswith(".md"))
+        self.assertEqual(len(mds), 1, mds)
+        with open(os.path.join(self.out, mds[0]), encoding="utf-8") as f:
             return f.read()
 
     def test_verify_removes_false_positive_and_keeps_reason(self):
