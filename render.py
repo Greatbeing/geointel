@@ -787,7 +787,11 @@ def materials_section(extra):
 def build():
     os.makedirs(SITE, exist_ok=True)
     import kb as _kb
+    import kb_refs as _kbr
     _kb_table = _kb.link_table(_kb.all_entries(), href)
+    # 参考术语补位：自动词条优先，外部术语补上
+    for _w, _u in _kbr.link_table(_kbr.all_refs(), href).items():
+        _kb_table.setdefault(_w, _u)
 
     def _kbl(h):  # 正文里提到的词条自动链接到知识库
         return _kb.linkify(h, _kb_table)
