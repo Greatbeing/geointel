@@ -38,6 +38,9 @@ SERIES = {
     "EURUSD":   {"label": "欧元/美元", "unit": "",           "fmt": "{:.4f}",   "kind": "fred"},
     "USDJPY":   {"label": "美元/日元", "unit": "",           "fmt": "{:.1f}",   "kind": "fred"},
     "DTWEXBGS": {"label": "美元广义指数", "unit": "",         "fmt": "{:.1f}",   "kind": "fred"},
+    # 月度物价指数（FRED，发布滞后约半个月）：存指数水平，触发器用同比/环比增速时再算
+    "CPILFESL": {"label": "核心 CPI 指数", "unit": "",        "fmt": "{:.1f}",   "kind": "fred", "freq": "M"},
+    "PCEPILFE": {"label": "核心 PCE 指数", "unit": "",        "fmt": "{:.1f}",   "kind": "fred", "freq": "M"},
 }
 
 # FRED 代码 -> 内部序列名
@@ -45,6 +48,7 @@ FRED_MAP = {
     "DFF": "DFF", "DGS2": "DGS2", "DGS10": "DGS10",
     "DEXCHUS": "USDCNY", "DEXUSEU": "EURUSD", "DEXJPUS": "USDJPY",
     "DTWEXBGS": "DTWEXBGS",
+    "CPILFESL": "CPILFESL", "PCEPILFE": "PCEPILFE",
 }
 
 # 仪表条上展示的序列（按行分组）
@@ -144,8 +148,10 @@ def collect(days=35):
 
     # 1. FRED：利率 + 汇率 + 美元指数
     for fred_id, name in FRED_MAP.items():
+        s0 = (today - timedelta(days=max(days, 420))).isoformat() \
+            if SERIES.get(name, {}).get("freq") == "M" else start
         try:
-            got = fetch_fred(fred_id, start, end)
+            got = fetch_fred(fred_id, s0, end)
         except Exception as e:  # noqa: BLE001 — 单个源失败不挡住其他源
             failed.append(f"FRED/{fred_id}: {e}")
             continue

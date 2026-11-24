@@ -72,9 +72,32 @@ SERIES_HINTS = [
     ("USDJPY", ("美元/日元", "美元兑日元", "usdjpy", "usd/jpy")),
     ("EURUSD", ("欧元/美元", "eurusd", "eur/usd")),
     ("DTWEXBGS", ("美元广义指数", "美元指数")),
+    ("PCEPILFE", ("核心 pce", "core pce", "pce 物价", "pce通胀")),
+    ("CPILFESL", ("核心 cpi", "core cpi", "cpi 同比", "cpi同比")),
 ]
+# 月度指数：触发器阈值是同比增速（%），不是指数水平
+SERIES_HINTS_MONTHLY = {"PCEPILFE": True, "CPILFESL": True}
 UP_WORDS = ("站上", "突破", "超过", "升至", "上调至", "高于", ">=", "≥")
 DOWN_WORDS = ("跌破", "低于", "降至", "<=", "≤")
+
+
+def monthly_yoy(series, lookback=13):
+    """月度指数的同比增速（%）：最新值 / 12 个月前的值 - 1。数据不足返回 None。"""
+    try:
+        hist = store.market_history(series, limit=lookback)
+    except Exception:
+        return None
+    if len(hist) < lookback:
+        return None
+    newest, oldest = hist[0], hist[-1]
+    try:
+        months = (int(newest["date"][:4]) * 12 + int(newest["date"][5:7])
+                  - int(oldest["date"][:4]) * 12 - int(oldest["date"][5:7]))
+    except (KeyError, ValueError):
+        return None
+    if months != 12 or not oldest["value"]:
+        return None
+    return round((newest["value"] / oldest["value"] - 1) * 100, 2)
 
 
 def infer_series(trig):
@@ -92,7 +115,12 @@ def infer_series(trig):
     down = any(w in desc for w in DOWN_WORDS)
     if up == down:
         return trig
-    trig["series"] = found.pop()
+    name = found.pop()
+    if SERIES_HINTS_MONTHLY.get(name):
+        trig["series"] = name
+        trig["measure"] = "yoy"
+    else:
+        trig["series"] = name
     trig["op"] = trig.get("op") or (">=" if up else "<=")
     trig["series_inferred"] = True
     return trig
@@ -135,7 +163,7 @@ def load_triggers(decisions_dir):
                 "exclude_keywords": _terms(t.get("exclude_keywords")),
             }
             # value 型才用的数值判定字段（没有也不报错，走人工读数）
-            for extra in ("series", "op", "window"):
+            for extra in ("series", "op", "window", "measure"):
                 if t.get(extra) is not None:
                     trig[extra] = t.get(extra)
             infer_series(trig)
@@ -289,6 +317,21 @@ def eval_value_trigger(t):
     series = t.get("series")
     if not series:
         return "manual", "未绑定 market_series，需人工读数"
+    if t.get("measure") == "yoy":
+        # 月度物价指数：按同比增速判定（阈值单位是 %）
+        import math
+        try:
+            yoy = monthly_yoy(series)
+        except Exception as e:  # noqa: BLE001
+            return "manual", f"同比增速算不出来：{e}"
+        if yoy is None:
+            return "no-data", f"{series} 不足 13 个月，算不出同比"
+        op, thr = t.get("op", ">="), float(t.get("threshold"))
+        try:
+            ok = {">=": yoy >= thr, "<=": yoy <= thr, ">": yoy > thr, "<": yoy < thr}[op]
+        except KeyError:
+            return "manual", f"未知比较符 {op!r}，需人工读数"
+        return ("fired" if ok else "not-fired"), f"同比 {yoy:.2f}%（{series} {op} {thr:g}%）"
     try:
         threshold = float(t.get("threshold"))
     except (TypeError, ValueError):
