@@ -244,7 +244,42 @@ def import_themes(con, book_dir):
                  "core" if slug in ("economics", "finance", "law") else "supporting",
                  "../book/" + fname, now))
             n_sec += len(sections)
+    link_themes(con)
     return len([f for f in THEME_FILES if os.path.exists(os.path.join(book_dir, f[0]))]), n_sec
+
+
+# 学科 -> 对应的术语分组（主题页的「相关词条」）
+THEME_GROUPS = {
+    "economics": ["macro", "markets"],
+    "finance": ["valuation", "pricing", "derivatives"],
+    "politics": ["macro"],
+    "law": ["markets"],
+    "accounting": ["valuation"],
+    "history": ["macro", "markets"],
+    "cross-themes": ["probability", "statistics"],
+    "investment": ["strategies", "pricing"],
+}
+THEME_RELATED_MAX = 24
+
+
+def link_themes(con):
+    """按学科把术语挂到主题页。核心术语优先，每页最多 THEME_RELATED_MAX 条。返回更新页数。"""
+    n = 0
+    with con:
+        for slug, groups in THEME_GROUPS.items():
+            if not con.execute("SELECT 1 FROM kb_refs WHERE slug=?", ("e-" + slug,)).fetchone():
+                continue
+            rel = []
+            for g in groups:
+                rows = con.execute(
+                    "SELECT slug FROM kb_refs WHERE layer='term' AND kind=? "
+                    "ORDER BY (importance='core') DESC, slug", (g,)).fetchall()
+                rel.extend(r[0] for r in rows)
+            rel = rel[:THEME_RELATED_MAX]
+            con.execute("UPDATE kb_refs SET related=? WHERE slug=?",
+                        (json.dumps(rel, ensure_ascii=False), "e-" + slug))
+            n += 1
+    return n
 
 
 # ---------- 查询 ----------
