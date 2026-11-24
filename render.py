@@ -529,6 +529,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
                              ("触发告警", "/alerts.html", "alerts"),
                              ("预测战绩", "/track-record.html", "track-record"),
                              ("概率校准", "/calibration.html", "calibration"),
+                             ("知识库", "/kb.html", "kb"),
                              ("检索", "/search.html", "search")):
         cur = ' aria-current="page"' if key == current else ""
         navs.append('<a href="%s"%s>%s</a>' % (href(path), cur, label))
@@ -785,6 +786,11 @@ def materials_section(extra):
 
 def build():
     os.makedirs(SITE, exist_ok=True)
+    import kb as _kb
+    _kb_table = _kb.link_table(_kb.all_entries(), href)
+
+    def _kbl(h):  # 正文里提到的词条自动链接到知识库
+        return _kb.linkify(h, _kb_table)
     digests = read_dir("digest")
     decisions = read_dir("decisions")
     alerts = read_dir("alerts")
@@ -794,7 +800,7 @@ def build():
         day = os.path.splitext(os.path.basename(path))[0]
         _meta, body = frontmatter(path)
         write(os.path.join("digest", day + ".html"),
-              page(cn_date(day), "每日情报简报", md2html(strip_ops(strip_lede(body))), "digest"))
+              page(cn_date(day), "每日情报简报", _kbl(md2html(strip_ops(strip_lede(body)))), "digest"))
         digest_entries.append((day, _meta))
 
     decision_entries = []
@@ -821,7 +827,7 @@ def build():
             under.append("视界 %s 天" % meta["horizon_days"])
         write(os.path.join("decisions", name + ".html"),
               page(question, "决策备忘录",
-                   md2html(strip_data_blocks(strip_ops(strip_lede(body)))) +
+                   _kbl(md2html(strip_data_blocks(strip_ops(strip_lede(body))))) +
                    materials_section(extra), "decisions",
                    under=under, big=False))
         # 旧日期的备忘录页面保留（可回看同一问题此前的判断），
@@ -911,18 +917,22 @@ def build():
         with open(path, encoding="utf-8") as _f:
             search_entries.append({"title": cn_date(day) + " 告警", "kicker": "触发告警",
                                    "url": href("/alerts.html"), "date": day, "text": _f.read()})
+    import kb
+    kb_search, kb_names, kb_links = kb.build_site(write, page, href)
+    search_entries += kb_search
     import search_index
     _nav = "".join('<a href="%s">%s</a>' % (href(pp), ll) for ll, pp in
                    (("简报", "/index.html"), ("决策备忘录", "/decisions.html"),
                     ("触发告警", "/alerts.html"), ("预测战绩", "/track-record.html"),
-                    ("概率校准", "/calibration.html"), ("检索", "/search.html")))
+                    ("概率校准", "/calibration.html"), ("知识库", "/kb.html"),
+                    ("检索", "/search.html")))
     search_index.write_search(SITE, search_entries, CSS, href("/index.html"), WORDMARK, _nav)
 
     # 首页：最新简报 + 档案
     if digests:
         day = digest_entries[0][0]
         _meta, body = frontmatter(digests[0])
-        body_html = md2html(strip_ops(strip_lede(body)))
+        body_html = _kbl(md2html(strip_ops(strip_lede(body))))
         # 显著入口：战绩卡（在最新简报正文之前）
         reviewed_n = sum(1 for r in score_rows if r.get("outcome"))
         pending_n = len(score_rows) - reviewed_n
@@ -969,6 +979,7 @@ def build():
     keep = {
         "digest": {os.path.splitext(os.path.basename(p))[0] + ".html" for p in digests},
         "decisions": {os.path.splitext(os.path.basename(p))[0] + ".html" for p in decisions},
+        "kb": kb_names,
     }
     for sub, names in keep.items():
         d = os.path.join(SITE, sub)

@@ -29,6 +29,7 @@ JOB_MAX_AGE_HOURS = {
     "market": 30,
     "watch": 30,
     "decide": 30,
+    "kb": 30,
     "publish": 30,
 }
 MARKET_MAX_BDAYS = 5
