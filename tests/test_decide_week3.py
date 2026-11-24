@@ -129,7 +129,10 @@ class TestRenderScores(unittest.TestCase):
                                     "structural": {"score": 95}},
                                   ensure_ascii=False) + "\n")
             old_out, old_site, old_here = render.OUT, render.SITE, render.HERE
+            old_db = store.DB
             render.OUT, render.SITE, render.HERE = out_dir, site_dir, d
+            # 知识库渲染会打开 store.DB；CI 上没有生产库路径，隔离到临时库
+            store.DB = os.path.join(d, "intel.db")
             try:
                 # load_scores 用 HERE 拼默认路径；让它指向临时 scores.jsonl
                 import unittest.mock as mock
@@ -138,6 +141,7 @@ class TestRenderScores(unittest.TestCase):
                     render.build()
             finally:
                 render.OUT, render.SITE, render.HERE = old_out, old_site, old_here
+                store.DB = old_db
             with open(os.path.join(site_dir, "decisions.html"), encoding="utf-8") as _f:
                 index = _f.read()
             self.assertIn("结构分 95/100", index)

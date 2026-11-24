@@ -119,6 +119,10 @@ class TestRenderBuildTrackPage(unittest.TestCase):
         render.SITE = os.path.join(self.tmp.name, "docs")
         # 复制仓库里的真实 scores.jsonl？不：这里造小样本，测试自包含
         render.HERE = self.tmp.name
+        # 知识库渲染会打开 store.DB；隔离到临时库，避免 CI 上没有生产路径
+        import store
+        self._old_db = store.DB
+        store.DB = os.path.join(self.tmp.name, "intel.db")
         # digest 供首页生成
         os.makedirs(os.path.join(render.OUT, "digest"))
         with open(os.path.join(render.OUT, "digest", "2026-11-23.md"),
@@ -136,6 +140,8 @@ class TestRenderBuildTrackPage(unittest.TestCase):
         render.OUT = self._old_out
         render.SITE = self._old_site
         render.HERE = self._old_here
+        import store
+        store.DB = self._old_db
         self.tmp.cleanup()
 
     def test_build_writes_track_record_and_home_card(self):
