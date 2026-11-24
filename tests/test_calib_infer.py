@@ -3,6 +3,7 @@ import os
 import sys
 import tempfile
 import unittest
+import unittest.mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import review  # noqa: E402
@@ -26,7 +27,7 @@ class InferSeriesTest(unittest.TestCase):
         self.assertEqual((t["series"], t["op"]), ("USDCNY", "<="))
 
     def test_unknown_metric_stays_manual(self):
-        self.assertNotIn("series", T("核心 PCE 环比年化 ≥ 0.35%", 0.35))
+        self.assertNotIn("series", T("GDP 环比年化 ≥ 0.35%", 0.35))
         self.assertNotIn("series", T("BIS 许可证拒签率连续两月超过 50%", 50))
 
     def test_two_series_ambiguous(self):
@@ -46,6 +47,51 @@ class InferSeriesTest(unittest.TestCase):
     def test_count_trigger_untouched(self):
         t = watch.infer_series({"kind": "count", "description": "10 年期美债站上", "threshold": 3})
         self.assertNotIn("series", t)
+
+
+class MonthlyYoyTest(unittest.TestCase):
+    def test_yoy(self):
+        # hist[0] 是最新；13 个月，同比恰为 3%
+        hist = []
+        for i in range(13):
+            year, month = 2025 + (9 + i) // 12, (9 + i) % 12 + 1
+            hist.append({"date": f"{year}-{month:02d}-01", "value": 100 * (1.03 ** (i / 12))})
+        hist.reverse()
+        with unittest.mock.patch.object(watch.store, "market_history", side_effect=lambda s, limit: hist):
+            y = watch.monthly_yoy("X")
+        self.assertAlmostEqual(y, 3.0, places=1)
+
+    def test_insufficient(self):
+        with unittest.mock.patch.object(watch.store, "market_history", return_value=[{"date": "2026-01-01", "value": 1}]):
+            self.assertIsNone(watch.monthly_yoy("X"))
+
+
+class InferMonthlyTest(unittest.TestCase):
+    def test_pce_binds_yoy(self):
+        t = watch.infer_series({"kind": "value", "threshold": 0.35,
+                                "description": "核心 PCE 环比年化 ≥ 0.35%"})
+        self.assertEqual((t["series"], t["measure"], t["op"]), ("PCEPILFE", "yoy", ">="))
+
+    def test_pce_or_cpi_ambiguous(self):
+        t = watch.infer_series({"kind": "value", "threshold": 0.35,
+                                "description": "核心 PCE 环比年化 ≥ 0.35%（或 CPI 同比重回 ≥ 3.5%）"})
+        self.assertNotIn("series", t)
+
+
+class EvalYoyTest(unittest.TestCase):
+    def _t(self):
+        return {"kind": "value", "series": "CPILFESL", "measure": "yoy", "op": ">=", "threshold": 3.5}
+
+    def test_fired(self):
+        with unittest.mock.patch.object(watch, "monthly_yoy", return_value=3.8):
+            st, d = watch.eval_value_trigger(self._t())
+        self.assertEqual(st, "fired")
+        self.assertIn("同比 3.80%", d)
+
+    def test_no_data(self):
+        with unittest.mock.patch.object(watch, "monthly_yoy", return_value=None):
+            st, _ = watch.eval_value_trigger(self._t())
+        self.assertEqual(st, "no-data")
 
 
 class BucketTest(unittest.TestCase):
