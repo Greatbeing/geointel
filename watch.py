@@ -131,6 +131,10 @@ def infer_series(trig):
         return trig
     name = found.pop()
     if SERIES_HINTS_MONTHLY.get(name):
+        # 只有描述明确说“同比”才自动判定：环比/年化是另一种口径，
+        # 用同比去比环比阈值会把 3% 和 0.35% 混为一谈
+        if "同比" not in desc:
+            return trig
         trig["series"] = name
         trig["measure"] = "yoy"
     else:

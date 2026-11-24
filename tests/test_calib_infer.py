@@ -72,15 +72,16 @@ class MonthlyYoyTest(unittest.TestCase):
 
 
 class InferMonthlyTest(unittest.TestCase):
-    def test_pce_binds_yoy(self):
+    def test_mom_not_bound(self):
+        # 环比年化 ≠ 同比：描述没说“同比”就不自动判定，避免 3% 去比 0.35%
         t = watch.infer_series({"kind": "value", "threshold": 0.35,
                                 "description": "核心 PCE 环比年化 ≥ 0.35%"})
-        self.assertEqual((t["series"], t["measure"], t["op"]), ("PCEPILFE", "yoy", ">="))
+        self.assertNotIn("series", t)
 
-    def test_pce_or_cpi_takes_first_mentioned(self):
-        t = watch.infer_series({"kind": "value", "threshold": 0.35,
-                                "description": "核心 PCE 环比年化 ≥ 0.35%（或 CPI 同比重回 ≥ 3.5%）"})
-        self.assertEqual((t["series"], t["measure"]), ("PCEPILFE", "yoy"))
+    def test_yoy_word_binds(self):
+        t = watch.infer_series({"kind": "value", "threshold": 3.5,
+                                "description": "CPI 同比重回 ≥ 3.5%"})
+        self.assertEqual((t["series"], t["measure"], t["op"]), ("CPILFESL", "yoy", ">="))
 
     def test_yoy_with_extra_months(self):
         # 最新 2026-10，库里从 2025-09 开始共 13 个月：取 2025-10 做同比

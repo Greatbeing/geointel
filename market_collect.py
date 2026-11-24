@@ -139,8 +139,11 @@ def derive_spread(rows):
     return out
 
 
-def collect(days=35):
-    """抓一轮。返回 (rows, failed)，rows 为待写入 market_series 的行。"""
+def collect(days=35, backfill_months=False):
+    """抓一轮。返回 (rows, failed)，rows 为待写入 market_series 的行。
+
+    backfill_months=True 时，月度序列若库里的月份不连续（首抓被截断），
+    回溯到 24 个月重抓，保证“正好早 12 个月”的那个点存在。"""
     today = date.today()
     start = (today - timedelta(days=days)).isoformat()
     end = today.isoformat()
@@ -148,7 +151,8 @@ def collect(days=35):
 
     # 1. FRED：利率 + 汇率 + 美元指数
     for fred_id, name in FRED_MAP.items():
-        s0 = (today - timedelta(days=max(days, 420))).isoformat() \
+        span = 730 if backfill_months else 420
+        s0 = (today - timedelta(days=max(days, span))).isoformat() \
             if SERIES.get(name, {}).get("freq") == "M" else start
         try:
             got = fetch_fred(fred_id, s0, end)
@@ -287,6 +291,25 @@ def dashboard_strip(max_age_days=5):
     return "\n".join(lines)
 
 
+def needs_backfill():
+    """月度序列最近 14 个月里有没有缺月；缺了就回溯重抓。"""
+    try:
+        for name in SERIES:
+            if SERIES[name].get("freq") != "M":
+                continue
+            hist = store.market_history(name, limit=14)
+            months = {(d[:4], d[5:7]) for d, _v in hist}
+            if len(hist) < 14:
+                return True
+            # 检查连续：把 (年,月) 变成序号，相邻差应为 1
+            idx = sorted(int(y) * 12 + int(m) for y, m in months)
+            if any(b - a != 1 for a, b in zip(idx, idx[1:])):
+                return True
+    except Exception:  # noqa: BLE001 — 判断失败就当需要，多抓一次无害
+        return True
+    return False
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="抓取市场硬数据写入 market_series")
     ap.add_argument("--days", type=int, default=35, help="回溯天数（默认 35）")
@@ -309,7 +332,7 @@ def main(argv=None):
         print("\n".join(ok))
         return 0 if all("OK" in s for s in ok) else 1
 
-    rows, failed = collect(days=args.days)
+    rows, failed = collect(days=args.days, backfill_months=needs_backfill())
     n = store.upsert_market(rows) if rows else 0
     pruned = store.prune_market(days=args.prune_days)
     latest = store.latest_market()
