@@ -14,6 +14,10 @@ if [ "$1" = "--questions" ]; then
   python3 health.py record decide $rc --note "$(tail -c 400 /tmp/geointel-decide.log 2>/dev/null)" >/dev/null 2>&1
 
   count=$(python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(len(d.get('questions',[])) if isinstance(d,dict) else len(d))" "$QFILE" 2>/dev/null)
+  # 知识库：从当天条目与备忘录增量维护词条（失败不影响发布），再重建站点
+  python3 kb.py update --max-new 10 2>&1 | tail -3
+  python3 health.py record kb ${PIPESTATUS[0]} >/dev/null 2>&1
+  python3 render.py >/dev/null 2>&1
   # 部分问题失败也要发布已写出的备忘录；rc 仍返回给 systemd 标记失败。
   ./publish.sh "decisions: ${count:-?} questions"
   exit $rc
