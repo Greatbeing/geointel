@@ -57,8 +57,9 @@ QUESTIONS = [
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "questions.json")
     if not os.path.exists(path):
-        json.dump({"questions": QUESTIONS}, open(path, "w", encoding="utf-8"),
-                  ensure_ascii=False, indent=1)
+        with open(path, "w", encoding="utf-8") as _f:
+            json.dump({"questions": QUESTIONS}, _f,
+                      ensure_ascii=False, indent=1)
         print(f"created {path} with {len(QUESTIONS)} questions", flush=True)
         return 0
     return decide.run_questions(path)

@@ -138,10 +138,12 @@ class TestRenderScores(unittest.TestCase):
                     render.build()
             finally:
                 render.OUT, render.SITE, render.HERE = old_out, old_site, old_here
-            index = open(os.path.join(site_dir, "decisions.html"), encoding="utf-8").read()
+            with open(os.path.join(site_dir, "decisions.html"), encoding="utf-8") as _f:
+                index = _f.read()
             self.assertIn("结构分 95/100", index)
-            memo_page = open(os.path.join(site_dir, "decisions", "2026-11-21-test-memo.html"),
-                             encoding="utf-8").read()
+            with open(os.path.join(site_dir, "decisions", "2026-11-21-test-memo.html"),
+                      encoding="utf-8") as _f:
+                memo_page = _f.read()
             self.assertIn("结构分 95/100", memo_page)
 
 

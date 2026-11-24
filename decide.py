@@ -255,8 +255,9 @@ def run_question(q, out_dir, now):
             for i, it in enumerate(items, 1)
         ],
     })
-    json.dump(meta, open(os.path.join(out_dir, name + ".json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
+    with open(os.path.join(out_dir, name + ".json"), "w", encoding="utf-8") as _f:
+        json.dump(meta, _f,
+                  ensure_ascii=False, indent=1)
 
     header = ("---\n"
               f"question: {question}\n"
@@ -265,7 +266,8 @@ def run_question(q, out_dir, now):
               f"items_used: {len(items)}\n"
               "---\n\n")
     memo_path = os.path.join(out_dir, name + ".md")
-    open(memo_path, "w", encoding="utf-8").write(header + body.strip() + "\n")
+    with open(memo_path, "w", encoding="utf-8") as _f:
+        _f.write(header + body.strip() + "\n")
     detail = f"written: {name}.md  scenarios={len(meta.get('scenarios') or [])} " \
              f"triggers={len(meta.get('triggers') or [])}"
     if review_fixed:
@@ -283,7 +285,8 @@ def run_question(q, out_dir, now):
 
 def run_questions(path):
     """questions.json 模式：逐条生成，跳过已存在的，状态写回。"""
-    qs = json.load(open(path, encoding="utf-8"))
+    with open(path, encoding="utf-8") as _f:
+        qs = json.load(_f)
     if isinstance(qs, dict):
         qs = qs.get("questions", [])
     out_dir = os.path.join(HERE, "out", "decisions")
@@ -294,8 +297,9 @@ def run_questions(path):
         slug, ok, detail = run_question(q, out_dir, now)
         results.append({"slug": slug, "question": q["question"], "ok": ok, "detail": detail})
         print(f"  {slug}: {detail}", flush=True)
-    json.dump(results, open(path + ".state.json", "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
+    with open(path + ".state.json", "w", encoding="utf-8") as _f:
+        json.dump(results, _f,
+                  ensure_ascii=False, indent=1)
     bad = [r for r in results if not r["ok"]]
     if bad:
         print(f"{len(results) - len(bad)}/{len(results)} ok, {len(bad)} failed", file=sys.stderr)
@@ -322,7 +326,8 @@ def run_rotate(path):
 
     五个问题分摊到每天，站点每天都有新备忘录，单次只占一个模型的生成时间。
     """
-    qs = json.load(open(path, encoding="utf-8"))
+    with open(path, encoding="utf-8") as _f:
+        qs = json.load(_f)
     if isinstance(qs, dict):
         qs = qs.get("questions", [])
     if not qs:

@@ -459,7 +459,8 @@ def md2html(text, demote=False):
 
 
 def frontmatter(path):
-    raw = open(path, encoding="utf-8").read()
+    with open(path, encoding="utf-8") as _f:
+        raw = _f.read()
     m = re.match(r"^---\n(.*?)\n---\n", raw, flags=re.S)
     meta, body = {}, raw
     if m:
@@ -569,12 +570,14 @@ def read_dir(sub):
 def write(rel, content):
     path = os.path.join(SITE, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    open(path, "w", encoding="utf-8").write(content)
+    with open(path, "w", encoding="utf-8") as _f:
+        _f.write(content)
 
 
 def load_json(path):
     try:
-        return json.load(open(path, encoding="utf-8"))
+        with open(path, encoding="utf-8") as _f:
+            return json.load(_f)
     except Exception:
         return {}
 
@@ -865,7 +868,8 @@ def build():
     alert_chunks = []
     for path in alerts[:12]:
         day = os.path.splitext(os.path.basename(path))[0]
-        text = clean_alert(open(path, encoding="utf-8").read(), seen)
+        with open(path, encoding="utf-8") as _f:
+            text = clean_alert(_f.read(), seen)
         if "## " not in text:
             continue
         body = md2html(text, demote=True)

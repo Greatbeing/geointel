@@ -222,7 +222,8 @@ class TestWatchMainWithSeriesTrigger(unittest.TestCase):
                 self.assertEqual(rc, 0)
                 files = os.listdir(out_dir)
                 self.assertEqual(len(files), 1)
-                text = open(os.path.join(out_dir, files[0]), encoding="utf-8").read()
+                with open(os.path.join(out_dir, files[0]), encoding="utf-8") as _f:
+                    text = _f.read()
                 self.assertIn("联邦基金利率高于 4.0%", text)
                 self.assertIn("演示动作", text)
             finally:

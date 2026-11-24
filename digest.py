@@ -170,7 +170,8 @@ def main():
         if failed:
             line += f"，失败：{', '.join(failed)}"
         body_text += line
-    open(path, "w", encoding="utf-8").write(header + strip + "\n" + body_text + "\n")
+    with open(path, "w", encoding="utf-8") as _f:
+        _f.write(header + strip + "\n" + body_text + "\n")
 
     meta = {
         "date": day,
@@ -179,8 +180,9 @@ def main():
                    "published": it["published"], "category": it.get("category")}
                   for it in items],
     }
-    json.dump(meta, open(os.path.join(args.out_dir, f"{day}.json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
+    with open(os.path.join(args.out_dir, f"{day}.json"), "w", encoding="utf-8") as _f:
+        json.dump(meta, _f,
+                  ensure_ascii=False, indent=1)
     print(f"written: {path}", flush=True)
     render.build()
     return 0

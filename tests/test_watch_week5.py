@@ -249,7 +249,8 @@ class TestAlertNotification(unittest.TestCase):
         self.assertEqual(n, 2)
         self.assertEqual(len(sent), 1)
         self.assertIn("告警一", sent[0])
-        state = json.load(open(self.state, encoding="utf-8"))
+        with open(self.state, encoding="utf-8") as _f:
+            state = json.load(_f)
         self.assertEqual(state["active"], ["a.md#t1", "a.md#t2"])
 
     def test_same_active_not_resent(self):
@@ -338,8 +339,10 @@ class TestAlertNotification(unittest.TestCase):
                 self.assertEqual(rc, 0)
                 self.assertTrue(sent)  # t2/t4 命中并推送
                 self.assertTrue(os.path.exists(state))
+                with open(state, encoding="utf-8") as _f:
+                    active = json.load(_f)["active"]
                 self.assertEqual(
-                    json.load(open(state, encoding="utf-8"))["active"],
+                    active,
                     ["2026-11-23-chips#t2", "2026-11-23-chips#t4"])
             finally:
                 store.DB = old
@@ -377,8 +380,8 @@ class TestAutoScoreMemo(unittest.TestCase):
                                                    scores_path=scores_path)
             self.assertEqual(s, 70)
             self.assertTrue(any("少于 4 条" in r for _, r in deductions))
-            rows = [json.loads(line) for line in open(scores_path, encoding="utf-8")
-                    if line.strip()]
+            with open(scores_path, encoding="utf-8") as _f:
+                rows = [json.loads(line) for line in _f if line.strip()]
             self.assertEqual(len(rows), 1)
             self.assertEqual(rows[0]["memo"], stem)
             self.assertEqual(rows[0]["slug"], "test-q")
