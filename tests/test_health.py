@@ -56,6 +56,12 @@ class MarketHealthTest(unittest.TestCase):
         p = health.check_market(date(2026, 11, 24), latest)
         self.assertEqual(list(p), ["market:USDCNY"])
 
+    def test_monthly_pce_45_bdays_is_normal(self):
+        # 核心 PCE 发布滞后约 30 天：月末数据到第 ~45 个工作日是常态，不该报警
+        latest = self._latest("2026-11-20")  # 日线序列都新鲜
+        latest["PCEPILFE"] = {"date": "2026-09-01", "value": 130.9}  # 月度，滞后 ~37 个工作日
+        self.assertEqual(health.check_market(date(2026, 11, 24), latest), {})
+
     def test_broad_dollar_has_longer_limit(self):
         latest = self._latest("2026-11-20")
         latest["DTWEXBGS"] = {"date": "2026-11-13", "value": 120.0}  # 7 个工作日
