@@ -96,13 +96,20 @@ def monthly_yoy(series, lookback=13):
         ty, tm = int(new_d[:4]), int(new_d[5:7])
     except (TypeError, ValueError, IndexError):
         return None
-    want_y, want_m = ty - 1, tm  # 12 个月前
+    want = ty * 12 + tm - 12  # 12 个月前的 (年,月) 序号
+    best = None
     for d, v in hist[1:]:
         try:
-            if int(d[:4]) == want_y and int(d[5:7]) == want_m:
-                return round((new_v / v - 1) * 100, 2) if v else None
+            key = int(d[:4]) * 12 + int(d[5:7])
         except (TypeError, ValueError, IndexError):
             continue
+        # 正好 12 个月前最好；该月没发布（FRED 留空）时退到最近的更早月份
+        if key == want and v:
+            return round((new_v / v - 1) * 100, 2)
+        if key < want and v and (best is None or key > best[0]):
+            best = (key, v)
+    if best:
+        return round((new_v / best[1] - 1) * 100, 2)
     return None
 
 
@@ -119,6 +126,9 @@ def infer_series(trig):
             hits.append((pos, s))
     hits.sort()
     found = [s for _pos, s in hits[:1]]
+    # 该序列在描述里“附近”的口径词：环比/年化 ≠ 同比，不能拿同比去比环比阈值
+    near = desc[max(0, hits[0][0] - 12): hits[0][0] + 40] if hits else ""
+    is_yoy = "同比" in near and not any(w in near for w in ("环比", "年化"))
     try:
         float(trig.get("threshold"))
     except (TypeError, ValueError):
@@ -133,7 +143,7 @@ def infer_series(trig):
     if SERIES_HINTS_MONTHLY.get(name):
         # 只有描述明确说“同比”才自动判定：环比/年化是另一种口径，
         # 用同比去比环比阈值会把 3% 和 0.35% 混为一谈
-        if "同比" not in desc:
+        if not is_yoy:
             return trig
         trig["series"] = name
         trig["measure"] = "yoy"

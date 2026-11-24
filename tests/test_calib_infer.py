@@ -83,6 +83,20 @@ class InferMonthlyTest(unittest.TestCase):
                                 "description": "CPI 同比重回 ≥ 3.5%"})
         self.assertEqual((t["series"], t["measure"], t["op"]), ("CPILFESL", "yoy", ">="))
 
+    def test_mom_with_yoy_in_other_clause_not_bound(self):
+        # 主句是“环比年化”，括号里另一个口径才提“同比”：不能绑
+        t = watch.infer_series({"kind": "value", "threshold": 0.35,
+                                "description": "核心 PCE 环比年化 ≥ 0.35%（或 CPI 同比重回 ≥ 3.5%）"})
+        self.assertNotIn("series", t)
+
+    def test_yoy_falls_back_when_month_missing(self):
+        # 2025-10 FRED 留空：退到 2025-09 做同比
+        hist = [("2026-10-01", 104.0)] + [("2026-%02d-01" % m, 100.0) for m in range(1, 11)] \
+            + [("2025-11-01", 100.0), ("2025-09-01", 100.0)]
+        hist = sorted(hist, key=lambda x: x[0], reverse=True)
+        with unittest.mock.patch.object(watch.store, "market_history", side_effect=lambda s, limit: hist):
+            self.assertEqual(watch.monthly_yoy("CPILFESL"), 4.0)
+
     def test_yoy_with_extra_months(self):
         # 最新 2026-10，库里从 2025-09 开始共 13 个月：取 2025-10 做同比
         hist = []
