@@ -127,8 +127,11 @@ class TestMaterialsSection(unittest.TestCase):
     def test_rendered_page_contains_materials(self):
         # render.build 集成：memo 页正文后接材料出处清单
         with tempfile.TemporaryDirectory() as d:
+            import store
+            old_db = store.DB
             render.OUT = os.path.join(d, "out")
             render.SITE = os.path.join(d, "docs")
+            store.DB = os.path.join(d, "intel.db")
             try:
                 dec = os.path.join(render.OUT, "decisions")
                 os.makedirs(dec)
@@ -153,6 +156,7 @@ class TestMaterialsSection(unittest.TestCase):
                 # render.build 的 keep-清理逻辑依赖 OUT/SITE 的相对关系，恢复
                 render.OUT = os.path.join(ROOT, "out")
                 render.SITE = os.path.join(ROOT, "docs")
+                store.DB = old_db
 
 
 class TestDigestTraceability(unittest.TestCase):
