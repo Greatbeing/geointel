@@ -1,0 +1,431 @@
+{
+ "scenarios": [
+  {
+   "name": "全球利率中枢上行，风险偏好降温，外部融资约束收紧",
+   "prob": 40
+  },
+  {
+   "name": "利率中枢稳定，融资条件基本不变",
+   "prob": 35
+  },
+  {
+   "name": "金融冲击导致融资约束剧烈波动",
+   "prob": 25
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "联邦基金利率持续上升，确认加息周期",
+   "keywords": [
+    "federal funds rate",
+    "Fed",
+    "interest rate",
+    "hike",
+    "tightening"
+   ],
+   "keyword_groups": [
+    [
+     "federal funds rate",
+     "Fed funds",
+     "DFF"
+    ],
+    [
+     "rise",
+     "increase",
+     "hike",
+     "tighten",
+     ">= 4.5%"
+    ]
+   ],
+   "exclude_keywords": [],
+   "threshold": 4.5,
+   "type": "value",
+   "action": "启动外债利率锁定程序",
+   "series": "DFF",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t2",
+   "description": "主要主权信用评级下调风险上升",
+   "keywords": [
+    "sovereign rating",
+    "downgrade",
+    "credit cut",
+    "S&P",
+    "Moody's",
+    "Fitch"
+   ],
+   "keyword_groups": [
+    [
+     "S&P",
+     "Moody's",
+     "Fitch",
+     "rating agency",
+     "credit rating"
+    ],
+    [
+     "downgrade",
+     "cut",
+     "lower",
+     "revision",
+     "outlook negative"
+    ],
+    [
+     "sovereign",
+     "government",
+     "country",
+     "state"
+    ]
+   ],
+   "exclude_keywords": [
+    "corporate",
+    "company",
+    "firm",
+    "bank",
+    "issuer"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "加速本币债务发行，减少外币敞口"
+  },
+  {
+   "id": "t3",
+   "description": "美元兑人民币大幅升值，汇率压力加剧",
+   "keywords": [
+    "USDCNY",
+    "yuan",
+    "renminbi",
+    "exchange rate"
+   ],
+   "keyword_groups": [
+    [
+     "USDCNY",
+     "USD/CNY",
+     "yuan",
+     "renminbi"
+    ],
+    [
+     "depreciate",
+     "rise",
+     "strengthen USD",
+     "break 6.8"
+    ]
+   ],
+   "exclude_keywords": [],
+   "threshold": 6.8,
+   "type": "value",
+   "action": "启动跨境汇率对冲操作",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-21",
+ "question": "未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响",
+ "generated_at": "2026-11-24T01:00:47Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-news",
+  "adb-pubs",
+  "aljazeera",
+  "allafrica",
+  "bis-speeches",
+  "cnbc",
+  "ft",
+  "gn-china-econ",
+  "gn-climate",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-mideast",
+  "guardian-world",
+  "marketwatch",
+  "straits-times"
+ ],
+ "materials": [
+  {
+   "n": 1,
+   "title": "Rwanda: Rwanda Retains B+ Credit Rating On Strong Economic Growth",
+   "source": "allafrica",
+   "published": "2026-11-17",
+   "link": "https://allafrica.com/stories/202611170682.html"
+  },
+  {
+   "n": 2,
+   "title": "Insurers face sovereign credit risk from climate change, Ortec Finance says - theinsurer.com",
+   "source": "gn-climate",
+   "published": "2026-11-16",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNZjZsOHVmNTdsNml0UVR5T09lNDUxSTB1eS16NTZxdWNyNkkxWUlueXNNS3I1Tzc2dWVqLWREMVRlZE5FeFg1eVc1YTFRaHhJb1VjX0EyanFzVDBQRVNYX1pYREdDNnNGZ2JLcG1Rdi1qYWo2UTV3d05YZXJVR0o2ajZTX1Jja2hEbUFvV2JHT2FkX1RtTWtvanMyY1UxTmgyRzFBTERodnlLTE04TS1JbktPREo4cnFURTNZdmp0UVRnekVnak4zWndta19oVzZsb1FNZ194OA?oc=5"
+  },
+  {
+   "n": 3,
+   "title": "The Canada Strong Fund: Sovereign wealth or sovereign debt? - Varsity",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNNGRCelNyVzN4cTVVNjlQMVlqekV1U1gwcHM3OUVxd0pqRUlBYzVYSkFiTzcxdC1HU3FJenVscTdIRV9Ld2pFTXk3R2MzREtSRWhXd0N5VUFyZmV0Tkhrem1ycUdPLWxqMEtHQlRpeUdUNDlfcEEySjBWdUFiXzAwazBYQlpQMEd1dF9MT0tLZF9iUFFnT0E?oc=5"
+  },
+  {
+   "n": 4,
+   "title": "ECB warns hedge funds could amplify European sovereign debt volatility - Hedgeweek",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTHpBTlh1NjNkaEg0TUhvWTJmWUR1VzRja3ZzTTNYdjhuTm1uQXpIamhjWHFldVlXa1NxME91VTJ3M2ZEeXVMbldrV1pqMkI4bnNHRGl2NmgtbG9kZzZQem5XekxaS3VBTW1jNkgwZmVZeEVtTjFJLW9ZMkJWY0I0LXdaelp1MUlXV1dwOGVLcjlwZnZPQ2tmWGhONkRzUQ?oc=5"
+  },
+  {
+   "n": 5,
+   "title": "The Economist: AI-sector leverage, sovereign debt top 2027 financial risks - ForkLog",
+   "source": "gn-imf-debt",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMHRrXzZyRnJMTHNPVV9FMjFVWHlwTTl4VmdEVGdEMjZULUtQVk1kOG5rTUsxRE1aNk5ncVZ3aWx4UGlDZl9USGhad3d3OHlGQWlZMUg3U25Td2J3UEJIZjQ3WFNZdW5NcGMzX2IwZzZ3d0hrTXZHcGRnUmg2V3JSSndidDRvMGhYeXV0V2Q0RWVSQXFBdkVEVFZxM3I?oc=5"
+  },
+  {
+   "n": 6,
+   "title": "ECB Warns Hedge Funds Pose Risks to European Sovereign Debt and Insurers - Beinsure",
+   "source": "gn-imf-debt",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPaV9yQmhNNmZETHVuTS0xMzNMR2gyUWRIVU03MHhJZ3cyWl9HV2R4d0NLOWh0VzZvNkVpRy1BMzdLYUNUZ2luUkdwbFJNaDVWdk1qYmRmemxmY2Rhdl9KMldYYklsQXV1Y2FtQUhKSGFnRXZ2N25WR2pSTFJwV0VTV3hzd1ZDaXUycmZFemkyNjBOQV91SkxCZnFB?oc=5"
+  },
+  {
+   "n": 7,
+   "title": "Use of snapback clauses in sovereign debt restructuring requires some thought - Pinsent Masons",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWk5BM04yT2xwTWNjblRLZWNMUWhmVnFIMHBhTk1BQl9WRGVfV2dONUZtWGNzZVlLaTQ1Wl9JU2ZyTWFGa0pwTzU5eEtuQ3lKZ1FVNnF2NmZuZ09vM0dVWHNPR1hVT0lBX20tZlFKMWlFMFdfTnhDTUtUY0dtcHptMkxrcjhBYXJ4UkhmWEFpNDlmbTctVnVz?oc=5"
+  },
+  {
+   "n": 8,
+   "title": "Rethinking sovereign debt: The strategic case for innovative bonds in Africa - TRT Afrika",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE41RFJEeHpxV1JtR3Jkd0hOVTFaMFZVUTNmNVZEaDRrNjJXT3Y0OERxN2ItWGFxZncxQkhCSlVRTEFtcjVQM0Nzek9RRGM1M0lzUlI4bFpXdWlPQzdLRHJXNjlsbzM?oc=5"
+  },
+  {
+   "n": 9,
+   "title": "Eurozone faces dual threat of sovereign debt shifts and AI market turmoil - The Brussels Times",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOVZRTHdZYzVPb3pDZThrRHRXV0RVUmhVSEVtM1JtUXJTOHRKd0tRRV9vR3RfS1l5UDM1THFFMnBSenRvWHZSa2VVcVJ4b2lHWEt1aXlnUWh5LTI1dDFSYjU2aDk5RXN6S3RjOGY1X0hjUGhocjlzb3V1NTJKTTlkaDFrcUVnWG4yR0F6YmRSNlZCNC1TeVQwU3pnX29oU2FFdUwwcVYxbVFtN2FXU00yQTdPbHVlUWxoc3ZGSjJxRQ?oc=5"
+  },
+  {
+   "n": 10,
+   "title": "Govenor Signe Krogstrup: Denmark is well equipped to withstand turmoil in international sovereign debt markets - Danmarks Nationalbank",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxQcDRoUldULVRodXNVcnAtdHdjV3B2V0llcGNsQ2ViekcwTEpGT2JjelpLQ2UwZzBieldyVXZndWlzbzliU2ozVXJKVGl6QS1WWmg0R0RrZzlRWnVpai1tdkVBTVlPbWNHY3ZJZkJYN3czZ3VPNXNlS3c2bDhDcF9ONzVMU3JsdkVUQ1RqNmZmdmlFZlVjRXdtanprVGszMXdTV3VkRERYSlR4NmxHVU14VW1wQm1qWWZ0Ni1UOVZ2UkdsbFExQ1NVUXRKRXNRMkVSYjRtdThGMzNVZC1oanR3d2hSQ1pZZzBSMXF5bnU3bUVXQXRYWWJqeVdiM20tT3B3T2l5MkR4NDI2VnZNVGRubjh1bFRsTFg3MGFSQTVWdlphS1NlRDdPUFR3?oc=5"
+  },
+  {
+   "n": 11,
+   "title": "What Role Does the Russell Investments Australian Government Bond ETF (ASX:RGB) Play in Sovereign Debt Exposure? - Kalkine",
+   "source": "gn-imf-debt",
+   "published": "2026-11-22",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNS3NrRndvUnRSRXFudVZEMjZMcVhQUGpIS3RMVk8yQk90YW5oLXVqMGJORVh0OUFtczU4Uk5MLVVNVW5kdWZxWlRYUnUyNXZuQWxMRnl3aVR5dVV1cERvVGEybjlvZHhobl9FLVI5TllrWjluNGhicGY5S0loQzd5Y25DX1pfbExyU1JpZHJrNVdsYzhiMm54X1I5cmxaenFMeUlnUkx1S2ZPLTFvT3ZBbzRDQlZXajhaeHZ5ZExfRjlaWVVYT1Z6a2ROcHV1SGVyY3kzSFlKVHUyN05GWXNORHhiMWlZbnM?oc=5"
+  },
+  {
+   "n": 12,
+   "title": "Can Africa’s new credit rating agency change how the continent is assessed?",
+   "source": "aljazeera",
+   "published": "2026-11-21",
+   "link": "https://www.aljazeera.com/news/2026/11/21/can-africas-new-credit-rating-agency-change-how-the-continent-is-assessed?traffic_source=rss"
+  },
+  {
+   "n": 13,
+   "title": "The sovereign debt-hedge fund connection. Eurozone inflation dynamics. Armoured tractors and scraping the paint off a Lamborghini. - Adam Tooze | Substack",
+   "source": "gn-imf-debt",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1kM1dEQWxwUlBWdjJld3NpY1oxUk1vTThqLWZtV2k2SmRwT1U2a2hxRll2bzFBbFVSYjg0eTE0VTBLa0VtejlNb21kbmpSaWdNWlM4NmxUdERVTDkxc1VLclluQVhxZXhsaVljYTBnZml4b0dBQTM2TkkwVG9udw?oc=5"
+  },
+  {
+   "n": 14,
+   "title": "Sovereign debt may not be considered the safe bet in the next decade, says former US Treasury deputy secretary - The Edge Singapore",
+   "source": "gn-imf-debt",
+   "published": "2026-11-22",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPQVdCWk5CdW1OUjlsalRPTnZGMlh6NnJwdmh6T2hHYVdMakZTNjB6bTZMNlJLazBNVmJNa2xvenZ3RVVkV2JLUEtTTHNweDJkbWdOU25OLTJ2bjhXZ053al91YkR3emVPM1VQbWw0eFJjNE55TFVPTUl0WjY2QzhqbW5IUHluQUFBR2F0VFp1bDJwZ0Y0cnRWZHFPNlRfSlVmY1cyYVFCRE9sRHd1cC1JS3pEMWFvMHY3OE9GY2FTY1ZRLXc?oc=5"
+  },
+  {
+   "n": 15,
+   "title": "Top Links 1291 The sovereign debt-hedge fund connection. Eurozone inflation dynamics. Armoured tractors and scraping the paint off a Lamborghini. - Adam Tooze | Substack",
+   "source": "gn-imf-debt",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1LXzdLM01hYVprV2hSQzdwUFNCUlZJWHgyTTAxcU1pcXRzZUxrWlNIQmNKSEFBNTNCMTAtS2lFeGRoZjY3MHFYYTRwbktzZGUwWEFOakM4RWFpN0pJZGJwbUxtMTBRTmF6b2RlOHpUOS1LVFlf?oc=5"
+  },
+  {
+   "n": 16,
+   "title": "Singapore and China to expand renminbi financing, explore cross-border payment link - The Business Times",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOVTdoVTJ3RHBraENWOEJZQWk3aEFhbWpmRkUxbUhOUGIxVU1XWE51ZUtBQ2IwNkd1eGdqM1hyQm95YzdjSHBhQmpCWXB5N3dVRTJjYmpKeDh1Vm9zVE5oRGpJYkZmZXVfaEwtdGo4QzVNUlJ4VG4tUlJubmdZOE9zcmxFVlo2a1BZNG5qbGlIUWpsbWMzcGhrRWFZRzQza29DMHktd0dsUUc5SmlJVTFmaVhoOWk0V3hmV2Y5Mm0zQWdOYlNrcm14OEExYzlUVDRnd3VyUzE1bjlScEhURGt3?oc=5"
+  },
+  {
+   "n": 17,
+   "title": "CFG to Senate President on Nigeria Debt Sustainability and Fiscal Responsibility - Borrowing approvals, budget reconciliation and the 2027 fiscal framework - Proshare",
+   "source": "gn-imf-debt",
+   "published": "2026-11-21",
+   "link": "https://news.google.com/rss/articles/CBMi3wJBVV95cUxNWEJHc3JKdGZPdDlibFl1cEFaZ2FvQXR0TDduVU8teUNiTFVXbXZaY0pKWUExYWtIYlByRUNTVlQ4ZnBVdHFhNXhMQUpJcDNEQ3VsMThlOTF6b2loZ1VGdVpmdURCVFBzNzJMTkstRi13eGFJZ2VYMmlxb0l2UDRzcldzZTBqclR4dHJheTdaQnZHcEhFQ1YwTFl4Wi0zOXRZR05GRmh0aHUyWmdibzc0NjdzN1JUcE1DMUhiaHJWQkRTNWp5cjF2eDdWUnpCN1NsS3ZQMFFfUTZ5Y2ZKQ185ZDdXQ2xrMTVRQ0dMVHNCNWNZVUFBeVBjbFhCSVFNZ25MaHppZ3BpS2FjekxhcXh1ZHJFdEQ4blEyZUdUZkVIdk9PeDBYbzBmVkFzeUQ4RHNvaHk0Smc4OVFVNkg3cy1STWF0UlNUQUctcl9kb2ZGbEprMHk1emE0WEpod1d6ekE?oc=5"
+  },
+  {
+   "n": 18,
+   "title": "Peru's central bank raises rates after 14 months as inflation reaches 5.25% - Latin Times",
+   "source": "gn-mideast",
+   "published": "2026-11-14",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBFTWhDSG5uaDRHYU5VRmh3YlRWRTlNZzIxVW81M0dKc3dMQ1Y2dzVHNTk1b1hqdFRGdFVXME1vZ09ZbTI2bXIwZjdYaHpRUzdnYllKQmFoM09XMm9IMERHUG05WHMyVTc4TGk1a2tHT210Ujh6V3ZjTGthZHRqZw?oc=5"
+  },
+  {
+   "n": 19,
+   "title": "China, EU officials discuss exchange rates as central bank chief Pan urges cooperation - The Standard (HK)",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOMFo1Y2VDa0Jzc1BQRDZFb2piaDE5cFJyek5qQjdzWjRTalpDZm85Y09PaGhCQjNvX2xkOFlHOEptTXdYSE4yeWxjRzRnZTRuVXIxcVdLd0ZybFhVSWI0aHBrYmFYVDhJaThDNFBEQkQ3QWh2WGpMNXk2bl9jbVJqbHNNcUU0Z012Q2RkOUU1WEx1X21pQlhjeVdtUTZwZEF1N0xhemFycDFXb2l5dUE2NzZQT3lEOUUwSjZlc1lodVFJR3RZc1hhekpRLURHakE1R2RNc1hB?oc=5"
+  },
+  {
+   "n": 20,
+   "title": "IMF pauses release of Ukraine funding until EU gives support - International Financing Review",
+   "source": "gn-imf-debt",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQMGNsTzdrblhJczY5bkhtNnFqTHVpWmNTNWRmaXgyRU1jRjVadU42bzNxWkdoYk5na25KYlk5c04yNHBlNDdUdXBSZ3M1dG1xZmNldm1jQi02U0lPYkxxOENZMmcxTFFZMEZtaVdvTjJDRDhiQzdLeHhXeEZrSkZQZE5sN0dQNkJrNGxSTEtiT2JreDk2cVRMR3BoRjJYX3hDVnVza2V2MnJhN1pj?oc=5"
+  },
+  {
+   "n": 21,
+   "title": "Primary Balances, Debt Composition, and Sovereign Bond Yields in Emerging Economies",
+   "source": "adb-pubs",
+   "published": "2026-11-23",
+   "link": "https://www.adb.org/publications/primary-balances-debt-composition-emerging-economies"
+  },
+  {
+   "n": 22,
+   "title": "Sukuk Liquidity Stabilizing Below Pre-Conflict Levels, Fitch Says - Forbes Middle East",
+   "source": "gn-mideast",
+   "published": "2026-11-11",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPdGptOVBKa1NUOExUUFNOUkUtUDJrVW0zQTVmNnZfV1pDaUlUWFBqV0VXb21iek42eWxWRU1FQkNnSlQxQTg3S0tzYTZLMkxBY1JEUW9FTVNCaHV3MUpVZUtZaC1YUVREekxUczdhMV9qcEhudE5LQzFFM0Y0aWpzZ3IyNzMxVWd6ZmxRZzluaEpGQkM3R2ZVSnRGY195MmpRcHFJdjZxcjZUYW1BUHlv?oc=5"
+  },
+  {
+   "n": 23,
+   "title": "Want to earn 5% on shorter-term Treasurys again? Watch for this shift.",
+   "source": "marketwatch",
+   "published": "2026-11-17",
+   "link": "https://www.marketwatch.com/story/want-to-earn-5-on-shorter-term-treasurys-again-watch-for-this-shift-d6ff42f2?mod=mw_rss_topstories"
+  },
+  {
+   "n": 24,
+   "title": "Credit unionism and the development of Barbados",
+   "source": "bis-speeches",
+   "published": "2026-11-03",
+   "link": "https://www.bis.org/speeches/20261103-credit-unionism-and-development-barbados"
+  },
+  {
+   "n": 25,
+   "title": "What's ahead for AI financing after Nvidia CEO Jensen Huang departs",
+   "source": "cnbc",
+   "published": "2026-11-13",
+   "link": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-resignation-ai-financing.html"
+  },
+  {
+   "n": 26,
+   "title": "A misty outlook for rates",
+   "source": "ft",
+   "published": "2026-11-17",
+   "link": "https://www.ft.com/content/c53ae58c-64b9-4d90-8a0b-d338e80f4614?syn-25a6b1a6=1"
+  },
+  {
+   "n": 27,
+   "title": "As credit card balances hit a record high, medical bills can become 'shadow debt,' expert says",
+   "source": "cnbc",
+   "published": "2026-11-12",
+   "link": "https://www.cnbc.com/2026/11/12/medical-bills-credit-card-debt.html"
+  },
+  {
+   "n": 28,
+   "title": "Slovak PM Fico accuses Merz of 'blackmail' for linking Ukraine funding to EU budget talks",
+   "source": "straits-times",
+   "published": "2026-11-10",
+   "link": "https://www.straitstimes.com/world/europe/slovak-pm-fico-accuses-merz-of-blackmail-for-linking-ukraine-funding-to-eu-budget-talks"
+  },
+  {
+   "n": 29,
+   "title": "A new payment scheme for Iceland - building a sovereign and secure payment system",
+   "source": "bis-speeches",
+   "published": "2026-11-03",
+   "link": "https://www.bis.org/speeches/20261103-new-payment-scheme-iceland-building-sovereign-and-secure-payment-system"
+  },
+  {
+   "n": 30,
+   "title": "Namibia introduces facility to address N$500 million biodiversity financing gap Staff Reporter Namibia has established the Namibia Biodiversity Finance Facility to attract investment and funding for initiatives focused on rehabilitating degraded landscapes, con - Instagram",
+   "source": "gn-climate",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9nSkpMSVBzMFZweTdUYUVZU3I0MFZCR3Y3U1A3SVRiYWpnYlI0RDQ1bU5jN1RDREwzQnFHa3BLTndiZk5sZTI3bUZlVDB6VXFQSEE?oc=5"
+  },
+  {
+   "n": 31,
+   "title": "AI boom, geopolitical tensions threaten global growth, says Moody's - NST Online",
+   "source": "gn-geopolitics",
+   "published": "2026-11-16",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPbmpQMGF6RURaU2JRZGcyVGthOGJURS16N3JwazNsbHRiT2JyZm9qWkx3TFNyNEhTbU16NVMtai10VmJ6TlczMFNaTnlqX1NKc2FjcHRTRE5GdTVXUThUWFBQQlUxWkNBSDNUVnZ4ZkV3cGdNd2VtQm5TSElFMXpBX2J6VGk0MDd6UVhscVUySG0xV2hWZ2psNHZ2NTZBVWJ2eDhpakhPeHBLZ2QzUHB1S2UtVlpWR1BLSGd2TdIBwgFBVV95cUxNNjI2a0llNlBfVXAta1RpZ0FaaWNPT1QyS2ZGTG1kZDhZaUdYQ2J0YWstc1A3MDR0ZmlyRnM4UmRJc1gyNzNJVGdZbTU4OTFhdUkzeE85SkpkYlRlZkI0MndRbDVDTW42Y3NfNXR1Umg3d1V6bkJfY2VKQ3J6UXN6Q21BUWM2X0VGMjhzSmRLWUFjYWhNNk1Eei12U3EtbTZJU1IycHV2VXhXZjdtd0s0ZUlqcHNncE9EaTF5R294NThEZw?oc=5"
+  },
+  {
+   "n": 32,
+   "title": "Liberia: Boakai Submits U.S.$1.538b Fy2027 Draft Budget",
+   "source": "allafrica",
+   "published": "2026-11-09",
+   "link": "https://allafrica.com/stories/202611090155.html"
+  },
+  {
+   "n": 33,
+   "title": "India to outpace China in GDP growth by 3 percentage points by 2028: Moody’s - Firstpost",
+   "source": "gn-china-econ",
+   "published": "2026-11-11",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxORTIyZVAzbXJPakdFbHlJcjE0Q01HbUwycWpnSzN2c3l5TVlPZWRsV2ZwNXJTd3YtZ1VEcERYMkpVRENNeHJUQ0tfM090NWtTNjdOMGJSQVJpSnFSN2E2Z1RibHFrRHJGRWpTbHdUcld1dWJLVEp0MkdiYlFVTzlreUx2NVpvOGFsMUFBNnlyWFdtMFdidW5RaEdzdkxnLWNPWktVZXFzV0tyUTljaVpQSG9PZjBfNjNUcHg3eHdKVU_SAcYBQVVfeXFMUENldHpWVzAtQ2R4cXM4dTVSV1cxTlhrX0daWnY3aTRjTm5ENndkOExYMzVKM2Rrd2ZXWFFIekRkZXdlbmd5bjJKNFA0aTlSSWdNZTA4M0JRaFBBZDlTaDNGZG9PMVlkb3QwU2tuWHpxN1VjYUxCOFppOW9uVTFlVnFJTmx6a2dOTkdTQWVzVnltUlF5c0t2c0JvVXNEekVoakFRa0kxajB5dVdoSzNELUNVMjhqaXNHdTNqaFV2OTd3SF85RERB?oc=5"
+  },
+  {
+   "n": 34,
+   "title": "A rapid interest rate rise seems inevitable – and households are expected to pick up the tab",
+   "source": "guardian-world",
+   "published": "2026-11-14",
+   "link": "https://www.theguardian.com/business/2026/nov/14/interest-rate-rise-phillip-inman-inflation-economy"
+  },
+  {
+   "n": 35,
+   "title": "India's GDP growth to outpace China's by 3 percentage points by 2028: Moody's - ANI News",
+   "source": "gn-china-econ",
+   "published": "2026-11-11",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNSnliNEhCQThOUUcwV1c3dUR1di1JVUQtMXJJRVJ6ajcxOXpjYkxGZGFqejhRYm9hYlVDaHhUc29FNDVaMzBIeDF2RmQyRXJfSVM5SzBFQ21UZUVTN0R2MTR5UklERTR4NmZNa0otWC16YjI2OU55cENFT3BUNXNZSHhtOE80V0V6R29Fd2lzZEZVRk1sUmRNWFdVS01IR1NNYTRvckd0bXhUMWtyOXkyM3V2MWdlby1mTElyWnNuVEplUQ?oc=5"
+  },
+  {
+   "n": 36,
+   "title": "Brussels to propose €45bn Ukraine loan borrowed against EU budget",
+   "source": "ft",
+   "published": "2026-11-16",
+   "link": "https://www.ft.com/content/2c9de06b-aa86-4275-b9f3-1276f8c20994?syn-25a6b1a6=1"
+  },
+  {
+   "n": 37,
+   "title": "India's Economy To Grow 7 percent In 2028, Outpace China By 3 Percentage Points: Moody's - KNN India",
+   "source": "gn-china-econ",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPLVI2ZE1ZY1FZVUpjWVhHTmt6bGdrdWhDSU16SEtydE1USU5WbWlfUU1xVkR6ZzlEMThvOEZXc1Y5QmplT3ptWTc5WjNRWWxwNTUwR21fby10QnFjQjlRNmtYS2hPNE45LWUzNGZ2QVppZ2h3dzJuVTJzMldUNmpIS0lUZV9YQmgwSGJQS3huM1JuLTBXbUtCMktad0NoRGJBcXlwOEUtVVVyaDBwdEZnVl9hSl90WW5SWXlDZE1QWW5BdUhZUXJiSXBCeVA?oc=5"
+  },
+  {
+   "n": 38,
+   "title": "India's GDP growth to outpace China's by 3 percentage points by 2028: Moody's - https://www.indiagazette.com/",
+   "source": "gn-china-econ",
+   "published": "2026-11-11",
+   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQeVNMWGlvc0ItcVdpR2xWNlZuUEJUTEVsdGdXeGxpWi13Z1FZXzUzaUZCZnhVZnBFX0JxLWxQMTBwa0pjWXFkLWZuVFhKNHBROUdSdy1SamY0dVFDcmQ1WjNXeXA5cjBWWFRqOXBaVGJrVl9nY2ZjRDBiYkc2amItSUYxblB5ampvMllGV3FsMjdoeWVSU2l4RlFBdnFQVjdtM01CNG5DWGJCNGpyUWRfd2YyMTA?oc=5"
+  },
+  {
+   "n": 39,
+   "title": "Bank of England’s inflation response ‘risks higher interest rates for longer’",
+   "source": "guardian-world",
+   "published": "2026-11-11",
+   "link": "https://www.theguardian.com/business/2026/nov/11/bank-of-england-inflation-response-risks-higher-interest-rates-for-longer"
+  },
+  {
+   "n": 40,
+   "title": "ADB Approves $200 Million Loan to Boost MSME Financing and Resilience in Sri Lanka",
+   "source": "adb-news",
+   "published": "2026-11-20",
+   "link": "https://www.adb.org/news/adb-approves-200-million-loan-boost-msme-financing-and-resilience-sri-lanka"
+  }
+ ]
+}
