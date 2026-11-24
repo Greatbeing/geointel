@@ -141,14 +141,16 @@ class TestRenderBuildTrackPage(unittest.TestCase):
     def test_build_writes_track_record_and_home_card(self):
         result = render.build()
         self.assertEqual(result["track_records"], 2)
-        track = open(os.path.join(render.SITE, "track-record.html"), encoding="utf-8").read()
+        with open(os.path.join(render.SITE, "track-record.html"), encoding="utf-8") as _f:
+            track = _f.read()
         self.assertIn("预测战绩", track)
         self.assertIn("累计 Brier", track)
         self.assertIn("track-record", track)  # nav aria-current 值
         # 导航含入口
         self.assertIn(render.href("/track-record.html"), track)
         # 首页战绩卡（显著入口，在简报正文之前）
-        home = open(os.path.join(render.SITE, "index.html"), encoding="utf-8").read()
+        with open(os.path.join(render.SITE, "index.html"), encoding="utf-8") as _f:
+            home = _f.read()
         self.assertIn("track-card", home)
         self.assertIn("已复盘 1 份 · 待复盘 1 份", home)
         self.assertIn("累计 Brier 0.320", home)

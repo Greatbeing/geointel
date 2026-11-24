@@ -163,7 +163,8 @@ def main(argv=None):
     ap.add_argument("--timeout", type=int, default=20)
     args = ap.parse_args(argv)
 
-    sources = json.load(open(args.sources, encoding="utf-8"))["sources"]
+    with open(args.sources, encoding="utf-8") as _f:
+        sources = json.load(_f)["sources"]
     print(f"collect: {len(sources)} sources", flush=True)
 
     all_items, report = [], []
@@ -198,7 +199,8 @@ def main(argv=None):
     runs = os.path.join(HERE, "data", "runs")
     os.makedirs(runs, exist_ok=True)
     path = os.path.join(runs, summary["at"].replace(":", "") + ".json")
-    json.dump(summary, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    with open(path, "w", encoding="utf-8") as _f:
+        json.dump(summary, _f, ensure_ascii=False, indent=1)
     # 失败源汇总日志：一眼看到哪些源坏了、坏因是什么（逐源行在 49 行输出里会被淹没）
     failed = [r for r in report if not r["ok"]]
     if failed:

@@ -144,8 +144,9 @@ class TestMaterialsSection(unittest.TestCase):
                     f.write("---\nquestion: q\n---\n\n# 标题\n\n正文。\n")
                 # 不给 scores.jsonl：load_scores 走文件缺失分支
                 render.build()
-                page = open(os.path.join(render.SITE, "decisions", "2026-11-23-demo.html"),
-                            encoding="utf-8").read()
+                with open(os.path.join(render.SITE, "decisions", "2026-11-23-demo.html"),
+                          encoding="utf-8") as _f:
+                    page = _f.read()
                 self.assertIn("材料出处", page)
                 self.assertIn("https://example.org/a", page)
             finally:

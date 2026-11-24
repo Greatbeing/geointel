@@ -10,7 +10,8 @@ import os
 
 ROOT = "/data/workspace/geointel"
 p = os.path.join(ROOT, "decide.py")
-text = open(p, encoding="utf-8").read()
+with open(p, encoding="utf-8") as _f:
+    text = _f.read()
 
 # 1. Add DECIDE_MODEL constant after the SYSTEM definition (find the TEMPLATE start).
 anchor = 'TEMPLATE = """'
@@ -29,5 +30,6 @@ new_call = "body = llm.chat(prompt, system=SYSTEM, model=DECIDE_MODEL, timeout=4
 assert old_call in text, "llm.chat call anchor missing"
 text = text.replace(old_call, new_call, 1)
 
-open(p, "w", encoding="utf-8").write(text)
+with open(p, "w", encoding="utf-8") as _f:
+    _f.write(text)
 print("decide.py patched: DECIDE_MODEL=NVIDIA Nemotron, max_tokens=32000")

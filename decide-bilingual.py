@@ -10,7 +10,8 @@ import os
 
 ROOT = "/data/workspace/geointel"
 p = os.path.join(ROOT, "decide.py")
-text = open(p, encoding="utf-8").read()
+with open(p, encoding="utf-8") as _f:
+    text = _f.read()
 
 # 1. Add the bilingual keyword map + expand_query() before the TEMPLATE definition.
 anchor = "# Decision model: NVIDIA Nemotron 3 Ultra 550B via Magpie (user 2026-11-11:"
@@ -78,5 +79,6 @@ new_search = "items = store.search(expand_query(args.question), limit=args.items
 assert old_search in text, "store.search call anchor missing"
 text = text.replace(old_search, new_search, 1)
 
-open(p, "w", encoding="utf-8").write(text)
+with open(p, "w", encoding="utf-8") as _f:
+    _f.write(text)
 print("decide.py patched: bilingual query expansion (CN_EN_KEYWORDS + expand_query)")

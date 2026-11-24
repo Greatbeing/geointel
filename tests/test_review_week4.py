@@ -184,7 +184,8 @@ class TestBuildPage(unittest.TestCase):
     def test_page_with_no_reviewed(self):
         self._write_rows([row("2026-11-21-aaa", "2027-01-15")])
         out = review.build_page(self.scores, self.out, today=date(2026, 11, 22))
-        text = open(out, encoding="utf-8").read()
+        with open(out, encoding="utf-8") as _f:
+            text = _f.read()
         self.assertIn("暂无已复盘 memo", text)
         self.assertIn("2027-01-15", text)
         self.assertIn("结构分一览", text)
@@ -198,7 +199,8 @@ class TestBuildPage(unittest.TestCase):
             row("2026-11-21-bbb", "2027-01-10", structural=85),
         ])
         out = review.build_page(self.scores, self.out, today=date(2027, 1, 20))
-        text = open(out, encoding="utf-8").read()
+        with open(out, encoding="utf-8") as _f:
+            text = _f.read()
         self.assertIn("88.9", text)
         self.assertIn("已到期未复盘", text)
         self.assertIn("2026-11-21-bbb", text)
@@ -246,7 +248,8 @@ class TestReviewWindowBlindSpot(unittest.TestCase):
             scores = os.path.join(d, "scores.jsonl")
             self._write(scores)
             out = review.build_page(scores, os.path.join(d, "c.html"), today=self.today)
-            text = open(out, encoding="utf-8").read()
+            with open(out, encoding="utf-8") as _f:
+                text = _f.read()
             # 不再只是一句"未来 14 天内到复核日"的空列表
             self.assertIn("最近一次在", text)
             self.assertIn("2026-12-15", text)
