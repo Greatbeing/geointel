@@ -63,6 +63,41 @@ def _groups(value):
     return [g for g in (_terms(group) for group in value) if g]
 
 
+# value 型触发器没写 series 时，按描述推断绑定（只在唯一匹配、方向明确时才绑）
+SERIES_HINTS = [
+    ("DGS10", ("10 年期美债", "10年期美债", "10 年美债", "10年美债", "10-year", "10y")),
+    ("DGS2", ("2 年期美债", "2年期美债", "2-year")),
+    ("DFF", ("联邦基金利率", "fed funds")),
+    ("USDCNY", ("美元/人民币", "美元兑人民币", "usdcny", "usd/cny")),
+    ("USDJPY", ("美元/日元", "美元兑日元", "usdjpy", "usd/jpy")),
+    ("EURUSD", ("欧元/美元", "eurusd", "eur/usd")),
+    ("DTWEXBGS", ("美元广义指数", "美元指数")),
+]
+UP_WORDS = ("站上", "突破", "超过", "升至", "上调至", "高于", ">=", "≥")
+DOWN_WORDS = ("跌破", "低于", "降至", "<=", "≤")
+
+
+def infer_series(trig):
+    if trig.get("kind") != "value" or trig.get("series"):
+        return trig
+    desc = (trig.get("description") or "").lower()
+    found = {s for s, hints in SERIES_HINTS if any(h.lower() in desc for h in hints)}
+    try:
+        float(trig.get("threshold"))
+    except (TypeError, ValueError):
+        return trig
+    if len(found) != 1:
+        return trig
+    up = any(w in desc for w in UP_WORDS)
+    down = any(w in desc for w in DOWN_WORDS)
+    if up == down:
+        return trig
+    trig["series"] = found.pop()
+    trig["op"] = trig.get("op") or (">=" if up else "<=")
+    trig["series_inferred"] = True
+    return trig
+
+
 def load_triggers(decisions_dir):
     """读取备忘录里的 triggers；同一 slug 只取最新一份。"""
     latest = {}
@@ -103,6 +138,7 @@ def load_triggers(decisions_dir):
             for extra in ("series", "op", "window"):
                 if t.get(extra) is not None:
                     trig[extra] = t.get(extra)
+            infer_series(trig)
             if trig["kind"] == "value":
                 # 没有 series 也必须进入人工读数清单，不能静默丢弃。
                 out.append(trig)
