@@ -131,6 +131,38 @@ def calibration_stats(rows):
     return stats
 
 
+def calibration_buckets(rows, decisions_dir=DECISIONS, edges=(0, 20, 40, 60, 80, 101)):
+    """概率分档校准：把已复盘 memo 的每个情景当成一次预测（概率 p，是否发生）。
+
+    返回 [{"lo","hi","n","mean_p","hit_rate"}]，没有样本的档 n=0。
+    覆盖失败（occurred=none）的 memo：所有情景都记为未发生。"""
+    import json as _json
+    preds = []
+    for r in rows:
+        o = r.get("outcome")
+        if not o:
+            continue
+        path = os.path.join(decisions_dir, (r.get("memo") or "") + ".json")
+        try:
+            with open(path, encoding="utf-8") as f:
+                scen = _json.load(f).get("scenarios") or []
+        except (OSError, ValueError):
+            continue
+        for s in scen:
+            try:
+                p = float(s.get("prob"))
+            except (TypeError, ValueError):
+                continue
+            preds.append((p, s.get("name") == o.get("occurred")))
+    out = []
+    for lo, hi in zip(edges, edges[1:]):
+        b = [(p, h) for p, h in preds if lo <= p < hi]
+        out.append({"lo": lo, "hi": min(hi, 100), "n": len(b),
+                    "mean_p": round(sum(p for p, _ in b) / len(b), 1) if b else None,
+                    "hit_rate": round(100.0 * sum(1 for _, h in b if h) / len(b), 1) if b else None})
+    return out
+
+
 def review_memo(memo_path, occurred, scores_path=SCORES_PATH, today=None):
     """登记一 memo 的实际走向。occurred 为情景名，或 "none"。
     未到复核日也允许登记，但会打印提醒（提前登记的结果分要慎用）。"""
@@ -235,6 +267,23 @@ def build_page(scores_path=SCORES_PATH, out_path=CALIBRATION_PAGE, today=None):
 "——复核日 %s</li></ul>" % (
                     (rd - today).days, _esc(rd), _esc(r.get("memo_date")),
                     _esc(r.get("question")), _esc(r.get("review_date"))))
+
+    # 概率分档校准
+    parts.append("<h2>概率分档校准</h2>")
+    buckets = calibration_buckets(rows)
+    if not any(b["n"] for b in buckets):
+        parts.append("<p>暂无已复盘样本。每个情景按当时给的概率分档，复盘后比较“说 X% 的事实际发生了几成”。</p>")
+    else:
+        body = "".join(
+            "<tr><td>%s–%s%%</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (
+                b["lo"], b["hi"], b["n"],
+                "—" if b["mean_p"] is None else "%s%%" % b["mean_p"],
+                "—" if b["hit_rate"] is None else "%s%%" % b["hit_rate"])
+            for b in buckets)
+        parts.append(
+            "<p>理想情况下“实际发生比例”接近“平均预测概率”；样本少时仅供参考。</p>"
+            "<table><thead><tr><th>概率档</th><th>情景数</th><th>平均预测概率</th>"
+            "<th>实际发生比例</th></tr></thead><tbody>" + body + "</tbody></table>")
 
     # 全部结构分一览
     parts.append("<h2>结构分一览</h2>")
