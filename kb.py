@@ -87,7 +87,11 @@ def verify_fact(fact, sources):
     纯字符串比对，不靠模型：引用必须存在；事实中的每个数字/日期必须出现在至少一个被引用原文里。
     """
     text = (fact or {}).get("text", "").strip()
-    src = [s for s in (fact or {}).get("src") or [] if isinstance(s, str)]
+    src = [s.strip() for s in (fact or {}).get("src") or [] if isinstance(s, str)]
+    # 模型常省略 "item:" 前缀：裸 ID 能对上材料就补全
+    src = [("item:" + s) if s not in sources and ("item:" + s) in sources else s for s in src]
+    if isinstance(fact, dict):
+        fact["src"] = src
     if not text:
         return False, "empty"
     if not src:

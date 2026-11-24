@@ -39,6 +39,11 @@ class VerifyTest(unittest.TestCase):
                                 "facts": [{"text": "新增 140 个实体", "src": ["item:a1"]}]}, SRC)
         self.assertEqual((e["title"], e["aliases"], e["fields"]), ("世界银行", ["World Bank"], {}))
 
+    def test_bare_item_id_accepted(self):
+        f = {"text": "新增 140 个实体", "src": ["a1"]}
+        self.assertTrue(kb.verify_fact(f, SRC)[0])
+        self.assertEqual(f["src"], ["item:a1"])
+
     def test_unknown_or_missing_source_rejected(self):
         self.assertFalse(kb.verify_fact({"text": "x", "src": []}, SRC)[0])
         self.assertFalse(kb.verify_fact({"text": "x", "src": ["item:zz"]}, SRC)[0])
