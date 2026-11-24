@@ -30,8 +30,12 @@ class InferSeriesTest(unittest.TestCase):
         self.assertNotIn("series", T("GDP 环比年化 ≥ 0.35%", 0.35))
         self.assertNotIn("series", T("BIS 许可证拒签率连续两月超过 50%", 50))
 
-    def test_two_series_ambiguous(self):
-        self.assertNotIn("series", T("联邦基金利率升至 4.5% 且 10 年期美债突破 5%", 4.5))
+    def test_two_series_takes_first_mentioned(self):
+        t = T("联邦基金利率升至 4.5% 且 10 年期美债突破 5%", 4.5)
+        self.assertEqual(t["series"], "DFF")
+
+    def test_no_series_in_description_stays_manual(self):
+        self.assertNotIn("series", T("亚洲LNG现货价格指数下跌 10%", 10))
 
     def test_no_direction(self):
         self.assertNotIn("series", T("10 年期美债收益率在 5% 附近", 5))
@@ -73,10 +77,20 @@ class InferMonthlyTest(unittest.TestCase):
                                 "description": "核心 PCE 环比年化 ≥ 0.35%"})
         self.assertEqual((t["series"], t["measure"], t["op"]), ("PCEPILFE", "yoy", ">="))
 
-    def test_pce_or_cpi_ambiguous(self):
+    def test_pce_or_cpi_takes_first_mentioned(self):
         t = watch.infer_series({"kind": "value", "threshold": 0.35,
                                 "description": "核心 PCE 环比年化 ≥ 0.35%（或 CPI 同比重回 ≥ 3.5%）"})
-        self.assertNotIn("series", t)
+        self.assertEqual((t["series"], t["measure"]), ("PCEPILFE", "yoy"))
+
+    def test_yoy_with_extra_months(self):
+        # 最新 2026-10，库里从 2025-09 开始共 13 个月：取 2025-10 做同比
+        hist = []
+        for i in range(13):
+            y, m = 2025 + (8 + i) // 12, (8 + i) % 12 + 1
+            hist.append((f"{y}-{m:02d}-01", 100 * (1.04 ** (i / 12))))
+        hist.reverse()
+        with unittest.mock.patch.object(watch.store, "market_history", side_effect=lambda s, limit: hist):
+            self.assertAlmostEqual(watch.monthly_yoy("CPILFESL"), 4.0, places=1)
 
 
 class EvalYoyTest(unittest.TestCase):
