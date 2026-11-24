@@ -33,7 +33,8 @@ JOB_MAX_AGE_HOURS = {
 }
 MARKET_MAX_BDAYS = 5
 # 个别序列发布天然滞后更久（如 FRED 美元广义指数按周发布）
-MARKET_MAX_BDAYS_OVERRIDE = {"DTWEXBGS": 10, "CPILFESL": 45, "PCEPILFE": 45}
+# 月度物价指数发布滞后约 30 天：月末数据到第 ~45 个工作日是常态，放宽到 60
+MARKET_MAX_BDAYS_OVERRIDE = {"DTWEXBGS": 10, "CPILFESL": 60, "PCEPILFE": 60}
 
 
 def now_utc():
