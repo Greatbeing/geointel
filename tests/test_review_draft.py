@@ -80,6 +80,22 @@ class DraftTest(Base):
         res = self._run(lambda *a, **k: '{"occurred":"别的","confidence":"low","reason":"r","evidence":[1]}')
         self.assertEqual(res[0]["verdict"]["occurred"], "unclear")
 
+    def test_retry_once_on_unparseable(self):
+        calls = []
+        def flaky(prompt, **k):
+            calls.append(prompt)
+            return "抱歉" if len(calls) == 1 else '{"occurred":"升级","confidence":"low","reason":"r","evidence":[1]}'
+        res = self._run(flaky)
+        self.assertEqual(len(calls), 2)
+        self.assertIn("只输出一个 JSON", calls[1])
+        self.assertEqual(res[0]["verdict"]["occurred"], "升级")
+
+    def test_gives_up_after_two(self):
+        calls = []
+        res = self._run(lambda p, **k: calls.append(p) or "nope")
+        self.assertEqual(len(calls), 2)
+        self.assertEqual(res[0]["error"], "LLM 输出无法解析")
+
     def test_llm_down_still_writes_draft(self):
         def boom(*a, **k):
             raise TimeoutError("gw")
