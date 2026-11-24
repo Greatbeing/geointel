@@ -302,9 +302,17 @@ def all_refs(con=None):
     rows = con.execute("SELECT slug,layer,kind,title_zh,title_en,abbr,definition,formula,"
                        "why,caveat,related,importance,path,updated FROM kb_refs"
                        " ORDER BY layer, kind, title_zh").fetchall()
+    try:
+        con.execute("CREATE TABLE IF NOT EXISTS kb_plain (slug TEXT PRIMARY KEY, plain TEXT NOT NULL)")
+        plain = dict(con.execute("SELECT slug, plain FROM kb_plain").fetchall())
+    except Exception:
+        plain = {}
     if own:
         con.close()
-    return [_row(r) for r in rows]
+    out = [_row(r) for r in rows]
+    for d in out:
+        d["plain"] = plain.get(d["slug"], "")
+    return out
 
 
 def terms_by_group(refs):
@@ -327,6 +335,8 @@ def term_html(r, href, titles):
     parts.append('<p class="lede">%s</p>' % html.escape(sub))
     if r["title_en"]:
         parts.append('<p class="sub">%s</p>' % html.escape(r["title_en"]))
+    if r.get("plain"):
+        parts.append("<h2>大白话</h2><p>%s</p>" % html.escape(r["plain"]))
     if r["definition"]:
         parts.append("<h2>定义</h2><p>%s</p>" % html.escape(r["definition"]))
     if r["formula"]:
