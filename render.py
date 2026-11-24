@@ -528,7 +528,8 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
                              ("决策备忘录", "/decisions.html", "decisions"),
                              ("触发告警", "/alerts.html", "alerts"),
                              ("预测战绩", "/track-record.html", "track-record"),
-                             ("概率校准", "/calibration.html", "calibration")):
+                             ("概率校准", "/calibration.html", "calibration"),
+                             ("检索", "/search.html", "search")):
         cur = ' aria-current="page"' if key == current else ""
         navs.append('<a href="%s"%s>%s</a>' % (href(path), cur, label))
     under_html = ""
@@ -890,6 +891,32 @@ def build():
     write("track-record.html",
           page("预测战绩", "复盘 · Brier · 预测 vs 结果", track_body,
                "track-record", big=False))
+
+    # 全站检索索引（纯静态：search.json + 浏览器端过滤）
+    search_entries = []
+    for path in digests:
+        day = os.path.splitext(os.path.basename(path))[0]
+        _m, body = frontmatter(path)
+        search_entries.append({"title": cn_date(day) + " 简报", "kicker": "简报",
+                               "url": href("/digest/" + day + ".html"), "date": day, "text": body})
+    for path in decisions:
+        name = os.path.splitext(os.path.basename(path))[0]
+        meta, body = frontmatter(path)
+        search_entries.append({"title": meta.get("question") or name, "kicker": "决策备忘录",
+                               "url": href("/decisions/" + name + ".html"),
+                               "date": name[:10] if re.match(r"^\d{4}-\d\d-\d\d", name) else "",
+                               "text": body})
+    for path in alerts:
+        day = os.path.splitext(os.path.basename(path))[0]
+        with open(path, encoding="utf-8") as _f:
+            search_entries.append({"title": cn_date(day) + " 告警", "kicker": "触发告警",
+                                   "url": href("/alerts.html"), "date": day, "text": _f.read()})
+    import search_index
+    _nav = "".join('<a href="%s">%s</a>' % (href(pp), ll) for ll, pp in
+                   (("简报", "/index.html"), ("决策备忘录", "/decisions.html"),
+                    ("触发告警", "/alerts.html"), ("预测战绩", "/track-record.html"),
+                    ("概率校准", "/calibration.html"), ("检索", "/search.html")))
+    search_index.write_search(SITE, search_entries, CSS, href("/index.html"), WORDMARK, _nav)
 
     # 首页：最新简报 + 档案
     if digests:
