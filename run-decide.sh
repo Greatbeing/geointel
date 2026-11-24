@@ -9,8 +9,10 @@ cd /data/workspace/geointel || exit 1
 if [ "$1" = "--questions" ]; then
   QFILE="$2"
   shift 2
-  python3 decide.py --questions "$QFILE" "$@"
-  rc=$?
+  python3 decide.py --questions "$QFILE" "$@" 2>&1 | tee /tmp/geointel-decide.log
+  rc=${PIPESTATUS[0]}
+  python3 health.py record decide $rc --note "$(tail -c 400 /tmp/geointel-decide.log 2>/dev/null)" >/dev/null 2>&1
+
   count=$(python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(len(d.get('questions',[])) if isinstance(d,dict) else len(d))" "$QFILE" 2>/dev/null)
   # 部分问题失败也要发布已写出的备忘录；rc 仍返回给 systemd 标记失败。
   ./publish.sh "decisions: ${count:-?} questions"
