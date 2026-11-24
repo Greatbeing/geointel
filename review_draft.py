@@ -119,7 +119,14 @@ def parse_verdict(text, names):
         # 容忍 LLM 只写了情景名前缀
         pref = [n for n in names if n.startswith(occ) or occ.startswith(n[:12])] if occ else []
         occ = pref[0] if len(pref) == 1 else "unclear"
-    ev = [e for e in (v.get("evidence") or []) if isinstance(e, int)]
+    ev = []
+    for e in v.get("evidence") or []:
+        m2 = re.search(r"\d+", str(e))  # LLM 常写 "19" 或 "[19]"
+        if m2:
+            ev.append(int(m2.group(0)))
+    if not ev:  # 只在理由里写了 [n]
+        ev = [int(x) for x in re.findall(r"\[(\d+)\]", v.get("reason") or "")]
+    ev = sorted(set(ev))
     if occ not in ("unclear",) and not ev:
         occ = "unclear"  # 没有引用材料的结论不采纳
     return {"occurred": occ, "confidence": v.get("confidence") or "low",
@@ -134,14 +141,20 @@ def draft(m, items, chat=None):
     if chat is None:
         import llm
         chat = llm.chat
-    try:
-        text = chat(build_prompt(m, items), system=SYSTEM, timeout=120, max_tokens=1500)
-    except Exception as e:
-        return None, f"LLM 不可用：{e}"
-    v = parse_verdict(text, names)
-    if v is None:
-        return None, "LLM 输出无法解析"
-    return v, None
+    prompt = build_prompt(m, items)
+    last_err = "LLM 输出无法解析"
+    for attempt in range(2):  # 网关偶尔不返回 JSON，重试一次并加强格式要求
+        try:
+            text = chat(prompt, system=SYSTEM, timeout=120, max_tokens=1500)
+        except Exception as e:
+            last_err = f"LLM 不可用：{e}"
+            continue
+        v = parse_verdict(text, names)
+        if v is not None:
+            return v, None
+        last_err = "LLM 输出无法解析"
+        prompt = build_prompt(m, items) + "\n\n上次输出不是合法 JSON。这次只输出一个 JSON 对象，不要任何其他文字或代码块标记。"
+    return None, last_err
 
 
 def render_draft(m, row, items, verdict, error):
