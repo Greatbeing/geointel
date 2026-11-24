@@ -28,6 +28,17 @@ class VerifyTest(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("150", why)
 
+    def test_memo_is_not_a_fact_source(self):
+        ok, why = kb.verify_fact({"text": "关税 35.2%", "src": ["memo:2026-11-17-us-china-tariff-90d"]}, SRC)
+        self.assertFalse(ok)
+        self.assertEqual(why, "non-primary source")
+
+    def test_title_forced_chinese_and_org_fields_dropped(self):
+        e, _ = kb.verify_entry({"kind": "org", "title": "World Bank", "aliases": ["世界银行"],
+                                "fields": {"上级": "联合国"},
+                                "facts": [{"text": "新增 140 个实体", "src": ["item:a1"]}]}, SRC)
+        self.assertEqual((e["title"], e["aliases"], e["fields"]), ("世界银行", ["World Bank"], {}))
+
     def test_unknown_or_missing_source_rejected(self):
         self.assertFalse(kb.verify_fact({"text": "x", "src": []}, SRC)[0])
         self.assertFalse(kb.verify_fact({"text": "x", "src": ["item:zz"]}, SRC)[0])
@@ -38,8 +49,8 @@ class VerifyTest(unittest.TestCase):
 
     def test_indicator_without_full_caliber_is_review(self):
         e, _ = kb.verify_entry({"kind": "indicator", "title": "美国对华平均关税",
-                                "facts": [{"text": "截至 2026-08-22 为 35.2%",
-                                           "src": ["memo:2026-11-17-us-china-tariff-90d"]}],
+                                "facts": [{"text": "2026-11-18 新增 140 个实体",
+                                           "src": ["item:a1"]}],
                                 "fields": {"定义": "贸易加权平均关税"}}, SRC)
         self.assertEqual(e["status"], "review")
 

@@ -95,6 +95,8 @@ def verify_fact(fact, sources):
     missing = [s for s in src if s not in sources]
     if missing:
         return False, "unknown source %s" % missing[0]
+    if any(not s.startswith("item:") for s in src):
+        return False, "non-primary source"  # 备忘录是模型写的，不能当事实出处
     blob = _norm(" ".join(sources[s] for s in src))
     for n in numbers_in(text):
         if len(n) == 1:  # 单个数字（如「3 个」）误伤太多，只校验两位以上
@@ -135,10 +137,19 @@ def verify_entry(draft, sources):
         if v and all(len(n) == 1 or n in fact_blob for n in numbers_in(v)):
             fields[k] = v
     status = "ok"
-    if kind == "indicator" and any(k not in fields for k in INDICATOR_FIELDS):
-        status = "review"  # 口径不全的指标必须人工复核
-    return {"slug": slugify(draft.get("slug") or title), "kind": kind, "title": title,
-            "aliases": [a for a in draft.get("aliases") or [] if isinstance(a, str) and a.strip()][:8],
+    if kind != "indicator":
+        fields = {}  # 职能/上级等描述无出处可核，不收
+    else:
+        status = "review"  # 指标口径来自模型，必须人工复核
+    aliases = [a.strip() for a in draft.get("aliases") or [] if isinstance(a, str) and a.strip()][:8]
+    cjk = re.compile(r"[\u4e00-\u9fff]")
+    if not cjk.search(title):
+        zh = next((a for a in aliases if cjk.search(a)), None)
+        if zh:  # 标题强制中文，英文名进别名
+            aliases = [title] + [a for a in aliases if a != zh]
+            title = zh
+    return {"slug": slugify(title), "kind": kind, "title": title,
+            "aliases": aliases,
             "points": points, "facts": facts, "fields": fields,
             "related": [slugify(r) for r in draft.get("related") or [] if isinstance(r, str)][:8],
             "status": status}, dropped
@@ -250,7 +261,7 @@ def load_sources(days=2, limit=60):
             iid = it[0]
             text = " ".join(str(x) for x in it[1:] if x)
         src["item:" + str(iid)] = text
-    memos = sorted(glob.glob(os.path.join(OUT, "decisions", "*.md")))[-3:]
+    memos = []  # 只用一手新闻条目；备忘录是模型产出，循环引用不可靠
     for p in memos:
         with open(p, encoding="utf-8") as f:
             src["memo:" + os.path.splitext(os.path.basename(p))[0]] = f.read()[:12000]
@@ -270,6 +281,7 @@ PROMPT = """你在维护一个地缘政治与宏观情报知识库。只允许�
 - fields：indicator 必须给出 定义、口径（明确写同比/环比/水平值）、频率、数据源；org 可给 职能、上级；term 可给 定义
 - related：相关词条的 title
 材料里没有依据的内容一律不写。宁缺毋滥。
+facts 只写材料陈述的已发生事实；不要写假设、触发条件、可能性或预测。
 
 只输出 JSON：{{"entries": [...]}}
 
