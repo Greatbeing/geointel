@@ -26,8 +26,9 @@ SYSTEM = (
     "5. 第一句就让人想读第二句，不铺垫。\n"
     "6. 不填充、不写金句、不写「打个比方」「简单来说」「记住」。\n"
     "7. 只解释，不给建议，不劝人买卖或远离。\n"
-    "8. 类比在哪里不成立，可以用一句话点出；不要先说像、再说不像。\n"
-    "9. 不确定就别说，绝不编造。\n"
+    "8. 正文不许出现英文单词或字母缩写（术语本身的缩写除外）。\n"
+    "9. 类比在哪里不成立，可以用一句话点出；不要先说像、再说不像。\n"
+    "10. 不确定就别说，绝不编造。\n"
     "总长 80-200 字，3-6 句。"
 )
 
@@ -60,8 +61,15 @@ def facts(r):
     return "\n".join(lines)
 
 
+SECOND_ORDER = ("gamma", "convexity", "vanna", "volga", "charm")
+NUMERIC_HINT = ("\n这是「变化的变化」类概念，不要用生活类比。直接用一组具体数字讲："
+                "比如股价从100涨到101、再到102时，手里要对冲的股数各是多少、为什么会变。")
+
+
 def prompt_for(r, problem="", previous=""):
     p = facts(r)
+    if any(k in r["slug"] for k in SECOND_ORDER):
+        p += NUMERIC_HINT
     if problem:
         p += "\n\n上一版：%s\n审校指出的问题：%s\n请重写，彻底修掉这个问题。" % (previous, problem)
     return p
@@ -69,9 +77,10 @@ def prompt_for(r, problem="", previous=""):
 
 def verify_prompt(r, text):
     return (facts(r) + "\n\n白话解释：" + text + "\n\n"
-            "检查白话解释：1) 机制有没有讲错，类比和概念的结构是否真对得上；"
-            "2) 有没有把它和别的概念搞混；3) 有没有给投资建议。"
-            "都没问题 ok=true；否则 ok=false，problem 用一句话说清错在哪。")
+            "默认它有错，逐句找。检查：1) 每一句的说法是否在专业上成立（含因果方向、正负号、谁赚谁亏）；"
+            "2) 类比的每个部件能否对应到概念里的具体东西，对不上就算错；"
+            "3) 有没有和别的概念搞混；4) 有没有给投资建议；5) 有没有没解释的术语。"
+            "只有全部过关才 ok=true；否则 ok=false，problem 用一句话说清最严重的错。")
 
 
 def parse_verdict(text):
@@ -87,7 +96,7 @@ def parse_verdict(text):
     return d["ok"], str(d.get("problem") or "").strip()
 
 
-def check(text, title=""):
+def check(text, title="", title_en=""):
     """返回 (清洗后文本, 问题列表)。"""
     t = re.sub(r"\s+", "", (text or "").strip().strip('"“”'))
     issues = []
@@ -98,6 +107,10 @@ def check(text, title=""):
     issues += ["banned:" + b for b in BANNED if b in t]
     if re.search(r"^#|^\*|\n-", text or ""):
         issues.append("markup")
+    allowed = set(re.findall(r"[A-Za-z]+", (title or "") + " " + (title_en or "")))
+    eng = [w for w in re.findall(r"[A-Za-z]{2,}", t) if w not in allowed]
+    if eng:
+        issues.append("english:" + ",".join(sorted(set(eng))[:3]))
     first = re.split(r"[。？！?!]", t, maxsplit=1)[0]
     name = re.sub(r"\s+", "", title or "")
     if name and name in first:
@@ -108,7 +121,7 @@ def check(text, title=""):
 def write_one(r, chat):
     """写 -> 核对 -> 必要时重写一次。返回 (文本, 问题列表)。"""
     text = chat(prompt_for(r), system=SYSTEM)
-    t, issues = check(str(text), r["title_zh"])
+    t, issues = check(str(text), r["title_zh"], r.get("title_en", ""))
     for attempt in range(2):
         v = parse_verdict(str(chat(verify_prompt(r, t), system=VERIFY_SYSTEM)))
         problem = ""
@@ -123,7 +136,7 @@ def write_one(r, chat):
         if attempt == 1:
             return t, issues + ["inaccurate:" + problem]
         text = chat(prompt_for(r, problem, t), system=SYSTEM)
-        t, issues = check(str(text), r["title_zh"])
+        t, issues = check(str(text), r["title_zh"], r.get("title_en", ""))
     return t, issues
 
 
