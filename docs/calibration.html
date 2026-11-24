@@ -1,7 +1,7 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>概率校准</title><style>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2730%27 cy=%2734%27 r=%2722%27 fill=%27none%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Cpath d=%27M8 34H52%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Crect x=%2740%27 y=%276%27 width=%2714%27 height=%2714%27 fill=%27%239b2c1f%27/%3E%3C/svg%3E"><title>概率校准</title><style>
 :root{
-  --paper:#faf9f6; --paper-2:#f3f1ec; --ink:#1a1a1c; --ink-2:#55555c;
-  --ink-3:#8e8e96; --rule:#e6e2d9; --rule-2:#cfc9bc; --accent:#9a3b2a;
+  --paper:#f6f3ec; --paper-2:#efebe1; --ink:#1d1d1b; --ink-2:#4f4b44;
+  --ink-3:#86806f; --rule:#e2dccf; --rule-2:#c9c2b4; --accent:#9b2c1f;
   --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
   --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
@@ -30,7 +30,7 @@ body{
 .top .brand{
   display:flex; line-height:0; color:var(--ink); text-decoration:none;
 }
-.top .brand svg{display:block; height:26px; width:auto}
+.top .brand svg{display:block; height:30px; width:auto}
 .top nav{display:flex; gap:22px; flex-wrap:wrap}
 .top nav a{
   font-size:13.5px; color:var(--ink-3); text-decoration:none;
@@ -154,6 +154,25 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
 .alert-item{font-size:13px; color:var(--ink-3); margin:0 0 6px; text-indent:0}
 .alert-item a{color:var(--ink-2)}
 
+/* 首页战绩卡：显著但不喧宾夺主——边框 + 底色 + 可点整块 */
+.track-card{
+  margin:26px 0 34px; border:1px solid var(--rule-2); background:var(--paper-2);
+}
+.track-card a{
+  display:block; padding:20px 22px; text-decoration:none; color:var(--ink);
+}
+.track-card a p{margin:0; text-indent:0; font-variant-numeric:tabular-nums}
+.track-card:hover{border-color:var(--accent)}
+.track-card:hover a p.kicker{color:var(--accent)}
+
+/* 备忘录材料出处清单：比索引更紧凑，编号用等宽小字 */
+.mat-list li{display:block; padding:7px 0; border-bottom:1px solid var(--rule);
+ margin:0; font-size:13.5px; line-height:1.6; text-indent:0}
+.mat-list .mat-n{font-family:var(--mono); font-size:12px; color:var(--ink-3);
+ margin-right:6px; font-variant-numeric:tabular-nums}
+.mat-list a{color:var(--ink-2); border-bottom-color:transparent}
+.mat-list a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
 .colophon{
   margin-top:80px; padding-top:18px; border-top:1px solid var(--rule);
   font-size:12.5px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
@@ -192,4 +211,56 @@ h1.dateline.q{font-size:clamp(24px,3.6vw,31px); line-height:1.5}
   .body li,.body p{orphans:2; widows:2}
   a{text-decoration:none}
 }
-</style></head><body><div class="top"><a class="brand" href="/geointel/index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-8.00 -162.00 756.00 236.00" role="img" aria-label="geointel"><g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="round"><path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/><path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/><path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/><path d="M 388.00 0.00 V -100"/><path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/><path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/><path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/><path d="M 740.00 0.00 V -152.00"/></g><g fill="currentColor" stroke="none"><rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg></a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a><a href="/geointel/calibration.html" aria-current="page">概率校准</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">复盘 · Brier 分 · 命中率</p><h1 class="dateline q">概率校准</h1></header><div class="body"><p class="lede">结构分评 memo 写得规不规范，结果分评预测准不准。结果分只在复核日期到了、登记了实际走向之后才有；没到期的不猜。</p><p>已评分 21 份 · 平均结构分 89.8/100 · 已复盘 0 份 · 暂无已复盘 memo，首个复核日 2026-12-15</p><h2>已复盘</h2><p>暂无。复核日到了之后，用 review.py --memo … --occurred "情景名" 登记。</p><h2>待复盘</h2><p>没有已到期未复盘的 memo。</p><p>未来 14 天内无复核；最近一次在 22 天后（2026-12-15）：</p><ul><li>2026-11-11 《未来 90 天半导体出口管制升级的概率与应对》——复核日 2026-12-15</li></ul><h2>结构分一览</h2><ul><li>2026-11-21 《未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响》——结构分 95/100</li><li>2026-11-21 《未来 90 天世界银行、亚行、亚投行贷款重点投向（气候融资与绿色基建）及采购/环社框架（ESF）规则演变趋势》——结构分 100/100</li><li>2026-11-21 《未来 90 天全球金融条件收紧或分化情景下的外币债务与汇率风险（对照历史紧缩周期代价）与应对》——结构分 85/100</li><li>2026-11-21 《未来 90 天美联储、欧央行、日央行利率路径与美元/欧元/日元对人民币汇率变动对国际金融组织外币贷款成本及利率货币转换窗口的影响》——结构分 85/100</li><li>2026-11-21 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-20 《未来 90 天美联储加息的概率与应对》——结构分 93/100</li><li>2026-11-19 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 91/100</li><li>2026-11-18 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 78/100</li><li>2026-11-17 《未来 90 天中美关税谈判走向的概率与应对》——结构分 81/100</li><li>2026-11-16 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-15 《未来 90 天美联储加息的概率与应对》——结构分 100/100</li><li>2026-11-14 《未来 90 天中美关税谈判走向的概率与应对》——结构分 68/100</li><li>2026-11-14 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 80/100</li><li>2026-11-14 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 95/100</li><li>2026-11-14 《未来 90 天美联储加息的概率与应对》——结构分 100/100</li><li>2026-11-14 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-11 《未来 90 天中美关税谈判走向的概率与应对》——结构分 85/100</li><li>2026-11-11 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 86/100</li><li>2026-11-11 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 88/100</li><li>2026-11-11 《未来 90 天美联储加息的概率与应对》——结构分 90/100</li><li>2026-11-11 《未来 90 天半导体出口管制升级的概率与应对》——结构分 85/100</li></ul></div><footer class="colophon"><span class="slogan">先读世界，再下判断。</span><span>只基于抓取材料</span><span>11 月 23 日 05:17 UTC 更新</span></footer></div></body></html>
+/* ---- 编辑式打磨 ---- */
+.top{max-width:760px; padding:22px 24px 16px; border-bottom:0;
+  border-bottom:1px solid var(--rule); background:var(--paper);
+  backdrop-filter:saturate(1.2) blur(8px)}
+.top nav a{font-size:13px; letter-spacing:.06em; position:relative; padding:2px 0}
+.top nav a[aria-current]::after{content:""; position:absolute; left:0; right:0; bottom:-17px;
+  height:2px; background:var(--accent)}
+.wrap{max-width:760px}
+.kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; margin-top:56px}
+h1.dateline{font-size:clamp(32px,5.4vw,48px); font-weight:600; letter-spacing:.01em; margin-bottom:14px}
+.masthead{border-bottom:0; padding-bottom:30px; position:relative}
+.masthead::after{content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+  border-top:1.5px solid var(--ink); border-bottom:.5px solid var(--ink)}
+.tagline{color:var(--ink-2); letter-spacing:.06em; font-weight:400; font-size:17px}
+.body h2{font-family:var(--serif); font-size:23px; font-weight:600; letter-spacing:.04em;
+  margin:64px 0 18px; padding-top:0; border-top:0; display:flex; align-items:center; gap:14px}
+.body h2::after{content:""; flex:1; height:1px; background:var(--rule-2)}
+.body h3{font-family:var(--mono); font-size:11.5px; font-weight:400; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--accent); margin:30px 0 8px}
+.body ol{counter-reset:item; list-style:none; padding-left:0}
+.body ol>li{counter-increment:item; position:relative; padding:12px 0 12px 44px;
+  margin:0; border-bottom:1px solid var(--rule); line-height:1.8}
+.body ol>li:last-child{border-bottom:0}
+.body ol>li::before{content:counter(item,decimal-leading-zero); position:absolute; left:0; top:15px;
+  font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.05em}
+.body .src{font-size:12px; color:var(--ink-3); margin-left:4px}
+.track-card{border:0; background:transparent;
+  border-bottom:1px solid var(--rule-2); margin:8px 0 10px}
+.track-card a{padding:22px 0}
+.track-card a p:not(.kicker){font-family:var(--serif); font-size:20px}
+.track-card a p.kicker{margin:0 0 8px}
+.track-card a p:last-child{font-size:14px; color:var(--ink-3); font-family:var(--sans); margin-top:6px}
+.section-head{font-family:var(--mono); text-transform:uppercase; font-size:11.5px;
+  letter-spacing:.24em; color:var(--ink-3); margin-top:80px; border-bottom:1.5px solid var(--ink)}
+.plain-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0 24px}
+.plain-list li{font-size:14.5px; padding:11px 0; font-variant-numeric:tabular-nums}
+.index-list .what{font-family:var(--serif); font-size:18px; line-height:1.55}
+.index-list li{padding:20px 0}
+.colophon{border-top:1.5px solid var(--ink); margin-top:96px}
+@media (max-width:600px){
+  .top nav a[aria-current]::after{bottom:-4px}
+  .body ol>li{padding-left:34px}
+  .body h2{font-size:20px; margin-top:48px}
+}
+.top nav a,.top nav a:visited{color:var(--ink-3)}
+.top nav a[aria-current],.top nav a:hover{color:var(--ink)}
+.tagline{font-family:var(--sans)!important; font-weight:400!important}
+.body ol.index-list>li{padding:20px 0; counter-increment:none}
+.body ol.index-list>li::before{content:none}
+@media (max-width:600px){.top nav{flex-wrap:nowrap; overflow-x:auto; gap:16px; width:100%; scrollbar-width:none}.top nav a{white-space:nowrap}}.body .index-list{padding-left:0!important; margin-left:0!important}
+.body .index-list>li{padding-left:0!important}
+@media print{.masthead::after,.body h2::after{display:none}}
+</style></head><body><div class="top"><a class="brand" href="/geointel/index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-250.00 -162.00 998.00 236.00" role="img" aria-label="geointel"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"><circle cx="-150" cy="-50" r="70"/><path d="M -220 -50 H -80"/></g><rect x="-112" y="-122" width="26" height="26" style="fill:var(--accent,#9b2c1f)"/><g fill="none" stroke="currentColor" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="round"><path d="M 100.00 -50.00 A 50.00 50.00 0 0 1 0.00 -50.00 A 50.00 50.00 0 0 1 100.00 -50.00 M 100.00 -50.00 V 30 A 32.00 32.00 0 0 1 68.00 62.00"/><path d="M 126.00 -50.00 H 226.00 A 50.00 50.00 0 1 0 211.36 -14.64"/><path d="M 352.00 -50.00 A 50.00 50.00 0 0 1 252.00 -50.00 A 50.00 50.00 0 0 1 352.00 -50.00"/><path d="M 388.00 0.00 V -100"/><path d="M 418.00 0.00 V -50.00 A 50.00 50.00 0 0 1 518.00 -50.00 V 0"/><path d="M 556.00 0.00 V -145 M 542.00 -100.00 H 574.00"/><path d="M 614.00 -50.00 H 714.00 A 50.00 50.00 0 1 0 699.36 -14.64"/><path d="M 740.00 0.00 V -152.00"/></g><g fill="currentColor" stroke="none"><rect x="379.00" y="-142.00" width="18.0" height="18.0"/></g></svg></a><nav><a href="/geointel/index.html">简报</a><a href="/geointel/decisions.html">决策备忘录</a><a href="/geointel/alerts.html">触发告警</a><a href="/geointel/track-record.html">预测战绩</a><a href="/geointel/calibration.html" aria-current="page">概率校准</a></nav></div><div class="wrap"><header class="masthead"><p class="kicker">复盘 · Brier 分 · 命中率</p><h1 class="dateline q">概率校准</h1></header><div class="body"><p class="lede">结构分评 memo 写得规不规范，结果分评预测准不准。结果分只在复核日期到了、登记了实际走向之后才有；没到期的不猜。</p><p>已评分 22 份 · 平均结构分 89.1/100 · 已复盘 0 份 · 暂无已复盘 memo，首个复核日 2026-12-15</p><h2>已复盘</h2><p>暂无。复核日到了之后，用 review.py --memo … --occurred "情景名" 登记。</p><h2>待复盘</h2><p>没有已到期未复盘的 memo。</p><p>未来 14 天内无复核；最近一次在 21 天后（2026-12-15）：</p><ul><li>2026-11-11 《未来 90 天半导体出口管制升级的概率与应对》——复核日 2026-12-15</li></ul><h2>概率分档校准</h2><p>暂无已复盘样本。每个情景按当时给的概率分档，复盘后比较“说 X% 的事实际发生了几成”。</p><h2>结构分一览</h2><ul><li>2026-11-24 《未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响》——结构分 76/100</li><li>2026-11-21 《未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响》——结构分 95/100</li><li>2026-11-21 《未来 90 天世界银行、亚行、亚投行贷款重点投向（气候融资与绿色基建）及采购/环社框架（ESF）规则演变趋势》——结构分 100/100</li><li>2026-11-21 《未来 90 天全球金融条件收紧或分化情景下的外币债务与汇率风险（对照历史紧缩周期代价）与应对》——结构分 85/100</li><li>2026-11-21 《未来 90 天美联储、欧央行、日央行利率路径与美元/欧元/日元对人民币汇率变动对国际金融组织外币贷款成本及利率货币转换窗口的影响》——结构分 85/100</li><li>2026-11-21 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-20 《未来 90 天美联储加息的概率与应对》——结构分 93/100</li><li>2026-11-19 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 91/100</li><li>2026-11-18 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 78/100</li><li>2026-11-17 《未来 90 天中美关税谈判走向的概率与应对》——结构分 81/100</li><li>2026-11-16 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-15 《未来 90 天美联储加息的概率与应对》——结构分 100/100</li><li>2026-11-14 《未来 90 天中美关税谈判走向的概率与应对》——结构分 68/100</li><li>2026-11-14 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 80/100</li><li>2026-11-14 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 95/100</li><li>2026-11-14 《未来 90 天美联储加息的概率与应对》——结构分 100/100</li><li>2026-11-14 《未来 90 天半导体出口管制升级的概率与应对》——结构分 100/100</li><li>2026-11-11 《未来 90 天中美关税谈判走向的概率与应对》——结构分 85/100</li><li>2026-11-11 《未来 90 天台积电在亚利桑那产能爬坡的确定性与风险》——结构分 86/100</li><li>2026-11-11 《未来 90 天全球 LNG 产能扩张对亚洲气价的影响》——结构分 88/100</li><li>2026-11-11 《未来 90 天美联储加息的概率与应对》——结构分 90/100</li><li>2026-11-11 《未来 90 天半导体出口管制升级的概率与应对》——结构分 85/100</li></ul></div><footer class="colophon"><span class="slogan">先读世界，再下判断，到期认账。</span><span>只基于抓取材料</span><span>11 月 24 日 02:19 UTC 更新</span></footer></div></body></html>
