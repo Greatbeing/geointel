@@ -4,8 +4,10 @@
 # （活跃告警去重，见 data/alert-state.json）；没配就保持纯站点报告。
 set +e
 cd /data/workspace/geointel || exit 1
-python3 collect.py "$@"
-rc=$?
+python3 collect.py "$@" 2>&1 | tee /tmp/geointel-collect.log
+rc=${PIPESTATUS[0]}
+python3 health.py record collect $rc --note "$(tail -c 400 /tmp/geointel-collect.log 2>/dev/null)" >/dev/null 2>&1
+
 # 触发条件是纯 SQLite 统计，没有 LLM 成本，跟着每次抓取一起跑
 WATCH_SEND=()
 [ -n "$GEOINTEL_ALERT_WEBHOOK" ] && WATCH_SEND=(--send)
