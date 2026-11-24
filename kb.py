@@ -396,6 +396,23 @@ def entry_html(e, href, item_links, titles, revs):
         "<li>%s <small>[%s]</small></li>" % (
             html.escape(f["text"]), "；".join(source_link(s, href, item_links) for s in f["src"]))
         for f in e["facts"]))
+    try:
+        import kb_refs as _kr
+        _refs = _kr.all_refs()
+        _words = [(w, r) for r in _refs if r["layer"] == "term"
+                  for w in (r["title_zh"], r["title_en"], r["abbr"]) if w and len(w) >= 2]
+        blob = " ".join([e["title"]] + e["aliases"] + [f["text"] for f in e["facts"]])
+        seen_ref, hits = set(), []
+        for w, r in _words:
+            if w in blob and r["slug"] not in seen_ref:
+                seen_ref.add(r["slug"])
+                hits.append(r)
+        if hits:
+            parts.append("<h2>相关术语</h2><p>%s</p>" % " ".join(
+                '<a href="%s">%s</a>' % (href("/kb/%s.html" % r["slug"]),
+                                         html.escape(r["title_zh"])) for r in hits[:8]))
+    except Exception:  # 参考层缺失不影响自动词条
+        pass
     rel = [r for r in e["related"] if r in titles and r != e["slug"]]
     if rel:
         parts.append("<h2>相关词条</h2><p>%s</p>" % " ".join(
@@ -406,8 +423,13 @@ def entry_html(e, href, item_links, titles, revs):
     return "".join(parts)
 
 
-def index_html(entries, href):
-    parts = ['<p class="lede">每条事实都标注出处；带「待复核」标记的词条尚未经人工确认。</p>']
+def index_html(entries, href, refs=None):
+    parts = ['<p class="lede">先看术语与主题框架，再看系统自动维护的词条。'
+             '自动词条的每条事实都标注出处；带「待复核」标记的尚未经人工确认。</p>']
+    if refs:
+        import kb_refs
+        parts.append(kb_refs.refs_index_html(refs, href))
+        parts.append("<h2>自动维护的词条</h2>")
     for k, label in KINDS.items():
         es = sorted((e for e in entries if e["kind"] == k), key=lambda e: e["title"].lower())
         if not es:
@@ -417,7 +439,7 @@ def index_html(entries, href):
                 href("/kb/%s.html" % e["slug"]), html.escape(e["title"]),
                 ' <span class="kb-review" style="font-size:12px;padding:1px 6px;border:1px solid #b45309;color:#b45309;border-radius:3px">待复核</span>' if e["status"] == "review" else "")
             for e in es)))
-    if len(parts) == 1:
+    if len(parts) <= 2 and not entries:
         parts.append("<p>知识库还没有词条。</p>")
     return "".join(parts)
 
@@ -429,6 +451,12 @@ def build_site(write, page, href):
     titles = {e["slug"]: e["title"] for e in entries}
     links = _item_links(con, entries)
     search, names = [], set()
+    import kb_refs
+    refs = kb_refs.all_refs(con)
+    if refs:
+        ref_search, ref_names = kb_refs.build_site(write, page, href, titles)
+        search += ref_search
+        names |= ref_names
     for e in entries:
         body = entry_html(e, href, links, titles, revisions(con, e["slug"]))
         write("kb/%s.html" % e["slug"], page(e["title"], "知识库 · " + KINDS[e["kind"]], body, "kb", big=False))
@@ -437,9 +465,15 @@ def build_site(write, page, href):
                        "date": e["updated"][:10],
                        "text": " ".join(e["aliases"] + e["points"] + list(e["fields"].values())
                                         + [f["text"] for f in e["facts"]])})
-    write("kb.html", page("知识库", "机构 · 指标 · 术语", index_html(entries, href), "kb", big=False))
+    write("kb.html", page("知识库", "术语 · 主题框架 · 机构 · 指标",
+                          index_html(entries, href, refs), "kb", big=False))
     con.close()
-    return search, names, link_table(entries, href)
+    table = link_table(entries, href)
+    if refs:
+        # 自动词条优先，参考术语补位
+        for w, u in kb_refs.link_table(refs, href).items():
+            table.setdefault(w, u)
+    return search, names, table
 
 
 def link_table(entries, href):
