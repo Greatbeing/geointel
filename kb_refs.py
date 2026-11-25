@@ -329,6 +329,29 @@ def themes(refs):
 
 # ---------- 渲染 ----------
 
+KATEX = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/"
+
+
+def normalize_tex(tex):
+    """库里的公式多被转义了一层（\\\\frac），KaTeX 只认单反斜杠。"""
+    return (tex or "").strip().replace("\\\\", "\\")
+
+
+def formula_html(tex):
+    """公式块：KaTeX 排版成数学式；脚本加载失败时仍显示等宽原文。"""
+    src = normalize_tex(tex)
+    return (
+        '<link rel="stylesheet" href="%skatex.min.css">'
+        '<style>.formula{margin:14px 0 18px;padding:16px 18px;border-left:3px solid var(--accent,#9b2c1f);'
+        'background:rgba(155,44,31,.05);overflow-x:auto;font-size:1.15em;text-align:center}'
+        '.formula code{font-size:.85em;white-space:pre-wrap}</style>'
+        '<div class="formula" data-tex="%s"><code>%s</code></div>'
+        '<script defer src="%skatex.min.js" onload="document.querySelectorAll(\'.formula[data-tex]\')'
+        '.forEach(function(e){try{katex.render(e.dataset.tex,e,{displayMode:true,throwOnError:false})}catch(_){}})">'
+        '</script>'
+    ) % (KATEX, html.escape(src, quote=True), html.escape(src), KATEX)
+
+
 def term_html(r, href, titles):
     parts = ['<h2 class="kbtitle">%s</h2>' % html.escape(r["title_zh"])]
     sub = " · ".join(x for x in (GROUP_ZH.get(r["kind"], r["kind"]), r["abbr"]) if x)
@@ -340,7 +363,7 @@ def term_html(r, href, titles):
     if r["definition"]:
         parts.append("<h2>定义</h2><p>%s</p>" % html.escape(r["definition"]))
     if r["formula"]:
-        parts.append("<h2>公式</h2><p>%s</p>" % html.escape(r["formula"]))
+        parts.append("<h2>公式</h2>" + formula_html(r["formula"]))
     if r["why"]:
         parts.append("<h2>为什么重要</h2><p>%s</p>" % html.escape(r["why"]))
     if r["caveat"]:
