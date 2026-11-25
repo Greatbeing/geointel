@@ -347,7 +347,10 @@ def md2html(text, demote=False):
     def flush():
         nonlocal buf
         if buf:
-            body.append("<p>" + inline(" ".join(buf)) + "</p>")
+            if len(buf) > 1:
+                body.append('<ul class="items">' + "".join("<li>%s</li>" % inline(b) for b in buf) + "</ul>")
+            else:
+                body.append("<p>" + inline(buf[0]) + "</p>")
             buf = []
 
     def close_list():
@@ -567,7 +570,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
         '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2730%27 cy=%2734%27 r=%2722%27 fill=%27none%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Cpath d=%27M8 34H52%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Crect x=%2740%27 y=%276%27 width=%2714%27 height=%2714%27 fill=%27%239b2c1f%27/%3E%3C/svg%3E">'
-        "<title>{title}</title><style>.signal{{border:1px solid var(--line,#ddd);border-left:3px solid var(--accent,#b5651d);border-radius:6px;padding:.7em 1em;margin:1em 0}}.sig-row{{margin:.45em 0}}.sig-label{{font-size:.82em;font-weight:600;opacity:.7;margin-bottom:.15em}}.sig-val p{{margin:0}}.sig-val ul{{margin:.2em 0 0 1.2em;padding:0}}.sig-val li{{margin:.15em 0}}{css}</style></head><body>"
+        "<title>{title}</title><style>main h2{{margin:2.2em 0 .8em;padding-bottom:.35em;border-bottom:1px solid var(--line,#e5e5e5)}}main h3{{margin:1.5em 0 .5em}}main p{{line-height:1.8;margin:.6em 0}}main li{{line-height:1.75;margin:.5em 0}}ul.items{{list-style:none;padding:0;margin:.6em 0}}ul.items>li{{padding:.55em .8em;border-left:2px solid var(--line,#e2e2e2);margin:.55em 0}}.src{{display:inline-block;font-size:.85em;opacity:.65;margin-left:.2em}}.signal{{border:1px solid var(--line,#ddd);border-left:3px solid var(--accent,#b5651d);border-radius:6px;padding:.7em 1em;margin:1em 0}}.sig-row{{margin:.45em 0}}.sig-label{{font-size:.82em;font-weight:600;opacity:.7;margin-bottom:.15em}}.sig-val p{{margin:0}}.sig-val ul{{margin:.2em 0 0 1.2em;padding:0}}.sig-val li{{margin:.15em 0}}{css}</style></head><body>"
         '<div class="top"><a class="brand" href="{home}">{mark}</a>'
         "<nav>{nav}</nav></div>"
         '<div class="wrap"><header class="masthead">'
@@ -828,7 +831,7 @@ def build():
         day = os.path.splitext(os.path.basename(path))[0]
         _meta, body = frontmatter(path)
         write(os.path.join("digest", day + ".html"),
-              page(cn_date(day), "每日情报简报", _kbl(md2html(strip_ops(strip_lede(body)))), "digest"))
+              page(cn_date(day), "每日简报", _kbl(md2html(strip_ops(strip_lede(body)))), "digest"))
         digest_entries.append((day, _meta))
 
     decision_entries = []
@@ -998,10 +1001,10 @@ def build():
         if recent:
             body_html += ('<div class="section-head">决策备忘录</div>'
                           '<ul class="index-list">' + "".join(recent) + "</ul>")
-        write("index.html", page(cn_date(day), "每日情报简报", body_html, "digest",
+        write("index.html", page(cn_date(day), "每日简报", body_html, "digest",
                                  tagline=True))
     else:
-        write("index.html", page("全球情报简报", "每日情报简报",
+        write("index.html", page("全球情报简报", "每日简报",
                                  '<p class="lede">暂无简报。</p>', "digest"))
 
     keep = {
