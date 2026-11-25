@@ -388,6 +388,30 @@ def md2html(text, demote=False):
             i = j
             continue
 
+        _sig = re.match(r"^(现象|为什么值得跟踪|下一步看什么可观测指标|下一步看什么)[：:]\s*(.*)$", s)
+        if _sig:
+            flush()
+            close_list()
+            rows = []
+            while i < len(lines):
+                mm = re.match(r"^(现象|为什么值得跟踪|下一步看什么可观测指标|下一步看什么)[：:]\s*(.*)$", lines[i].strip())
+                if not mm:
+                    break
+                lab, val = mm.group(1), mm.group(2).strip()
+                if lab.startswith("下一步"):
+                    parts = [x.strip() for x in re.split(r"[；;]", val) if x.strip()]
+                    if len(parts) > 1:
+                        val_html = "<ul>" + "".join("<li>%s</li>" % inline(x) for x in parts) + "</ul>"
+                    else:
+                        val_html = "<p>%s</p>" % inline(val)
+                    lab = "下一步看什么"
+                else:
+                    val_html = "<p>%s</p>" % inline(val)
+                rows.append('<div class="sig-row"><div class="sig-label">%s</div><div class="sig-val">%s</div></div>' % (lab, val_html))
+                i += 1
+            body.append('<div class="signal">' + "".join(rows) + "</div>")
+            continue
+
         if not s:
             flush()
             close_list()
@@ -543,7 +567,7 @@ def page(title, kicker, body, current="", under=None, big=True, tagline=False):
         '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2730%27 cy=%2734%27 r=%2722%27 fill=%27none%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Cpath d=%27M8 34H52%27 stroke=%27%231d1d1b%27 stroke-width=%275%27/%3E%3Crect x=%2740%27 y=%276%27 width=%2714%27 height=%2714%27 fill=%27%239b2c1f%27/%3E%3C/svg%3E">'
-        "<title>{title}</title><style>{css}</style></head><body>"
+        "<title>{title}</title><style>.signal{{border:1px solid var(--line,#ddd);border-left:3px solid var(--accent,#b5651d);border-radius:6px;padding:.7em 1em;margin:1em 0}}.sig-row{{margin:.45em 0}}.sig-label{{font-size:.82em;font-weight:600;opacity:.7;margin-bottom:.15em}}.sig-val p{{margin:0}}.sig-val ul{{margin:.2em 0 0 1.2em;padding:0}}.sig-val li{{margin:.15em 0}}{css}</style></head><body>"
         '<div class="top"><a class="brand" href="{home}">{mark}</a>'
         "<nav>{nav}</nav></div>"
         '<div class="wrap"><header class="masthead">'
