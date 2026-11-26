@@ -1,0 +1,478 @@
+{
+ "scenarios": [
+  {
+   "name": "美联储12月加息25bp、欧央行维持/观望、日央行维持现状——美元走强、人民币被动贬值压力",
+   "prob": 45
+  },
+  {
+   "name": "美联储暂停加息、欧央行降息25bp、日央行开启加息——美元回落、日元大幅升值",
+   "prob": 25
+  },
+  {
+   "name": "三大央行同步鹰派（美联储加息、欧央行新行长鹰派表态、日央行意外加息）——全球流动性收缩、汇率剧烈波动",
+   "prob": 30
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储12月议息会议加息25bp",
+   "keywords": [
+    "FOMC",
+    "rate hike",
+    "25 basis points",
+    "December"
+   ],
+   "keyword_groups": [
+    [
+     "FOMC",
+     "Federal Reserve",
+     "Fed"
+    ],
+    [
+     "raises",
+     "hikes",
+     "increases"
+    ],
+    [
+     "25 basis points",
+     "25bp",
+     "quarter point"
+    ]
+   ],
+   "exclude_keywords": [
+    "expects",
+    "forecast",
+    "probability",
+    "priced in"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "锁定美元贷款成本上行分支，启动美元敞口对冲",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "美联邦基金利率实测≥4.13%（当前3.88%+25bp）",
+   "keywords": [],
+   "keyword_groups": [],
+   "exclude_keywords": [],
+   "threshold": 4.13,
+   "type": "value",
+   "action": "确认美元融资成本跃升，重新测算IFIs美元贷款定价",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t3",
+   "description": "欧央行任命新行长且首次表态偏鹰",
+   "keywords": [
+    "ECB",
+    "new president",
+    "hawkish",
+    "Lagarde successor"
+   ],
+   "keyword_groups": [
+    [
+     "ECB",
+     "European Central Bank"
+    ],
+    [
+     "appoints",
+     "names",
+     "confirms"
+    ],
+    [
+     "hawkish",
+     "tightening",
+     "rate hike"
+    ]
+   ],
+   "exclude_keywords": [
+    "dovish",
+    "cut",
+    "easing",
+    "stimulus"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "上调欧元贷款成本预期，评估欧元敞口转换窗口",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t4",
+   "description": "日央行政策声明出现'加息'或'取消YCC'表述",
+   "keywords": [
+    "BOJ",
+    "Bank of Japan",
+    "rate hike",
+    "YCC",
+    "yield curve control"
+   ],
+   "keyword_groups": [
+    [
+     "BOJ",
+     "Bank of Japan",
+     "日本銀行"
+    ],
+    [
+     "raises",
+     "hikes",
+     "increases",
+     "abolish",
+     "end"
+    ],
+    [
+     "YCC",
+     "yield curve control",
+     "長短金利操作"
+    ]
+   ],
+   "exclude_keywords": [
+    "maintains",
+    "continues",
+    "unchanged",
+    "维持"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "启动日元升值压力测试，评估日元贷款成本重定价",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t5",
+   "description": "美元/人民币跌破6.60或升破6.80",
+   "keywords": [],
+   "keyword_groups": [],
+   "exclude_keywords": [],
+   "threshold": 6.6,
+   "type": "value",
+   "action": "触发人民币敞口对冲条款，重新校准货币转换窗口定价",
+   "series": "USDCNY",
+   "op": "<=",
+   "window": 3
+  },
+  {
+   "id": "t6",
+   "description": "美元/人民币升破6.80",
+   "keywords": [],
+   "keyword_groups": [],
+   "exclude_keywords": [],
+   "threshold": 6.8,
+   "type": "value",
+   "action": "触发人民币敞口对冲条款，重新校准货币转换窗口定价",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 3
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-23",
+ "question": "未来 90 天美联储、欧央行、日央行利率路径与美元/欧元/日元对人民币汇率变动对国际金融组织外币贷款成本及利率货币转换窗口的影响",
+ "generated_at": "2026-11-26T01:00:29Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "bis-speeches",
+  "boj",
+  "cnbc",
+  "dw-world",
+  "fed",
+  "ft",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-wb-imf",
+  "marketwatch",
+  "politico-eu"
+ ],
+ "materials": [
+  {
+   "n": 1,
+   "title": "11th Joint BIS, BoE, ECB and IMF Spillover Conference – Call for papers - European Central Bank",
+   "source": "gn-imf-debt",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOOG1OVmJ0M2I3MWltNXlSdWR6aFFBRnFIY1NZNzNBbFptTWUzODVFNGVmbnVVd0M1UFRiSUF4WlI1YW1TdTk1ZVVHR050UkV1RTZLQk5qOV96RE4zYThnTHotTnJ1el9XNGhLSjJWdXQ3MERtX1h5WEt0M094bERMaWtaLVA4UnN2a1JIOTMxT1FqN2l1UGc?oc=5"
+  },
+  {
+   "n": 2,
+   "title": "Federal Reserve issues FOMC statement",
+   "source": "fed",
+   "published": "2026-10-28",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+  },
+  {
+   "n": 3,
+   "title": "Offshore Yuan Weakens After PBOC Moves to Cool Currency Rally - Bloomberg.com",
+   "source": "gn-fx-rates",
+   "published": "2026-11-03",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZVdSMnhjS2dEckEzRDNTTDhEcE03WU4zUTJHMmk4dUZ4LWtnbDVROGx0UnRoVmFiTHBUN3BfU2hPai0tektpZkZscDFhWkw0SzlNdURnYlRrQzBreldyMDQ0TTk3anpjaWFRWFpobUZvclNRMWlQbGZidDZHd1NVVjFwVkVaSXBNZklvLURUdE1sWHFUbzBBM0dlaTE1VkFyZDhKVlBNOUxNNUlscUxCdk53?oc=5"
+  },
+  {
+   "n": 4,
+   "title": "PBoC Nudges Yuan Reference Rate Higher Against Dollar - TradingPedia",
+   "source": "gn-fx-rates",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQeUlXZ0hpR0VuSEsxOHhYREtDMFhOYkV6bEdIOVpabWp3cWdzVkhsblhfWGlCV2xkdlBUVjAwS2FjT3lLQlhYMTJ5bmZtTmRMTTdvandZNHo4TnpDakFpWTRTcVg2WkpvSmE5bW1wcXZ1bk14NlB2MkVlRlBMSXdnOE1KNnFYQ3JVRWtGVVJwSnoxdWNITFlnLU1B?oc=5"
+  },
+  {
+   "n": 5,
+   "title": "PBOC Nudges Yuan Fix Slightly Stronger Against Dollar - TradingPedia",
+   "source": "gn-fx-rates",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNSlcwTFZjd3hxWWY3OUNrNDkyWnluN0FGd2dJMGZJN1pKM2xpYk5pdlBDWGJuM2dxajg1MWw1MFdIZmRDbk9la2gzT281QjY3NGxjYTlLaGdLdlF3dllTRzNJMGhpYzVOQkplUzhCWE9DbmFVUUxocGRnVFpPMmJHRUFPRlF1VUNqNURsWEZYYlFkYl9XZ1FyYWRR?oc=5"
+  },
+  {
+   "n": 6,
+   "title": "PBOC Nudges Yuan Reference Rate Stronger vs. Dollar - TradingPedia",
+   "source": "gn-fx-rates",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQbWZOeDk3YzUwNW85SFE2bnktZ0JJZlNuMm4weFRhbTB0MEtRdWo4aFVqSFdHVHQ3VWdUMnBWT2Y2WjZaT0FRT2FjdjdFRm55dWNUdkcxTkszQUdob2FKak5USW54SS1ybmZ5V01VbzA3Y2ZxamFGWkhiWTB5c0RLMl9MRUQ1Z1lzV3VrS2Jrb1JxcUNpMGc?oc=5"
+  },
+  {
+   "n": 7,
+   "title": "Rubel down against US dollar, yuan, Russian currency at BCSE - Позірк",
+   "source": "gn-fx-rates",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9pNGJKb1hLWGVPZ1F5SHBvQWRBTEd5dk1XOURlVGd1VnBYM2lCOGphTWNvaWIxZ1ZXcDdvMjcza2w1SUdDZDhFMDFKWThtQQ?oc=5"
+  },
+  {
+   "n": 8,
+   "title": "Central Bank Digital Currency - Looking Ahead Towards Future Financial Infrastructure - International Monetary Fund | IMF",
+   "source": "gn-wb-imf",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNT0x6eEc0VFprQlN1dXR4cjlrb29zdVZBcE5YbHZuNHFrTDQ3NVZWVUZJWndZdjU3c3ZDZjJhamVMVFFKXzJONTk1NnpJdGtXSjNBQ0N5RlNJRkpiQ1hmN1VlQmdDSUxuVDFoTUloSElSdE4zOHNCdU5id1ZZTEhIQV9TX1Y5ajk5ZmRYVFRfYjNLVFV2ZkxqRXpRc2MwblJETWdwTVdfSkFCcW9Lb0lObXVzb25iQm5pbGU0LTl6b0JSTVpzc2x6TS1mdnhBa2hQbmY1ZlhwR0wySEY0Q1cwLTdjbTNqcFgtMUthaGRKMA?oc=5"
+  },
+  {
+   "n": 9,
+   "title": "France and Germany complete political deal for ECB leadership",
+   "source": "politico-eu",
+   "published": "2026-11-20",
+   "link": "https://www.politico.eu/article/france-germany-complete-political-deal-for-ecb-leadership"
+  },
+  {
+   "n": 10,
+   "title": "Dollar And Yuan Weaken On Belarusian Currency And Stock Exchange On November 19 - REFORM.news",
+   "source": "gn-fx-rates",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQdmFvbFM1R2lIMy1MQV82ZHJRblVrazh0LUg0VXloeFV1QnhMUllVZ0hhVDVxZ1MyVEFJYWRpVl9UcDVxU1Z4eEVTQkh4bnJLUkRVWnVGZExsb0NNWWYzQ1hmMExlUy1aNGg3enlwX29Uak5uOGlSb3JBejc0S0NQSXpVOGlCc2podUxKZkItUHJTZS1nLWx2RF81ZEpUajJ4OWdqbFhR0gGrAUFVX3lxTE9ZMFpIbnhHeVA2OHZ1TlYzN1ZuOG5CdExvelc1dW9feEdFMVNobm5ZVDdIT0Y0d2pBenMxSXBNTExtckV0Z2Z6NUlCRmYtTmVETUtEd1dFVTlQZWZBcDVhX1g5bVFBQi1fZzN3QnF4MUNqcVgwSnpmQlRuRXFTNXVlU3p6RkFtLWpVdzBFdW5Db3NoZzdaWDVDX295cVlpUm4tdlE5QUgxRFlqQQ?oc=5"
+  },
+  {
+   "n": 11,
+   "title": "Inflation gets worse. Now the Fed has no choice but to raise U.S. interest rates.",
+   "source": "marketwatch",
+   "published": "2026-11-25",
+   "link": "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f?mod=mw_rss_topstories"
+  },
+  {
+   "n": 12,
+   "title": "Dollar, Euro and Yuan Weaken on the Belarusian Currency and Stock Exchange on November 18 - REFORM.news",
+   "source": "gn-fx-rates",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPX0QyZ2tCUlQ3MFB4ajdOcE5icC1WYnQyVUlQRkJBMG14aWJDUkZXLUpwWVA4UmkwcV9VbzZjRzM0VG1UZE5pNVB3WXFqZUFwNm8zd3ZwMURNdDVMZnozYWtsMG9VcGJXc0lDYkI3bHlUTnZJVGtrdGVzQ0N4OERxQ0ZDX1VtTlpNb1NISlowWmw0WURnZ1c1aUMzZWp0RTNHUjV0Y2FVMFpHTzZIQURkLVpB0gG3AUFVX3lxTFBYTTJDOGQ4STF1ZGhpcmlkTkdCNXdkNWNtNTlreUd6Y2VZV3dESFJoZjlVVWdFMzhfQzdld1B5dWVNejhkTGZ0QTZldkpqOU03QkI5TVh0X0pXTXMwSlc5ZnNFaGQ4V2JOVzdXakplMjV6US1OaFVzdkphc1BiRXl3cWhrSjZaQUh5TE9ZU3Nsb2R2MFVaTHFRVHExWWx5cElxV29kNmtNNzVjVV9EYXdncU54dWdoQQ?oc=5"
+  },
+  {
+   "n": 13,
+   "title": "FED'S JEFFERSON ON IMF PANEL: IF AI ALTERS LONG-RUN NEUTRAL INTEREST RATE, THEN MONETARY POLICY WILL NEED TO ADJUST - TradingView",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOZkVOb1UwbXJRQ3FvTWVqTDdVVFpORk85WF9SLUYySDlpcHVXbHVJa21waC10TGptWnhrUDMwWXJNc0FYQ3J3VkxleW0ycXZjLVYtZU0wZlZhOW5HUkZuLTI0QzI1Q21YeF9qT3dySzRXSy1USFBFckYwMDNoX1NIeW95NktXd0pkUFUxLV9GZ1BaT3RwSmtSQUhPdEJDdFlMUGdxVzg4TVJOVnRaZFVBdm0xVlNVYnJ6OVdUWVFOa2ZIaWIxMDl5bVpMaHRwUGtzbng2eWc0bF9oMVB1cl9uR1pCbk43TkFRYzBsYnZyRHQ4NlpoQVdhZmswdkRkWkZFMlE?oc=5"
+  },
+  {
+   "n": 14,
+   "title": "EU aims to pick new ECB chief by year-end",
+   "source": "dw-world",
+   "published": "2026-11-09",
+   "link": "https://www.dw.com/en/eu-aims-to-pick-new-ecb-chief-by-year-end/a-79898169?maca=en-rss-en-world-4025-rdf"
+  },
+  {
+   "n": 15,
+   "title": "Navigating stormy waters - reflections on monetary policy",
+   "source": "bis-speeches",
+   "published": "2026-11-10",
+   "link": "https://www.bis.org/speeches/20261110-navigating-stormy-waters-reflections-monetary-policy"
+  },
+  {
+   "n": 16,
+   "title": "EXCLUSIVE: Chinese banks boost dollar deposit rates, sources say, as Beijing seeks to smooth yuan rally - Reuters",
+   "source": "gn-fx-rates",
+   "published": "2026-11-08",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQTzF1MFhueDRWX1A3LWlGYWJuZ21hMjNBQkE5aG9JdElOT1pYeUNrMHUxS2lXaGQ4RDAxUUp1T256bjBXelZMZ3UyNDA1UEI5QlJ4SHgwX3QweWsyczBnRUhRTC1PZGtpRUVFNzVycWp3d1RQVE0zUm40SUNURVdES2EwZmpNUFNlMGV5S1lXajlza3A4OW1RSGFzWldtU1N1N0N1R0kxbTUxRGtXU29FX0x3M2J6SU5yVjBxWk1yZmN2WHdvR01UMGtqaw?oc=5"
+  },
+  {
+   "n": 17,
+   "title": "New York Fed says FX markets stay resilient amid geopolitical volatility - Traders Union",
+   "source": "gn-geopolitics",
+   "published": "2026-11-16",
+   "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQWHdqR0RSNmhsMzBFTmVoazl2SVV2UUMyb1dEMzhSYXF3c05WMy00NC0zS3lORFViZmN5WDFMNlZueXFrYkhtRlFZQlllTWYzeUJIUjRvcEZYUS1DbzhubFhjV28zVVFJdWNiQ3l5dFhkLVd4OGJDdjdMeDJGR2pqaFVsdlladUFOOHdoMmp4MXF5dUk?oc=5"
+  },
+  {
+   "n": 18,
+   "title": "Fed's Goolsbee calls inflation report 'borderline disturbing' as central bank weighs more hikes",
+   "source": "cnbc",
+   "published": "2026-11-11",
+   "link": "https://www.cnbc.com/2026/11/11/goolsbee-october-inflation-fed-rates-disturbing-distressing.html"
+  },
+  {
+   "n": 19,
+   "title": "A misty outlook for rates",
+   "source": "ft",
+   "published": "2026-11-17",
+   "link": "https://www.ft.com/content/c53ae58c-64b9-4d90-8a0b-d338e80f4614?syn-25a6b1a6=1"
+  },
+  {
+   "n": 20,
+   "title": "(IMES Newsletter) 2026 BoC - Philadelphia Fed - BOJ Joint Workshop",
+   "source": "boj",
+   "published": "2026-11-06",
+   "link": "http://www.boj.or.jp/en/about/release_2026/rel261106b.htm"
+  },
+  {
+   "n": 21,
+   "title": "(IMES Newsletter) 2026 BoC - Philadelphia Fed - BOJ Joint Workshop",
+   "source": "boj",
+   "published": "2026-11-06",
+   "link": "https://www.boj.or.jp/en/about/release_2026/rel261106b.htm"
+  },
+  {
+   "n": 22,
+   "title": "PBoC Governor Pan meets with ECB officials; PBoC Governor Pan says China and the EU should strengthen communication - Newsquawk",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNampqRkMtczlKZzZmQmVfOFZRRzhIQ0hsU2ZWNnl1ajBvcTRHOTlwb3dRRzI0bjRpZ2RPQmZpZHdycWpVZEJVeUg3blF4UlNSQURQRUFLaHYzM1NGS0d3SW5VMTBpQWlkSWt6ZS16eXJ6WExqXzdpY2R4bi1fREh3NTZPZldOYmZxM3VHWk81M193NEpGYk9Z?oc=5"
+  },
+  {
+   "n": 23,
+   "title": "Federal Reserve announces College Fed Challenge winners",
+   "source": "fed",
+   "published": "2026-11-20",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
+  },
+  {
+   "n": 24,
+   "title": "Fed officials expect more rate hikes, worry about AI impact on inflation, minutes show",
+   "source": "cnbc",
+   "published": "2026-11-18",
+   "link": "https://www.cnbc.com/2026/11/18/fed-minutes-october-2026.html"
+  },
+  {
+   "n": 25,
+   "title": "NZD/USD Flat as Dollar Strength Counters Geopolitics - TradingPedia",
+   "source": "gn-geopolitics",
+   "published": "2026-11-10",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQamx2b0FWcEdfdC1SLTdfMXJkZGpDOTJlQ1pDMUE5ZEdmak1lY0YxQlR2QkVIc2J0TkxsZWd4ZmEtM0wtR1hWSEpmbTA5RjFIVnJ3TzRBN3EwR1ByVUdBQ0tqTnJKMDh1SEUtWUluSnRGX1ozdmZLRDhqZ0hFTmxEOFlRVG9NUmJFelRzaklhYXdfdS13VjdoZw?oc=5"
+  },
+  {
+   "n": 26,
+   "title": "PBOC sets USD/CNY reference rate at 6.7131 vs. 6.7128 previous - FXStreet",
+   "source": "gn-fx-rates",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQelZCYmZ1Wl9xVG9MYzRWWlM1VlpxVlMyeWpJQVhzUmNQX2dBdzlNdVFQTTBnVXNTVWVIOTdZcmVzWHJkNWFKSEZxdzl6UzN3dkFOb0VicUtFNENiTXlBTVFQWHQxbzEwRVJSNmRMZEI3SHd4c3BfVjg2dHA4ZzhPTUJqR2lQMmoyNGhkUnBkUXBjb1NsajRwV3hEUFEzUjB0TW9wVQ?oc=5"
+  },
+  {
+   "n": 27,
+   "title": "PBOC sets USD/CNY reference rate at 6.7120 vs. 6.7131 previous - FXStreet",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPWGNjbDZxb2VNWHJjMzVWQjhzUGpsYW9mdzFiZTZhdlFESU94RXoxVkdHNzhnb3FCRzNBT3VIWXhWbnBreWVUQUQzUXdFcERSaGNwOGtHVjlvenJfeWRrbnFkdXdpVERpYkw1dDhsOTc5LUJmUkFsUjZWdzN0WWxNNklocTVBenBhSm5Td3lXMndiVWJPN0paZjR0ZEZXb3JsMllXYQ?oc=5"
+  },
+  {
+   "n": 28,
+   "title": "PBOC sets USD/CNY reference rate at 6.7111 vs. 6.7120 previous - FXStreet",
+   "source": "gn-fx-rates",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPQ1J0V2lBd1N6dnFjOVA1TlhzeWg1MWs4TGFFSGdzZm5FWWc2OUl5UnpIWFZQb2NGSW1vZFl4VjIzMjVQb2R3R0NYcWR3a3R0aWp6ODNfcGU3c2dJalBwRWNvdGNzRlQtTXR1THZ2V0tNTm5lNUpOT0puWHFQTlljTFdfNUtnWWxFN1IxMGlPQ2FScERnRnZZUzJPdlZWd2k1dUExYw?oc=5"
+  },
+  {
+   "n": 29,
+   "title": "PBOC sets USD/CNY reference rate at 6.7088 vs. 6.7111 previous - FXStreet",
+   "source": "gn-fx-rates",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPX29Wa3FTWW9UM3BpcndhcHl0RTZxM2dfNzhETVpGSFBkWGpuRkZGdWcxNENOMkJfMVZuVFNEamk2YWswNERvdnBqaFpMMWVLZ3dEWXEtRXJNODZGdU5qLUFaa1l6UjFkbnV0anF1Vzd4NWdoNUNMcDJLdVlyVjQ2NTI0VnRlYXVIRTVtN1MxT1A2N0RHZFg2cWxDMG9Id21zMGJTSA?oc=5"
+  },
+  {
+   "n": 30,
+   "title": "6.7120: PBOC fixes USD/CNY reference rate versus 6.7131 previously - www.tmgm.com",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQzF1SDNUYzhXdjR1ejdtU21XdEpFY3d4bEx6OG1GNU5HM0ItOXBQUWpNbUcydTFFRzVSVHJVVU1SeE9SLTlOaGFoYjlHTFhsVmQ4N25la0ZLRHNSdU9MQVpvWTgxZjE3a3NmdXhxaUhtbU1WVk9UYmdyYkVMaFgtR3VRTlU0eHNCdE9ISEQ4SnB2NFEwd3RNajJKR3BaVl8yZTRpYmdTMDJVTl9ZTzg1aTdRV3NZY3BYZkNPOHFsVG43Rmt1?oc=5"
+  },
+  {
+   "n": 31,
+   "title": "PBOC lowers USD/CNY reference rate to 6.7088 from 6.7111 - www.tmgm.com",
+   "source": "gn-fx-rates",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQNFl5UlRNeV85T1RRRHNqaGRobW1FSHhFU051dG5BQWY0ZEdMMDVpeTVzcUFaVWZGQm5RMkptblU4YUh2Z3ZFTWJBWXBNM01qV1g0TlJwVzlRRkdBOW1qczUzZFlCMFZnMEJDTmMxanoxYzZNaW5oT2IwQVlmOEZqX2dMNGdiUERtb2N3bWxOQmk4SU5QODN4TEZFZHJ2RjhmMWFaQzRCMFRPNXB6Rm5YdlNlSW40YWxfYXBNekxoUy02dl9KTjUw?oc=5"
+  },
+  {
+   "n": 32,
+   "title": "PBOC is expected to set the USD/CNY reference rate at 6.6684 – Reuters estimate - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVU1saUY4V3k0OHZvaC1IaEFsRm41UVZ4X2lfNFlheVQtR2tNY0hOQ0lxQVNQQ3FrLTM5WUloWWtFeFFvdDgtdmY5bUs2dlpKSE5PbDIwcE9IM1N6TEpXQjEzRWlyWG5vX2Q3aG9SZFFjR2lUVG1FLVllZTZfWUVybkNMZjB3cG8xM2hldDRlbTJtWTJ0d0hWYzVvSEFGV0hsT21PaXh3S1VlZVpsM3VSVGFwSXRkdXpTQXc?oc=5"
+  },
+  {
+   "n": 33,
+   "title": "PBOC is expected to set the USD/CNY reference rate at 6.6775 – Reuters estimate - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaTV1T1pLa2R0bmNrRWtnaElZbGRTZURmcHBoeFlwSHhKbEcxU3g1U0tqVGYwQUhILVdLVkJ2VkxzWmJMTE1Eb3cwYnVpZkxnQzhIaTZlY1ljbHZyT0hqV3g5aVlWN2JLS0tVOWJ2b05mRnp6bmgtcVJMN0JISUlGNWlldThlTmREOXJ5OEdiZ0pmWjA2cFNsWjI4ZWUtMUhKMHc5cUYwMzljQ0ZHVDBkRDBpLU1PR1RkNGc?oc=5"
+  },
+  {
+   "n": 34,
+   "title": "PBOC is expected to set the USD/CNY reference rate at 6.6731 – Reuters estimate - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPUGFnVlJEVjRqTlpSRk83SXVOem52enRJUFZybUpmQThCcV9vcHQ3cW45aG45OWI4LUVmWE9kYlgxMmZ2cmF2X0pBU3VsZDBPc0E1TEF1YWN3eGdzTWVhMDBWbFlfcVZTdHh0LXc2b0tfbFJQUjdLUG14TmxEUkFqaGJ4NmJFUS14V0l2MmF3OC01Nk5YRVYzSjdLWkt6cW9BYmotbUxvNFYwa3c5SHFsRkxxUXZKM2hVQktINA?oc=5"
+  },
+  {
+   "n": 35,
+   "title": "PBOC is expected to set the USD/CNY reference rate at 6.6757 – Reuters estimate - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQVExUalltMU53NEhXamhvaVE5ZThNQk5CUmRudm9PTkhubW92OEZKS0s1Q00xcm5CSEptZjdKTndjT1c1VVVmMTRkYmNQMWxXN1NZVDlRdVRIN1hXTWFaZ05GVm5seUhIRUFIYTV4aUFJMFRmb0d1cGhsQ2FRa1JnYTVGREgwMFREbnBGV0ZPSF9vMTkyM2ZyQnVTVTR6VHNvcVhmTUM0ekdTc3dYdUg5TTNzZGJrcVhVd2c?oc=5"
+  },
+  {
+   "n": 36,
+   "title": "PBOC is expected to set the USD/CNY reference rate at 6.6559 – Reuters estimate - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPX3FuZEpxLWRkSkZSSHNNVVN3ZWNxck55ZUtfRnNLM21qQWRHalEzRWU5dXNuTVRWdmtSMTgwVEloamFNOV9XVElCdWNib1hGV0xlZkZpNnJZbUFpNHZmMFM1dTg2MFFmU0hqSXRPMDJUQVFCNnRkQXZHOFEtRVdxRUxsOTFld3VodXVqQWN6ZnVNeDVMeHBkTHNpcllubXJZazRHS2NuRGFCcWNKcXhlcTZZRGFUZ0xRd1E?oc=5"
+  },
+  {
+   "n": 37,
+   "title": "PBOC sets USD/ CNY mid-point today at 6.7088 (vs. estimate at 6.6559) - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPamxUQVFSZzBUem1tNzVGd2hqazdrYW1fRUZkR0hwLWlQOGItMTd3NUFWX2lMSk03aDVqMk4tQWUzUExfaHJNZUp5T3cxZDA5Z1ZydkFFQ2pXYlJkMEctNGswTUhKZzh1SFlvbWFXYkEzX3BqRkFUTmxpTTlkdURXN2Y3VGZlQ0pEUWVTNTU0aGZRblo2V3NxekphNTZyT1p5eHNkOW9YLWo3Zw?oc=5"
+  },
+  {
+   "n": 38,
+   "title": "The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates",
+   "source": "marketwatch",
+   "published": "2026-11-25",
+   "link": "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33?mod=mw_rss_topstories"
+  },
+  {
+   "n": 39,
+   "title": "China to raise FX reserve requirement to slow yuan's rally - Reuters",
+   "source": "gn-fx-rates",
+   "published": "2026-11-03",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPWDB4ZFZKQmtlWTg4RlI1Tng1by1TNV9FMlZCSkFERGc1VmlndWxsUG5kNWFvemN0YXg2VmRneGNvTVh2YU9GdXRlTjJVRXZ3eE82UlZBS1Y5YWJOOUVMQk05elJZRVR6cDBnd3U2eGxHNUZtNFJsR3hqb294LWpHMDh5VmtZUnlPZTZjWFRhMDM3d19ya1pHbW54ZzZZay1uTmkxZlV2NFliV0s2blFSSU9qSTZYTnJi?oc=5"
+  },
+  {
+   "n": 40,
+   "title": "PBOC sets USD/ CNY reference rate for today at 6.7131 (vs. estimate at 6.6731) - investingLive",
+   "source": "gn-fx-rates",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcFBuLW9OZ1JsS2x5UmNxc0QwWl9SZVBIelctZmNDbU1RWkx0MVJtZ2hfVDE2cFZFSFRld1EtVHZrdTNibjUxRDB4aHdBS1ZtZk5BWlpXSm1YeG92RU5RVDNnaFFfSDBERVlxWVF1VmdqVWk2TU53dFlmYy1NLWM5SUZZRUlFTl9Zc3hFd0lTN25RbFdtVWdicGZSMXBJLWhNd2pHb3VMbVRtVjY0eUlvc1Ewd05uZw?oc=5"
+  }
+ ]
+}
