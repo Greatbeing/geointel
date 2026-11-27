@@ -1,0 +1,489 @@
+{
+ "scenarios": [
+  {
+   "name": "气候政策性贷款加速落地，私人资本撬动成核心抓手",
+   "prob": 45
+  },
+  {
+   "name": "环社框架(ESF)与采购规则收紧，执行层面‘防漂绿’成主线",
+   "prob": 35
+  },
+  {
+   "name": "地缘冲突与强美元挤压财政空间，审批放缓、规则演变停滞",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "任一MDB新增单笔≥10亿美元气候政策性贷款/结果导向贷款",
+   "keywords": [
+    "AIIB",
+    "ADB",
+    "World Bank",
+    "climate",
+    "policy financing",
+    "results-based",
+    "billion"
+   ],
+   "keyword_groups": [
+    [
+     "AIIB",
+     "ADB",
+     "World Bank",
+     "Asian Infrastructure Investment Bank",
+     "Asian Development Bank"
+    ],
+    [
+     "climate",
+     "green",
+     "resilience",
+     "decarbonization"
+    ],
+    [
+     "policy financing",
+     "policy-based lending",
+     "results-based lending",
+     "programmatic",
+     "DPL",
+     "PBL"
+    ],
+    [
+     "billion",
+     "10亿美元",
+     "1.6 billion",
+     "1.5 billion"
+    ]
+   ],
+   "exclude_keywords": [
+    "technical assistance",
+    "grant",
+    "TA",
+    "capacity building",
+    "training",
+    "feasibility study"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "上调情景1概率至60%，建议锁定管线项目尽早入库"
+  },
+  {
+   "id": "t2",
+   "description": "世行/亚行发布新版ESF指导说明或采购框架修订草案",
+   "keywords": [
+    "Environmental and Social Framework",
+    "ESF",
+    "procurement framework",
+    "guidance note",
+    "safeguards",
+    "consultation"
+   ],
+   "keyword_groups": [
+    [
+     "World Bank",
+     "ADB",
+     "Asian Development Bank"
+    ],
+    [
+     "ESF",
+     "Environmental and Social Framework",
+     "safeguards",
+     "procurement framework"
+    ],
+    [
+     "guidance note",
+     "revision",
+     "update",
+     "consultation draft",
+     "implementation guidance"
+    ]
+   ],
+   "exclude_keywords": [
+    "webinar",
+    "training",
+    "workshop",
+    "capacity building",
+    "learning event"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "启动合规缺口自查，预留3-6个月整改窗口"
+  },
+  {
+   "id": "t3",
+   "description": "美元指数连续3个交易日≥125，融资成本显著抬升",
+   "series": "DXY",
+   "op": ">=",
+   "threshold": 125,
+   "window": 3,
+   "type": "value",
+   "action": "下调情景1概率，上调情景3概率；建议优先推进本币融资/担保工具项目"
+  },
+  {
+   "id": "t4",
+   "description": "美债10年期收益率连续3个交易日≥5.0%，MDB发行成本上行",
+   "series": "DGS10",
+   "op": ">=",
+   "threshold": 5.0,
+   "window": 3,
+   "type": "value",
+   "action": "压缩非核心管线，优先保障已签贷款提款进度"
+  },
+  {
+   "id": "t5",
+   "description": "主要股东国(美/中/日/欧)公开批评MDB气候融资分类标准‘漂绿’",
+   "keywords": [
+    "World Bank",
+    "ADB",
+    "AIIB",
+    "climate finance",
+    "classification",
+    "greenwashing",
+    "misclassification",
+    "shareholder",
+    "governor",
+    "criticism"
+   ],
+   "keyword_groups": [
+    [
+     "United States",
+     "China",
+     "Japan",
+     "European Union",
+     "Germany",
+     "France",
+     "UK",
+     "shareholder",
+     "governor",
+     "board"
+    ],
+    [
+     "climate finance",
+     "climate co-benefits",
+     "classification",
+     "methodology",
+     "tagging"
+    ],
+    [
+     "greenwashing",
+     "misclassification",
+     "inflated",
+     "overstated",
+     "integrity",
+     "credibility"
+    ]
+   ],
+   "exclude_keywords": [
+    "civil society",
+    "NGO",
+    "protest",
+    "activist",
+    "opinion",
+    "editorial"
+   ],
+   "threshold": 1,
+   "type": "count",
+   "action": "触发情景2加速演进，预期6个月内出台更严格分类指引，提前对齐项目标签"
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-24",
+ "question": "未来 90 天世界银行、亚行、亚投行贷款重点投向（气候融资与绿色基建）及采购/环社框架（ESF）规则演变趋势",
+ "generated_at": "2026-11-27T01:00:12Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-news",
+  "allafrica",
+  "fed",
+  "gn-aiib-ndb",
+  "gn-climate",
+  "gn-energy",
+  "gn-imf-debt",
+  "gn-mdb-policy",
+  "gn-mideast",
+  "gn-wb-imf"
+ ],
+ "materials": [
+  {
+   "n": 1,
+   "title": "ADB Approves $500 Million Loan to Strengthen Disaster Resilience in Pakistan",
+   "source": "adb-news",
+   "published": "2026-11-11",
+   "link": "https://www.adb.org/news/adb-approves-500-million-loan-strengthen-disaster-resilience-pakistan-0"
+  },
+  {
+   "n": 2,
+   "title": "Uzbekistan, ADB agree on grant funding for procurement training - trend.az",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-21",
+   "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9BN2w2QmFtQkszQkxJUVlWaGFlUTlWc0RZRW04MnJ6Z0hkLWlZM0R6V050NldnN3oxTWxOT3NsSU81dklVU3JCdmtLVmlSdkZheW8tSkFSYTlHY1RBM1hv?oc=5"
+  },
+  {
+   "n": 3,
+   "title": "AIIB and Brazil Deepen Cooperation on Climate Finance and Carbon Markets at COP31 - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-13",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOUmpsTEF5UFlCaXVtSFFZOXM4cTJHeEQ2d1lmNE5kMnhvY2xxaG9iZmEzYW8tVnBYYTdkTTBSaWlmOVJpcjg0cmhZcjg4YXJUclM2MVVDbUw4MWE3X3hoVHgtaVVxZUh3dlcxNERyZVVVeWFuZHYzMkhyREJoa0dOaGZEREVkd0ctYzZRODVGUjVTZDhaSTNzQXdwVkFaN21lLTJROG1QNS1LSURVTXg2NHNUaEx0WkstcnI2V2E2dXEzMVU4bFpYOVp5dS0?oc=5"
+  },
+  {
+   "n": 4,
+   "title": "ADB Approves $200 Million Loan to Boost MSME Financing and Resilience in Sri Lanka",
+   "source": "adb-news",
+   "published": "2026-11-20",
+   "link": "https://www.adb.org/news/adb-approves-200-million-loan-boost-msme-financing-and-resilience-sri-lanka"
+  },
+  {
+   "n": 5,
+   "title": "AIIB and UN Joint SDG Fund Strengthen Collaboration to Advance Climate Finance and Sustainable Infrastructure Investment - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQaWoxa0Y1T1hqQzRCSjRvazNSbW1PSXdTcHM1STk0OFMwazFlRTRHYTF6aUtMbnJkanhHeXZDeTFfRVZRa3BYTFFFVDJ6SGZibVRQQ2dMZmpNa0o0amVjWDhkcEo1LTl1WDhTaHlIaXdtc3VTVlFtcXZqSTdsdUM5NzhPLVV5a252RGRVMW5Sc3lYclFkQjJqdExIOVE0Z2RjaFJBVE9wTXFIOXBGeWlHUGtUZmcxM3pleHJrUWNFWXAxZWczcTdBV2pOTHUwZWo0M2JjaFdCREhTRE81YnFXV05vdm14dHUzQ0dWU2V0WWdTQ0NtMFM0?oc=5"
+  },
+  {
+   "n": 6,
+   "title": "World Bank, ADB Review Amaravati Road Projects and Safeguards - Urban Acres",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZVBQR0pfMUR4RzdEYTBsZE0yUWVRcldXcWZ1eThYUl9lQWd2aUtkbUxWOHRkdWJILXJ6a0I3OExxTkRiOENqb092MHFHTUFZWGdjVThpTmVrUEpUbmJnTUljcnU0YVh3SjFRclpOSzN3bnFuODQ4bTU0bkFPcU93NWZCS1N2NlNobkZ0WjBuVzFQN0RBOW0xUjhaNVpjQTREYndfXw?oc=5"
+  },
+  {
+   "n": 7,
+   "title": "AIIB’s Baku Metro financing would reach $1 billion with Green Line loan - Railway Supply",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOc2ptRFJCUGJTS0RKS09XOFNGTXRiQzRRZkVDVXFRQVRMakJ2dzYydjRJSV9uWFNwQjlVYlJQLU5nMjQ2Y2FaWTVIanBvUWNIZ2RJRHQzNmFMQnppdHZqSE9sWWNSazkzdmZLazFQTnlIRzhhanhpeTZJbG1sWlVfdVVjQWJ2QmVCbHE0NFpHbHVnTG5nSmhtWTlWWW9qQQ?oc=5"
+  },
+  {
+   "n": 8,
+   "title": "AIIB Completes Record 2026 Funding Program with USD688 Million 5-Year Floating Rate Benchmark - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-aiib-ndb",
+   "published": "2026-10-29",
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPZ0sxS2t5SHRvdXR0X0VXekYwSVUycVFXMGVfbVNZd3dndDNnTjVNWmdQSktpWERUM2tpMmdLUlJPWVN3RzlBcWktVUZIMFhkRnlGY0xMSGtuZkVKUEZmOVdoazlSMVVXZkM1aU5UTUpQcFMtV1JvS3pYREFNRDRnMzVFcGlRWTc0a1A5bWFPcGoyOWxiR3JEUXFWeFl5ZVU1bUJCaFZMVjF1bzNvcUllOFhnV0dJVjUtRHAzY1cyVDNacTlnbTJfZVpiV1FEM3QyWThtTVRRZUVuTnRm?oc=5"
+  },
+  {
+   "n": 9,
+   "title": "Indonesia: Proyek Hijaunesia Staple Financing – Gajahmungkur 100 MW Floating Solar PV Project - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOaXdheU13UVhjZ2hRcDU0UEJBQjFKWkxSdUNFV2dhLW92ZUNxR1NRTVJiVU9hczNQMHFvVzFIeXh1S3pMOFJHMGFOV3RXWTNISWp5d0I4ZVQzZWhZZVNxZkliRGUtRGZyeDdTbXVPVklHVHU1Vlh3Nk9FcjhVT0dKN2ZTUWplcTBIajFxcHhmaWczOFQtaUxLazllTGt2Wll4UHFYMzdKUmltaWZVU3ZvWFA0ck9KdFN5UGxTdlBKRkNJcDdHUWVwSWk0T2lPNGJYM1hiczI3ZllrLUhidGxmTDA1dGc?oc=5"
+  },
+  {
+   "n": 10,
+   "title": "DRW Energy Trading Closes Upsized $1 Billion Revolving Credit Facility - TradingView",
+   "source": "gn-energy",
+   "published": "2026-11-10",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPUmYyM3ZacWgxclBqRXNUTnowQndLLUJlbC11Nll5VUVwcTJxMjNhMGN0aUl1bzJWekNsamFwRWtXZmNLTEVvc1RLdXhLUlUzLWh1ODBDLXllNTdleUo1LUFFQ05rU3h1Q2NQeDI5SHBUdXE3c0I0cFBxZTlrZThJX09YcGE1ZlowYVVrMlUzcWdRRTkxQ3dkTkZFVmhTem9RNE9KcVBDR2FNcURnTk1LeGpxeFU1eUM0SGZvVG9NY2doZlN1N1FPV1FR?oc=5"
+  },
+  {
+   "n": 11,
+   "title": "AIIB Announces Climate Loan Package for Türkiye - energynews.pro",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1uZGhFeWZNLXhNSlNzMHExRzllcEkzWTh4ZER3M0hFakZtQUpPbFBNSGNVNzVELUQtazIxN2o5Tkl5QktvdXJ1dkFOd1BGSWhYTnpoMkpkUkNtRDJzQmo2c2FBRVpnNTczOTJ1Z3FLM3lxekhGQkJ6TjF1UW5nUQ?oc=5"
+  },
+  {
+   "n": 12,
+   "title": "EU’s CBAM, Climate Finance for Farmers in Focus During COP 31 - SDG Knowledge Hub",
+   "source": "gn-climate",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxON2stRnYzU0x6ZzVsRWk1NEVlMEpYclEzZWZaY0REYVBzaG1aYWh6TkNkSDhHNDk0VUpzVHQtX1JzaE95MmtuLXBxWEEyMXJrLTZEdnZGNGZEd0Z2aG5MOUpMQ3FtLVdlMWhDaG1zQUk4TTJONzFwUk1YODZJSnZBVGVOZVZJQjllZkhR?oc=5"
+  },
+  {
+   "n": 13,
+   "title": "AIIB and KfW Strengthen Cooperation on Climate Resilience in Indonesia - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-aiib-ndb",
+   "published": "2026-10-28",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNX2tsVGoxZE5VcHVJNzlSa1NhZEEzbWROQzUzM2Myd09sTjhsaXYxSUJjeTluN1h3emZRMTlLTm9lQjdQZWRsOTRHU2I1V2tYNS1XQXRQbkUzcjJ4aDRnbnlOVGFPRFZnVU9PUUxVeGhCUXZRQ1NPODRITi14eHRnZy1WTW14NFpYYnFjams5Y0xFRkd0TWxtX3hKODdkZkdDUzVKU1pzZkQ5OHRiRWpySHhEZ0RoUzNJMlNXVWZR?oc=5"
+  },
+  {
+   "n": 14,
+   "title": "AIIB and Türkiye Sign USD1.6 Billion Package to Accelerate Climate Reforms - Asian Infrastructure Investment Bank (AIIB)",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPOHN3YlVZQ3RnRmM0RVdrLTZCbk9kZXdtRjk3SzR0c2dGTzBYeWlINGduZS00QVRWZFNpRWlRMHZMSC1xN3lKaVNpSzcycjJlLUszdXNJRGQwejdhVERmZWd5R3FsYjhLcUg0UFJETU1TVTlobzlfUE11SGtpVEFaYlcyR0U5LWVmb2NKWm5nVHFjSGx5dlBUVXZYODV5Xy1TS0FfODJYQlpIZ09SX25xcjBabGJRT0F4Mm5kY0pTY0RrTzQ?oc=5"
+  },
+  {
+   "n": 15,
+   "title": "ADB Increases Naoero Support as Middle East Conflict Drives Up Costs - Asian Development Bank",
+   "source": "gn-mideast",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNcjl5ZkJIVHcwdVVjMGl0OWlLZ2x6VVBJZ2Y1YTFwTFdEWVNnV1cwallyZklJZGE5RlhudzYtNm8zWkFWM0Jvd0JyZzJSSkZibUk3WGkzb1UwbXF0cmd0eXZzRlJOXzRCeXBuakd6UFBzZlVTdVpBX3RYOWJQTHdBM3VJWGROeUVSeElKNTB5M2s?oc=5"
+  },
+  {
+   "n": 16,
+   "title": "“A COP of Betrayal”: U.N. Talks Make No Progress on Fossil Fuel Phaseout, Climate Finance - Democracy Now!",
+   "source": "gn-climate",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9YOWVMbXR3YmpxU29Ea0RmOVdTNmdMeUZsVnpHcEhGXzVxZ0Y1b0txeDczeXlaYWJxUjI4NjA1ZmphMl9wQVM1dmdnbVdvcjE1XzhRWTVLYk10dVotZDJXMnBfaw?oc=5"
+  },
+  {
+   "n": 17,
+   "title": "AIIB, Brazil deepen climate finance and carbon market cooperation at COP31 - Traders Union",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-13",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPR2U3VFdiTFNfYVRJMGRxM2FWc3hPRFltQ3NudWw4WGlNX3NzaEQtR1dhSUJMNXlqZmIwcVhHY2VKang5SlJLalRHbXZGeHUtaWgzcjJBa01CYTFxblVJYWo5a3dmaDNMWHJ1cllralBlMWpYejdDMU5XMlV1NGZZdFB4TV9taE0xNUxiRy1GQnRsX29od1E?oc=5"
+  },
+  {
+   "n": 18,
+   "title": "Türkiye Secures $1.6bn AIIB Climate Financing to Accelerate Energy Transition - Serrari Group",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPa0hqcy0wQ2c4Y0NoQ05uMkU4TlZDd1EyMkVyUDdGUENGZHpwNXVJLUZRemJGeTRQS0VyTVEzRnZQVk5XZ29IMlhIcU9KenlMTEhMVU8wRE9Ta25PY25XdDU4NVNHemlHOXh2YzJ4VVhweHdDT3pXMkx3UUJjQ2pveXkyYThDR3FZekkySFlSb1YtMDEzNzR6eFpraW85c05JQk5LTA?oc=5"
+  },
+  {
+   "n": 19,
+   "title": "ADB may lend Tk 37.79b to finance procurement - The Financial Express",
+   "source": "gn-mdb-policy",
+   "published": "2026-10-31",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNZ29WRmRGV1JrbmVnYk5IOS1aNnVuWGlEUGkzalU2S0NDakJvMWVxXzR6c0R3dE1OVTB2VWFzdFVsMGRIam5ES3NST0t6REVxejdMeWJtNGVJTkx1NkJxTGFWMml3RUhJZTlIRDJMZG1WM2FVelA5XzVESUlfTmplLUdYZ2h0SHV1NE1ucDNCWHZNNnkx?oc=5"
+  },
+  {
+   "n": 20,
+   "title": "ADB Approves $11.7 Million for Marshall Islands as Middle East Conflict Raises Costs - Asian Development Bank",
+   "source": "gn-mideast",
+   "published": "2026-11-05",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxONlVKa0dfdnhKMU0wVXU3Zld3SHMxakRGRFNvdXhzTzU4eDllT1BrMFJiLWx5RUEtT1RhV0ZUWXlKSTBKR0piTGVXdGNFM2lTS2dycHBIckdNTE9URnl1b0ljeG9tZDM4RGRzUEtfUUdLdHU5UnU4R0Y3UFlCUGxPWUwwRmNYMDE2T19kczItczJWYkgzNTZDenl5SGp1R2JEZ0p3?oc=5"
+  },
+  {
+   "n": 21,
+   "title": "Turkey, AIIB Agree $1.6B Climate Financing Deal at COP31 - News and Statistics - IndexBox",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-14",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPTXVhb05hTjVkNXkwY2d1ZGtmaEktSnBRZUxjNGptUTZLU19GMlJfSmNnX0Q5N0hYZF9uTlFhOWdNeGN1TGowbW40d1hOOTRtYnFUaFFIdFEzaFVfNlQwYTBaY1Q3WFVRNENTZFhSZldjSE9YTmRocEVTNTN4dVlRNE5oT1dnSVRrbnpqdFdyVUZOU0E5YW5CT1VrbFRTcF85NVhMZThZNlVzeU5sVWdFamlWbDhTSUc5eVpwbDQxcW0?oc=5"
+  },
+  {
+   "n": 22,
+   "title": "Turkey secures record $1.6 billion AIIB climate financing deal - middle-east-online.com",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQMHFJT0tHb3NiX3FIVWJzcWp1WjRDb20wX1NwZ2MzTVhLcmtpVG15S25EWFZ6akIxZ2NicVdqNUxDaU5ZRnRoX0p0M3Z2ZXotNEpudUU2VUx3ZkU0ckwzcWRYRDA2UzQxajA2Q1dfMU8wSHNmMGZvSDlMSGR4ejczR0JNTFdTUDdsOWpHbGlXODRIdjN0UWY0Wl9n?oc=5"
+  },
+  {
+   "n": 23,
+   "title": "AIIB and UN Joint SDG Fund expand climate finance collaboration for developing economies - Traders Union",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3p5M2pjQ3ZpUTVwSUk4ZDVmT3I5VkZGOUtxbTI2ZFU5Mk5hOVhmaUdaS0tvZW53a3hmVk9ZTHJRVFpXOUUzNUVlRlFnVWlzbDNuRkw0Ym9na2JXM2ctM3dMcGdjcmtCVy1RME9OT1l6WndGVUp6SFRQaVJUMFE5bXotVnFSTmd0TmozOQ?oc=5"
+  },
+  {
+   "n": 24,
+   "title": "A civil society protest at COP 31 demands a transition from fossil fuels. Credit: UN Climate Change/Kubilay Ciftci - Inter Press Service",
+   "source": "gn-climate",
+   "published": "2026-11-16",
+   "link": "https://news.google.com/rss/articles/CBMiwAJBVV95cUxPZktSQkRhZ3NLWHBKZXFLalYxMTE1Uk1DVDdqN3lnUThjLUZIVEEwaDNPX25XLTg5VlptTmU0NXdlNGpyMzE1QjNYMkhWUlUxY0kxemdldVlYbVdDWnpTaDRMU0pJbjB2S0dfV2J6Si1oeWtGdEdQS3JVY3VyUFg1U2FJOEhBMzlCUzJHeVh6WVgyLTZvNndZS1pwYTlRSnJ1TDJaU1Z2eDQ3NGlyMTRmR2hUa0xrMnRWX2lHRS1HRWpYVjFLQV91Qkk3dDkzaW80N2tvem54TVhtRXFfY2dwSzNxaFZ6TmRjekhUSXBpLTZTSDdlWnRDc0lyM2lRd1FjeF9CQjVYOVFYdjUzaHRJUkExVDVNNXVfcy1HcmVvazE0MXZsbm53QUdyeXRpaWhQbExaamxyd1Z2SGVHbzRBdw?oc=5"
+  },
+  {
+   "n": 25,
+   "title": "More money, wrong direction? The World Bank’s climate finance dilemma - edie",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-03",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPc0x2Y0RTQkZMWTNyY3lZS2lCLWJOUXpaUkFSdzFmT1A4ZzlCWHA4MWgtbXZwUkVHN1kwZnJqZUZKWlpfLVdDS0d4MWZUS2tsRVY0RUFsblptUGdFM0hmN3FwZ3hDekhRY0NyTGJHbFRIUHhka1k3QzY2MzBoNHBnMGFWS004OGEyU0kzTk9iWmdxQdIBngFBVV95cUxQQWUwT0lxRDRISURzY0NKR3pFbkF0bUpLcGFhTllVX0tRQWdjMWhkZUk4VnFiSXlDRFVDOHhMbTZUZGZaMWlvQno2UTJIWTZMMTI2UnF2U05RODZGY0FsTFJBbmJSZG9aWWtVa2JFU1lBeVNjUnlHZnM4Yzdnd0cySE1UejNWRzVHNzFZQ0V6TkFibnIycHByRDJVb2p4UQ?oc=5"
+  },
+  {
+   "n": 26,
+   "title": "World Bank earmarks $55m for Sindh climate finance - Profit by Pakistan Today",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNb2N0T2doT21OdmU3cmdNUl9JTGQ5WWZBNzVUdVdJazlLV09wQnJ4VHZiLTlWV2ZhUlBpalgyQ21Fa0tRSWpsZmQwbl9JM3hhOWdPeHVPSWk5MzVHYlJVbnRmUXlEQWdIeWxWbnJRdV85dXpZam1YSV9OaXl3dEk0OHdvUl9xUlByWk9Ic3ZlXzdQS09zTW1wU1NQbUUtc1FpUHBuU1dNZmI5NlhPYkdldDlxZ1lRdGpYWW9PRkhWc0ctOVp2WmFwUHVrTmhaM3MwWEU2WURISQ?oc=5"
+  },
+  {
+   "n": 27,
+   "title": "AIIB provides $1.6 billion in climate financing to support Turkey's low-carbon transition - SteelOrbis",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-13",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNVmZGMy03aHBWc2JjM0laaTRERThxd05SMEFCZ2RESGpPLTBsRlBRYkJPSUZsWU5WRjJscl9HS0pVUGJzOWd0MlM3QVNqcWMzUHE1N1AxUDlGSG5TSlBzSzRkQWI5ZDA1RVEyMkF1ZHVUa25mUE5ZLUxibW15YXZUQmdsd3k3aWpWMmFkWndLMGF5Q1hsbmVRQzY1RnFiVlRXRzhDY2xMcWNlTTl6YlFEaDZ6TXZpM0lvZDN0eElvREZ4b2dIeEF6RUQ5LUozVEpTczZWU2N1THlaUndQR0ctQzJR?oc=5"
+  },
+  {
+   "n": 28,
+   "title": "INTERVIEW – AIIB seeks more private investment to close climate funding gap, vice president says - Anadolu Ajansı",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-13",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQS1M3UDgtM2hNdlFYMlB4enVLdEZjdXFSLWFxTTUxMjBIS0w1ME11eldOVkdhRmVWbURTM0JLTzhndGVvaUJfUER2Nkgxd1pVMmVfSzhXc01WTzZVSFBKclA3aW05YjVJWlZHSklHaG9WcTNZRXB5X2F2ZURFd01hS3g1UWh5SkVaYWtrcV9IS3JDSk5BdGxPZTdWTVB5YmlEQmRqTzR6eDBFVmpSakpJNzlZcHBVdXU4S2xncnJ3aXh5OVNKcjBPMjc0anM?oc=5"
+  },
+  {
+   "n": 29,
+   "title": "AIIB signs record US$1.6 billion climate policy financing package with COP31 host Türkiye - Eco-Business",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQc2s1Z0o2blk1Q0xPYW1lRzYzdXY1T1FFVUlfVmJrX1QyMVpWZ3BvTmFQQjl0dUJoN2pJYjZ3ZHIwZEhEMENTNm5YTi1ERkc3NlVKVnduUlI5ZHk1LTR4NHV3b2hPZm1EdnNaUDZwZlAzdTFYa3RQc2pUZ3dyOVlqRnJ6OXFhRWZzXzQ4eXA4Y2l3VWkzZGl6akRzZk5FWWs2RFllU2hzdUZzdGtWSnQ3T0UtcW9CZ3ZxZnpDWm9uWQ?oc=5"
+  },
+  {
+   "n": 30,
+   "title": "Turkey secures record $1.6 billion AIIB financing for climate reforms at COP31 - The Times of India",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-12",
+   "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQMkJkcUFZeGlpZmJGeXhpNGZKVVdoMV9EeFFicmRLbU5ZRm42VzRHb1hwd1RlbExoSzR5RmxKOWtFSWlKZzRqMlNTdGlfaW1WdXlaOFRHeWFKV2piN3ZsRGx2U2tjVFUzSWlLSXBBZThGNXNaUVZIRGtsV09Gendrb041djN4OHg2VmdWVnpTY09TejAwUV9HZEo3akVOdXlYRVFRRVVBd2tSRmFVZ0NCeDBrckZZU2hHZHF2SURTeWpxOXZsbzlyX1JMT2ZEV2lweXVJbFFBd200RmFLMGdGOWQ4QTM3cEFMdERzUDB6aklTd3dwMzhvTk4xQXVqUmdN0gGGAkFVX3lxTFBJR3ktREhUNGRZZFdZSWp1UE13NDhrOE5FaVlyRzNpVWF3NmNuTGo2aTFsV1E1czBtcUFjWEstVGV5VWdTTTZQbE1NRzlOYlpGbDZBUG1lMGZhZk82MUFlVG41eDc1SWctMTB2Z3lLT2dmaDVDZzBBdnFHQlBYdml2akVOU0JUNlVla095M0hzWEpnM0VYLTVOT3h6VDdDN0hsT1JpMktYSUNEYVduNnlsd09qNjNiVHR1T245cVYxS0hlX2ptUGQxS2RzNGJmT1VrUkZHSTdwaFFUdVVGSVMwVTdRRHdNSmpXY1Z0V1lWM3drQkJ5WWFaWER1d21WOHZUbGMtTkE?oc=5"
+  },
+  {
+   "n": 31,
+   "title": "COP31: World Bank Group pitches jobs as core of climate finance - Blueprint Newspapers",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQMTV6ekFreVJMQjVtZWtPRzc1Mm9RZjNreTJQM2tDUERhS1hWbi1GVm9mUVBwUVVxYWlqVXlHbXlVMmNtZ3ZVUnpIbTNFYWMyd3JqZ3FWc0tOR3NCaWxZY09Rc0xlaXRPWkdkcG5VU1d4UDZJQkI0R2tPWVk2YVVVYS1KbjlKT2Z3Vi1LLQ?oc=5"
+  },
+  {
+   "n": 32,
+   "title": "Finance Minister at AIIB meetings in Doha: Expanding AIIB’s role in providing development financing for more advanced, climate-resilient infrastructure - mof.gov.eg",
+   "source": "gn-aiib-ndb",
+   "published": "2026-11-07",
+   "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9jeV8tVzdaaUxhMmI5ZmJFNTgwZ0hxck1jdjRJRXVFSjVzWEJ1MjR0M1plUUo1QjlUVmZ4MEw2NDlIWUExczhtcEZSb3FCcWE1VDcyUXBTanlNT1lvNng1VjlwdlNuQk1fN0ZJdUpVaG5PenQ3V2c?oc=5"
+  },
+  {
+   "n": 33,
+   "title": "ADB Approves $500 Million Loan to Support Pakistan’s Federal Pension Reforms",
+   "source": "adb-news",
+   "published": "2026-11-17",
+   "link": "https://www.adb.org/news/adb-approves-500-million-loan-support-pakistan-federal-pension-reforms"
+  },
+  {
+   "n": 34,
+   "title": "IMF Executive Board Concludes 2026 Article IV Consultation and Approves US$417 Million Extended Credit Facility and Extended Fund Facility Arrangements with Guinea - International Monetary Fund | IMF",
+   "source": "gn-wb-imf",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPN0tCeV96RU1pTGdmUC1iR2FKZllKZHZ6anJRQ3RCS1lFYzJ0b2d1U2tQV0ItTVZMd0hsbDZudk4xS0hwNkFNWmIxTk9VUEVvcVRHazZhQm40TG1XbTlEWm9aQlFkczFmZkdrZjZGanVjOXZkNGs4dUNxaGZZeGMzR2RoQmFWZTFwNGkzUDBsQTZNQ3I5YkVSeEx6QlBGd2N6LWdxR0JrcF9nc1BmZ2VBSzUzVlZnV1JwcFpOc1p2aGZuRUctNHhTU2o5ZTV6R3N0NVhIeVZkamU?oc=5"
+  },
+  {
+   "n": 35,
+   "title": "World Bank classifies $55 million of Sindh property revenue programme as climate finance - Investify",
+   "source": "gn-mdb-policy",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNLURrT3Y3SU5XaXk0S0Q2bEI0ei1PcHNBUHkyX2FXZm9FWGU5bnFJcTJaQWdvSk84QklkcWZWWFkzQ2dsdUFOb2tfY0pVbVdXRHk1ZExSWk9icm9RYUVlbGpmVGJtcG1qTm1vb3Y2VU5pclo4V1ZxZmFkWjFjazhCMXJSbm5GNXM0UXpkdVlCSkNmV3lEOUFVV0E0dDVZRTdUUmFTZENHZFl0aGU3cndUNHBqdXNUTFhiaFc1TXVQREdVdHhMSkRXNTlB?oc=5"
+  },
+  {
+   "n": 36,
+   "title": "International Monetary Fund (IMF) Executive Board Concludes 2026 Article IV Consultation and Approves US$417 Million Extended Credit Facility and Extended Fund Facility Arrangements with Guinea - Africa.com",
+   "source": "gn-imf-debt",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxQSWRxaTVGZk54TkxtQkJveEcwcklYdzhNQ21VcTVMeXBldFZWVU5SdG9ndEdOVVowdGQzMkJKNU1mZlJnYU1sQW9KOEpfbVk1ZVFSS3h0R29iOE5SdDlMZkhiSW9yRDliTzVHSlNiOFhpY1F4Rm9CQmRDczlHYlI0NjFQTkFzTUY5OHc5S2pRaWJEdTJIdU56LUhQYTRlMVZnQ09DcFJ2MXlFQ3dUY2o3ME9nRTBMb0VYWUN6Sm1EQ0doNVdta3FXeUltX1BkMTlWXzU3NUZRZTFRNGJBbTk5MWhSOWlHdUROY2R0anQxNFpOSHZjLU1PbU4xel8xdkNmbExQWnlzUXM3cEpmc1FFRlNFdHQweTg0OWJQV3d4cm9GVnlmTjBLaTNuRGk1OFdSTFJxUV9jNnA?oc=5"
+  },
+  {
+   "n": 37,
+   "title": "Africa: African Development Bank Approves $200 Million Regional Trade Finance Line of Credit Facility for Tdb to Support Trade Across Africa",
+   "source": "allafrica",
+   "published": "2026-11-09",
+   "link": "https://allafrica.com/stories/202611090343.html"
+  },
+  {
+   "n": 38,
+   "title": "Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions",
+   "source": "fed",
+   "published": "2026-11-25",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125b.htm"
+  },
+  {
+   "n": 39,
+   "title": "ADB Approves $60 Million Loan to Boost Livestock Productivity and Resilience in Uzbekistan",
+   "source": "adb-news",
+   "published": "2026-11-11",
+   "link": "https://www.adb.org/news/adb-approves-60-million-loan-boost-livestock-productivity-and-resilience-uzbekistan"
+  },
+  {
+   "n": 40,
+   "title": "Sierra Leone: IMF Staff Reaches Staff-Level Agreement on the Fourth Review Under the Extended Credit Facility Arrangement and the First Review Under the Resilience and Sustainability Facility - International Monetary Fund | IMF",
+   "source": "gn-wb-imf",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxONFhZNC1FX0dPbE5iRENQNno2ZllQU2p1QnJieTB4aENRWjQ3QTRvYWFrTmZxbmRVVmVTdE1jRC1pdU1RWEhfMWEzQzU0NXRRTmNxWUhrNjVkanJHN3BmOUV1OW9Ic09MTHNoN3VySC13VWVoRTBnelpaazBJNE5SLTFpZDNMT3lGamc5dkdWVlVkZWQyaThnSlg5TmkwNWFkTlBfUVRKQWFIRGdZRnI3dmFsLXdKaGVCNXJCd0M3VnBBaUJ6SkZwdDNPRGQ5a2lLTE9ydG9uRGZnWjdiWmc?oc=5"
+  }
+ ]
+}
