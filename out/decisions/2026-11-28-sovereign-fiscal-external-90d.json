@@ -1,0 +1,478 @@
+{
+ "scenarios": [
+  {
+   "name": "有序常态化",
+   "prob": 45
+  },
+  {
+   "name": "金融压力升级",
+   "prob": 35
+  },
+  {
+   "name": "政策意外/利率冲击",
+   "prob": 20
+  }
+ ],
+ "triggers": [
+  {
+   "id": "t1",
+   "description": "美联储意外加息或点阵图大幅上修",
+   "keywords": [
+    "Fed",
+    "hike",
+    "rate increase",
+    "dot plot",
+    "FOMC"
+   ],
+   "keyword_groups": [
+    [
+     "Fed",
+     "Federal Reserve",
+     "FOMC"
+    ],
+    [
+     "hike",
+     "raise",
+     "increase",
+     "tighten"
+    ],
+    [
+     "rate",
+     "interest rate",
+     "federal funds"
+    ]
+   ],
+   "exclude_keywords": [
+    "cut",
+    "pause",
+    "hold",
+    "dovish"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "立即锁定剩余外债额度，启动本币替代方案",
+   "series": "DFF",
+   "op": ">=",
+   "window": 1
+  },
+  {
+   "id": "t2",
+   "description": "美债10年收益率持续突破5.10%",
+   "keywords": [],
+   "keyword_groups": [],
+   "exclude_keywords": [],
+   "threshold": 5.1,
+   "type": "value",
+   "action": "暂停非刚性美元债发行，转向短期/浮息/本币工具",
+   "series": "DGS10",
+   "op": ">=",
+   "window": 3
+  },
+  {
+   "id": "t3",
+   "description": "新兴市场主权评级连续降级/展望负面事件≥3起",
+   "keywords": [
+    "sovereign",
+    "downgrade",
+    "negative outlook",
+    "rating action",
+    "Moody's",
+    "S&P",
+    "Fitch"
+   ],
+   "keyword_groups": [
+    [
+     "Moody's",
+     "S&P",
+     "Fitch",
+     "rating agency"
+    ],
+    [
+     "downgrade",
+     "negative outlook",
+     "credit watch negative",
+     "lower"
+    ],
+    [
+     "sovereign",
+     "government",
+     "country"
+    ]
+   ],
+   "exclude_keywords": [
+    "corporate",
+    "company",
+    "bank",
+    "Nvidia",
+    "upgrade",
+    "positive",
+    "stable"
+   ],
+   "threshold": 3,
+   "type": "count",
+   "action": "启动应急融资预案，向双边/多边机构申请预防性信贷额度",
+   "series": "",
+   "op": "",
+   "window": 1
+  },
+  {
+   "id": "t4",
+   "description": "美元/人民币升破6.85且美元指数>127",
+   "keywords": [],
+   "keyword_groups": [],
+   "exclude_keywords": [],
+   "threshold": 6.85,
+   "type": "value",
+   "action": "加速人民币计价债券发行，启用跨境人民币结算额度",
+   "series": "USDCNY",
+   "op": ">=",
+   "window": 2
+  },
+  {
+   "id": "t5",
+   "description": "对冲基金保证金追缴/杠杆平仓引发主权债波动的报道≥2条",
+   "keywords": [
+    "hedge fund",
+    "margin call",
+    "leveraged",
+    "sovereign debt",
+    "volatility",
+    "ECB",
+    "repo"
+   ],
+   "keyword_groups": [
+    [
+     "hedge fund",
+     "leveraged fund",
+     "macro fund"
+    ],
+    [
+     "margin call",
+     "forced selling",
+     "liquidation",
+     "repo unwind"
+    ],
+    [
+     "sovereign debt",
+     "government bond",
+     "European sovereign"
+    ]
+   ],
+   "exclude_keywords": [
+    "equity",
+    "stock",
+    "crypto",
+    "commodity",
+    "corporate bond"
+   ],
+   "threshold": 2,
+   "type": "count",
+   "action": "与一级交易商确认二级市场流动性预案，准备回购/回购协议缓冲",
+   "series": "",
+   "op": "",
+   "window": 1
+  }
+ ],
+ "confidence": "medium",
+ "review_date": "2027-02-25",
+ "question": "未来 90 天全球利率中枢、主权信用评级与跨境资本流动变化对主权及地方财政外部融资约束的影响",
+ "generated_at": "2026-11-28T01:10:12Z",
+ "horizon_days": 90,
+ "items_used": 40,
+ "sources": [
+  "adb-pubs",
+  "aljazeera",
+  "allafrica",
+  "cnbc",
+  "gn-climate",
+  "gn-fx-rates",
+  "gn-geopolitics",
+  "gn-imf-debt",
+  "gn-mideast",
+  "marketwatch",
+  "nikkei-asia",
+  "techcrunch"
+ ],
+ "materials": [
+  {
+   "n": 1,
+   "title": "UAE GDP growth forecast 2027: How the Central Bank, World Bank, IMF, Fitch, Moody's and S&P compare - Emirates 24|7",
+   "source": "gn-imf-debt",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQZ2xLQm9BZDloVlEwSVNXX1lCcUZoUEtRUENQZFFNcDBYSjRrLW5COTA4SjE0amVfdjh5V2tYN3hNc1FKT1B5M3llVEIyU1hpSWtvTXhLVHF0OFhub1V6VXZwQy1wWWJGVlYwQVpQanJvS0hTenBLR0lSbHphSHRrUmpFR2dDSlNWRHRLWlktOGJOWno3al94ZXpTaHdnQXdQeF94Q1pSdWNONnJTM3FWUkFCNFAzbVBoQ0ljZzBrcmFJZzJlQ2pxMdIB4wFBVV95cUxOMXNkLUdQRktvMEhPWUNyNkZpb3lPZzFQSDZhSndxbS1RSVdhR1BsZng5NkdJUUdKTlRXbVdsZkdTeS14TGxvQ3BzSDVaWkZsZUpVTUpySnhLbzJuRW9EWVVsQ09mQldGWlhpUzZ2NHdzcUlLNmxEQWhKSk9aNWlobDg0dHJZOE9FR1Z2MnQ2UWhvLU9wN3oxNXgyNy1rZ1dGODFKaS1oY3pVY2NBcGlIVS1YM05BZXFaTzE5UkpXdUs3OXFTOERhcWhxVS1Gb181TGJTYkIyZjgtYk9CbTRhT0ZnSQ?oc=5"
+  },
+  {
+   "n": 2,
+   "title": "Rwanda: Rwanda Retains B+ Credit Rating On Strong Economic Growth",
+   "source": "allafrica",
+   "published": "2026-11-17",
+   "link": "https://allafrica.com/stories/202611170682.html"
+  },
+  {
+   "n": 3,
+   "title": "Insurers face sovereign credit risk from climate change, Ortec Finance says - theinsurer.com",
+   "source": "gn-climate",
+   "published": "2026-11-16",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNZjZsOHVmNTdsNml0UVR5T09lNDUxSTB1eS16NTZxdWNyNkkxWUlueXNNS3I1Tzc2dWVqLWREMVRlZE5FeFg1eVc1YTFRaHhJb1VjX0EyanFzVDBQRVNYX1pYREdDNnNGZ2JLcG1Rdi1qYWo2UTV3d05YZXJVR0o2ajZTX1Jja2hEbUFvV2JHT2FkX1RtTWtvanMyY1UxTmgyRzFBTERodnlLTE04TS1JbktPREo4cnFURTNZdmp0UVRnekVnak4zWndta19oVzZsb1FNZ194OA?oc=5"
+  },
+  {
+   "n": 4,
+   "title": "S&P considers Nvidia credit downgrade over governance and ‘key man’ risks",
+   "source": "techcrunch",
+   "published": "2026-11-25",
+   "link": "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks"
+  },
+  {
+   "n": 5,
+   "title": "S&P warns Nvidia credit rating could be cut over 'rising' management and governance risk",
+   "source": "cnbc",
+   "published": "2026-11-26",
+   "link": "https://www.cnbc.com/2026/11/26/nvidia-market-governance-risk.html"
+  },
+  {
+   "n": 6,
+   "title": "Research Shows Sovereign Debt Fund Likely to Fail, Increase Debt -2026-11-24 - Committee for a Responsible Federal Budget",
+   "source": "gn-imf-debt",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOOGs1NWg1SFJlREVId1VMdmJXWUxFU09sYnEzekxMeEVqanZsTUF3dVhXcEJnSUg4NFRQQUNnOVgxUlR3MVZEOWtxRmFkYk12bWhFeWtUVDFBNzhPWk9leEpwZG1FTTFlM0NiSVViVWtaM3Q1MU9Md2hOZWJJYU8ycGcwblRWZGVTcDRfSUsyVGM?oc=5"
+  },
+  {
+   "n": 7,
+   "title": "Fitch: Stable Global Credit in 2027, Flags Geopolitical Risks - Rediff MoneyWiz",
+   "source": "gn-geopolitics",
+   "published": "2026-11-25",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOTEFxcUNYUFljQk9DTWkybFZscXV5aHRuSVVlaE5pc0ZDZUxlbTB5VEtXT2FnVVZQdVNsVWZOVkE0NXlnLW1JZTBLTHpGelFGWkFpY09sQXc3b1FGUXRNbDRNSGQtQzJmRXhjWlhZYlZOeUVUeXZNYkhRRlBNYzBoaENjZHhqMW9TQ0J5ckFpeVVxQ1NrSHpZbk1TMzg1NzZlOU41Ynh1Tm12bFpydFlMTdIBtgFBVV95cUxNcDc2X0dJMmlqZ0Z4ZDZqS3A5a3B5dHU0TTlrN0VfQnVVM3NEbjVaMHp5LXJid2FaQ1duQk9HdHJ0RUNPQVlfdEhFR3RMS05uQWRXb1BBOGVUcnpEODg1RXNfZlRMbFNjZkRZTzBxTUxNQk9hV005YXdZR0NHcFJ6M0IzRFBUT1oyOHZTVkZHYkEwSTNkS0FKZjRQOWR6Ym5pd28wVmc0dXAzb2w1eGE3WG9SdmtSdw?oc=5"
+  },
+  {
+   "n": 8,
+   "title": "The Canada Strong Fund: Sovereign wealth or sovereign debt? - Varsity",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNNGRCelNyVzN4cTVVNjlQMVlqekV1U1gwcHM3OUVxd0pqRUlBYzVYSkFiTzcxdC1HU3FJenVscTdIRV9Ld2pFTXk3R2MzREtSRWhXd0N5VUFyZmV0Tkhrem1ycUdPLWxqMEtHQlRpeUdUNDlfcEEySjBWdUFiXzAwazBYQlpQMEd1dF9MT0tLZF9iUFFnT0E?oc=5"
+  },
+  {
+   "n": 9,
+   "title": "Sovereign debt, leverage and AI top FSB agenda - Investment Executive",
+   "source": "gn-imf-debt",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdjJxRVNXMWZQak1tMHNmNW43cXlOamphUDBubjdnUVNzeTZJRlVlWG5VQUNuOUhYOXpCa2VqbXhOYVZaVVRSbzkzVUhXM1RyaVA1NzlobVoxLUVDVWl1VUtzNVozOFRmbzk1VUNrQVNnTmczV005RU9SM2N5bGtQOXkteUNrazdZZ2MtT3RKNUQ4bHZjSVJZSEU4WnNCNGc?oc=5"
+  },
+  {
+   "n": 10,
+   "title": "ECB warns hedge funds could amplify European sovereign debt volatility - Hedgeweek",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTHpBTlh1NjNkaEg0TUhvWTJmWUR1VzRja3ZzTTNYdjhuTm1uQXpIamhjWHFldVlXa1NxME91VTJ3M2ZEeXVMbldrV1pqMkI4bnNHRGl2NmgtbG9kZzZQem5XekxaS3VBTW1jNkgwZmVZeEVtTjFJLW9ZMkJWY0I0LXdaelp1MUlXV1dwOGVLcjlwZnZPQ2tmWGhONkRzUQ?oc=5"
+  },
+  {
+   "n": 11,
+   "title": "ORYNBAYEV: Europe risks lighting the next global sovereign debt crisis - IntelliNews",
+   "source": "gn-imf-debt",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTm1pVzJaNDc2bmphbmxqY0VDQVRaTlJoQkpCODhEWkk4RU9HOFNPbWNJODNraHI2SEE2QnRiNy0xbHdjdWdFQlZ0UklXLXZNR2hYc25IUkltMFdBNVNCYVgtTE5XZnU1SU1lWGtIUnZvSHBxVGVlaWRuWEZUY19sMXJSV2puLUtRVEhUX0FQVjZGWTUteXNJYzNBbmVCM0dWdW5PR2NUZ3k?oc=5"
+  },
+  {
+   "n": 12,
+   "title": "The Economist: AI-sector leverage, sovereign debt top 2027 financial risks - ForkLog",
+   "source": "gn-imf-debt",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMHRrXzZyRnJMTHNPVV9FMjFVWHlwTTl4VmdEVGdEMjZULUtQVk1kOG5rTUsxRE1aNk5ncVZ3aWx4UGlDZl9USGhad3d3OHlGQWlZMUg3U25Td2J3UEJIZjQ3WFNZdW5NcGMzX2IwZzZ3d0hrTXZHcGRnUmg2V3JSSndidDRvMGhYeXV0V2Q0RWVSQXFBdkVEVFZxM3I?oc=5"
+  },
+  {
+   "n": 13,
+   "title": "ECB Warns Hedge Funds Pose Risks to European Sovereign Debt and Insurers - Beinsure",
+   "source": "gn-imf-debt",
+   "published": "2026-11-18",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPaV9yQmhNNmZETHVuTS0xMzNMR2gyUWRIVU03MHhJZ3cyWl9HV2R4d0NLOWh0VzZvNkVpRy1BMzdLYUNUZ2luUkdwbFJNaDVWdk1qYmRmemxmY2Rhdl9KMldYYklsQXV1Y2FtQUhKSGFnRXZ2N25WR2pSTFJwV0VTV3hzd1ZDaXUycmZFemkyNjBOQV91SkxCZnFB?oc=5"
+  },
+  {
+   "n": 14,
+   "title": "Use of snapback clauses in sovereign debt restructuring requires some thought - Pinsent Masons",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWk5BM04yT2xwTWNjblRLZWNMUWhmVnFIMHBhTk1BQl9WRGVfV2dONUZtWGNzZVlLaTQ1Wl9JU2ZyTWFGa0pwTzU5eEtuQ3lKZ1FVNnF2NmZuZ09vM0dVWHNPR1hVT0lBX20tZlFKMWlFMFdfTnhDTUtUY0dtcHptMkxrcjhBYXJ4UkhmWEFpNDlmbTctVnVz?oc=5"
+  },
+  {
+   "n": 15,
+   "title": "Rethinking sovereign debt: The strategic case for innovative bonds in Africa - TRT Afrika",
+   "source": "gn-imf-debt",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE41RFJEeHpxV1JtR3Jkd0hOVTFaMFZVUTNmNVZEaDRrNjJXT3Y0OERxN2ItWGFxZncxQkhCSlVRTEFtcjVQM0Nzek9RRGM1M0lzUlI4bFpXdWlPQzdLRHJXNjlsbzM?oc=5"
+  },
+  {
+   "n": 16,
+   "title": "Demand for long-term sovereign debt marginally declines: RBI Dy Guv Jain - BusinessLine",
+   "source": "gn-imf-debt",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPX3lxaWNEYlZFcG5fbU9Vbk15dHE4QlJ3bDlBSFhjcWoyV0EyTUdoSWpPMThBa2ZPakJabFlFQkxfRzZRbXc2N3I4eDlrX2p1N2dqbDZXb2ZiQ0VacEJ1dU4tUVBOb1dNS3RmWVA1OHE4UjZ2ZjNxVnh2a2Y5bWxkRmprYTVxOVpadGdHZ2hScEV0NjRtdVN3N3B5eW5MVFQ1SkM0a0FWUlFqWENlMUJCLWtWdk16Y2hvTWFFdElFZjJWT0pjVmU3SFJtcjJhQ0pyRmZ6b3JacGM4SzBtOGFJ0gHmAUFVX3lxTE1vQzhqSEw1cENNd1VqRHJqZ3pPM0htelFDMTlDb2MxQmEtMGIxRHFlUGFsdmJlODVMS0ZVU3JBM3JfOWJjV3BzNG81SGZUbG9ack1ZZXNPQ3FpaUJNMEhWSGgwbXJBUTdkc3FwQ0ZOQW9aWnhabC1qWVduTXMxRk15OEwtaUtTZEJHN050QS1vLVpWQUR3ZFF4TWxWZDMySXM0YVg0a29pUUo2UHhkcGMycVB3alhJNER3Y3JIR3dDWkpGNUd2bFV4UEpqRVhtZi0zWXFwcEJyTzRMUDZ5THdUalM3YTBB?oc=5"
+  },
+  {
+   "n": 17,
+   "title": "Luxembourg banks hold €12.1bn in French sovereign debt, minister says - Luxembourg Times",
+   "source": "gn-imf-debt",
+   "published": "2026-11-24",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPbEN2Z2lOVkdCdEV6NkE4M3c1enluTGhtUF9XOUNzS1hxc0NpSzdWYXNjcHRTMmNzQnpGQ2hzWGxndHo3V2kzTmh2eXQ5cExiamlCdVdqd2dBSllCcDJFUDRoZC02eExYZ1MzTFh2eW5VOW1ObUxCQURsVGVyMnpDNUtPY2dRd1JRNGxXbHdob0pIbkFrUGowZmFTQVh6cHdJMjNVUmF1cDJNMGkwdWdxd2s5Z1pIdU9HQWNHd3FEWktySTA?oc=5"
+  },
+  {
+   "n": 18,
+   "title": "BankThink A sovereign debt crisis in the US would quickly go global - American Banker",
+   "source": "gn-imf-debt",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOMGRZTVNIc1loWXpVYkE3TDZldGRxUTQ5MnBIVWpQVEJaSGJ1N1hJSUlsZGRFM3E4VE5PVVhWTnhGRFBQYXJKT3V0YVdZQkh2OG9jUUhPdU9SSnJrTFYxd2k5SlI2RW85S20weVlkSndCd1dIZjVPbGYwazBFaEM5dHQ0ZzNYNjU2ZG0wN00zZWVRZUJBMFc2ODB5ZEM?oc=5"
+  },
+  {
+   "n": 19,
+   "title": "Eurozone faces dual threat of sovereign debt shifts and AI market turmoil - The Brussels Times",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOVZRTHdZYzVPb3pDZThrRHRXV0RVUmhVSEVtM1JtUXJTOHRKd0tRRV9vR3RfS1l5UDM1THFFMnBSenRvWHZSa2VVcVJ4b2lHWEt1aXlnUWh5LTI1dDFSYjU2aDk5RXN6S3RjOGY1X0hjUGhocjlzb3V1NTJKTTlkaDFrcUVnWG4yR0F6YmRSNlZCNC1TeVQwU3pnX29oU2FFdUwwcVYxbVFtN2FXU00yQTdPbHVlUWxoc3ZGSjJxRQ?oc=5"
+  },
+  {
+   "n": 20,
+   "title": "Nvidia's shares drop, credit rating on watch two days after Huang's return",
+   "source": "nikkei-asia",
+   "published": "2026-11-25",
+   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/nvidia-s-shares-drop-credit-rating-on-watch-two-days-after-huang-s-return"
+  },
+  {
+   "n": 21,
+   "title": "The Next Sovereign Debt Crisis Could Begin with a Margin Call - Australian Institute of International Affairs",
+   "source": "gn-imf-debt",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQQlFOUzU1b2lheURaTmFXOGFLb3l6dTJ4aDE2QkJ6RWVtYmJMbXZnNDl0MjNJVHpULUt2RUxVbVNWcVhOWXYtZ3p4OWhBM2VNUUNGdVVxR0dEVFljRUJGazg4Y0NiVE5OZ2VDQ0FIZDc0Qm1yelM1MExvUkluYkRDSUpjNnBDaFA1UkNDeXZpN3RBd2w1MFpmT2VLLXVYbVlUUk0wZkY1ckJGT2pJZUN0VDluNUtZUVVIeVFfcw?oc=5"
+  },
+  {
+   "n": 22,
+   "title": "Can Africa’s new credit rating agency change how the continent is assessed?",
+   "source": "aljazeera",
+   "published": "2026-11-21",
+   "link": "https://www.aljazeera.com/news/2026/11/21/can-africas-new-credit-rating-agency-change-how-the-continent-is-assessed?traffic_source=rss"
+  },
+  {
+   "n": 23,
+   "title": "Govenor Signe Krogstrup: Denmark is well equipped to withstand turmoil in international sovereign debt markets - Danmarks Nationalbank",
+   "source": "gn-imf-debt",
+   "published": "2026-11-19",
+   "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxQcDRoUldULVRodXNVcnAtdHdjV3B2V0llcGNsQ2ViekcwTEpGT2JjelpLQ2UwZzBieldyVXZndWlzbzliU2ozVXJKVGl6QS1WWmg0R0RrZzlRWnVpai1tdkVBTVlPbWNHY3ZJZkJYN3czZ3VPNXNlS3c2bDhDcF9ONzVMU3JsdkVUQ1RqNmZmdmlFZlVjRXdtanprVGszMXdTV3VkRERYSlR4NmxHVU14VW1wQm1qWWZ0Ni1UOVZ2UkdsbFExQ1NVUXRKRXNRMkVSYjRtdThGMzNVZC1oanR3d2hSQ1pZZzBSMXF5bnU3bUVXQXRYWWJqeVdiM20tT3B3T2l5MkR4NDI2VnZNVGRubjh1bFRsTFg3MGFSQTVWdlphS1NlRDdPUFR3?oc=5"
+  },
+  {
+   "n": 24,
+   "title": "What Role Does the Russell Investments Australian Government Bond ETF (ASX:RGB) Play in Sovereign Debt Exposure? - Kalkine",
+   "source": "gn-imf-debt",
+   "published": "2026-11-22",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNS3NrRndvUnRSRXFudVZEMjZMcVhQUGpIS3RMVk8yQk90YW5oLXVqMGJORVh0OUFtczU4Uk5MLVVNVW5kdWZxWlRYUnUyNXZuQWxMRnl3aVR5dVV1cERvVGEybjlvZHhobl9FLVI5TllrWjluNGhicGY5S0loQzd5Y25DX1pfbExyU1JpZHJrNVdsYzhiMm54X1I5cmxaenFMeUlnUkx1S2ZPLTFvT3ZBbzRDQlZXajhaeHZ5ZExfRjlaWVVYT1Z6a2ROcHV1SGVyY3kzSFlKVHUyN05GWXNORHhiMWlZbnM?oc=5"
+  },
+  {
+   "n": 25,
+   "title": "The Sovereign Debt Squeeze: Why Refinancing Capacity Matters More Than the Headline Debt Ratio - Global Banking & Finance Review",
+   "source": "gn-imf-debt",
+   "published": "2026-11-27",
+   "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOeG5NMlhxeDVCUExnSnFxbkVreGZBTFVMM1lMSzBwWWdTdG5RajQxWDZKeWpkcVY0SFV3YmJ3MlJDc2dNdllnM1R4WDVZVFR0LVczN05jQUJadEtRVkozUjdWakFmLTVQczNWZmZHQW9SbHg3WDVpNG9WUHZsVVM5c3NMWHR4NGdtMDhCdFdMeExuc2hCVncwUWlUMVBNb3RXRFBZYjhnNHBiV1kxREVKYndqdEwzOUFXVnNyUERrZ0JZaDFJUTBYUnB4OWVlSTg?oc=5"
+  },
+  {
+   "n": 26,
+   "title": "Why Hedged Emerging Sovereign Debt Differentiates the iShares J.P. Morgan USD Emerging Markets Bond Hedged ETF (ASX:IHEB)? - Kalkine",
+   "source": "gn-imf-debt",
+   "published": "2026-11-26",
+   "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOUVZ0VEd5eTROUmRxQjhJWlM0NllmeUl6MjZxdE1mbUxETHN0bzdTMFcwbkNIV1J5amZGUUM0VmVseU0xVFg3MEFyOGNpUWc0eDFRRUE4Yy03amtMbUZIMEF2dVh4dUYtTTBFdE9IdUR5OFFQVVZ2NVBvLTJiYmZLa01IZ01INEVmOFZwUXlPVElXc0xYcjRvaE13SF9Ual8yOHlpeHd3ZkhCM1UzWlVEdXVGZ0lCUGx3NXpZZ3ZWdl82eDEzOUJ1VHRETVhFRTZKejN2M0dmSnBWREN6clVNeV9BOU55alk5TlNNektnSHVTUjBD?oc=5"
+  },
+  {
+   "n": 27,
+   "title": "Singapore and China to expand renminbi financing, explore cross-border payment link - The Business Times",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOVTdoVTJ3RHBraENWOEJZQWk3aEFhbWpmRkUxbUhOUGIxVU1XWE51ZUtBQ2IwNkd1eGdqM1hyQm95YzdjSHBhQmpCWXB5N3dVRTJjYmpKeDh1Vm9zVE5oRGpJYkZmZXVfaEwtdGo4QzVNUlJ4VG4tUlJubmdZOE9zcmxFVlo2a1BZNG5qbGlIUWpsbWMzcGhrRWFZRzQza29DMHktd0dsUUc5SmlJVTFmaVhoOWk0V3hmV2Y5Mm0zQWdOYlNrcm14OEExYzlUVDRnd3VyUzE1bjlScEhURGt3?oc=5"
+  },
+  {
+   "n": 28,
+   "title": "The sovereign debt-hedge fund connection. Eurozone inflation dynamics. Armoured tractors and scraping the paint off a Lamborghini. - Adam Tooze | Substack",
+   "source": "gn-imf-debt",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1kM1dEQWxwUlBWdjJld3NpY1oxUk1vTThqLWZtV2k2SmRwT1U2a2hxRll2bzFBbFVSYjg0eTE0VTBLa0VtejlNb21kbmpSaWdNWlM4NmxUdERVTDkxc1VLclluQVhxZXhsaVljYTBnZml4b0dBQTM2TkkwVG9udw?oc=5"
+  },
+  {
+   "n": 29,
+   "title": "Sovereign debt may not be considered the safe bet in the next decade, says former US Treasury deputy secretary - The Edge Singapore",
+   "source": "gn-imf-debt",
+   "published": "2026-11-22",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPQVdCWk5CdW1OUjlsalRPTnZGMlh6NnJwdmh6T2hHYVdMakZTNjB6bTZMNlJLazBNVmJNa2xvenZ3RVVkV2JLUEtTTHNweDJkbWdOU25OLTJ2bjhXZ053al91YkR3emVPM1VQbWw0eFJjNE55TFVPTUl0WjY2QzhqbW5IUHluQUFBR2F0VFp1bDJwZ0Y0cnRWZHFPNlRfSlVmY1cyYVFCRE9sRHd1cC1JS3pEMWFvMHY3OE9GY2FTY1ZRLXc?oc=5"
+  },
+  {
+   "n": 30,
+   "title": "Tanker rates face two-year decline regardless of Middle East conflict: BIMCO - S&P Global",
+   "source": "gn-mideast",
+   "published": "2026-11-27",
+   "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPbU1RQlg0MWp1Wm9VenFSQ0tTem04cTRHWUlqbG10cXlCcl9GV0d6U1RzVDFUQjQzajN5bWlwTmJWbExTRXdhaVRwc0otc1BjSTA5RUc3cW9oWUZPUWppcnBycG12ZF9Wb1Nid2pzY1kySk56SFF3cWtUNVlkejlmaVdyZkhVMTUtZ3lwZFlVZVlnNlUzdzdUZnZRMVJZMVE0QXlNMFdJY1dZalVTMFpwbzFrZHNWU2xqYnIzVUdzVU9GMndsN2RkVlVkcWVZbzYzYlJtWjdsYWlqQmthTTREcXJPdVRCX2cwc2J1SDRlejhkUQ?oc=5"
+  },
+  {
+   "n": 31,
+   "title": "Top Links 1291 The sovereign debt-hedge fund connection. Eurozone inflation dynamics. Armoured tractors and scraping the paint off a Lamborghini. - Adam Tooze | Substack",
+   "source": "gn-imf-debt",
+   "published": "2026-11-20",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1LXzdLM01hYVprV2hSQzdwUFNCUlZJWHgyTTAxcU1pcXRzZUxrWlNIQmNKSEFBNTNCMTAtS2lFeGRoZjY3MHFYYTRwbktzZGUwWEFOakM4RWFpN0pJZGJwbUxtMTBRTmF6b2RlOHpUOS1LVFlf?oc=5"
+  },
+  {
+   "n": 32,
+   "title": "CFG to Senate President on Nigeria Debt Sustainability and Fiscal Responsibility - Borrowing approvals, budget reconciliation and the 2027 fiscal framework - Proshare",
+   "source": "gn-imf-debt",
+   "published": "2026-11-21",
+   "link": "https://news.google.com/rss/articles/CBMi3wJBVV95cUxNWEJHc3JKdGZPdDlibFl1cEFaZ2FvQXR0TDduVU8teUNiTFVXbXZaY0pKWUExYWtIYlByRUNTVlQ4ZnBVdHFhNXhMQUpJcDNEQ3VsMThlOTF6b2loZ1VGdVpmdURCVFBzNzJMTkstRi13eGFJZ2VYMmlxb0l2UDRzcldzZTBqclR4dHJheTdaQnZHcEhFQ1YwTFl4Wi0zOXRZR05GRmh0aHUyWmdibzc0NjdzN1JUcE1DMUhiaHJWQkRTNWp5cjF2eDdWUnpCN1NsS3ZQMFFfUTZ5Y2ZKQ185ZDdXQ2xrMTVRQ0dMVHNCNWNZVUFBeVBjbFhCSVFNZ25MaHppZ3BpS2FjekxhcXh1ZHJFdEQ4blEyZUdUZkVIdk9PeDBYbzBmVkFzeUQ4RHNvaHk0Smc4OVFVNkg3cy1STWF0UlNUQUctcl9kb2ZGbEprMHk1emE0WEpod1d6ekE?oc=5"
+  },
+  {
+   "n": 33,
+   "title": "IMF pauses release of Ukraine funding until EU gives support - International Financing Review",
+   "source": "gn-imf-debt",
+   "published": "2026-11-17",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQMGNsTzdrblhJczY5bkhtNnFqTHVpWmNTNWRmaXgyRU1jRjVadU42bzNxWkdoYk5na25KYlk5c04yNHBlNDdUdXBSZ3M1dG1xZmNldm1jQi02U0lPYkxxOENZMmcxTFFZMEZtaVdvTjJDRDhiQzdLeHhXeEZrSkZQZE5sN0dQNkJrNGxSTEtiT2JreDk2cVRMR3BoRjJYX3hDVnVza2V2MnJhN1pj?oc=5"
+  },
+  {
+   "n": 34,
+   "title": "Peru's central bank raises rates after 14 months as inflation reaches 5.25% - Latin Times",
+   "source": "gn-mideast",
+   "published": "2026-11-14",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBFTWhDSG5uaDRHYU5VRmh3YlRWRTlNZzIxVW81M0dKc3dMQ1Y2dzVHNTk1b1hqdFRGdFVXME1vZ09ZbTI2bXIwZjdYaHpRUzdnYllKQmFoM09XMm9IMERHUG05WHMyVTc4TGk1a2tHT210Ujh6V3ZjTGthZHRqZw?oc=5"
+  },
+  {
+   "n": 35,
+   "title": "China, EU officials discuss exchange rates as central bank chief Pan urges cooperation - The Standard (HK)",
+   "source": "gn-fx-rates",
+   "published": "2026-11-23",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOMFo1Y2VDa0Jzc1BQRDZFb2piaDE5cFJyek5qQjdzWjRTalpDZm85Y09PaGhCQjNvX2xkOFlHOEptTXdYSE4yeWxjRzRnZTRuVXIxcVdLd0ZybFhVSWI0aHBrYmFYVDhJaThDNFBEQkQ3QWh2WGpMNXk2bl9jbVJqbHNNcUU0Z012Q2RkOUU1WEx1X21pQlhjeVdtUTZwZEF1N0xhemFycDFXb2l5dUE2NzZQT3lEOUUwSjZlc1lodVFJR3RZc1hhekpRLURHakE1R2RNc1hB?oc=5"
+  },
+  {
+   "n": 36,
+   "title": "Zimbabwe: 2027 Budget Tax Relief Still Leaves Poor Households Below Poverty Line - MPs Told",
+   "source": "allafrica",
+   "published": "2026-11-24",
+   "link": "https://allafrica.com/stories/202611240164.html"
+  },
+  {
+   "n": 37,
+   "title": "Primary Balances, Debt Composition, and Sovereign Bond Yields in Emerging Economies",
+   "source": "adb-pubs",
+   "published": "2026-11-23",
+   "link": "https://www.adb.org/publications/primary-balances-debt-composition-emerging-economies"
+  },
+  {
+   "n": 38,
+   "title": "Want to earn 5% on shorter-term Treasurys again? Watch for this shift.",
+   "source": "marketwatch",
+   "published": "2026-11-17",
+   "link": "https://www.marketwatch.com/story/want-to-earn-5-on-shorter-term-treasurys-again-watch-for-this-shift-d6ff42f2?mod=mw_rss_topstories"
+  },
+  {
+   "n": 39,
+   "title": "A 10% cap on credit-card interest rates? Holiday shoppers shouldn’t bank on it.",
+   "source": "marketwatch",
+   "published": "2026-11-24",
+   "link": "https://www.marketwatch.com/story/trump-is-open-to-capping-credit-card-interest-rates-but-holiday-shoppers-shouldnt-bank-on-it-yet-34260705?mod=mw_rss_topstories"
+  },
+  {
+   "n": 40,
+   "title": "Budget airline Norse Atlantic files for bankruptcy in Europe after failing to secure funding",
+   "source": "cnbc",
+   "published": "2026-11-27",
+   "link": "https://www.cnbc.com/2026/11/27/norse-atlantic-bankruptcy-fuel-costs.html"
+  }
+ ]
+}
